@@ -1,7 +1,8 @@
 # Suno 参考サンプル(ユーザー本人の過去作)
 
-このファイルは、ユーザーが提供した過去のSuno歌詞・スタイルプロンプトのサンプル11曲をそのまま保存したもの。
-今後の楽曲制作で作風を分析・再現する際の一次資料として使う。抽出した特徴のまとめは `CLAUDE.md` を参照。
+このファイルは、ユーザーが提供した過去のSuno歌詞・スタイルプロンプトのサンプル16曲(1〜11曲目、12〜16曲目)を
+そのまま保存したもの。今後の楽曲制作で作風を分析・再現する際の一次資料として使う。抽出した特徴のまとめは
+`CLAUDE.md` を参照。
 
 ---
 
@@ -951,3 +952,371 @@ Warm Female Vocal, Soft Gentle Voice, Vulnerable Delivery, Whispered Verse Build
 今日も 見てる
 君のために...
 [end]
+
+---
+
+## 十二曲目: 傷跡讃歌
+
+Powerful Female Vocal, Front And Center Vocal, Emotionally Raw Delivery, Future Garage, Japanese Pop, Uk Garage Groove, Syncopated Garage Rhythm, Tight Punchy Kick, Skippy Hi-Hat Pattern, Cold Digital Synth, Driving Synth Bass, Defined Bass Line, Sparse 808 Pulse, Vocal Chop Texture, Clean Separation Between Instruments, Wide Stereo Mix, Dynamic Contrast, Explosive Chorus, Tension And Release, Hard Stop Ending, No Fade Out, Not Ballad, Not Ambient, No Crowd Vocals, Emotional Breakdown Bridge, Verse To Chorus Swell, Stripped Back Verses, Heavy Chorus Impact, Bittersweet Melancholy, Controlled Rage, Fragile Strength, Dark Romantic Tension, Cinematic Emotional Arc, Guitar Driven Energy, Sharp Attack Transients, Forward Bright Mix
+
+[Intro]
+
+[Verse 1]
+赤い目で見つめて もう分かってるでしょ
+嘘つきな笑顔 鏡の中だけ完璧
+冷たい床に座って 煙を吸い込んで
+誰も来ない夜に 幻影（まぼろし）と話してる
+
+[Pre-Chorus]
+このままの形で踊れ 糸の切れた人形みたいに
+痛いくらい綺麗に 血が出るまで演じ続けて
+
+[Chorus]
+大丈夫 もう平気よ
+その笑顔が刃のように深く刺さる
+愛なんて要らない ゲームだけをくれれば
+あなたに傷つけられた でも赤く塗り替えた
+この傷跡が 私の誇り
+
+[Verse 2]
+電話の向こう側 静寂が痛いほど響く
+未読のままでいい あなたの名前はただの音
+爪を立てて刻んだ 壁にハートを描いた
+消えないのはあなたじゃなく 私自身の叫び
+
+[Pre-Chorus]
+砕けそうでも笑え 皮膚が裂けても構わない
+涙より鮮やかに 勝ち方を見せてやる
+
+[Chorus]
+大丈夫 見せかけでも
+その笑顔が刃のように深く刺さる
+愛なんて燃やした 灰の味は甘い
+あなたに傷つけられた でも誇りにしてる
+この赤が 私の誓い
+
+[Bridge]
+鏡の中の私が ようやく口を開く
+「壊れてるのはあなたじゃない？」
+…嘘だ 全部 嘘だ
+
+[Chorus]
+大丈夫じゃない もう限界
+雨の中で笑顔が崩れ落ちた
+愛が欲しいなんて 弱い子の繰り言
+それでもまだ流れ続けてる 前に進めない
+本当は今も……。
+
+---
+
+## 十三曲目: Vis Fati【ウィース･ファーティ】
+
+Powerful Female Vocal Performance, Intimate Yet Commanding Delivery, Front-And-Center Topline, Expressive Phrasing, 178 Bpm, Hybrid Folk And Urban Dance Production, Warm Acoustic Textures, Modern Electronic Grooves, Bright Piano, Lyrical Solo Violin, Lush String Pads, Punchy 808 Bass, Tight Electronic Drums, Head-Nodding Urban Rhythm, Subtle Swing, Atmospheric Synth Layers, Electronic Vocal Chops, Shimmering Width, Modern Sheen, Dynamic Builds, Soaring Choruses, Layered Harmonies, Emotive Ad-Libs, Clean Polished Mix, Deep Low-End, Clear Mids For The Lead Vocal, Airy High-End Sparkle, Beautiful Uplifting Mood
+
+[Intro]
+冷たい夜風が
+街の輪郭を削っていく
+正しさなんて誰も
+教えてはくれない場所で
+
+[Verse 1]
+隠した爪の先で
+運命(さだめ)を引っ掻いた
+熱を帯びた鼓動が
+硝煙の匂いを纏う
+理屈の壁を
+蹴散らして進め
+背負った痛みなど
+置き去りにして
+
+[Chorus]
+撃ち抜け！
+夜空を焦がす
+衝動の矢を
+誰も追いつけない
+スピードで
+闇を切り裂いて
+血潮のビートが
+鳴り止まないのなら
+世界の果てまで
+駆け抜けてみせろ！
+
+[Instrumental]
+[Verse 2]
+境界線の向こう
+牙を剥くしじま
+逃げ場所のない
+ステージで
+迷いは捨て去った
+交差する視線の先
+奇跡を祈るより
+この手で掴み取る
+未来(あす)を選び取るだけ
+
+[Pre-Chorus]
+不条理な運命
+焼き尽くすように
+凍てつく迷宮を
+共に駆けろ
+
+[Chorus]
+叫べよ！
+魂が疼く
+この瞬間(とき)の果てに
+すべてを燃やすような
+光を放ち続けて
+運命の歯車さえ
+焼き切るほどの
+熱量を束ねて
+世界を撃ち抜け！
+
+[Violin Solo]
+[Bridge]
+交わした契りは
+朽ち果てることなく
+この血に宿る
+揺るがぬ誇り
+重なる想いが
+明日を切り開く
+
+[Final Chorus]
+撃ち抜け！
+夜空を焦がす
+衝動の矢を
+誰も追いつけない
+スピードで
+闇を切り裂いて
+血潮のビートが
+鳴り止まないのなら
+世界の果てまで
+駆け抜けてみせろ！
+
+[Outro]
+鳴らせー
+この鼓動がーー
+尽きるまでっ‼︎
+
+---
+
+## 十四曲目: Asteríā 『 YuRa 』ver.
+
+Powerful Female Vocal, Front And Center Vocal, Strong Vocal Presence, 180 Bpm, Fast-Paced Japanese Rock, Driving Rock Groove, Melodic Speed Rock, Aggressive Palm-Muted Guitar Riffs, Melodic Twin Lead Guitar, Heavy Rhythm Guitar, Driving Bass Guitar, Deep Rock Bass, Fast Double-Bass Drums, Powerful Rock Drums, Punchy Snare, Driving Cymbals, Relentless Momentum, Explosive Chorus, Crystal-Clear Lead Vocal, Lead Vocal Focus, Radio-Ready Loudness, Clean Modern Production, No Crowd Vocals
+
+[Opening Chorus]
+[Crystal-Clear Lead Vocal]
+古びた月が
+夜明けを拒む
+歪んだ光を
+この手で掴み
+燃え残る空へ
+名もない声を放て！
+
+[Guitar Solo]
+
+[Verse 1]
+[Close Vocal]
+石畳を叩く靴音
+冷えた風が肩を裂く
+黒い羽根が舞うたび
+眠れない街が揺れた
+掌に残った感覚
+まだ熱を失わない
+振り返れば
+過去だけが笑っている
+
+[Pre-Chorus]
+[Building Intensity]
+鳴り止まない鼓動だけ
+嘘をついたことがない
+息を吸って
+駆け出した
+
+[Chorus]
+[Crystal-Clear Lead Vocal]
+[Explosive Chorus]
+錆びた心臓(かね)を
+撃ち鳴らせ
+閉ざされた空へ
+火花を散らして
+白い息も
+この傷跡も
+消えないまま
+共(とも)に行く
+
+[Verse 2]
+[Driving Vocal]
+崩れた塔の窓辺で
+誰かが歌を忘れてた
+風に千切れた旗だけが
+行き先を知っている
+遠く響く足音を
+恐れた夜もあった
+それでも歩みは
+止まらない
+
+[Bridge]
+[Intimate Vocal]
+朝焼けよりも先に
+名前を呼ぶ声がする
+過去の君が
+この手を離さない
+
+[Guitar Solo]
+
+[Final Chorus]
+[Crystal-Clear Lead Vocal]
+[Maximum Energy]
+錆びた心臓(かね)を
+撃ち鳴らせ
+灰色の空を
+切り裂くように
+胸の奥で
+燃え続ける
+小さな火を
+信じて
+
+[Outro]
+[Final Shout]
+錆びた
+心臓(かね)を
+撃ち鳴らせ‼︎
+
+---
+
+## 十五曲目: 君のいた速度
+
+Intimate Japanese Indie Pop, Soft Emotional Alternative Rock, Late-Night Urban Atmosphere, Gentle Clean Guitar And Electric Piano, Warm And Close Vocal Presence, Minimal And Natural Arrangement, Subtle Ambient Texture, Bittersweet Relationship Afterglow, Small Everyday Details, Quiet Emotional Build, Natural Dynamics, Soft Bass And Light Drums, Emotional But Restrained Chorus, Melancholic Yet Warm, Gradual Emotional Swell, Slightly Wider Chorus Stereo Image, Detailed Hi-Fi Mix, Natural Spatial Depth, Warm Analog-Like Texture, Transparent Mastering, Studio Quality Sound, Japanese Lyrics
+
+[Intro]
+[Soft electric piano, distant city ambience]
+いつもの部屋は
+君がいないだけで
+こんなに広かったんだね
+
+[Verse 1]
+コンビニの新作を
+毎回先に見つけるのは君だった
+「甘すぎるかな」って言いながら
+結局半分くれたよね
+
+洗面台の上に まだ
+君のピアスが 残ってる
+捨てればいいだけなのに
+なぜか触れられないまま
+
+[Pre-Chorus]
+忘れたいわけじゃない
+でも
+思い出すたび苦しくて
+君がいない生活だけが
+少しずつ上手くなっていく
+
+[Chorus]
+帰り道の静けさが
+今日はやけに痛かった
+「おつかれ」って通知ひとつ
+もう来ないって分かってるのに
+冷えた缶コーヒー越しに
+滲む街灯を見ていた
+君を失ったことより
+君のいた日々が眩しい
+
+[Verse 2]
+ドラッグストアの柔軟剤
+同じ匂いがして振り返る
+いるはずないって分かってるのに
+心だけ先に探してしまう
+「ちゃんと寝なよ」
+って最後まで言ってたね
+あの頃はうるさいなって
+少しだけ思ってた
+
+[Bridge]
+[Almost silent, faint guitar harmonics]
+ねえ
+今でも寂しく思うよ
+君といた部屋で
+君の知らない未来を
+一人で生きてること
+
+[Final Chorus]
+季節がまた変わっても
+たぶん全部は消えない
+並んで歩く速さとか
+くだらない口癖とか
+それでも前を向けるのは
+君が残してくれたものが
+痛みだけじゃなかったから
+
+[Outro]
+[Soft ambient fade]
+終電あとのホーム
+白い息が揺れていた
+もう隣に
+君はいないのに
+
+---
+
+## 十六曲目: 雪影
+
+Melodic Modern Metal, Post-Hardcore, Clean Male Vocals Only, No Scream, Clear And Powerful Mix, Strong Vocal Clarity, Forward Vocals, Thick And Defined Guitars, Punchy Snare And Kick, Tight Low End, Rich Low-Mid Presence, Controlled Atmosphere, Wide But Focused Stereo Image, Emotional And Explosive Chorus, Cinematic Winter Feeling Without Washed-Out Sound, Japanese Lyrics
+
+静寂が降り積もる
+白い世界の中で
+
+凍りついた空の下で
+吐く息は淡く消えて
+足跡だけ残していく
+誰もいないこの場所で
+触れた指の温もりも
+雪に溶けていくようで
+記憶さえも静かに
+白く覆われていく
+消えそうな光でも
+まだ胸に残ってる
+
+降り続くこの雪が
+すべてを包み込んで
+痛みさえ優しく
+溶かしていくなら
+白い夢の中で
+もう一度出会えたら
+凍えたこの心に
+まだ君が残ってる
+
+遠く霞む景色の中
+君の影を探してる
+届かないと知りながら
+手を伸ばしてしまう
+風がさらうその声は
+もう戻ることはなくて
+それでもまだどこかで
+響いている気がした
+終わらないこの夜も
+いつか朝を迎える
+
+降り積もるこの雪が
+すべてを塗り替えてく
+悲しみの形さえ
+わからなくなるほど
+白い夢の中で
+君の名を呼び続け
+凍えたこの想いが
+今も雪に眠る
+
+静かに 時は流れて
+すべてが遠ざかっても
+この胸に降る雪は
+消えることはない
+
+降り続くこの雪が
+すべてを包み込んで
+痛みさえ優しく
+溶かしていくなら
+白い夢の中で
+もう一度出会いたい
+凍えたこの心は
+まだ君を探してる
+
+白い静寂の中
+君の名を残して

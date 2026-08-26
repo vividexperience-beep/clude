@@ -7,6 +7,7 @@
 ## スタイルプロンプト
 
 ```
+YuRa,
 Powerful Female Vocal,
 Front And Center Vocal,
 Strong Vocal Presence,
@@ -56,7 +57,7 @@ Avoid Resolved Happy Ending
 
 「おかえり」って 
 言った声が
-昨日より小さい
+昨日より小さくて
 
 [Verse 1]
 [Lead Vocal]
@@ -106,7 +107,7 @@ One step behind
 返事はいつも一拍遅れて
 「うん、おやすみ」だけ
 
-明かり消してから
+明かりが 消えてから
 背中越しに聞こえる息遣い
 隣で寝てるあなたの寝息が
 遠くから聞こえてくる
@@ -148,9 +149,6 @@ One step behind
 合わせようとするたび
 逆に離れていく気がして
 
-[Echo Vocal — Drifting Closer, Still Not Aligned]
-(追いつけない…)
-
 [Lead Vocal]
 [Intimate Vocal]
 
@@ -170,7 +168,8 @@ One step behind
 One step behind
 名前を呼んだら
 今日はちゃんと
-「なに?」って振り向いた
+「なに?」って
+振り向いた
 
 [Outro]
 [Gentle Outro]
@@ -181,3 +180,19 @@ One step behind
 
 [end]
 ```
+
+## リミックス案(検討用・未確定)
+
+同じ歌詞に対して、ジャンルだけを差し替えた別バージョンも検討した。必要になれば `git log` でこの時点の
+コミットを遡るか、以下の方向性だけ覚えておいて再生成する。
+
+- **生楽器インディー系**(「君のいた速度」ライン): ガレージ要素を排し、ナイロンギター+エレピ中心。
+  エコーボーカルは「加工なしの生声のもう一人」という設定に変更。
+- **Neo-Bossa Nova / Brazilian R&B融合**: ボサノヴァの「ビートより少し遅れて歌う」性質を
+  「半歩遅れる」というテーマにそのまま重ねた案。
+- **Kizomba風 Afro-Fusion**: 密着した二人がリズムに完全には同期しないダンスの質感を活用。
+- **Half-Time Trip-Hop / UK Bass**: Portishead系の重く暗いハーフタイムグルーヴ。エコーは
+  深いリバーブで「追いつけない」設定。YuRaの固定ボーカルプロンプトを明記して検証した版。
+
+いずれも本編(Future Garage版)とは別に、スタイルプロンプトとブラケットの両方を差し替える必要がある
+(片方だけ差し替えると音の方向性が衝突するので注意)。

@@ -27,6 +27,10 @@
 - 「コンビニの軒先」は建築的に誤り(軒先/軒下は和風建築の言葉で、コンビニのような現代建築の庇には
   使わない)と指摘された。**歌詞に出す場所・モノの描写は、実在するかどうかを確認する。** 「コンビニの前」
   のようなシンプルな表現の方が正確かつ歌いやすい。
+- グリッチ/ブロークンビート系の質感(Micro Glitch Percussion等)を入れすぎると「シャカシャカして
+  感情移入できない」という指摘を受けた。**面白い音響的技法よりも感情の伝わりやすさを優先する。**
+  ボーカルも全編「抑制」で統一するのではなく、**Aメロは親密に抑えめ、サビでは声を解放する**という
+  明確な緩急をつけた方が感情が伝わる。
 
 ## スタイルプロンプト
 
@@ -35,18 +39,17 @@ YuRa,
 Powerful Female Vocal,
 Front And Center Vocal,
 Strong Vocal Presence,
-Emotionally Restrained Delivery,
+Intimate And Vulnerable In The Verses,
+Voice Breaking Open With Feeling In The Chorus,
 
 Japanese Alternative Electronic Rock,
-Melancholic Glitch Textures,
-Broken Beat Rhythm,
+Melancholic Atmosphere,
 
 108 Bpm,
 
 Deep Warm Sub Bass,
-Punchy Electronic Kick,
-Micro Glitch Percussion,
-Syncopated Groove, Slightly Off-Kilter,
+Soft Electronic Kick, Not Busy,
+Minimal Percussion, Wide Open Space,
 
 Lead Guitar Carrying The Unspoken Words,
 Guitar Motif That Returns But Never Resolves,
@@ -55,8 +58,9 @@ Minor-Key Harmony, Never Fully Landing,
 Felt Piano Fragment At The Start And End,
 Piano Phrase Left Hanging, Never Finished,
 
-Layers Building Slowly, Never Exploding,
-Restrained Chorus, Held Back On Purpose,
+Sparse And Quiet In The Verses,
+Layers Building Slowly Into A Full Emotional Swell,
+Chorus Sung With Full Aching Emotion, Not Held Back,
 
 Wide Stereo Atmosphere,
 Cold, Distant Warmth,
@@ -70,13 +74,14 @@ Ending Without Closure
 ```
 [Intro]
 [Piano fragment, left unfinished]
+[Lead Vocal, hushed and distant]
 
 傘も持たず
 あなたは 笑ってた
 
 [Verse 1]
 [Lead Vocal]
-[Groove enters quietly]
+[Intimate, vulnerable, close to a whisper]
 
 少し遅れた だけなのに
 軒下は もう空っぽで
@@ -90,14 +95,14 @@ Ending Without Closure
 
 [Pre-Chorus]
 [Lead Vocal]
-[Layers slowly gathering]
+[Quiet tension rising, breath catching]
 
 それから傘が 手放せない
 
 [Chorus]
 [Lead Vocal]
 [Powerful Female Vocal]
-[Held back, not exploding]
+[Voice breaking open, full emotional swell]
 
 晴れた日も 傘を持つ
 天気予報 見なくても
@@ -110,7 +115,7 @@ Ending Without Closure
 
 [Verse 2]
 [Lead Vocal]
-[Groove, slightly off-kilter]
+[Intimate, vulnerable, close to a whisper]
 
 コンビニの前で
 傘忘れた 人を見た
@@ -122,7 +127,7 @@ Ending Without Closure
 
 [Pre-Chorus]
 [Lead Vocal]
-[Layers slowly gathering]
+[Quiet tension rising, breath catching]
 
 それでも 前より短い
 足を止める その時間が
@@ -130,7 +135,7 @@ Ending Without Closure
 [Chorus]
 [Lead Vocal]
 [Powerful Female Vocal]
-[Held back, not exploding]
+[Voice breaking open, full emotional swell]
 
 晴れた日も 傘を持つ
 天気予報 見なくても
@@ -142,12 +147,11 @@ Ending Without Closure
 開かれない ままで
 
 [Instrumental Interlude]
-[Guitar carries what the voice couldn't say]
+[Guitar carries what the voice couldn't say, aching and unresolved]
 
 [Bridge]
 [Lead Vocal]
-[Intimate Vocal]
-[Layers thinning out]
+[Intimate Vocal, quiet resolve forming]
 
 傘を持たず 走り出す
 コンビニの 前へ
@@ -155,9 +159,9 @@ Ending Without Closure
 今度は 声が出た
 
 [Final Chorus]
-[Energy Lift]
 [Lead Vocal]
 [Powerful Female Vocal]
+[Voice fully open, aching at its peak]
 [Guitar answering the vocal line]
 
 晴れた日も 傘を持つ
@@ -171,7 +175,7 @@ Ending Without Closure
 
 [Outro]
 [Piano fragment returns, still unfinished]
-[Lead Vocal]
+[Lead Vocal, quiet again, almost spoken]
 
 明日は 君の眠る場所に
 傘を持って 会いに行くよ

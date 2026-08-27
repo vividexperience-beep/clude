@@ -1,6 +1,6 @@
 # 濡れないように
 
-ボーカル: YuRa
+ボーカル: YuRa(この曲は「僕」視点の男性キャラクターをYuRaが演じるキャラクターソングとして確定)
 テーマ: 守れなかったものへの後悔と前進(死別・泣きゲー風)
 ジャンル: Japanese Alternative Electronic Rock(エレクトロニック+エモーショナルギター、ピアノは冒頭と
 アウトロの断片のみ)
@@ -31,6 +31,11 @@
   感情移入できない」という指摘を受けた。**面白い音響的技法よりも感情の伝わりやすさを優先する。**
   ボーカルも全編「抑制」で統一するのではなく、**Aメロは親密に抑えめ、サビでは声を解放する**という
   明確な緩急をつけた方が感情が伝わる。
+- ユーザー自身が歌詞を「あなた/私」から「君/僕」に書き換えた。YuRa(女性ボーカル)が男性視点の
+  キャラクターソングとして歌う形で確定。加えて、チョラスを繰り返しごとに完全に同一にせず、
+  一部の行を変えて情報を少しずつ足していく手法(1回目:習慣の理由、2回目:「君」自身の台詞の
+  引用)や、Final Chorusで「いつか報われる」という希望を捨てて「もう来ないけど、それでも後悔では
+  ない」という、より重いが穏やかな受容に着地させる技法が使われている。
 
 ## スタイルプロンプト
 
@@ -77,8 +82,10 @@ Ending Without Closure
 [Piano fragment, left unfinished]
 [Lead Vocal, hushed and distant]
 
-傘も持たず
-あなたは 笑ってた
+傘を持たずに
+濡れた
+君の笑顔が
+忘れられない
 
 [Verse 1]
 [Lead Vocal]
@@ -98,53 +105,58 @@ Ending Without Closure
 [Lead Vocal]
 [Quiet tension rising, breath catching]
 
-それから傘が 手放せない
+あの日から
+傘が 手放せない
 
 [Chorus]
 [Lead Vocal]
 [Powerful Female Vocal]
 [Voice breaking open, full emotional swell]
 
-晴れた日も 傘を持つ
-天気予報 見なくても
-玄関で 手が伸びる
-あなたが 教えた癖
-二本の傘が
+晴れた日も
+傘を持つ
+天気予報
+見なくても
+君の濡れた姿が
+見たくなくて
+ニ本の傘が
 玄関に 並んでる
-一本は今も
-開かれない ままで
 
 [Verse 2]
 [Lead Vocal]
 [Intimate, vulnerable, close to a whisper]
 
-コンビニの前で
-傘忘れた 人を見た
+校舎の前で
+傘忘れた 君を見た
 声をかけようとして
-また 足が止まった
+足が止まる
 
 まだ 差し出せない
-あの日のままの 私がいる
+あの日のままの
+僕がいる
 
 [Pre-Chorus]
 [Lead Vocal]
 [Quiet tension rising, breath catching]
 
-それでも 前より短い
-足を止める その時間が
+足を止める
+その時間に
+「よかったら」の
+一言が出ない
 
 [Chorus]
 [Lead Vocal]
 [Powerful Female Vocal]
 [Voice breaking open, full emotional swell]
 
-晴れた日も 傘を持つ
-天気予報 見なくても
-玄関で 手が伸びる
-あなたが 教えた癖
-二本の傘が
-玄関に 並んでる
-一本は今も
+晴れた日も
+傘を持つ
+天気予報
+見なくても
+君が言う
+「二本あれば
+安心だね」って
+今も一本は
 開かれない ままで
 
 [Instrumental Interlude]
@@ -152,12 +164,12 @@ Ending Without Closure
 
 [Bridge]
 [Lead Vocal]
-[Intimate Vocal, quiet resolve forming]
+[Intimate Vocal, aching regret]
 
-傘を持たず 走り出す
-コンビニの 前へ
+コンビニの 前へ走り出す
+傘を持たない 君へ
 「よかったら」って
-今度は 声が出た
+言えたらよかったのに…
 
 [Final Chorus]
 [Lead Vocal]
@@ -165,21 +177,24 @@ Ending Without Closure
 [Voice fully open, aching at its peak]
 [Guitar answering the vocal line]
 
-晴れた日も 傘を持つ
-それは もう後悔じゃない
-玄関で 手が伸びる
-誰かのために 差し出すため
-二本の傘が
-今日も 並んでる
-一本はいつか
-開かれる日が来る
+晴れた日も
+傘を持つ
+それは もう
+後悔じゃない
+君のために
+差し出すはずの
+片方の傘が
+開かれる時は
+もう来ないけど
 
 [Outro]
 [Piano fragment returns, still unfinished]
 [Lead Vocal, quiet again, almost spoken]
 
-明日は 君の眠る場所に
-傘を持って 会いに行くよ
+明日は
+君の眠る場所に
+傘を持って
+会いに行くよ
 
 [end]
 ```

@@ -144,3 +144,9 @@ I'm calling you back
 生成確認済み(2026-08-27)。PixAIはネガティブプロンプト欄が無いため、避けたい要素を書かず欲しい要素だけを
 1本にまとめている。`young adult man` `sitting on edge of bed`(夜との組み合わせ) `intimacy` は生成制限に
 かかったため、`adult man in his 20s` `sitting alone by the window` `solitude` に置き換えて通した。
+
+### 採用ジャケ写
+
+`assets/02-seen-not-heard-cover.jpg` を採用。頬杖をついて俯く姿勢、暖色(枕元のランプ)と寒色(窓の外)の
+光の対比、画面端に控えめに写る電話——という構図で、「既読メッセージ」のモチーフと「本当は繋がりたいのに
+距離を取ってしまう」という葛藤(光の対比)の両方を兼ね備えている。

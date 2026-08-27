@@ -166,9 +166,9 @@ Ending Without Closure
 [Lead Vocal]
 [Intimate Vocal, aching regret]
 
-コンビニの 前へ走り出す
-傘を持たない 君へ
-「よかったら」って
+傘を持たない
+君の前へ 走り出す
+「コレ使いなよ」って
 言えたらよかったのに…
 
 [Final Chorus]

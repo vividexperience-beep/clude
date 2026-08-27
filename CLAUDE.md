@@ -140,6 +140,20 @@ Suno生成結果が高評価だった。得られた教訓:
   Slightly Off-Time / Echo Vocal Always Half A Beat Late)に落とし込むと、意味と音が一致して説得力が増す。
 - Sunoは同一プロンプトでも生成ごとにブレがあるため、**複数回生成して良いものを選ぶ**前提で運用する。
 
+## ジャケ写(PixAI)プロンプトについて — 2026-08-27
+
+曲のジャケ写をPixAIで作る際のメモ:
+
+- PixAIにはネガティブプロンプト欄が無いため、**避けたい要素は書かず、欲しい要素だけを1本のプロンプトに
+  まとめる**(カンマ区切り)。
+- **生成が制限されて通らなかった単語の実例**: `young adult man`(年齢表現が曖昧だと引っかかりやすい)、
+  `sitting on edge of bed` + 夜のシチュエーションの組み合わせ、`intimacy` という単語そのもの。
+  → `adult man in his 20s` / `sitting alone by the window` / `solitude` のように、具体的な年齢表記・
+  ベッド以外のシチュエーション・直接的な単語を避けた言い換えに置き換えると通ることを確認済み。
+- ボーカルキャラクター(YuRa、Asher)のビジュアルプロンプトを作る際は、この言い換えパターンを踏襲する。
+
 ## 制作済み楽曲
 
 - `songs/01-one-step-behind.md` — 「One Step Behind」(すれ違う関係の温度差 / Future Garage系 / エコー・ズレ二重唱という新演出)
+- `songs/02-seen-not-heard.md` — 「Seen, Not Heard」(Asher・男性・ネイティブ英語詞 / Sad Pop・Bedroom Pop /
+  近づく人を無意識に遠ざけてしまう癖がテーマ。ジャケ写PixAIプロンプトも記録済み)

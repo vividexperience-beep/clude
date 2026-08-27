@@ -21,6 +21,12 @@
   流用してしまう事故が発生した(「丸パクリじゃねーか」と指摘された)。**参考プロンプトからは技法だけを
   抽出し、言葉は必ず自分たちで一から書き直す**こと。ジャンルもEmotional Piano Ballad/OrchestralからJapanese
   Alternative Electronic Rock系に差し替えている(オリジナル版はgit logで前のコミットから確認可能)。
+- 「折りたたみ傘が かばんから消えない」(17音)のように、一行の音数が長すぎて歌えない行があった。
+  セクション内で音数を8〜11音程度に揃えると歌いやすくなる。書き言葉的な名詞化構文(「〜ことのないままで」)
+  も歌いにくいので、口語的な言い切りに直す。
+- 「コンビニの軒先」は建築的に誤り(軒先/軒下は和風建築の言葉で、コンビニのような現代建築の庇には
+  使わない)と指摘された。**歌詞に出す場所・モノの描写は、実在するかどうかを確認する。** 「コンビニの前」
+  のようなシンプルな表現の方が正確かつ歌いやすい。
 
 ## スタイルプロンプト
 
@@ -65,50 +71,49 @@ Ending Without Closure
 [Intro]
 [Piano fragment, left unfinished]
 
-傘も差さずに
-あなたは 笑っていた
+傘も持たず
+あなたは 笑ってた
 
 [Verse 1]
 [Lead Vocal]
 [Groove enters quietly]
 
-三分遅れただけなのに
-軒下に 誰もいなくて
-傘を握りしめたまま
-雨の中 立ち尽くした
+少し遅れた だけなのに
+軒下は もう空っぽで
+傘を強く 握りしめた
+雨の中に ひとり立った
 
-濡れた前髪 そのままで
-「平気」って 笑う顔だけが
-やけに はっきり見えて
-何も言えなかった
+濡れた前髪で 笑ってた
+「平気」って言う 声だけが
+今もずっと 消えないまま
+何も言えず うつむいた
 
 [Pre-Chorus]
 [Lead Vocal]
 [Layers slowly gathering]
 
-それからずっと
-折りたたみ傘が かばんから消えない
+それから傘が 手放せない
 
 [Chorus]
 [Lead Vocal]
 [Powerful Female Vocal]
 [Held back, not exploding]
 
-晴れの日でも 傘を持つ
+晴れた日も 傘を持つ
 天気予報 見なくても
 玄関で 手が伸びる
-あなたが教えてくれた癖
-二本の傘は
-まだ 玄関に並んだまま
-一本はずっと
-開かれることのないままで
+あなたが 教えた癖
+二本の傘が
+玄関に 並んでる
+一本は今も
+開かれない ままで
 
 [Verse 2]
 [Lead Vocal]
 [Groove, slightly off-kilter]
 
-コンビニの軒先で
-傘を忘れた人を見た
+コンビニの前で
+傘忘れた 人を見た
 声をかけようとして
 また 足が止まった
 
@@ -119,22 +124,22 @@ Ending Without Closure
 [Lead Vocal]
 [Layers slowly gathering]
 
-それでも 前より少しだけ
-足を止める時間が短くなった
+それでも 前より短い
+足を止める その時間が
 
 [Chorus]
 [Lead Vocal]
 [Powerful Female Vocal]
 [Held back, not exploding]
 
-晴れの日でも 傘を持つ
+晴れた日も 傘を持つ
 天気予報 見なくても
 玄関で 手が伸びる
-あなたが教えてくれた癖
-二本の傘は
-まだ 玄関に並んだまま
-一本はずっと
-開かれることのないままで
+あなたが 教えた癖
+二本の傘が
+玄関に 並んでる
+一本は今も
+開かれない ままで
 
 [Instrumental Interlude]
 [Guitar carries what the voice couldn't say]
@@ -144,10 +149,10 @@ Ending Without Closure
 [Intimate Vocal]
 [Layers thinning out]
 
-傘を持たずに 走っていく
-コンビニの軒先へ
+傘を持たず 走り出す
+コンビニの 前へ
 「よかったら」って
-声が 今度は出た
+今度は 声が出た
 
 [Final Chorus]
 [Energy Lift]
@@ -155,14 +160,14 @@ Ending Without Closure
 [Powerful Female Vocal]
 [Guitar answering the vocal line]
 
-晴れの日でも 傘を持つ
-それは もう後悔じゃなくて
+晴れた日も 傘を持つ
+それは もう後悔じゃない
 玄関で 手が伸びる
-誰かのために 差し出すために
-二本の傘は
-今日も 玄関に並んでる
+誰かのために 差し出すため
+二本の傘が
+今日も 並んでる
 一本はいつか
-また 開かれる日が来るように
+開かれる日が来る
 
 [Outro]
 [Piano fragment returns, still unfinished]

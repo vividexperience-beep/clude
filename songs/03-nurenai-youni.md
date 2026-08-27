@@ -2,7 +2,8 @@
 
 ボーカル: YuRa
 テーマ: 守れなかったものへの後悔と前進(死別・泣きゲー風)
-ジャンル: Emotional Piano Ballad / Orchestral
+ジャンル: Japanese Alternative Electronic Rock(エレクトロニック+エモーショナルギター、ピアノは冒頭と
+アウトロの断片のみ)
 モチーフ: 傘(あの日持たずに走った→今は手放せない習慣→最後に、眠る場所へ持っていく)
 
 ## 制作メモ(教訓)
@@ -16,6 +17,10 @@
   一種のAI構文)。ユーザーの修正「君の眠る場所」は、直接的な単語を使わず、婉曲表現だけで同じ情報を伝える
   好例。**衝撃の事実を明かす場面でも、直接的な単語(命日、お墓、死んだ等)ではなく、婉曲的な言い回しを
   選ぶ**のが、ユーザーのセンス。
+- ユーザーが「好きな他ユーザーのプロンプト」を参考として貼ってくれた際、そのタグをほぼそのまま
+  流用してしまう事故が発生した(「丸パクリじゃねーか」と指摘された)。**参考プロンプトからは技法だけを
+  抽出し、言葉は必ず自分たちで一から書き直す**こと。ジャンルもEmotional Piano Ballad/OrchestralからJapanese
+  Alternative Electronic Rock系に差し替えている(オリジナル版はgit logで前のコミットから確認可能)。
 
 ## スタイルプロンプト
 
@@ -26,45 +31,46 @@ Front And Center Vocal,
 Strong Vocal Presence,
 Emotionally Restrained Delivery,
 
-Emotional Piano Ballad,
-Orchestral Strings,
-Cinematic Emotional Arc,
+Japanese Alternative Electronic Rock,
+Melancholic Glitch Textures,
+Broken Beat Rhythm,
 
-Gentle Piano Arpeggios,
-Warm String Swell,
-Soft Woodwind Accents,
-Subtle Choir Pad In Final Chorus,
+108 Bpm,
 
-Bittersweet Major Key Melody,
-Gentle Yet Aching Tone,
-Sparse Arrangement In Verses,
-Gradual Emotional Build,
-Restrained But Powerful Chorus,
+Deep Warm Sub Bass,
+Punchy Electronic Kick,
+Micro Glitch Percussion,
+Syncopated Groove, Slightly Off-Kilter,
 
-Wide Cinematic Stereo Mix,
-Natural Dynamics,
-Emotional Weight Without Oversinging,
+Lead Guitar Carrying The Unspoken Words,
+Guitar Motif That Returns But Never Resolves,
+Minor-Key Harmony, Never Fully Landing,
 
-Gentle Outro,
-Gradual Fade,
-Not Upbeat,
+Felt Piano Fragment At The Start And End,
+Piano Phrase Left Hanging, Never Finished,
+
+Layers Building Slowly, Never Exploding,
+Restrained Chorus, Held Back On Purpose,
+
+Wide Stereo Atmosphere,
+Cold, Distant Warmth,
 No Crowd Vocals,
-No Heavy Percussion
+Avoid Resolved Happy Ending,
+Ending Without Closure
 ```
 
 ## 歌詞
 
 ```
 [Intro]
-[Lead Vocal]
-[Gentle Piano Only]
+[Piano fragment, left unfinished]
 
 傘も差さずに
 あなたは 笑っていた
 
 [Verse 1]
 [Lead Vocal]
-[Sparse Arrangement]
+[Groove enters quietly]
 
 三分遅れただけなのに
 軒下に 誰もいなくて
@@ -78,7 +84,7 @@ No Heavy Percussion
 
 [Pre-Chorus]
 [Lead Vocal]
-[Building Tension]
+[Layers slowly gathering]
 
 それからずっと
 折りたたみ傘が かばんから消えない
@@ -86,6 +92,7 @@ No Heavy Percussion
 [Chorus]
 [Lead Vocal]
 [Powerful Female Vocal]
+[Held back, not exploding]
 
 晴れの日でも 傘を持つ
 天気予報 見なくても
@@ -98,7 +105,7 @@ No Heavy Percussion
 
 [Verse 2]
 [Lead Vocal]
-[Sparse Arrangement]
+[Groove, slightly off-kilter]
 
 コンビニの軒先で
 傘を忘れた人を見た
@@ -110,7 +117,7 @@ No Heavy Percussion
 
 [Pre-Chorus]
 [Lead Vocal]
-[Building Tension]
+[Layers slowly gathering]
 
 それでも 前より少しだけ
 足を止める時間が短くなった
@@ -118,6 +125,7 @@ No Heavy Percussion
 [Chorus]
 [Lead Vocal]
 [Powerful Female Vocal]
+[Held back, not exploding]
 
 晴れの日でも 傘を持つ
 天気予報 見なくても
@@ -128,9 +136,13 @@ No Heavy Percussion
 一本はずっと
 開かれることのないままで
 
+[Instrumental Interlude]
+[Guitar carries what the voice couldn't say]
+
 [Bridge]
 [Lead Vocal]
 [Intimate Vocal]
+[Layers thinning out]
 
 傘を持たずに 走っていく
 コンビニの軒先へ
@@ -141,6 +153,7 @@ No Heavy Percussion
 [Energy Lift]
 [Lead Vocal]
 [Powerful Female Vocal]
+[Guitar answering the vocal line]
 
 晴れの日でも 傘を持つ
 それは もう後悔じゃなくて
@@ -152,7 +165,7 @@ No Heavy Percussion
 また 開かれる日が来るように
 
 [Outro]
-[Gentle Outro]
+[Piano fragment returns, still unfinished]
 [Lead Vocal]
 
 明日は 君の眠る場所に
@@ -160,4 +173,3 @@ No Heavy Percussion
 
 [end]
 ```
-

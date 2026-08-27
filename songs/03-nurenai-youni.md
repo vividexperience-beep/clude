@@ -47,9 +47,10 @@ Melancholic Atmosphere,
 
 108 Bpm,
 
-Deep Warm Sub Bass,
-Soft Electronic Kick, Not Busy,
-Minimal Percussion, Wide Open Space,
+Deep Heartbeat Kick,
+Warm Sub Bass,
+Steady Driving Pulse, Not Cluttered,
+Clean Simple Groove, No Busy Percussion,
 
 Lead Guitar Carrying The Unspoken Words,
 Guitar Motif That Returns But Never Resolves,

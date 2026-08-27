@@ -173,6 +173,6 @@ Suno生成結果が高評価だった。得られた教訓:
 - `songs/01-one-step-behind.md` — 「One Step Behind」(すれ違う関係の温度差 / Future Garage系 / エコー・ズレ二重唱という新演出)
 - `songs/02-seen-not-heard.md` — 「Seen, Not Heard」(Asher・男性・ネイティブ英語詞 / Sad Pop・Bedroom Pop /
   近づく人を無意識に遠ざけてしまう癖がテーマ。ジャケ写PixAIプロンプトも記録済み)
-- `songs/03-untitled-umbrella-song.md` — タイトル未定(YuRa / Emotional Piano Ballad / 泣きゲー風、
+- `songs/03-nurenai-youni.md` — 「濡れないように」(YuRa / Emotional Piano Ballad / 泣きゲー風、
   死別からの後悔と前進がテーマ。「傘」のモチーフを反転させる技法、婉曲表現での事実開示など、
   制作過程の教訓を詳しく記録)

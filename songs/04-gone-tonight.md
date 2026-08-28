@@ -58,14 +58,11 @@ No Crowd Vocals
 
 ## 歌詞
 
-```
-[Intro]
-[Powerful Female Vocal]
+あえてブラケットを外し、Sunoの生成に余白を残す形にしている(下記「制作メモ」参照)。
 
+```
 Yeah...
 Not tonight
-
-[Verse 1]
 
 ポケットの中 光ってる
 既読つけずに バッグの底へ
@@ -77,13 +74,8 @@ Not tonight
 汗ばむ首筋 揺れる髪
 もう戻れない この速さに
 
-[Pre-Chorus]
-
 数える程度の 迷いはもう
 ノイズで かき消されてく
-
-[Chorus]
-[Powerful Female Vocal]
 
 Gone tonight
 名前も 全部 置いてくよ
@@ -93,8 +85,6 @@ Gone tonight
 今だけは 私のもの
 Gone tonight
 夜が全部 塗り替える
-
-[Verse 2]
 
 誰かが笑う 目が合う瞬間
 スマホ見てない 私に気づく
@@ -106,13 +96,8 @@ Gone tonight
 時計の針が 三時を回る
 過去はもう ここにいない
 
-[Pre-Chorus]
-
 数える程度の 迷いはもう
 ノイズで かき消されてく
-
-[Chorus]
-[Powerful Female Vocal]
 
 Gone tonight
 名前も 全部 置いてくよ
@@ -123,13 +108,6 @@ Gone tonight
 Gone tonight
 夜が全部 塗り替える
 
-[Garage Drop]
-[Instrumental]
-
-[Final Chorus]
-[Maximum Energy]
-[Powerful Female Vocal]
-
 Gone tonight
 名前も 全部 置いてきた
 Gone tonight
@@ -139,8 +117,6 @@ Gone tonight
 Gone tonight
 夜が終わっても 消えない
 
-[Outro]
-
 Gone tonight
 朝が来たら
 また 私に戻るだけ
@@ -148,6 +124,4 @@ Gone tonight
 今夜だけの 魔法だから
 
 Gone tonight...
-
-[end]
 ```

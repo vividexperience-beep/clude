@@ -1,4 +1,4 @@
-# Gone Tonight(タイトル仮 — No Signal / Static / Afterhours も候補)
+# Static
 
 ボーカル: YuRa
 テーマ: 深夜のクラブで、過去を捨てる瞬間

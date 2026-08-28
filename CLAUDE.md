@@ -145,6 +145,51 @@ YuRa(女性・日本語曲の固定ボーカル)に対応する、**男性ボー
   具体的な単語選び・フレージングではない。
 - 技法を抽出したら、**必ず自分たちの言葉・語彙で一から書き直す**こと。
 
+## YuRaの進化 — 2026年トレンドリサーチに基づく拡張(2026-08-27)
+
+2026年の音楽トレンドをリサーチし、YuRaのレパートリーに追加できる要素を3つ見つけた。
+
+### 1. Speed Garage(既存のFuture Garage/Uk Garageの次世代形)
+2025年に625%成長したジャンル。YuRaの中心ジャンルの直系進化として使える。技法は学ぶが、
+語彙は自分たちで書き起こす(他人のプロンプト流用と同じ失敗をしない)。
+
+```
+Speed Garage,
+Faster Evolution Of Future Garage,
+132 Bpm,
+Four-On-The-Floor Kick With Garage Swing,
+Rolling Sweeping Bassline, Almost Vocal In Tone,
+Shuffling Breakbeat Hi-Hats Layered Over The Groove,
+Chopped Vocal Fragments,
+Time-Stretched Vocal Ad-Libs
+```
+
+### 2. Neo City Pop(新設モード)
+既存のダーク/メランコリックな路線とは違う、温かい都会の郷愁というYuRaの新しい引き出し。
+
+```
+Neo City Pop,
+Warm Nighttime Nostalgia,
+Shimmering Chorus-Laden Synths,
+Smooth Jazzy Chord Voicings,
+Laid-Back Trap-Influenced Swing,
+Late-Night Drive Atmosphere,
+Warm Analog Tape Saturation
+```
+
+### 3. ボーカル質感のアップデート(固定ボイスプロンプトへの追加)
+2026年は「脱オートチューン」「息遣い・微細なピッチのゆらぎを残す」ことが本物らしさとして
+評価される潮流。YuRaの固定トリオ(Powerful Female Vocal, Front And Center Vocal, Strong Vocal
+Presence)は変えず、以下を追加することで質感を更新できる:
+
+```
+Natural Vocal Grain Left In, Not Corrected Away,
+Audible Breath Between Phrases,
+Slight Human Pitch Wave, Never Fully Smoothed
+```
+
+この3つは組み合わせ自由。Speed Garage/Neo City Popはどちらもボーカル質感アップデートと併用できる。
+
 ## スタイルプロンプトとブラケットの整合性に注意
 
 複数のジャンル案(リミックス)を並行して検討していると、**スタイルプロンプトとブラケットの組み合わせを

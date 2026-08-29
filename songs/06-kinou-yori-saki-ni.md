@@ -31,38 +31,20 @@ Slight Human Pitch Wave, Never Fully Smoothed,
 
 96 Bpm,
 
-Massive Elastic Fingerstyle And Restrained Slap Bass
-Deep 808 Sub Bass
-Thick Low-End
-Bass-Driven Groove
-Strong Syncopated Countermelodies
-Frequent Muted Ghost Notes
-Dead Notes
-Short Rests
-Octave Jumps And Percussive Attacks
-Bass Locks Around The Kick Without Copying It
-Creating A Deep Breathing Pocket
+Elastic Fingerstyle And Slap Bass,
+Deep 808 Sub Bass, Thick Low-End,
+Syncopated Countermelodies, Muted Ghost Notes,
+Bass Locks Around The Kick, Deep Breathing Pocket,
 
-Human Handclaps
-Tight Four-On-The-Floor Kick
-Dry Tr-909 Snare
-Rigid Mechanical Pulse
-Very Little Swing
-Tiny Human Timing Imperfections
-Sparse Closed Hi-Hat Sixteenths With Selective Accents
-Brief Thirty-Second Bursts And Clear Gaps
+Human Handclaps, Tight Four-On-The-Floor Kick,
+Dry Tr-909 Snare, Rigid Pulse With Tiny Human Imperfections,
+Sparse Closed Hi-Hat Sixteenths With Selective Accents,
 
-High-Fidelity Studio Mix
+High-Fidelity Studio Mix,
 
-Muted Funk Guitar Chops
-Short Sixteenth-Note Accents
-Dry Stabs
+Muted Funk Guitar Chops, Short Sixteenth-Note Stabs,
 
-Leave Deliberate Empty Spaces:
-Brief Bass Dropouts
-Kick-Only Bars
-Guitar Removals
-Silent Half-Bars
+Deliberate Empty Spaces: Bass Dropouts, Kick-Only Bars, Silent Half-Bars,
 
 Groove Thins Out Gradually Toward The End,
 Instruments Drop Away One By One,

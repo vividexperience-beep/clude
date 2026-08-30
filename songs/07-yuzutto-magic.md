@@ -11,15 +11,24 @@
   **アイドルの内面を歌う曲**を提案してしまったが、ユーザーが求めていたのは
   **ライブで機能する、ファンとの掛け合い・合言葉としてのアイドルソングそのもの**だった。
   「アイドルソング」というお題は、内容のジャンルではなく形式のジャンルとして捉えること。
-- Call And Responseのカッコ内(応答部分)を、最初は「誰が歌うか」を明示しないまま書いてしまった。
-  スタイルプロンプトの「Call And Response」と「No Crowd Vocals」も矛盾していた。
-  → ファンのコール&レスポンスを望んでいたため、「No Crowd Vocals」を外し、
-  `[Crowd Chant Response]`のようにブラケットで明示する形に修正。
 - ハイテンポ(170Bpm)のアイドルソングなのに、1行14〜17音の長いフレーズのまま書いてしまい、
   歌いやすさを無視していた。「最推しにして♡」本家の「推して！推して！私を推して！」のような
   **短い断片の連打**が正解だったので、全行を短く割り直した。
-- アウトロの「呪文 唱えような」は文法的に不自然(伝聞・推量のニュアンスが混ざる)。
-  「唱えようね」の方が自然な誘いかけになる。
+- Verse1の「大丈夫って何回目?」が、直後の「制服のシワも」という**その場の直接観察**と
+  噛み合っていなかった(前に「コメント欄の」という別媒体を持ち込んで直そうとしたが、これも
+  周辺の歌詞との整合性を確認せずに直した失敗)。最終的に「欠伸→クマ→作り笑い→制服のシワ」を
+  すべて「今、目の前で見えているもの」に統一して解決。**1行だけ直すときも、必ず前後の文脈と
+  矛盾しないか確認すること。**
+- Call And Responseのカッコ内(応答部分)について、当初「観客(オーディエンス)」にしていたが、
+  この曲は「あなた一人」に語りかける一対一の体裁なので不整合という指摘を受け「Small Group
+  Response, Not A Crowd」に変更。しかし実際にSunoで生成してみると、独自表現すぎて認識されず、
+  結局リードボーカルがそのまま歌ってしまった。**Sunoでは、独自の描写的な表現より
+  Audience/Crowdのような標準的な単語の方が、別の声部として認識されやすい。** 理論上の
+  整合性より実際の生成結果を優先し、Audienceに戻した。
+- 曲全体が「呪文をかける」体裁なのに、**実際に唱える呪文の言葉そのものが独立して
+  提示されていなかった**(サビは呪文の効果を歌うだけ)。カウントダウン直後に`[Spell]`として
+  「しゅわっと/ゆずっと/元気になあれ！」を独立させて挿入し、これが呪文そのものだと
+  明確にした。
 
 ## スタイルプロンプト
 
@@ -36,8 +45,8 @@ Sparkly Arpeggios,
 Playful Arcade Synths,
 
 Catchy Vocal Hooks,
-Lead Call And Fan Chant Response,
-Crowd Response Vocals On Key Phrases,
+Lead Call And Audience Response,
+Crowd Chant Vocals On Key Phrases,
 Sudden Breaks,
 Addictive Repetition,
 
@@ -58,17 +67,17 @@ Competitive Loudness
 ねえねえ
 元気ない顔
 してるでしょ
-バレてないと
-思った?
+バレてるよ？
 
 [Verse 1]
 欠伸 隠しても
 目の下のクマは
 隠せてないよ
-「大丈夫」って
-何回目?
-そのセリフ
-もう聞き飽きたよ
+無理に上げた
+口角も
+そんな顔で
+「大丈夫」は
+通じないよ
 
 制服のシワも
 今日は多めじゃない?
@@ -82,7 +91,17 @@ Competitive Loudness
 天使の輪っか
 描いて
 準備はいい?
-3、2、1
+
+スリー
+
+ツー
+
+ワン
+
+[Spell]
+しゅわっと
+ゆずっと
+元気になあれ！
 
 [Chorus]
 [Lead Vocal]
@@ -110,7 +129,17 @@ Competitive Loudness
 ちゃんと声
 合わせて
 準備はいい?
-3、2、1
+
+スリー
+
+ツー
+
+ワン
+
+[Spell]
+しゅわっと
+ゆずっと
+元気になあれ！
 
 [Chorus]
 [Lead Vocal]
@@ -118,7 +147,7 @@ Competitive Loudness
 元気になあれ
 ゆずっと弾けて
 笑顔になあれ
-ほら 声出して
+もう覚えたでしょ
 一緒に言って
 しゅわっと魔法で
 元気になあれ
@@ -126,15 +155,15 @@ Competitive Loudness
 [Call And Response]
 [Lead Vocal]
 しゅわっと！
-[Crowd Chant Response]
+[Audience Chant Response]
 (しゅわっと！)
 [Lead Vocal]
 ゆずっと！
-[Crowd Chant Response]
+[Audience Chant Response]
 (ゆずっと！)
 [Lead Vocal]
 元気になあれ！
-[Crowd Chant Response]
+[Audience Chant Response]
 (なあれ！)
 
 [Break]
@@ -142,14 +171,13 @@ Competitive Loudness
 せーの…
 
 [Bridge]
-本当は
+本当はね
 魔法なんて
-存在しないけど
+ないんだけど
 ちょっとだけ
-顔上げて
-くれたら
+顔上げたら
 それでもう
-十分魔法だよ
+魔法だよ
 
 [Final Chorus]
 [Lead Vocal]

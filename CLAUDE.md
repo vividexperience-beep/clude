@@ -196,6 +196,15 @@ Slight Human Pitch Wave, Never Fully Smoothed
 
 この3つは組み合わせ自由。Speed Garage/Neo City Popはどちらもボーカル質感アップデートと併用できる。
 
+## ボーカルキャラクター「一ノ瀬柚葉」について — 2026-08-27に判明
+
+10曲目「最推しにして♡」(Cute Denpa Pop, Azato-Cute Female Vocal)を歌っているキャラクターの名前は
+「一ノ瀬柚葉(いちのせ ゆずは)」。YuRa・Asherに続く3人目の固定キャラクター。
+
+- 声質・ジャンル: Denpa Pop / あざと可愛い煽り系。Playful And Teasing Vocal Delivery, Hyper
+  Energetic が基本線。YuRaの「Powerful Female Vocal」路線とは別の、可愛らしく煽るテイスト。
+- 次回作を検討中。続報があればここに追記する。
+
 ## スタイルプロンプトとブラケットの整合性に注意
 
 複数のジャンル案(リミックス)を並行して検討していると、**スタイルプロンプトとブラケットの組み合わせを

@@ -317,9 +317,17 @@ Slight Human Pitch Wave, Never Fully Smoothed
 
 Lo-fi専用の4人目の固定キャラクターとして新設。
 
-- 声質: `Whispery Female Vocal, Close-Mic Intimate Presence, Soft Breathy Delivery` が基本の
-  固定トリオ。YuRa(Powerful Female Vocal)・一ノ瀬柚葉(Hyper Energetic)とは対照的な、
+- 声質(固定): YuRa(Powerful Female Vocal)・一ノ瀬柚葉(Hyper Energetic)とは対照的な、
   力を抜いた・ひそひそ声に近い歌唱が持ち味。
+  ```
+  Whispery Female Vocal, Close-Mic Intimate Presence, Soft Breathy Delivery,
+  Clear Pure Tone, Soothing And Healing Quality,
+  Natural Vocal Grain, Audible Breath Between Phrases, Minimal Vibrato,
+  Relaxed Unhurried Phrasing,
+  Vocal Forward In The Mix, Never Buried, Crystal-Clear Delivery Despite The Whisper
+  ```
+  「ひそひそ声だが濁らず澄んでいる」「癒し系だが声はミックスに埋もれずクリアに届く」という、
+  一見相反する要素を両立させるのが狙い。
 - ジャンル: Lo-fi(深夜の作業用・勉強用BGM系譜)からスタート。他キャラ同様、声は固定で
   ジャンルは柔軟に展開してよい。
 - まだ楽曲制作前(2026-09-01時点)。1曲目のテーマは今後決定する。

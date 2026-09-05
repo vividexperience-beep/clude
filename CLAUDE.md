@@ -320,17 +320,28 @@ Lo-fi専用の4人目の固定キャラクターとして新設。
 - 声質(固定): YuRa(Powerful Female Vocal)・一ノ瀬柚葉(Hyper Energetic)とは対照的な、
   力を抜いた・ひそひそ声に近い歌唱が持ち味。
   ```
-  Whispery Female Vocal, Close-Mic Intimate Presence, Soft Breathy Delivery,
-  Clear Pure Tone, Soothing And Healing Quality,
+  Gentle Soothing Female Vocal, Alto Range,
+  Warm Soft Timbre With A Slight Natural Huskiness,
+  Subtle Natural Rasp As A Distinctive Vocal Character,
+  Close-Mic Intimate Presence, Soft Breathy Delivery,
+  Comforting And Healing Quality,
   Natural Vocal Grain, Audible Breath Between Phrases, Minimal Vibrato,
-  Relaxed Unhurried Phrasing,
-  Vocal Forward In The Mix, Never Buried, Crystal-Clear Delivery Despite The Whisper
+  Relaxed Unhurried Phrasing, Warm And Emotionally Gentle Expression,
+  Vocal Forward In The Mix, Never Buried
   ```
   「ひそひそ声だが濁らず澄んでいる」「癒し系だが声はミックスに埋もれずクリアに届く」という、
-  一見相反する要素を両立させるのが狙い。
+  一見相反する要素を両立させるのが狙い。**初期版は"歌い方(デリバリー)"の指定しかなく、
+  「歌い方を変えただけで声質自体はYuRa・柚葉と同じでは」と指摘され、Alto Range・Warm Husky
+  Timbreという声質(ティンバー)そのものの指定を追加して差別化した**(歌唱表現のギャップと
+  声質そのもののギャップは別物、という技法引き出しの実践例)。
 - ジャンル: Lo-fi(深夜の作業用・勉強用BGM系譜)からスタート。他キャラ同様、声は固定で
   ジャンルは柔軟に展開してよい。
-- まだ楽曲制作前(2026-09-01時点)。1曲目のテーマは今後決定する。
+- キャラクタービジュアル確定(`songs/assets/shiori-character-ref.png`): 眼鏡、黒〜グレーの
+  グラデーション髪、モノクロ寄りの落ち着いた絵柄。
+- 1曲目「宇宙を漂う」制作済み(`songs/13-drifting.md`)。**「ローファイは作業中に聴かれる
+  ジャンルであって、作業について歌うジャンルではない」**という誤解から一度書き直しが発生した
+  ほか、宇宙空間の科学的リアリティ(息を止めるのは危険/流れ星は大気が無いと見えない)を
+  3箇所修正した経緯を記録。
 
 ## スタイルプロンプトとブラケットの整合性に注意
 
@@ -514,6 +525,10 @@ Suno生成結果が高評価だった。得られた教訓:
   Denpa-Influenced Rap、150Bpm / 可愛く高圧的な「お姫様」キャラのワガママ勅命ラップ。
   バラバラになりがちなワガママの羅列を「わたしだけの王国の勅命」という1つの体裁でまとめる
   技法、Bridgeで一瞬本音を見せて「憎めない」側を回収する構成を記録)
+- `songs/13-drifting.md` — (タイトル未定)(清宮栞 / Lo-Fi Ambient・Dreamy Chillhop、70Bpm /
+  宇宙を漂う、神秘的だが悲しくない静けさがテーマ。ローファイ=作業について歌うジャンルではなく
+  作業中に聴かれるジャンル、という誤解の修正、宇宙空間の科学的リアリティチェック(息を止める/
+  流れ星)、歌い方だけでなく声質そのもの(ティンバー)を差別化する技法の実践を記録)
 
 ## サビを繰り返す時は、フック以外を物語の進行に合わせて書き換える — 2026-08-31の学び
 

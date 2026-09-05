@@ -406,6 +406,19 @@ Grounding Low Root Tone,
 Warm Resonant Drone Beneath The Melody
 ```
 
+**1と3は排他的な選択肢ではなく、むしろ組み合わせ前提の技法**。実際のサウンドバスも、低い
+ゴング/シンギングボウルの持続音を土台にして、その上に高い倍音の響きを重ねる構成が一般的。
+組み合わせ例:
+
+```
+Sound Bath Texture,
+Crystal Bowl Resonance, Slow Decaying Overtones,
+Soft Gong Wash, Distant Chime Accents,
+Grounding Low Root Tone, Warm Resonant Drone Beneath The Bowls,
+Long Sustained Tones, Vast Reverberant Space,
+No Beat, No Rhythmic Pulse, Time Feels Suspended
+```
+
 この3つは、既存の楽器編成(ハープ・カリンバ・マリンバ等)と組み合わせて使ってもよいし、
 サウンドバスモードのように単体の新しい編成として提案してもよい。いずれもリラクゼーション系の
 枠(瞑想・睡眠導入・不安解消)の中に収まる拡張であり、清宮栞のジャンル制限を破るものではない。

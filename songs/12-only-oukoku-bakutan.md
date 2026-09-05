@@ -18,6 +18,13 @@
   「扱いにくいけど憎めない」の"憎めない"側を回収した。
 - タイトルは「わたしオンリー王国」から始まり、ユーザー自身が「オンリー王国♡爆誕」に
   再構成して確定。
+- Call And Responseの「(はい、姫！)」を男性の声にしたいという要望を受け、スタイル側に
+  「Male Chorus Answering」を書いたところ**リードボーカルまで男性に引っ張られてしまい**、
+  ブラケットを`[Male Chorus]`に変えても認識されず、`songs/07`で機能した「Crowd Chant
+  Response, Male Voices」という標準語彙寄りの言い回しに変えても**今度はリードとレスポンスの
+  性別が入れ替わって歌われる**という、3パターン試して3パターンとも別の崩れ方をする結果になった。
+  ワーディングの精度の問題ではなく、**この曲の文脈でSuno側の性別の割り振り自体が不安定**
+  という判断で、男性ボーカル化は断念し、ブラケット無しの元の形に戻した。
 
 ## スタイルプロンプト
 
@@ -31,12 +38,11 @@ Cute Trap, Denpa-Influenced Rap,
 
 Bouncy 808 Trap Beat,
 Harpsichord And Music Box Motifs, Regal Fanfare Synth Stabs,
-Bright Bell Chimes,
+Sparkly Synth Arpeggios, Cutesy Chiptune Bleeps, Bright Bell Chimes,
 
-Catchy Call And Response Hook,
 Playful Ad-Libs,
 
-Punchy Modern Mix,
+Punchy Modern Mix, Bright And Sparkly,
 Vocal Forward,
 
 Decisive Ending,

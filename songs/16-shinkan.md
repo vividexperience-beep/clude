@@ -28,6 +28,12 @@
   から`Vocal And Instruments Kept Low, Rain Forward, Never Overpowering Vocal`に修正。
   「全体を静かにする」から「ボーカル・楽器は控えめ、雨音だけは前に出す」という役割分担に
   変えた(リラクゼーション系で音量を上げすぎない、という既存の教訓とは矛盾しない範囲で調整)。
+- **生成結果、雨音が「雑音(ホワイトノイズ的な質感)」になったというフィードバックを受け再修正**。
+  `Prominent And Close, Enveloping`という強い指定がノイズ寄りの質感を誘発したと判断し、
+  `Real Acoustic Rain On Leaves, Soft Organic Pitter-Patter`と実在の自然音であることを明示、
+  かつ`No White Noise, No Static Hiss`という直接的な除外タグを追加した。「前に出す」ことと
+  「柔らかい質感を保つ」ことは両立させる必要があり、強調の言葉選び一つでノイズ寄りに
+  転びうるという教訓。
 - ブラケット密度は既存3曲と同様、構造タグ+Intro/Bridge/Outroの情景描写のみに抑えた。
 
 ## スタイルプロンプト
@@ -41,17 +47,16 @@ Comforting And Healing Quality, Natural Vocal Grain,
 Audible Breath Between Phrases, Minimal Vibrato, Relaxed Unhurried Phrasing,
 Same Quiet Intensity Throughout, No Vocal Build, No Climax,
 
-Nature Ambient, Forest Rain Soundscape, No Fixed Tempo, Free-Flowing,
+Nature Ambient, Forest Rain Soundscape, Free-Flowing, No Fixed Beat,
 
-Rain On Leaves Prominent And Close, Enveloping, Continuous Soft Patter,
+Real Acoustic Rain On Leaves, Soft Organic Pitter-Patter,
+Clearly Audible But Gentle, No White Noise, No Static Hiss,
 Distant Soft Thunder Rumble, Grounding And Low, Felt More Than Heard,
 Sparse Distant Bird Call, Warm Cello, Slow Sustained Phrases, Minimal,
-Faint Ambient Pad, Very Low Volume,
-No Drum Kit, No Bass Guitar, No Synth Leads, No Percussion,
+Faint Ambient Pad, Very Low Volume, No Drum Kit, No Bass, No Synth Leads,
 
 Flat Dynamics, No Build-Up, No Climax, Refrain Same Volume As Verse,
-Vocal And Instruments Kept Low, Rain Forward, Never Overpowering Vocal,
-Vast Reverberant Space, Long Sustained Tones,
+Vocal And Instruments Kept Low, Never Overpowering Vocal, Vast Reverb,
 
 Gentle Outro, Rain Fades Into Silence
 ```

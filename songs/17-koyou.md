@@ -44,6 +44,14 @@
      暮れていく」(`今日は終わりぬ/また会う日まで`)へと変化させ、散歩の時間経過を
      反映させた(`songs/12-only-oukoku-bakutan.md`等で確立した「フック以外は書き換える」
      技法の応用)。
+- **さらに「清宮栞の5曲全部でIntro/Outroが必ず2行、Verse/Refrainが必ず8行(4+4)、
+  Bridgeが必ず2〜3行という同じ骨格を使い回している」という指摘を受け、構成そのものを
+  改訂(2026-09-06)**。言葉を変えても構成の型が同じだと曲が似通って感じられるという
+  問題。今回は各セクションの行数をあえて不揃いにした: Intro 1行(`いざ、行かん`のみ)/
+  Verse1 6行(3+3)/Refrain 5行(4+1の非対称)/Verse2 8行(あえて維持し、Verse1と
+  長さを変える)/Bridge 4行(いつもより長く)/Final Refrain 3行(Refrainより大幅に
+  短縮し、締めくくりの圧縮感を出す)/Outro 3行(2行の定型を崩し、断片的な言葉の
+  連なりにする)。詳細はCLAUDE.md「清宮栞の楽曲で構成の型を使い回さない」を参照。
 
 ## スタイルプロンプト
 
@@ -78,19 +86,16 @@ Gentle Outro, Instruments Fade Into Silence
 [Shakuhachi begins alone, cabasa rustling like leaves underfoot]
 
 いざ、行かん
-この道の果てへ
 
 [Verse 1]
 
-梢(こずえ)染めて
+この道の果てへ
+梢染めて
 時待つ色あり
-踏みしむ音は
-枯野の便り
 
 そよぐ風にも
 冷たさ宿りて
-白き息のみ
-空に溶けゆく
+白き息、空へ
 
 [Refrain]
 [Same calm volume as verse, no build-up]
@@ -98,12 +103,8 @@ Gentle Outro, Instruments Fade Into Silence
 色なき風の
 中を行けば
 澄む心地のみ
-胸に満ちゆく
-
-急くことなく
-なほ歩みゆく
-錦を纏う
-世界の中を
+胸に満ちてゆく
+錦纏う世界
 
 [Verse 2]
 
@@ -122,24 +123,21 @@ Gentle Outro, Instruments Fade Into Silence
 
 風ひとつ
 やみて、また
+梢のさきに
+光ひとひら
 
 [Final Refrain]
-[Same calm volume as verse, no build-up, no climax — varied from the first refrain]
+[Same calm volume as verse, no build-up, no climax — deliberately shorter than the first refrain]
 
 色なき風の
-名残を胸に
-澄む心地のみ
-胸に満ちゆく
-
-急くことなく
+名残とともに
 今日は終わりぬ
-錦の道に
-また会う日まで
 
 [Outro]
 [Shakuhachi and cabasa fade into silence]
 
 錦、いずこかへ
-また、いざ
+また
+いざ
 ```
 

@@ -23,6 +23,11 @@
   結果は生成後にフィードバックをもらい、この仮説が正しいか確認する。
 - 楽器は新規にチェロを導入(ハープ・カリンバ・マリンバ・クリスタルボウル/ゴングに続く
   5つ目の楽器選択)。弦の持続音で、雨音・遠雷という自然音の間を静かに埋める役割。
+- **雨音をもっと前に出したい**という要望を受け、`Gentle Rain On Leaves`を`Rain On Leaves
+  Prominent And Close, Enveloping`に変更し、ミックス全体の指示も`Overall Low Volume Mix`
+  から`Vocal And Instruments Kept Low, Rain Forward, Never Overpowering Vocal`に修正。
+  「全体を静かにする」から「ボーカル・楽器は控えめ、雨音だけは前に出す」という役割分担に
+  変えた(リラクゼーション系で音量を上げすぎない、という既存の教訓とは矛盾しない範囲で調整)。
 - ブラケット密度は既存3曲と同様、構造タグ+Intro/Bridge/Outroの情景描写のみに抑えた。
 
 ## スタイルプロンプト
@@ -36,18 +41,16 @@ Comforting And Healing Quality, Natural Vocal Grain,
 Audible Breath Between Phrases, Minimal Vibrato, Relaxed Unhurried Phrasing,
 Same Quiet Intensity Throughout, No Vocal Build, No Climax,
 
-Nature Ambient, Forest Rain Soundscape,
-No Fixed Tempo, Free-Flowing, No Rhythmic Pulse,
+Nature Ambient, Forest Rain Soundscape, No Fixed Tempo, Free-Flowing,
 
-Gentle Rain On Leaves, Continuous Soft Patter,
+Rain On Leaves Prominent And Close, Enveloping, Continuous Soft Patter,
 Distant Soft Thunder Rumble, Grounding And Low, Felt More Than Heard,
-Sparse Distant Bird Call,
-Warm Cello, Slow Sustained Phrases, Minimal,
+Sparse Distant Bird Call, Warm Cello, Slow Sustained Phrases, Minimal,
 Faint Ambient Pad, Very Low Volume,
 No Drum Kit, No Bass Guitar, No Synth Leads, No Percussion,
 
 Flat Dynamics, No Build-Up, No Climax, Refrain Same Volume As Verse,
-Overall Low Volume Mix, Background Listening Volume, Never Loud,
+Vocal And Instruments Kept Low, Rain Forward, Never Overpowering Vocal,
 Vast Reverberant Space, Long Sustained Tones,
 
 Gentle Outro, Rain Fades Into Silence

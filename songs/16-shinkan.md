@@ -34,6 +34,13 @@
   かつ`No White Noise, No Static Hiss`という直接的な除外タグを追加した。「前に出す」ことと
   「柔らかい質感を保つ」ことは両立させる必要があり、強調の言葉選び一つでノイズ寄りに
   転びうるという教訓。
+- **さらにユーザーから「雨音を楽器で表現できないか」という提案を受け、方針を転換**。
+  環境音サンプル(ambience)としての雨をタグで細かく制御するアプローチ自体をやめ、
+  `Rain Stick`(石や種を筒に入れて転がし、雨音そのものを奏でる実在の打楽器)という
+  **楽器の演奏として雨を表現**する方式に変更。さらに高音域のカリンバで不規則な粒の
+  雫を添えた。「Sunoでの声部の指定は標準語彙を使う」の教訓と同じ発想で、環境音を
+  細かく形容詞で制御しようとするより、**その音を本来奏でる実在の楽器名を使う方が
+  Suno側に意図が伝わりやすい**という新しい応用例。
 - ブラケット密度は既存3曲と同様、構造タグ+Intro/Bridge/Outroの情景描写のみに抑えた。
 
 ## スタイルプロンプト
@@ -49,8 +56,8 @@ Same Quiet Intensity Throughout, No Vocal Build, No Climax,
 
 Nature Ambient, Forest Rain Soundscape, Free-Flowing, No Fixed Beat,
 
-Real Acoustic Rain On Leaves, Soft Organic Pitter-Patter,
-Clearly Audible But Gentle, No White Noise, No Static Hiss,
+Rain Stick, Continuous Soft Cascading Texture, Evoking Falling Rain,
+Sparse High Register Kalimba, Irregular Droplet-Like Plucks,
 Distant Soft Thunder Rumble, Grounding And Low, Felt More Than Heard,
 Sparse Distant Bird Call, Warm Cello, Slow Sustained Phrases, Minimal,
 Faint Ambient Pad, Very Low Volume, No Drum Kit, No Bass, No Synth Leads,

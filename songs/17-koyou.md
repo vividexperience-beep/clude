@@ -60,8 +60,12 @@
   ため、動詞を戻して6行に調整)、(4)Outro`錦、いずこかへ`→`錦、いずこかへ去りゆく`
   (同様に動詞欠落)。行数を削って構成の型を崩すこと自体は良かったが、削った結果
   文法が壊れていないかの確認が漏れていた。
-
-## スタイルプロンプト
+- **Intro/Outroの`いざ、行かん`を`そよと風立ち`に差し替え(ユーザー指摘)**。「いざ」は
+  勇ましく鼓舞する掛け声(古典でも「いざ鎌倉」のような出陣・決起の場面で使われる語)で、
+  リラクゼーションの静けさと逆方向の温度だった。文法の正しさだけでなく、**古語の
+  選び方そのものにも感情のトーン(勇ましい/静か等)があり、ジャンルの温度に合わせて
+  選定する必要がある**という教訓。Outroの呼応語も「いざ」→「そよと」(そよ風の
+  擬態語)に変更し、静かな温度で統一した。
 
 ```
 Gentle Soothing Female Vocal, Alto Range,
@@ -93,7 +97,7 @@ Gentle Outro, Instruments Fade Into Silence
 [Intro]
 [Shakuhachi begins alone, cabasa rustling like leaves underfoot]
 
-いざ、行かん
+そよと風立ち
 
 [Verse 1]
 
@@ -147,6 +151,6 @@ Gentle Outro, Instruments Fade Into Silence
 
 錦、いずこかへ去りゆく
 また
-いざ
+そよと
 ```
 

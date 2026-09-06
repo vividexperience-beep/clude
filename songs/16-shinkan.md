@@ -41,6 +41,14 @@
   雫を添えた。「Sunoでの声部の指定は標準語彙を使う」の教訓と同じ発想で、環境音を
   細かく形容詞で制御しようとするより、**その音を本来奏でる実在の楽器名を使う方が
   Suno側に意図が伝わりやすい**という新しい応用例。
+- **雷(`Distant Soft Thunder Rumble`)も同じ環境音タイプだと指摘され、まとめて楽器化**。
+  雷→`Deep Gong`(低い持続する余韻が遠雷の質感に近い。`songs/15-nemuri-mizu.md`の
+  サウンドバス技法で既に実績あり)、鳥の声(`Sparse Distant Bird Call`)→
+  `Sparse High Glockenspiel Chime`に置き換え、環境音タグを全廃して全楽器編成にした。
+  歌詞ブラケットの情景描写(Intro/Bridge/Outro)も「雨」「雷」という言葉を避け、
+  「レインスティック」「ゴング」という楽器名で統一。**歌詞本文中の「雨」「雷」という
+  言葉自体はただの歌唱内容(情景描写)であり、Sunoへの音響指示ではないため変更していない**
+  (問題があったのはスタイルプロンプトのタグとブラケットの演出指示だけ)。
 - ブラケット密度は既存3曲と同様、構造タグ+Intro/Bridge/Outroの情景描写のみに抑えた。
 
 ## スタイルプロンプト
@@ -57,22 +65,23 @@ Same Quiet Intensity Throughout, No Vocal Build, No Climax,
 Nature Ambient, Forest Rain Soundscape, Free-Flowing, No Fixed Beat,
 
 Rain Stick, Continuous Soft Cascading Texture, Evoking Falling Rain,
-Sparse High Register Kalimba, Irregular Droplet-Like Plucks,
-Distant Soft Thunder Rumble, Grounding And Low, Felt More Than Heard,
-Sparse Distant Bird Call, Warm Cello, Slow Sustained Phrases, Minimal,
-Faint Ambient Pad, Very Low Volume, No Drum Kit, No Bass, No Synth Leads,
+Sparse High Kalimba, Irregular Droplet-Like Plucks,
+Deep Gong, Slow Decaying Resonance, Distant And Low, Grounding,
+Sparse High Glockenspiel Chime, Occasional,
+Warm Cello, Slow Sustained Phrases, Minimal, Faint Ambient Pad, Very Low,
+No Drum Kit, No Bass, No Synth Leads,
 
 Flat Dynamics, No Build-Up, No Climax, Refrain Same Volume As Verse,
 Vocal And Instruments Kept Low, Never Overpowering Vocal, Vast Reverb,
 
-Gentle Outro, Rain Fades Into Silence
+Gentle Outro, Instruments Fade Into Silence
 ```
 
 ## 歌詞
 
 ```
 [Intro]
-[Soft rain begins, distant thunder rumble beneath]
+[Rain stick begins alone, low gong resonance beneath]
 
 雨が
 葉を鳴らす
@@ -115,7 +124,7 @@ Gentle Outro, Rain Fades Into Silence
 胸に残る
 
 [Bridge]
-[Only rain and distant thunder remain]
+[Only the rain stick and low gong resonance remain]
 
 土の
 匂いだけ
@@ -134,7 +143,7 @@ Gentle Outro, Rain Fades Into Silence
 息を吐く
 
 [Outro]
-[Rain fades into silence]
+[Rain stick and gong fade into silence]
 
 このまま
 根になる

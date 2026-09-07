@@ -21,97 +21,99 @@
   感情語(寂しい・切ない等)を一切使わずに、情景描写だけで温度・静けさ・孤独感を伝える
   ことを試みた。「1種類の抽象語彙だけに絞って反復する」技法(技法引き出し参照)の
   発展形として、抽象語1つではなく「冬」という語彙カテゴリ全体に絞るアプローチ。
-- 楽器は新規にミュージックボックス(オルゴール)を導入。冷たく繊細な音色が雪の情景に合う。
-  クリスタルチャイムで霜・氷のきらめきを、尺八で冷たい風を表現し、低音ドローンは432Hzの
-  グラウンディング基音として機能させた。
 - 「木霊」「秋思」と同じくFlat Dynamics系のタグで統一し、`[Refrain]`ラベルを継続使用。
-- 構成は既存曲と重複しないよう意識的に不揃いにした: Intro 2行/Verse1 4行/Refrain 8行/
-  Verse2 8行/Bridge 2行/Final Refrain 4行(Refrainより圧縮)/Outro 2行。
+- **初稿への3点フィードバックを受けて全面改訂(2026-09-06)**:
+  1. **構成のスケルトンがまだ重複していた**(Refrain 8行=Verse2 8行、Intro/Bridge/Outroが
+     揃って2行、という指摘)。今回は**1〜7行を1つずつ、すべて異なる行数で使う**よう設計:
+     Intro 1行/Verse1 5行/Refrain 7行/Verse2 6行/Bridge 3行/Final Refrain 4行/Outro 2行。
+     セクション間で行数が一つも重複しない構成は清宮栞の楽曲群で初めて。
+  2. **歌い方を「ぽつりぽつと呟く」ようなデリバリーに変更**。`Murmured Delivery,
+     Spoken-Sung Quality, Words Dropped Sparsely One By One, Long Pauses Between Phrases`
+     を追加し、通常の"歌う"デリバリーから、単語を一つずつ置いていくような呟き方に変更。
+     歌詞側も読点(、)で細かく区切り、「ひとひら/また、ひとひら」のように単語単位で
+     雪を数えるような書き方にした(歌い方と歌詞内容を一致させる、テーマの音への翻訳技法)。
+  3. **楽器編成を大幅に削ぎ落とし**、雪が降る「無音な世界観」を邪魔しないようにした。
+     尺八・クリスタルチャイムを削除し、**ミュージックボックスの極めて疎らな単音+432Hz
+     ドローンのみ**という最小構成に変更(`Extremely Sparse, Single Notes, Long Silence
+     Between Notes` / `Barely Audible`)。432Hzのチューニングそのものは指示通り変更していない。
 
 ## スタイルプロンプト
 
 ```
 Gentle Soothing Female Vocal, Alto Range,
 Warm Soft Timbre With A Slight Natural Huskiness,
-Subtle Natural Rasp As A Distinctive Vocal Character,
-Close-Mic Intimate Presence, Soft Breathy Delivery,
-Comforting And Healing Quality, Natural Vocal Grain,
-Audible Breath Between Phrases, Minimal Vibrato, Relaxed Unhurried Phrasing,
+Close-Mic Intimate Presence,
+Murmured Delivery, Spoken-Sung Quality, Words Dropped Sparsely One By One,
+Long Pauses Between Phrases, Almost Whispered, Minimal Vibrato,
 Same Quiet Intensity Throughout, No Vocal Build, No Climax,
 
-Nature Ambient, Winter Soundscape, Free-Flowing, No Fixed Beat,
+Nature Ambient, Winter Soundscape, Free-Flowing, No Fixed Beat, Near Total Silence,
 
-Music Box, Delicate And Cold, Sparse Melodic Phrases,
-Crystal Chimes, Bright And Sparse, Icy Sparkle,
-Soft Shakuhachi, Breathy, Evoking Cold Winter Wind,
-Deep Low Drone, Tuned To 432 Hz, Grounding Root Tone, Warm Resonant Drone,
-Faint Ambient Pad, Very Low, No Drum Kit, No Bass, No Synth Leads,
+Music Box, Extremely Sparse, Single Notes, Long Silence Between Notes,
+Deep Low Drone, Tuned To 432 Hz, Grounding Root Tone, Barely Audible,
+No Other Instruments, No Drum Kit, No Bass, No Synth Leads,
 
-Flat Dynamics, No Build-Up, No Climax, Refrain Same Volume As Verse,
-Vocal And Instruments Kept Low, Never Overpowering Vocal, Vast Reverb,
+Flat Dynamics, No Build-Up, No Climax,
+Vocal Kept Low, Vast Empty Reverb Space,
 
-Gentle Outro, Instruments Fade Into Silence
+Gently Dissolves Into Silence
 ```
 
 ## 歌詞
 
 ```
 [Intro]
-[Music box begins alone, distant crystal chime, low drone tuned to 432Hz beneath]
+[A single sparse music box note drops, 432Hz drone barely audible beneath]
 
-しんしんと
-降り積む
+しんしんと、雪
 
 [Verse 1]
 
-窓辺に
+窓辺に、
 雪明かり
-凍てつく夜の
+凍てつく夜
 白さだけ
+積もる
 
 [Refrain]
 [Same calm volume as verse, no build-up]
 
-音もなく
+音もなく、
 舞い落ちる
-ひとひらずつ
-時が凍る
-
-吹雪もなく
-ただしずかに
-雪が降り積む
+ひとひら
+また、ひとひら
+凍える
+ただ、しずかに
 夜がふける
 
 [Verse 2]
 
-霜の結晶
+霜の花、
 窓に咲いて
-凍えた指先
-触れてみる
-
-白い吐息
-ガラスに溶けて
-また新しい
-花が咲く
+指先は
+凍えたまま
+白い息
+溶けてゆく
 
 [Bridge]
-[Only music box and low drone remain]
+[Music box falls silent, only the faint 432Hz drone remains]
 
-しんしんと
-凍てつく
+しんしんと、
+また
+雪
 
 [Final Refrain]
-[Same calm volume as verse, no build-up, no climax — shorter than the first refrain]
+[Same calm volume as verse, no build-up, no climax — shorter and sparser than the first refrain]
 
-音もなく
-舞い落ちる
-この夜だけの
-白い刻(とき)
+音もなく、
+ひとひら
+ただ、
+降る
 
 [Outro]
-[Music box fades, drone lingers then dissolves into silence]
+[The drone fades, dissolving into total silence]
 
 雪は
-まだ
+まだ降る
 ```
 

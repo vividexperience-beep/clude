@@ -43,6 +43,14 @@
   Intro/Outroを**完全に歌詞なし(楽器のみ)**に変更し、最初に歌が入るのはVerse1、最後に
   歌が入るのはFinal Refrainとした。結果的に「無音の世界観」というこの曲のテーマとも
   より親和性が高い形になった。詳細はCLAUDE.md「清宮栞の楽曲で構成の型を使い回さない」を参照。
+- **生成結果に変なアンビエンス(環境音)と、最後に不要な太鼓のような打楽器が入った
+  というフィードバックを受け再修正**。`Near Total Silence``Vast Empty Reverb Space`
+  といった抽象的な形容が、「木霊」の雨音ノイズ化と同じパターンでSuno側に意図しない
+  音響テクスチャを生成させていたと判断し削除。代わりに`Only Music Box And Drone, No
+  Other Instruments``No Ambient Noise, No Hiss, No Background Texture`という直接的な
+  除外タグに差し替えた。終わり方も`Gently Dissolves Into Silence`だけでは弱かったため、
+  `No Final Hit, No Percussion Accent At The End, Simply Fades To Nothing`を追加し、
+  終盤の余計な打楽器の一撃を明示的に禁止した。
 
 ## スタイルプロンプト
 
@@ -54,16 +62,17 @@ Murmured Delivery, Spoken-Sung Quality, Words Dropped Sparsely One By One,
 Long Pauses Between Phrases, Almost Whispered, Minimal Vibrato,
 Same Quiet Intensity Throughout, No Vocal Build, No Climax,
 
-Nature Ambient, Winter Soundscape, Free-Flowing, No Fixed Beat, Near Total Silence,
+Nature Ambient, Winter Soundscape, Free-Flowing, No Fixed Beat,
 
 Music Box, Extremely Sparse, Single Notes, Long Silence Between Notes,
 Deep Low Drone, Tuned To 432 Hz, Grounding Root Tone, Barely Audible,
-No Other Instruments, No Drum Kit, No Bass, No Synth Leads,
+Only Music Box And Drone, No Other Instruments,
+No Drum Kit, No Taiko, No Percussion Of Any Kind, No Bass, No Synth Leads,
+No Ambient Noise, No Hiss, No Background Texture,
 
-Flat Dynamics, No Build-Up, No Climax,
-Vocal Kept Low, Vast Empty Reverb Space,
+Flat Dynamics, No Build-Up, No Climax, Vocal Kept Low,
 
-Gently Dissolves Into Silence
+No Final Hit, No Percussion Accent At The End, Simply Fades To Nothing
 ```
 
 ## 歌詞

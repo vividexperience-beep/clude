@@ -51,6 +51,10 @@
   除外タグに差し替えた。終わり方も`Gently Dissolves Into Silence`だけでは弱かったため、
   `No Final Hit, No Percussion Accent At The End, Simply Fades To Nothing`を追加し、
   終盤の余計な打楽器の一撃を明示的に禁止した。
+- スタイルプロンプト修正時に見落としていた、**歌詞ブラケット内の表現も合わせて確認**。
+  Outroのブラケットに残っていた`dissolving into total silence`も同種の抽象的な表現
+  だったため、`the music box and drone simply fade to nothing, no vocal, no final hit`
+  に修正し、スタイルプロンプトの安全な言い回しと揃えた。
 
 ## スタイルプロンプト
 
@@ -125,6 +129,6 @@ No Final Hit, No Percussion Accent At The End, Simply Fades To Nothing
 降る
 
 [Outro]
-[Instrumental only — the drone fades, dissolving into total silence, no vocal]
+[Instrumental only — the music box and drone simply fade to nothing, no vocal, no final hit]
 ```
 

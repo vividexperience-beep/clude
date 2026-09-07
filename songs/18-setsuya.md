@@ -36,6 +36,13 @@
      尺八・クリスタルチャイムを削除し、**ミュージックボックスの極めて疎らな単音+432Hz
      ドローンのみ**という最小構成に変更(`Extremely Sparse, Single Notes, Long Silence
      Between Notes` / `Barely Audible`)。432Hzのチューニングそのものは指示通り変更していない。
+- **さらに「Intro/Outroに毎回必ず歌詞を入れている、しかも毎回似た行数」という指摘を受け、
+  清宮栞の既存6曲(宇宙・心音・水界・木霊・秋思・雪意)を確認したところ、全曲でIntro/Outro
+  両方に1〜3行の短い歌詞が入っていることが判明**(2026-09-06)。構成の行数を変えるだけでは
+  不十分で、**「そもそも歌詞を入れるかどうか」自体も変えるべき要素**だった。今回は
+  Intro/Outroを**完全に歌詞なし(楽器のみ)**に変更し、最初に歌が入るのはVerse1、最後に
+  歌が入るのはFinal Refrainとした。結果的に「無音の世界観」というこの曲のテーマとも
+  より親和性が高い形になった。詳細はCLAUDE.md「清宮栞の楽曲で構成の型を使い回さない」を参照。
 
 ## スタイルプロンプト
 
@@ -63,9 +70,7 @@ Gently Dissolves Into Silence
 
 ```
 [Intro]
-[A single sparse music box note drops, 432Hz drone barely audible beneath]
-
-しんしんと、雪
+[Instrumental only — a single sparse music box note drops, 432Hz drone barely audible beneath, no vocal yet]
 
 [Verse 1]
 
@@ -111,9 +116,6 @@ Gently Dissolves Into Silence
 降る
 
 [Outro]
-[The drone fades, dissolving into total silence]
-
-雪は
-まだ降る
+[Instrumental only — the drone fades, dissolving into total silence, no vocal]
 ```
 

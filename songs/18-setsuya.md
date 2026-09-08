@@ -61,6 +61,11 @@
   にきちんと繋げた。他の提案(「白さだけ」→「白さだけが」、Bridgeへの空行追加)は、
   文法的な誤りの修正ではなく好みの範囲、またはスタイルプロンプト側の`Long Pauses Between
   Phrases`と重複するため見送った。他AIの提案も鵜呑みにせず、一つずつ効果を吟味すること。
+- **「ひとひら」が`songs/17-koyou.md`(秋思)のBridge`光ひとひら`と重複している**という
+  指摘を受け、`ひとひら`→`ひとつ`に変更(Refrain/Final Refrain両方)。詩的な数え方
+  (ひとひら)より、素朴に数える言い方(ひとつ)の方が、この曲の「ぽつりぽつと呟く」
+  デリバリーにもむしろ合っている。既存曲との語彙重複は、意識していないと見落としやすい
+  ため、新曲の印象的な単語は直近の曲と照らし合わせる習慣が必要。
 
 ## スタイルプロンプト
 
@@ -104,8 +109,8 @@ No Final Hit, No Percussion Accent At The End, Simply Fades To Nothing
 
 音もなく、
 舞い落ちる
-ひとひら
-また、ひとひら
+ひとつ
+また、ひとつ
 凍えながら
 ただ、しずかに
 夜がふける
@@ -130,7 +135,7 @@ No Final Hit, No Percussion Accent At The End, Simply Fades To Nothing
 [Same calm volume as verse, no build-up, no climax — shorter and sparser than the first refrain]
 
 音もなく、
-ひとひら
+ひとつ
 ただ、
 降る
 

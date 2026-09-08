@@ -55,6 +55,12 @@
   Outroのブラケットに残っていた`dissolving into total silence`も同種の抽象的な表現
   だったため、`the music box and drone simply fade to nothing, no vocal, no final hit`
   に修正し、スタイルプロンプトの安全な言い回しと揃えた。
+- ユーザーが他AI(ChatGPT)から得た歌詞の修正案を検討し、**「凍える」→「凍えながら」のみ
+  採用**。終止形の「凍える」は前後の文と接続が曖昧で、以前指摘された「動詞が浮いて文脈から
+  切れる」問題と同種だったため、「ながら」の接続形にして後続の`ただ、しずかに/夜がふける`
+  にきちんと繋げた。他の提案(「白さだけ」→「白さだけが」、Bridgeへの空行追加)は、
+  文法的な誤りの修正ではなく好みの範囲、またはスタイルプロンプト側の`Long Pauses Between
+  Phrases`と重複するため見送った。他AIの提案も鵜呑みにせず、一つずつ効果を吟味すること。
 
 ## スタイルプロンプト
 
@@ -100,7 +106,7 @@ No Final Hit, No Percussion Accent At The End, Simply Fades To Nothing
 舞い落ちる
 ひとひら
 また、ひとひら
-凍える
+凍えながら
 ただ、しずかに
 夜がふける
 

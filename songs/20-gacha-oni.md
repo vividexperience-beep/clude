@@ -66,6 +66,8 @@ Dirty Growling Bass,
 
 Menacing Yet Comedic, Self-Aware Camp,
 
+Radio-Ready Loudness, Clean Modern Production,
+
 Decisive Ending, No Fade Out
 ```
 

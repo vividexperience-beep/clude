@@ -57,6 +57,23 @@
   (むしろサビごとに行数を変える方が不自然)、「構成の型を使い回さない」教訓が本来
   問題にしていたのは**曲間でのスケルトンの使い回し**であって、1曲内のサビの行数統一とは
   別の話だと整理した。
+- **ユーザーがさらに歌詞を振り切った最終稿に仕上げた(2026-09-09、2回目の改稿)**。
+  Bridgeに「それでも ここまで来たら/後には引けねぇ/引いちゃいけねぇぇぇぇッ！！！」を
+  追加し、静かな告白から叫びへ転換する構成に変更。Outroも「出るまで回せ！！/また課金！/
+  必ずでる！」から「諦めるなッ！課金しろッ！出るまで回せッ！俺の負けはないッ！」という
+  さらに畳みかける絶叫に変更。歌詞本文は変更せず、**ブラケットのタグのみ**この改稿に
+  合わせて2箇所修正した:
+  1. `[Bridge]`: `Half-growled, exhausted honesty, guitars drop out` →
+     `Half-growled confession, guitars drop out, then building back to a defiant
+     shout as guitars surge back in`(前半の静けさしか捉えておらず、後半の
+     「引けねぇ」という高まりをタグが反映していなかったため、静→動の変化を1つのタグに
+     書き込んだ)。
+  2. `[Outro]`: `Growled, tired but satisfied, hard stop` →
+     `Growled, manic and unhinged, triumphant escalation, hard stop`
+     (「疲れてるけど満足」という落ち着いたタグのままでは、新しい畳みかける絶叫の熱量と
+     合わなくなっていたため)。
+  歌詞内容とブラケットのデリバリー指定がズレていないか、改稿のたびに確認する必要がある
+  という実例。
 
 ## スタイルプロンプト
 
@@ -100,14 +117,15 @@ Decisive Ending, No Fade Out
 低残高の
 通知は無視
 今夜だけは
-負けられないぃぃっ！！！
+負けられないぃぃッ！！！
 
 [Spoken Interlude]
 [Half-spoken growl, dramatic pause before, self-aware]
 
-……ここでS S R(エスエスアール)が出れば
+……ここで S S R が出れば
 すべてが報われる
-出なければまた課金だ！
+出なければ...
+さらに課金だぁッ！
 
 [Chorus 1]
 
@@ -118,7 +136,7 @@ Decisive Ending, No Fade Out
 明日の飯より
 今はガチャだ
 出るまで回せばいい
-それで俺の勝ちぃっ！！！
+それで俺の勝ちッ！！！
 
 [Verse 2]
 [Confident growl]
@@ -139,13 +157,16 @@ Decisive Ending, No Fade Out
 明日(あす)からの事は
 気にするな！
 今はガチャだ
-出るまで回せっ！！！
+出るまで回せッ！！！
 
 [Bridge]
-[Half-growled, exhausted honesty, guitars drop out]
+[Half-growled confession, guitars drop out, then building back to a defiant shout as guitars surge back in]
 
 本当は分かってるんだ
-搾取(さくしゅ)されてもそれでも回す
+搾取(さくしゅ)されてるって事も
+それでも ここまで来たら
+後には引けねぇ
+引いちゃいけねぇぇぇぇッ！！！
 
 [Final Chorus]
 [Full growl, guitars return]
@@ -153,19 +174,23 @@ Decisive Ending, No Fade Out
 回せ！ 回せ！
 石が尽きるまで
 それでも明日(あす)も
-きっと回してる
+きっとぉ回してる
 出るまで回せばいい
-それで俺の勝ちぃっ！！！
+それで俺の勝ちぃッ！！！
 
 [Outro]
-[Growled, tired but satisfied, hard stop]
+[Growled, manic and unhinged, triumphant escalation, hard stop]
 
-出るまで回せ！！
+諦めるなッ！
 
-また課金！
+課金しろッ！
 
-必ずでる！
+出るまで回せッ！
 
-それで俺の勝ちぃぃぃぃっ！！！！！
+俺の負けはないッ！
+
+出るまで回せばッ！
+
+俺の勝ちぃぃぃぃッ！！！！！
 ```
 

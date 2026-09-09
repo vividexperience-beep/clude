@@ -19,10 +19,18 @@
   ```
   Raspy Gravelly Male Vocal, Husky Mid-Low Range, Smoky Dark Timbre,
   Powerful Growl, Gritty Belted Delivery, Voice Cracking At The Edges,
-  Aggressive Yet Controlled, Natural Vocal Grain, Audible Breath
+  Aggressive Yet Controlled, Natural Vocal Grain, Audible Breath,
+  Lead Vocal Focus, Vocal Forward, Never Buried Beneath Guitars
   ```
   Asher(`Clean Male Vocals, No Scream`)とは正反対の、「がなりが得意」という得意技を
   前面に出した声質。
+- **「全体的に音量が小さい」フィードバックを受けてさらに調査(2026-09-09)**。
+  `Radio-Ready Loudness, Clean Modern Production`(マスタリング指定)を追加した後も、
+  そもそも**声の質感(Raspy/Growl等)しか指定しておらず、「ボーカルがミックスの主役である」
+  という指定が一つも無かった**ことが判明。YuRa(`Front And Center Vocal, Strong Vocal
+  Presence`)や清宮栞(`Vocal Forward In The Mix, Never Buried`)は声質と別にミックス上の
+  主役指定を必ず持っているが、四道壮琉の固定ボーカルにはそれが抜けていた。
+  `Lead Vocal Focus, Vocal Forward, Never Buried Beneath Guitars`を追加して対応。
 - **リサーチで判明した新知見: ボーカル指定はジャンルより先に書いた方が反映されやすい**
   (ジャンルタグに埋もれると薄まる、という情報)。この曲からボーカル→ジャンルの順で
   スタイルプロンプトを組む。
@@ -56,6 +64,7 @@
 Raspy Gravelly Male Vocal, Husky Mid-Low Range, Smoky Dark Timbre,
 Powerful Growl, Gritty Belted Delivery, Voice Cracking At The Edges,
 Aggressive Yet Controlled, Natural Vocal Grain, Audible Breath,
+Lead Vocal Focus, Vocal Forward, Never Buried Beneath Guitars,
 
 Wicked Hard Rock, Sinister Blues-Rock Edge,
 140 Bpm,

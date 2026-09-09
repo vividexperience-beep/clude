@@ -480,16 +480,23 @@ YuRa・Asher・一ノ瀬柚葉・清宮栞に続く5人目の固定キャラク�
 - 声質(固定): Asher(`Clean Male Vocals, No Scream`)とは正反対の、がなりを得意技とする声。
   ```
   Raspy Gravelly Male Vocal, Husky Mid-Low Range, Smoky Dark Timbre,
-  Powerful Growl, Gritty Belted Delivery, Voice Cracking At The Edges,
-  Aggressive Yet Controlled, Natural Vocal Grain, Audible Breath,
-  Lead Vocal Focus, Vocal Forward, Never Buried Beneath Guitars
+  Powerful Growl, Voice Cracking At The Edges, Aggressive Yet Controlled,
+  Natural Vocal Grain, Audible Breath, Lead Vocal Forward, Never Buried Beneath Guitars
   ```
   **2026-09-09追記**: 初期版は声質(Raspy/Growl等)しか指定しておらず、YuRa(`Front And
   Center Vocal, Strong Vocal Presence`)・清宮栞(`Vocal Forward In The Mix, Never Buried`)
   のような「ミックス上の主役である」という指定が抜けていた。「魂の10連」で曲全体の音量が
-  小さいという問題の一因と判明し、`Lead Vocal Focus, Vocal Forward, Never Buried Beneath
-  Guitars`を固定プロンプトに追加。新キャラクターの固定ボーカルを作る際は、声質の指定と
-  ミックス上の主役指定を両方セットで入れること。
+  小さいという問題の一因と判明し、`Lead Vocal Forward, Never Buried Beneath Guitars`を
+  固定プロンプトに追加。新キャラクターの固定ボーカルを作る際は、声質の指定とミックス上の
+  主役指定を両方セットで入れること。
+  **同日さらに追記**: タグを足した後も改善しなかったため、「楽器の層の厚み」側も調整。
+  `Doubled Rhythm Guitars`でギターを増層し、`Radio-Ready Loudness, Clean Modern
+  Production`を`Wall Of Sound Density, Heavily Compressed Master`に差し替え、かつ
+  `Gritty Belted Delivery`(Powerful Growlと意味が重複)を削除して**短く保ったまま**
+  タグを入れ替えた。「短いスタイルプロンプトの方が効く」という知見があるため、タグを
+  追加する際は同時に重複表現を削り、総量を増やさないこと。なお、プロンプト調整は
+  あくまで傾向を強めるだけで、Sunoの生成ブレ(同一プロンプトでも音量が変動する)自体は
+  解消しない制約として残る。
   「がなり」の英訳リサーチ結果: `Screaming`/`Death Growl`(デス声寄り、過剰)ではなく
   `Growl`(ノドを使った歪んだ生々しい声、民族音楽由来)が最も近い。独自表現
   `Ganari-Style Shouted Delivery`は標準語彙でない懸念があったため不採用にした

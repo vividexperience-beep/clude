@@ -62,20 +62,19 @@
 
 ```
 Raspy Gravelly Male Vocal, Husky Mid-Low Range, Smoky Dark Timbre,
-Powerful Growl, Gritty Belted Delivery, Voice Cracking At The Edges,
-Aggressive Yet Controlled, Natural Vocal Grain, Audible Breath,
-Lead Vocal Focus, Vocal Forward, Never Buried Beneath Guitars,
+Powerful Growl, Voice Cracking At The Edges, Aggressive Yet Controlled,
+Natural Vocal Grain, Audible Breath, Lead Vocal Forward, Never Buried Beneath Guitars,
 
 Wicked Hard Rock, Sinister Blues-Rock Edge,
 140 Bpm,
 
-Heavy Distorted Guitar Riffs, Grinding Palm-Muted Chug,
+Heavy Distorted Guitar Riffs, Grinding Palm-Muted Chug, Doubled Rhythm Guitars,
 Driving Rock Drums, Punchy Snare, Double-Kick Accents,
 Dirty Growling Bass,
 
 Menacing Yet Comedic, Self-Aware Camp,
 
-Radio-Ready Loudness, Clean Modern Production,
+Wall Of Sound Density, Heavily Compressed Master,
 
 Decisive Ending, No Fade Out
 ```

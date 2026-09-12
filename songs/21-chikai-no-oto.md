@@ -36,8 +36,16 @@
   この手に継いで」→「誰かの祈り/もう一人じゃない」、「古い弦が胸で鳴る」→
   「古い弦よ吼えろ」と後半を書き換え、個人の継承から集団的な連帯への変化をつけた。
 - 具体描写を徹底: 「埃をかぶった木箱」「触れた弦」「名前も知らない誰かの指跡」
-  「折れた弦を張り替える夜」など、抽象的な感情語ではなくモノ・動作で心情を語った
+  「切れた弦を張り替える夜」など、抽象的な感情語ではなくモノ・動作で心情を語った
   (AI構文回避ルールの実践)。
+- **ユーザーが歌詞を一部改稿(2026-09-12)**。「折れた弦」→「切れた弦」(語感の調整)。
+  サビの`消えない約束(ちかい)`から**ルビを外し、意図的に「やくそく」で歌わせる**方針に
+  変更(ユーザー確認済み)。タイトルの`約束(ちかい)`自体は変更せず、本文中だけ標準読みに
+  戻した形。
+- **転調を追加(ユーザー要望)**。Final Chorus直前で半音上げる`Key Change Up A Half-Step
+  Into The Final Chorus`をスタイルプロンプトに追加し、歌詞ブラケットの`[Final Chorus]`にも
+  `key change up a half-step`を明記。アンセム/アニメ主題歌で定番の、畳みかけの最後にもう一段
+  持ち上げる技法。
 
 ## スタイルプロンプト(Voice機能用)
 
@@ -54,6 +62,7 @@ Soaring Synth Brass, Orchestral String Stabs, Powerful Taiko-Style Toms,
 
 Ancient Yet Futuristic, Defiant Yet Hopeful,
 
+Key Change Up A Half-Step Into The Final Chorus,
 Explosive Final Chorus, Hard Stop Ending, No Fade Out
 ```
 
@@ -69,7 +78,7 @@ Explosive Final Chorus, Hard Stop Ending, No Fade Out
 この手に継いで
 We rise again
 刻(とき)を超えて
-消えない約束(ちかい)
+消えない約束
 鳴らせ、この音を
 
 [Verse 1]
@@ -100,13 +109,13 @@ We rise again
 この手に継いで
 We rise again
 刻(とき)を超えて
-消えない約束(ちかい)
+消えない約束
 鳴らせ、この音を
 
 [Verse 2]
 [Confident, rhythmic delivery]
 
-折れた弦を
+切れた弦を
 張り替える夜に
 迷いも全部
 音に変えていく
@@ -122,7 +131,7 @@ We rise again
 けど この震えは嘘じゃない
 
 [Final Chorus]
-[Maximum energy, full band, crystal-clear lead vocal]
+[Maximum energy, key change up a half-step, full band, crystal-clear lead vocal]
 
 立てよ、今
 古い弦よ吼えろ
@@ -130,7 +139,7 @@ We rise again
 もう一人じゃない
 We rise again
 刻(とき)を超えて
-消えない約束(ちかい)
+消えない約束
 鳴らせ、この音を
 
 [Outro]

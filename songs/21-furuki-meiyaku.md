@@ -113,6 +113,19 @@
      問題の原因調査で名前が出たタグでもあり、リードボーカルの明瞭さを優先して削除
      (ユーザー確認済み)。
   また`Spacious Mix`を新規タグとして追加した。
+- **「戦闘系アニメOPになり得るか」と聞かれ、正直に課題を伝えたところ「攻撃的でいこう」と
+  決定(2026-09-12)**。指摘した課題は、土台のFuture Garageが元々ムーディな電子ジャンルで、
+  ドラムも`Shuffling Breakbeat Hi-Hats`(揺れるグルーヴ系)止まりだったこと。これを
+  `Pounding Breakbeat Drums, Double-Kick Accents`に差し替え、殴りつけるような推進力を
+  追加。ジャンル欄も`Japanese Anime Anthem`→`Aggressive Japanese Anime Anthem`に修飾語を
+  足し(新規タグを増やさず既存タグに形容詞を足す形)、ムードタグも`Defiant Yet Hopeful`→
+  `Ferocious Yet Reverent`(攻撃性と、古い誓いへの敬意という相反するムードを組み合わせる
+  既存技法)に変更。
+  **スタイル変更後、ブラケットとの整合性を確認(2026-09-12新設の標準プロセス)**:
+  `[Cold Open Chorus]`の`lute riff slams in with the beat`、`[Instrumental Break]`の
+  `driving rhythm returns`、`[Bridge]``[Final Chorus]`の`full band slams back in`は
+  いずれも元々「強く入る」方向の表現で、ドラムを攻撃的にしたことと矛盾しない。ブラケット側の
+  修正は不要と判断した。
 
 ## スタイルプロンプト(Voice機能用)
 
@@ -120,16 +133,16 @@
 Crystal-Clear Lead Vocal, Front And Center Vocal, Bright Vocal Tone,
 Dry Vocal, Minimal Reverb, Powerful Belted Delivery,
 
-Future Garage, Japanese Anime Anthem, Uk Garage Groove,
+Future Garage, Aggressive Japanese Anime Anthem, Uk Garage Groove,
 170 Bpm,
 
 Lute, Driving Rhythmic Strumming, Lead Melodic Motif, Forward In The Mix,
-Rolling Sub Bassline, Shuffling Breakbeat Hi-Hats,
+Rolling Sub Bassline, Pounding Breakbeat Drums, Double-Kick Accents,
 Orchestral String Stabs, Powerful Taiko-Style Toms,
 
 Spacious Mix, Polished Professional Mix, Clean Separation Between Every Instrument,
 
-Ancient Yet Futuristic, Defiant Yet Hopeful,
+Ancient Yet Futuristic, Ferocious Yet Reverent,
 
 Key Change Up A Half-Step Into The Final Chorus,
 Explosive Final Chorus, Hard Stop Ending, No Fade Out

@@ -71,6 +71,23 @@
   2. リードボーカルの明瞭さ自体(Bright/Crisp/Dry)を直接指定するタグが無かった。
      `Bright Vocal Tone, Crisp Clear Diction, Dry Vocal, Minimal Reverb On Lead Vocal`
      を追加した。
+- **Suno向けプロンプトのリサーチを実施(2026-09-12)**。外部記事([Medium: Ultimate Suno
+  AI Prompt Guide](https://medium.com/@abhisheksd2003/the-ultimate-suno-ai-prompt-guide-with-clear-tested-examples-2d827ffe8b3a)、
+  [HookGenius: Fix Suno Mumbling](https://hookgenius.app/learn/fix-suno-mumbling/)、
+  [HookGenius: Fix Muddy Suno Audio](https://hookgenius.app/learn/fix-suno-low-quality/))から
+  技法のみ抽出(語句は流用せず独自に書き直し)。**最大の発見: タグが20個を超えると
+  タグ同士が打ち消し合ってミックスが濁る**、という既存の「短いプロンプトの方が効く」
+  知見と一致する情報。この曲のボーカル欄は9個まで肥大していたため、重複するタグを
+  削って6個に圧縮した(`Lead Vocal Focus`→`Front And Center Vocal`と重複、
+  `Strong Vocal Presence`→同様、`Crisp Clear Diction`→`Bright Vocal Tone`と重複、
+  として削除)。
+- **「全部の楽器の輪郭がはっきりしない」という追加フィードバックを受け(2026-09-12)**、
+  ボーカルだけでなく楽器全体のミックス分離を明示する`Polished Professional Mix,
+  Clean Separation Between Every Instrument`を追加。同時にリュート関連のタグも
+  5個(`Lute, Driving Rhythmic Strumming, Lead Melodic Motif, Lute Forward In The
+  Mix, Cutting Through Alongside The Vocal`)→4個(`Lute, Driving Rhythmic
+  Strumming, Lead Melodic Motif, Forward In The Mix`)に圧縮し、タグ追加と同時に
+  重複を削ることで総量を増やさないようにした。
 - **「歌詞(歌う行)を増やしてほしかった」と指摘を受け、インストブレイクでは解決にならない
   ことに気付き、Verse 1・Verse 2を8行→12行に拡張(2026-09-12)**。どちらも場面を飛ばさず、
   同じシーンの中でディテールを増やす形にした:
@@ -83,17 +100,17 @@
 ## スタイルプロンプト(Voice機能用)
 
 ```
-Crystal-Clear Lead Vocal, Lead Vocal Focus, Front And Center Vocal,
-Strong Vocal Presence, Powerful Belted Delivery,
-Bright Vocal Tone, Crisp Clear Diction, Dry Vocal, Minimal Reverb On Lead Vocal,
+Crystal-Clear Lead Vocal, Front And Center Vocal, Bright Vocal Tone,
+Dry Vocal, Minimal Reverb, Powerful Belted Delivery,
 
 Future Garage, Japanese Anime Anthem, Uk Garage Groove,
 170 Bpm,
 
-Lute, Driving Rhythmic Strumming, Lead Melodic Motif,
-Lute Forward In The Mix, Cutting Through Alongside The Vocal,
+Lute, Driving Rhythmic Strumming, Lead Melodic Motif, Forward In The Mix,
 Rolling Sub Bassline, Chopped Backing Vocal Samples, Shuffling Breakbeat Hi-Hats,
 Soaring Synth Brass, Orchestral String Stabs, Powerful Taiko-Style Toms,
+
+Polished Professional Mix, Clean Separation Between Every Instrument,
 
 Ancient Yet Futuristic, Defiant Yet Hopeful,
 

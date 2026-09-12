@@ -131,13 +131,19 @@ Sunoの生成結果に余白(解釈の自由度)を残すため**、という戦
 リミックス等で、Sunoの実際の「Voice」機能(声そのものを指定・クローンする機能)を使うと言われたら、
 スタイルプロンプトから以下を区別して扱うこと(**今後ボイス使用と言われたら常に適用する条件**):
 
-- **削除する**: ボーカルの"特性・キャラクター"を表す固定フレーズ
-  (例:「Powerful Female Vocal」「Front And Center Vocal」「Strong Vocal Presence」)。
-  Voice機能自体が声の質感・キャラクターを規定するため、二重指定になる。
-- **残す**: 歌い方・表現・息遣いなど"演技"に関わる指示(例:「Crystal-Clear Lead Vocal」
-  「Lead Vocal Focus」のようなミックス上の明瞭さ・存在感の指示、および歌詞ブラケット内の
-  `[Close Vocal]` `[Building Intensity]` `[Intimate Vocal]` `[Maximum Energy]` `[Final Shout]`
-  等の演出タグ)。これらはVoice機能とは独立して機能する要素なので削らない。
+- **削除する**: 声そのものの"特性"を表すフレーズ(性別+音圧・音色など、Voice機能が
+  クローンする声の実体と二重指定になるもの。例:「Powerful Female Vocal」「Powerful
+  Male Vocal」のような性別+力強さの形容)。
+- **残す**: ミックス上の配置・存在感の指示(例:「Front And Center Vocal」「Strong Vocal
+  Presence」「Crystal-Clear Lead Vocal」「Lead Vocal Focus」)、および歌い方・表現・
+  息遣いなど"演技"に関わる指示、歌詞ブラケット内の`[Close Vocal]` `[Building Intensity]`
+  `[Intimate Vocal]` `[Maximum Energy]` `[Final Shout]`等の演出タグ。これらは
+  「声質そのもの」ではなく「ミックス内でどう配置・表現されるか」の指示であり、
+  Voice機能(声の実体そのものをクローンする機能)とは独立して機能するため削らない。
+  **2026-09-12訂正**: 当初「Front And Center Vocal」「Strong Vocal Presence」を
+  削除対象に含めていたが、これは誤りだった。ユーザーから「削除するのは"パワフルな
+  女性ボーカル"のような声の特性そのものであり、ミックス配置・歌い方の指示は除外」と
+  明示された。今後Voice機能使用時は、この2フレーズも残すこと。
 
 ## ボーカルキャラクター「Asher」について — 2026-08-27に新設
 

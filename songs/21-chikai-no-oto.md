@@ -11,9 +11,12 @@
 - タイトルは「約束(ちかい)の音」に確定(ユーザー決定)。「約束」という字に「ちかい」という
   読みを当てる、彼方→かなたと同系統の意味ずらしルビ技法をタイトルにも適用した。
 - **SunoのVoice機能を使う前提の曲**。CLAUDE.md「Sunoの『Voice』機能を使う場合のプロンプト
-  条件」に従い、YuRaの固定キャラクター・トリオ(`Powerful Female Vocal, Front And Center
-  Vocal, Strong Vocal Presence`)はあえて入れず、ミックス上の明瞭さ・存在感の指示
-  (`Crystal-Clear Lead Vocal, Lead Vocal Focus`)のみを残した。
+  条件」に従い、声そのものの特性フレーズ`Powerful Female Vocal`(性別+音圧の形容)のみ
+  削除し、ミックス配置・存在感の指示(`Front And Center Vocal, Strong Vocal Presence,
+  Crystal-Clear Lead Vocal, Lead Vocal Focus`)は残した。**2026-09-12訂正**: 初稿では
+  `Front And Center Vocal, Strong Vocal Presence`も削除対象と誤解していたが、
+  ユーザーから「削除するのは声の特性そのもの(パワフルな女性ボーカル等)であり、
+  ミックス配置・歌い方の指示は除外」と明示され、この2フレーズを追加した。
 - ジャンルはYuRaの中心ジャンル「Future Garage」と、新規に「リュート」という生楽器を
   組み合わせたハイブリッド実験。リュートを彩りでなく**主役の牽引楽器**に格上げし、
   電子的なガレージグルーヴと生々しい撥弦楽器を対比させた(技法引き出し「和楽器や
@@ -39,7 +42,8 @@
 ## スタイルプロンプト(Voice機能用)
 
 ```
-Crystal-Clear Lead Vocal, Lead Vocal Focus, Powerful Belted Delivery,
+Crystal-Clear Lead Vocal, Lead Vocal Focus, Front And Center Vocal,
+Strong Vocal Presence, Powerful Belted Delivery,
 
 Future Garage, Japanese Anime Anthem, Uk Garage Groove,
 170 Bpm,

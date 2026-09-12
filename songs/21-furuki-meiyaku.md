@@ -57,6 +57,11 @@
      静かな告白はそのまま残し、後半に「弱さも怖さも/この音に乗せて/刻(とき)を継ぐ声が/
      今、重なっていく」という高まりの4行を追加。ブラケット`then building as the full band
      slams back in`とも整合させ、静→動の変化を歌詞本文でも実際に描くようにした。
+- **ボーカルとリュートを両方最前列に(ユーザー要望、2026-09-12)**。ボーカルは既に
+  `Front And Center Vocal, Strong Vocal Presence`で指定済みだったが、**リュート側には
+  ミックス配置の指定が無かった**ため、`Lute Forward In The Mix, Cutting Through
+  Alongside The Vocal`を追加。主役の牽引楽器に格上げしたリュートが、電子楽器群に
+  埋もれずボーカルと並んで前に出るようにした。
 - **「歌詞(歌う行)を増やしてほしかった」と指摘を受け、インストブレイクでは解決にならない
   ことに気付き、Verse 1・Verse 2を8行→12行に拡張(2026-09-12)**。どちらも場面を飛ばさず、
   同じシーンの中でディテールを増やす形にした:
@@ -76,6 +81,7 @@ Future Garage, Japanese Anime Anthem, Uk Garage Groove,
 170 Bpm,
 
 Lute, Driving Rhythmic Strumming, Lead Melodic Motif,
+Lute Forward In The Mix, Cutting Through Alongside The Vocal,
 Rolling Sub Bassline, Chopped Vocal Fragments, Shuffling Breakbeat Hi-Hats,
 Soaring Synth Brass, Orchestral String Stabs, Powerful Taiko-Style Toms,
 

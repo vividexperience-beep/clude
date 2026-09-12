@@ -121,11 +121,13 @@
   足し(新規タグを増やさず既存タグに形容詞を足す形)、ムードタグも`Defiant Yet Hopeful`→
   `Ferocious Yet Reverent`(攻撃性と、古い誓いへの敬意という相反するムードを組み合わせる
   既存技法)に変更。
-  **スタイル変更後、ブラケットとの整合性を確認(2026-09-12新設の標準プロセス)**:
-  `[Cold Open Chorus]`の`lute riff slams in with the beat`、`[Instrumental Break]`の
-  `driving rhythm returns`、`[Bridge]``[Final Chorus]`の`full band slams back in`は
-  いずれも元々「強く入る」方向の表現で、ドラムを攻撃的にしたことと矛盾しない。ブラケット側の
-  修正は不要と判断した。
+  **スタイル変更後のブラケット確認で1箇所見落とし(2026-09-12)**。最初に`[Cold Open
+  Chorus]``[Instrumental Break]``[Bridge]``[Final Chorus]`の「強く入る」系の表現だけを
+  見て「矛盾なし」と判断したが、`[Pre-Chorus]`の`electronic drums creep in`
+  (そっと入ってくる)を見落としていた。`Pounding Breakbeat Drums, Double-Kick Accents`
+  (殴りつける・アクセントの強いドラム)とは温度が合っていなかったため、`pounding drums
+  punch in`に修正。**ブラケット確認は全セクションを一つずつ見ること**、「強い変更がある
+  部分だけ」を見て済ませると見落とすという実例として記録。
 
 ## スタイルプロンプト(Voice機能用)
 
@@ -180,7 +182,7 @@ We rise again
 ここまで繋がる
 
 [Pre-Chorus]
-[Building energy, electronic drums creep in]
+[Building energy, pounding drums punch in]
 
 震える弦に
 指を重ねれば

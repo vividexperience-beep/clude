@@ -2,46 +2,48 @@
 
 元曲: `songs/21-furuki-meiyaku.md`「古き盟約」(170Bpm、Future Garage×リュート)
 用途: ユーザーがSunoのVoice機能でYuRaを選択し、158Bpmのダブルタイム・ブレイクビートで
-リミックスしたバージョン。スタイルプロンプートの書式も、カンマ列挙から一文の散文形式に
-変更されている(技法引き出し「プロンプトの書式そのものも選択肢の一つ」の実例)。
+リミックスした最終版(2026-09-12、ユーザー「完成」確定)。
 
 ## 制作メモ
 
-- ユーザー自身が一文スタイルでリミックス用プロンプートを作成。テンポを170→158Bpmの
-  ダブルタイム・ブレイクビートに変更し、楽器指定も圧縮した独自表現に書き直している。
-- Voice機能でYuRaを選択する前提のため、当初案にあった`The User's Own Recorded Voice`
-  (声の正体を説明する記述)は削除。CLAUDE.md「Sunoの『Voice』機能を使う場合のプロンプト
-  条件」により、声の正体はVoice選択が規定するため、ミックス配置の指示(`Front And Center
-  Vocal`等)だけを残した。
-- **「ボーカルの声が小さい」という報告を受けて2箇所を追加**: `Never Buried Beneath The
-  Instrumental, Mixed Loud And Forward`(音量確保の直接指示、「魂の10連」の教訓の応用)。
-  また`Spacious Surgical Separation`の`Surgical`が標準語彙でない懸念があったため
-  `Spacious Mix With Clean Instrument Separation`に差し替えた。
-- **歌詞側で`[Instrumental Break]`を完全インスト(ささやき台詞なし)にする改稿が
-  入ったため、スタイルプロンプート側の`Whispered Phrase In The Lute Solo`も
-  `Instrumental Lute Solo Break`に修正**(2026-09-12)。スタイルとブラケット/歌詞本文の
-  整合性を毎回確認する標準プロセスの実践。
+- スタイルプロンプートの書式がセミコロン区切りの句(それぞれの句の中はカンマ列挙)に
+  変化。カンマ列挙・一文散文・セミコロン句切りと、このリミックスだけで3つの書式を
+  経由した(技法引き出し「プロンプトの書式そのものも選択肢の一つ」の実践例)。
+- **「ボーカルの声が小さい」問題への対応を、スタイルプロンプートだけでなく歌詞の
+  全ブラケットに拡張**。`[Cold Open Chorus]``[Pre-Chorus]``[Chorus]``[Final Chorus]`
+  すべてに「lead vocal front-and-center / loud / dominating」系の表現を個別に
+  書き込み、曲全体を通してボーカル優先を多重に補強する形になった。
+- オーケストラ層(`Taiko-Style Toms``Orchestral String Stabs``Cinematic Riser
+  Synth`)を全て削除し、`Tight Punchy Kick, Focused Bassline, Sharp Snare Accents`
+  というシンプルなリズム隊+リュートの編成に絞った。楽器を減らすほど音質が良かった、
+  という以前の学びの延長。
+- `[Bridge]`のブラケットを`Stripped back, only lute remains`から`Acoustic lute and
+  raw exposed lead vocal only`に変更。歌詞本文にボーカルがある以上、「リュートだけが
+  残る」より「アコースティックなリュート+剥き出しのボーカルだけ」の方が実際の構成を
+  正確に言い当てている。
+- **全セクションを一つずつスタイルとの整合性を確認(2026-09-12、標準プロセス)**。
+  削除したオーケストラ楽器への参照がブラケット側に残っていないか、`Whispered
+  Phrase`削除が`[Instrumental Break]`の「完全インスト」と一致しているか、
+  `Crystal-Clear...Belt Vocal`等のボーカル表現が各ブラケットの`dominating`系
+  表現と揺れなく対応しているかを確認し、修正不要と判断した。
+- Outro末尾の「鳴り止まない」は、複数回確認した末にユーザーが追加しないまま
+  「完成」と確定したため、**Outroは完全インスト(歌詞なし)で確定**と判断。
 
-## スタイルプロンプト(一文形式、Voice機能用)
+## スタイルプロンプト(Voice機能用)
 
 ```
-Front And Center Vocal, Crystal-Clear Powerful Belt, Tight Rhythmic Phrasing,
-Never Buried Beneath The Instrumental, Mixed Loud And Forward,
-Driving Double-Time Breakbeat At 158 Bpm, Spacious Mix With Clean Instrument Separation,
-Rolling Sub Bass, Lute-Led Driving Strumming And Melodic Motif,
-Pounding Breakbeat Drums With Double-Kick Accents, Taiko-Style Toms, Orchestral String Stabs,
-Cinematic Riser Synth, Instrumental Lute Solo Break,
-Half-Step Lift Into The Explosive Final Chorus, Hard-Stopped Final Lute Strike
+Breakbeat; Crystal-Clear Intimate Belt Vocal, Front-And-Center And Extremely Loud,
+Rhythmic And Confident; Driving 158 Bpm Double-Time Groove With Clear Dynamic Range
+And Uncluttered Midrange; Tight Punchy Kick, Focused Bassline, Sharp Snare Accents;
+Aggressive Lute Strumming And Riff-Led Instrumental Break; Cold-Open Chorus,
+Half-Step Final-Chorus Lift, Hard-Stop Final Lute Strike
 ```
 
 ## 歌詞
 
-`songs/21-furuki-meiyaku.md`の最新版と同じ(ブラケットは158Bpm版の編成に合わせて
-解釈されるが、文面は共通)。
-
 ```
 [Cold Open Chorus]
-[Full powerful belt, hits immediately, lute riff slams in with the beat]
+[Lead vocal extremely front-and-center, loud mix, lute riff slams in]
 
 立てよ、今
 古い弦が胸で鳴る
@@ -53,7 +55,7 @@ We rise again
 鳴らせ、この音を
 
 [Verse 1]
-[Close, lute motif alone beneath the voice]
+[Intimate lead vocal upfront, minimal lute motif beneath voice]
 
 埃をかぶった
 木箱を開けて
@@ -69,7 +71,7 @@ We rise again
 ここまで繋がる
 
 [Pre-Chorus]
-[Building energy, pounding drums punch in]
+[Building energy, sharp snare accents, lead vocal remains dominating]
 
 震える弦に
 指を重ねれば
@@ -77,6 +79,7 @@ We rise again
 混ざって聞こえる
 
 [Chorus]
+[Full energy, loud lead vocal dominating the mix, driving rhythm]
 
 立てよ、今
 古い弦が胸で鳴る
@@ -88,7 +91,7 @@ We rise again
 鳴らせ、この音を
 
 [Verse 2]
-[Confident, rhythmic delivery]
+[Confident, rhythmic vocal upfront, tight bass groove]
 
 切れた弦を
 張り替える夜に
@@ -104,10 +107,10 @@ We rise again
 ならないだろう
 
 [Instrumental Break]
-[Lute solo, driving rhythm returns, fully instrumental, no vocal]
+[Lute solo, driving breakbeat, fully instrumental, no vocal]
 
 [Bridge]
-[Stripped back, only lute remains, then building as the full band slams back in]
+[Acoustic lute and raw exposed lead vocal only, then band slams in]
 
 声が届くかは わからない
 けど この震えは嘘じゃない
@@ -117,7 +120,7 @@ We rise again
 今、重(かさな)る
 
 [Final Chorus]
-[Maximum energy, key change up a half-step, full band, crystal-clear lead vocal]
+[Maximum energy, key change up a half-step, crystal-clear belt vocal dominating the mix]
 
 立てよ、今
 古い弦よ吼えろ
@@ -131,5 +134,3 @@ We rise again
 [Outro]
 [Final lute strike rings out alone, hard stop]
 ```
-
-(Outro末尾の「鳴り止まない」を残すかは、元曲ファイルと合わせて未確定)

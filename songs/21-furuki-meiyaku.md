@@ -62,6 +62,15 @@
   ミックス配置の指定が無かった**ため、`Lute Forward In The Mix, Cutting Through
   Alongside The Vocal`を追加。主役の牽引楽器に格上げしたリュートが、電子楽器群に
   埋もれずボーカルと並んで前に出るようにした。
+- **「ボーカルがくぐもって聴こえる」というフィードバックを受けて調査(2026-09-12)**。
+  原因として2つ考えた:
+  1. `Chopped Vocal Fragments`というタグが、Future Garageの定番技法(バッキングサンプルを
+     刻む)のつもりだったが、「ボーカル」としか書いていなかったため**リードボーカル自体に
+     刻み・フィルター処理がかかってしまった可能性**がある。`Chopped Backing Vocal
+     Samples`に書き換え、バッキング用途だと明示した。
+  2. リードボーカルの明瞭さ自体(Bright/Crisp/Dry)を直接指定するタグが無かった。
+     `Bright Vocal Tone, Crisp Clear Diction, Dry Vocal, Minimal Reverb On Lead Vocal`
+     を追加した。
 - **「歌詞(歌う行)を増やしてほしかった」と指摘を受け、インストブレイクでは解決にならない
   ことに気付き、Verse 1・Verse 2を8行→12行に拡張(2026-09-12)**。どちらも場面を飛ばさず、
   同じシーンの中でディテールを増やす形にした:
@@ -76,13 +85,14 @@
 ```
 Crystal-Clear Lead Vocal, Lead Vocal Focus, Front And Center Vocal,
 Strong Vocal Presence, Powerful Belted Delivery,
+Bright Vocal Tone, Crisp Clear Diction, Dry Vocal, Minimal Reverb On Lead Vocal,
 
 Future Garage, Japanese Anime Anthem, Uk Garage Groove,
 170 Bpm,
 
 Lute, Driving Rhythmic Strumming, Lead Melodic Motif,
 Lute Forward In The Mix, Cutting Through Alongside The Vocal,
-Rolling Sub Bassline, Chopped Vocal Fragments, Shuffling Breakbeat Hi-Hats,
+Rolling Sub Bassline, Chopped Backing Vocal Samples, Shuffling Breakbeat Hi-Hats,
 Soaring Synth Brass, Orchestral String Stabs, Powerful Taiko-Style Toms,
 
 Ancient Yet Futuristic, Defiant Yet Hopeful,

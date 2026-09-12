@@ -176,7 +176,7 @@ We rise again
 微かに応える
 名前も知らない
 誰かの指跡
-木目に残る
+木目(もくめ)に残る
 小さな傷跡
 それでも確かに
 ここまで繋がる
@@ -212,24 +212,22 @@ We rise again
 迷いも全部
 音に変えていく
 前に立つほど
-怖さは増えるけど
-鳴らない理由には
+怖(こわ)さは 増えるけど
+弾(ひ)かない理由には
 ならないだろう
 
 [Instrumental Break]
-[Lute solo, driving rhythm returns, a single whispered phrase cuts through]
-
-(誰かが、ここにいた)
+[Lute solo, driving rhythm returns, fully instrumental, no vocal]
 
 [Bridge]
 [Stripped back, only lute remains, then building as the full band slams back in]
 
-声が届くかはわからない
+声が届くかは わからない
 けど この震えは嘘じゃない
 弱さも怖さも
 この音に乗せて
 刻(とき)を継ぐ声が
-今、重なっていく
+今、重(かさな)る
 
 [Final Chorus]
 [Maximum energy, key change up a half-step, full band, crystal-clear lead vocal]

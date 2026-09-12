@@ -96,6 +96,23 @@
   2. Verse 2: 「指先が覚えた/結び方をなぞる」「巻き直すたび/合わせる音が変わる」を
      弦を張り替える描写の冒頭に追加。チューニングという具体的な動作を増やし、
      抽象的な感情語(迷い等)に飛ぶ前の実際の手の動きを描いた。
+- **「楽器を減らせないか、以前楽器が少ない時の方が音が良かった」という指摘を受け、英語圏を
+  含めてリサーチ(2026-09-12)**。ソース:
+  [Medium: How to Improve Suno AI Sound Quality](https://james-palm.medium.com/how-to-improve-suno-ai-sound-quality-without-losing-vocals-7-proven-methods-for-2026-691e1c2a4558)、
+  [NeuralAnalog: Improve Suno AI Audio Quality](https://neuralanalog.com/docs/improve-suno-ai-audio-quality)。
+  技法のみ抽出(語句は流用せず書き直し): **「楽器を増やすほど良い演奏になる」は誤解で、
+  増やしすぎると各楽器が互いをマスキングし合い、ステレオの場が混雑し、音の破綻が増える**。
+  `Spacious`(余白のある)という単語が、Sunoに周波数の空間を空けさせる効果的なキーワード
+  として紹介されていた。
+  これに基づき2箇所を削除:
+  1. `Soaring Synth Brass`を削除。残った盛り上がり系2つ(Orchestral String Stabs、
+     Taiko-Style Toms)より、創和楽器とオーパヴント(古い誓い・和太鼓)とのテーマ的な
+     相性が一番薄かったため(ユーザー確認済み)。
+  2. `Chopped Backing Vocal Samples`を削除。Future Garageのジャンル特徴として追加した
+     タグだったが、バッキングでも"ボーカル"の帯域を使うため、「ボーカルがくぐもる」
+     問題の原因調査で名前が出たタグでもあり、リードボーカルの明瞭さを優先して削除
+     (ユーザー確認済み)。
+  また`Spacious Mix`を新規タグとして追加した。
 
 ## スタイルプロンプト(Voice機能用)
 
@@ -107,10 +124,10 @@ Future Garage, Japanese Anime Anthem, Uk Garage Groove,
 170 Bpm,
 
 Lute, Driving Rhythmic Strumming, Lead Melodic Motif, Forward In The Mix,
-Rolling Sub Bassline, Chopped Backing Vocal Samples, Shuffling Breakbeat Hi-Hats,
-Soaring Synth Brass, Orchestral String Stabs, Powerful Taiko-Style Toms,
+Rolling Sub Bassline, Shuffling Breakbeat Hi-Hats,
+Orchestral String Stabs, Powerful Taiko-Style Toms,
 
-Polished Professional Mix, Clean Separation Between Every Instrument,
+Spacious Mix, Polished Professional Mix, Clean Separation Between Every Instrument,
 
 Ancient Yet Futuristic, Defiant Yet Hopeful,
 

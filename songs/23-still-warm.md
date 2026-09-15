@@ -125,6 +125,15 @@
   ブラケットは9セクション全てが「囁く・静まる・引く」前提で書かれていたため全数書き換えた
   (`[Hushed, intimate, close-mic]`→`[Vocal in close, sung out over the band]`等)。
   歌詞本文は変更せず、この編成で一度生成してから判断するというユーザー判断。
+- **バンド版の初回生成が「全部の音が埋もれてて駄作」だった**(2026-09-15)。原因は
+  解析結果をそのまま生成指示に変換したこと。`Dense Compressed Mix`(密度と圧縮を
+  直接注文)、`Same Weight In Every Section`・`Never Dropping Out`・`Always Audible`
+  (全楽器を常時鳴らす指示)、`Sustained Chords Under The Vocal`(歪みギターを
+  ボーカルと同じ中域でサステインさせる)で、隙間がゼロになっていた。
+  **平坦だったのは音量だけで、スペクトルは変化していた**(=編曲上のコントラストは
+  存在した)のに、「音量が平坦」を「編曲が均一」と読み違えたのが根本。
+  帯域の棲み分けと"鳴らさないタイミング"を書く方向に全面改訂し、583文字まで圧縮した。
+  詳細はCLAUDE.mdの該当章に記録。
 - **ユーザー改稿(2026-09-15)**: Verse 1を「強く握る」に簡略化(こちらが提案した
   「そっと強く」の矛盾語ペアは不採用)、Verse 2の締めを「今は、まだ平気」に変更(強がりの
   ニュアンスを追加)、`明日(あす)`のルビ技法を追加。Chorusは5行に拡張され、最終行が
@@ -146,48 +155,46 @@
 ```
 YuRa,
 Powerful Female Vocal, Front And Center Vocal, Strong Vocal Presence,
-Sung Full And Open From The First Line, Never Whispered, Aching Not Triumphant,
-Audible Breath Between Phrases, Natural Grain, Slight Pitch Wave,
+Sung Full And Open, Aching Not Triumphant,
+Audible Breath Between Phrases, Natural Grain,
 
 106 Bpm, Minor Key,
 
-Guitar, Bass And Drums From The First Bar To The Last, Never Dropping Out,
-Distorted Rhythm Guitars Panned Wide, Sustained Chords Under The Vocal,
-Melodic Bass Moving Constantly, Always Audible,
-Steady Eighth-Note Drums, Fills Into Each Section,
-Cymbals And Guitars Open Up Brighter From The Chorus Onward,
-Lead Guitar Takes The Instrumental Break,
+Dry Punchy Drums, Bass Holding The Low End Alone,
+Palm-Muted Guitars In The Verses, Short Staccato Chops, Space Around The Vocal,
+Guitars Only Open Into Full Ringing Chords In The Chorus,
+Lead Guitar Alone In The Instrumental Break, Rhythm Guitars Out,
 
-Dense Compressed Mix, Same Weight In Every Section, No Breakdown,
-Vocal Always On Top Of The Band,
+Wide Open Mix, Air Around Every Instrument, Nothing Doubled,
+Midrange Left Clear For The Voice,
 
-Everything Winds Down Together In The Last Ten Seconds
+Instruments Drop Away One By One At The End
 ```
 
 ## 歌詞
 
 ```
 [Intro]
-[Full band in from the first bar, no vocal]
+[Drums and bass in first, guitars palm-muted, no vocal]
 
 [Verse 1]
-[Vocal in close, sung out over the band]
+[Vocal out front, muted guitars sparse behind it]
 触れた手のひら 少しだけ汗ばんでる
 離さないように 強く握る
 
 [Verse 2]
-[Same weight, band unchanged beneath the vocal]
+[Bass and drums only under the vocal, guitars barely there]
 隣で笑う 声が掠れてる
 明日(あす)のことは まだ分からないけど
 今は、まだ平気
 
 [Verse 3]
-[Tension rises in the voice alone, band unchanged]
+[Guitars starting to ring out, drums pushing forward]
 その汗が 徐々に冷えていく
 呼吸の音を、数える
 
 [Chorus]
-[Vocal at its most open, cymbals and guitars brighter from here on, voice never buried]
+[Guitars open into full ringing chords, vocal still on top, midrange clear]
 世界が全部 消えてしまっても
 この手の 熱だけは覚えていて
 繋いだ手に 爪が食い込むほど
@@ -195,21 +202,21 @@ Everything Winds Down Together In The Last Ten Seconds
 貴方を 感じていたい
 
 [Instrumental Break]
-[Extended instrumental, lead guitar over the full band, no vocal for a full extended passage before returning]
+[Extended instrumental, lead guitar alone over bass and drums, rhythm guitars out, no vocal before returning]
 
 [Verse 4]
-[Vocal steady, band still driving underneath]
+[Guitars back to muted, space around the vocal again]
 指を絡めて もう何も言わずに
 肩に寄りかかる 重さだけが本当
 窓の外が 少しずつ白(しら)んでいく
 朝が来るのが 今だけは怖くない
 
 [Chorus Tag]
-[Brief return, just the hook, band unbroken]
+[Brief return, just the hook, guitars ringing]
 声に出せなくても……
 
 [Outro]
-[Band and vocal winding down together]
+[Instruments dropping away one by one, vocal last]
 抱きしめて、もっと強く
 抱きしめて、痛いくらい
 抱きしめて、私の全てを感じて

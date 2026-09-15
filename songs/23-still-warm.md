@@ -104,25 +104,26 @@ Not Ambient, No Crowd Vocals
 [Verse 1]
 [Hushed, intimate, close-mic]
 触れた手のひら 少しだけ汗ばんでる
-離さないように そっと強く握る
+離さないように 強く握る
 
 [Verse 2]
 [Still intimate, quiet warmth]
 隣で笑う 声が掠れてる
-明日のことは まだ分からないけど
-今はただ、ここにいる
+明日(あす)のことは まだ分からないけど
+今は、まだ平気
 
 [Verse 3]
 [Breath catching, tension quietly rising]
-その汗が しんと冷えていく
-呼吸の音を 数える
+その汗が 徐々に冷えていく
+呼吸の音を、数える
 
 [Chorus]
 [Vocal opens, full emotional release, lead vocal stays dominant as strings swell beneath]
 世界が全部 消えてしまっても
-この手の中の 熱だけは覚えていて
-繋いだ指に 爪が食い込むほど
-声に出せなくても 今、確かに触れてる
+この手の 熱だけは覚えていて
+繋いだ手に 爪が食い込むほど
+声に出せなくても
+貴方を 感じていたい
 
 [Instrumental Break]
 [Extended instrumental, solo cello and violin trade the same phrase back and forth like two voices, no vocal for a full extended passage before returning]
@@ -131,17 +132,19 @@ Not Ambient, No Crowd Vocals
 [Pulled back, quiet, the afterglow]
 指を絡めて もう何も言わずに
 肩に寄りかかる 重さだけが本当
-窓の外が 少しずつ白んでいく
+窓の外が 少しずつ白(しら)んでいく
 朝が来るのが 今だけは怖くない
 
 [Chorus Tag]
 [Brief hushed return, just the hook, not a full repeat]
-声に出せなくても ここにいる
+声に出せなくても……
 
 [Outro]
 [Vocal fading to a whisper, gentle]
-抱きしめて もっと強く
+抱きしめて、もっと強く
 抱きしめて、痛いくらい
-今のうちに...
+抱きしめて、私の全てを感じて
+抱きしめて、今のうちに
 抱きしめて…
+そして忘れないで…
 ```

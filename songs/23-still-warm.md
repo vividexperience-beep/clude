@@ -82,6 +82,14 @@
     76は安静時心拍(60前後)よりわずかに速い値で、`Sub-Bass Heartbeat Pulse`
     という指定と数字の意味が繋がる(清宮栞「心音」の60Bpm=安静時心拍そのもの、
     とは意図的に別の値にしている)。
+- **スタイルプロンプトを983文字→675文字に圧縮**(2026-09-15)。ユーザーからの指摘:
+  「千文字ギリギリまで使えって言ってるわけじゃないのよ、少なければ少ない方が良い、
+  その中でどの場所のどのタイミングでこの楽器もしくはボーカルが、歌い方や演奏方法の
+  指示がされてる事が重要なんだよ」。削ったのは、(1)ボーカルが埋もれない指示の3重複、
+  (2)Verseの近接ボーカル指示の2重複、(3)`Cinematic Emotional Arc, Strong Dynamic
+  Contrast`という情報量ゼロのムード語。**圧縮の過程で、「Verseではストリングスを
+  鳴らすな」という最も重要なタイミング指示が抜けていたことが発覚し、
+  `No Strings Until The Chorus`を追加した。** 詳細はCLAUDE.mdの該当章に記録。
 - **ユーザー改稿(2026-09-15、最新)**: Verse 1を「強く握る」に簡略化(こちらが提案した
   「そっと強く」の矛盾語ペアは不採用)、Verse 2の締めを「今は、まだ平気」に変更(強がりの
   ニュアンスを追加)、`明日(あす)`のルビ技法を追加。Chorusは5行に拡張され、最終行が
@@ -103,27 +111,20 @@
 ```
 YuRa,
 Powerful Female Vocal, Front And Center Vocal, Strong Vocal Presence,
-Natural Vocal Grain Left In, Audible Breath Between Phrases, Slight Human Pitch Wave,
-Verses Hushed And Close-Mic, Chorus Opens Into Full Aching Belt, Never Buried Beneath Strings,
+Whispered Close-Mic In The Verses, Full Aching Belt In The Chorus, Back To A Whisper In The Outro,
+Audible Breath Between Phrases, Natural Grain, Slight Pitch Wave,
 
 76 Bpm,
-Song Length Around 3 Minutes 30 Seconds,
 
-Grand Piano Carries The Melody From The Opening Bar, Warm Room Reverb,
-Sampled Breath Woven Into The Quiet Sections, Rising In Presence As Tension Builds,
-Sub-Bass Heartbeat Pulse, Tightening Toward The Chorus,
+Solo Grand Piano In The Intro, Then Sustained Chords Under Every Verse,
+No Strings Until The Chorus, Then A Full Orchestral Swell Beneath The Vocal,
+Sub-Bass Heartbeat Under The Verses, Tightening Into The Chorus,
+Sampled Breath In The Quiet Sections Only,
+Piano Alone At The Top Of The Instrumental Break, Strings Rising In Behind It,
 
-Full Orchestral Strings Swell Beneath The Chorus Vocal, Overwhelming But Never Burying The Voice,
-Piano And Strings Rise Together Through The Instrumental Break, Building To The Same Peak As The Chorus,
+Vocal Always Louder Than The Strings,
 
-Close Intimate Vocal Mix In The Verses, Full Wide Emotional Mix In The Chorus,
-Clean Separation Between Vocal And Strings,
-
-Cinematic Emotional Arc, Strong Dynamic Contrast,
-
-Gentle Fade, No Hard Cut, Ends On Breath Not Silence,
-
-Not Ambient, No Crowd Vocals
+Fade Out On Breath, No Choir, No Backing Vocals
 ```
 
 ## 歌詞

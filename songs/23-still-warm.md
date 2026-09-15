@@ -2,9 +2,11 @@
 
 ボーカル: YuRa
 テーマ: 終わりが来ることを知っている夜、それでも今だけは確かに触れ合っている
-ジャンル: グランドピアノ主体+フルオーケストラのストリングスによる感情バラード(76Bpm)。
-  ジャンル名は使わず楽器・奏法のみで指定。呼吸音を静かな箇所に編み込み、サブベースが
-  心臓の鼓動としてサビに向けて引き締まっていく
+参照曲: **中島美嘉「祈り、終われば」**(作詞・作曲: シノダ(ヒトリエ)、演奏: ヒトリエ /
+  TVアニメ「無職転生Ⅲ」EDテーマ / 2026-07-04配信、08-26 CD)。**ピアノバラードではなく
+  バンドのロック曲**。音源解析の結果は下記メモ参照。
+ジャンル: ジャンル名は使わず楽器・奏法のみで指定。ギター・ベース・ドラムが最初から最後まで
+  鳴り続けるバンド編成、106Bpm、マイナーキー。緩急を作らず密度一定で押し切る
 モチーフ: 手のひら(汗ばむ→冷える→強く握る→指を絡める)、握る力の強さの変化
 
 ## 制作メモ
@@ -90,7 +92,40 @@
   Contrast`という情報量ゼロのムード語。**圧縮の過程で、「Verseではストリングスを
   鳴らすな」という最も重要なタイミング指示が抜けていたことが発覚し、
   `No Strings Until The Chorus`を追加した。** 詳細はCLAUDE.mdの該当章に記録。
-- **ユーザー改稿(2026-09-15、最新)**: Verse 1を「強く握る」に簡略化(こちらが提案した
+- **参照曲を実際に調べず、ピアノバラードだと思い込んで作っていた**(2026-09-15)。
+  「祈り、終われば とは似ていない、さては確認怠ったな」という指摘を受けて初めて調査。
+  **「参照曲と照合するルール」をCLAUDE.mdに書いた直後の行動でそれを実行していなかった**
+  という最悪の失敗。判明した事実:
+  - 作詞・作曲は**シノダ(ヒトリエ)**、演奏も**ヒトリエ**。中島美嘉とヒトリエの初コラボで、
+    TVアニメ「無職転生Ⅲ」EDテーマ。つまり**バンドのロック曲**であり、
+    グランドピアノ+オーケストラのバラードという想定は完全な誤りだった。
+- **ユーザー提供の音源(89秒の抜粋)を数値解析して編成を確定**(2026-09-15)。
+  音声は聴けないので、ffmpegで波形・スペクトログラムを画像化し、numpyでRMS包絡・
+  オンセット検出・コムフィルタ・クロマ解析を実行した。**同じ音源をユーザーが
+  ChatGPTにも解析させ、独立した2つの解析が一致した**:
+  - **テンポ ≈ 106Bpm**(こちらのコムフィルタ最上位106.0、打点間隔中央値から107.6。
+    ChatGPT側は105.47)。76Bpmは完全に遅すぎた。
+  - **音量は87秒間ほぼ平坦**(こちら: 0.25秒窓RMSで−20〜−24dB。ChatGPT側: 10秒平均の
+    振れ幅がわずか1.4dB)。**静かなVerse→爆発するChorusという緩急は参照曲に存在しない**。
+  - **低域(20〜250Hz)が冒頭から80秒まで+15dBで一定**、スペクトログラムには等間隔の
+    ドラム打点が最後まで続く。**バンドが鳴りっぱなしで楽器が抜ける箇所がゼロ**。
+  - 中高域が39秒付近から上昇(ChatGPT側もスペクトル中心が30〜40秒で3.8kHzに上昇と一致)。
+  - 終盤(80秒以降)で明確にエネルギー低下。
+  - ステレオは広め(side/mid 0.455)。
+  - キーはKrumhansl-Schmuckler法でCマイナー(r=+0.642)が最上位、平行調のE♭メジャー・
+    A♭メジャーがほぼ同点。ChatGPT側のクロマはC#・D#・C・Fが強くFマイナー寄りで、
+    こちらの測定(G#・G・C・A#・F・D#が上位)とはズレた。窓幅・対象帯域の違いで
+    クロマはこの程度動くため**キーは断定せず、`Minor Key`とだけ書いた**。
+  - **教訓: 音源があれば「聴けない」で止まらず、波形・スペクトログラムを画像化し
+    数値解析すれば、テンポ・緩急・編成の有無は客観的に確定できる。** 推測で埋めるより
+    遥かに確実で、他AIの解析結果とクロスチェックもできる。
+- **上記に基づきスタイルとブラケットを全面改訂**(2026-09-15)。76Bpm→106Bpm、
+  グランドピアノ+オーケストラ→ギター・ベース・ドラムのバンド編成、
+  「囁くVerse→ベルトするChorus」の緩急設計→`Same Weight In Every Section, No Breakdown`。
+  ブラケットは9セクション全てが「囁く・静まる・引く」前提で書かれていたため全数書き換えた
+  (`[Hushed, intimate, close-mic]`→`[Vocal in close, sung out over the band]`等)。
+  歌詞本文は変更せず、この編成で一度生成してから判断するというユーザー判断。
+- **ユーザー改稿(2026-09-15)**: Verse 1を「強く握る」に簡略化(こちらが提案した
   「そっと強く」の矛盾語ペアは不採用)、Verse 2の締めを「今は、まだ平気」に変更(強がりの
   ニュアンスを追加)、`明日(あす)`のルビ技法を追加。Chorusは5行に拡張され、最終行が
   「貴方を 感じていたい」という**曲中で初めて二人称を明示する行**になった。Chorus Tagは
@@ -111,46 +146,48 @@
 ```
 YuRa,
 Powerful Female Vocal, Front And Center Vocal, Strong Vocal Presence,
-Whispered Close-Mic In The Verses, Full Aching Belt In The Chorus, Back To A Whisper In The Outro,
+Sung Full And Open From The First Line, Never Whispered, Aching Not Triumphant,
 Audible Breath Between Phrases, Natural Grain, Slight Pitch Wave,
 
-76 Bpm,
+106 Bpm, Minor Key,
 
-Solo Grand Piano In The Intro, Then Sustained Chords Under Every Verse,
-No Strings Until The Chorus, Then A Full Orchestral Swell Beneath The Vocal,
-Sub-Bass Heartbeat Under The Verses, Tightening Into The Chorus,
-Sampled Breath In The Quiet Sections Only,
-Piano Alone At The Top Of The Instrumental Break, Strings Rising In Behind It,
+Guitar, Bass And Drums From The First Bar To The Last, Never Dropping Out,
+Distorted Rhythm Guitars Panned Wide, Sustained Chords Under The Vocal,
+Melodic Bass Moving Constantly, Always Audible,
+Steady Eighth-Note Drums, Fills Into Each Section,
+Cymbals And Guitars Open Up Brighter From The Chorus Onward,
+Lead Guitar Takes The Instrumental Break,
 
-Vocal Always Louder Than The Strings,
+Dense Compressed Mix, Same Weight In Every Section, No Breakdown,
+Vocal Always On Top Of The Band,
 
-Fade Out On Breath, No Choir, No Backing Vocals
+Everything Winds Down Together In The Last Ten Seconds
 ```
 
 ## 歌詞
 
 ```
 [Intro]
-[Solo grand piano opening alone in a warm room, no vocal, distant]
+[Full band in from the first bar, no vocal]
 
 [Verse 1]
-[Hushed, intimate, close-mic]
+[Vocal in close, sung out over the band]
 触れた手のひら 少しだけ汗ばんでる
 離さないように 強く握る
 
 [Verse 2]
-[Still intimate, quiet warmth]
+[Same weight, band unchanged beneath the vocal]
 隣で笑う 声が掠れてる
 明日(あす)のことは まだ分からないけど
 今は、まだ平気
 
 [Verse 3]
-[Breath catching, tension quietly rising]
+[Tension rises in the voice alone, band unchanged]
 その汗が 徐々に冷えていく
 呼吸の音を、数える
 
 [Chorus]
-[Vocal opens, full emotional release, lead vocal stays dominant as strings swell beneath]
+[Vocal at its most open, cymbals and guitars brighter from here on, voice never buried]
 世界が全部 消えてしまっても
 この手の 熱だけは覚えていて
 繋いだ手に 爪が食い込むほど
@@ -158,21 +195,21 @@ Fade Out On Breath, No Choir, No Backing Vocals
 貴方を 感じていたい
 
 [Instrumental Break]
-[Extended instrumental, piano leads alone then the full string section rises beneath it, no vocal for a full extended passage before returning]
+[Extended instrumental, lead guitar over the full band, no vocal for a full extended passage before returning]
 
 [Verse 4]
-[Pulled back, quiet, the afterglow]
+[Vocal steady, band still driving underneath]
 指を絡めて もう何も言わずに
 肩に寄りかかる 重さだけが本当
 窓の外が 少しずつ白(しら)んでいく
 朝が来るのが 今だけは怖くない
 
 [Chorus Tag]
-[Brief hushed return, just the hook, not a full repeat]
+[Brief return, just the hook, band unbroken]
 声に出せなくても……
 
 [Outro]
-[Vocal fading to a whisper, gentle]
+[Band and vocal winding down together]
 抱きしめて、もっと強く
 抱きしめて、痛いくらい
 抱きしめて、私の全てを感じて

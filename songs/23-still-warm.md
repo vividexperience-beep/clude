@@ -2,9 +2,9 @@
 
 ボーカル: YuRa
 テーマ: 終わりが来ることを知っている夜、それでも今だけは確かに触れ合っている
-ジャンル: ジャンル名を使わず楽器・奏法のみで指定(124Bpm)。呼吸音をパーカッションの一部として
-  編み込み、心臓の鼓動のようなサブベースの脈動、チェロとヴァイオリンが2つの声のように
-  掛け合うInstrumental Breakという構成
+ジャンル: グランドピアノ主体+フルオーケストラのストリングスによる感情バラード(76Bpm)。
+  ジャンル名は使わず楽器・奏法のみで指定。呼吸音を静かな箇所に編み込み、サブベースが
+  心臓の鼓動としてサビに向けて引き締まっていく
 モチーフ: 手のひら(汗ばむ→冷える→強く握る→指を絡める)、握る力の強さの変化
 
 ## 制作メモ
@@ -56,9 +56,39 @@
   - Instrumental Breakの楽器を「ストリングス+パッド」という曖昧な指定から、
     **チェロとヴァイオリンが同じフレーズを掛け合う=2人の声の比喩**という具体的な
     奏法指定に変更(`Solo Cello And Violin Trade The Same Phrase Like Two Voices`)。
-    単なる伴奏ではなく、歌詞の「2人」というテーマを音そのもので表現する技法の実践。
+    → **この案はユーザーに却下された**。独奏弦楽器のデュオはクラシック室内楽的で、
+    YuRaというキャラクターの世界観から浮く、という指摘(後述の再々修正で解消)。
   - 文字数は965文字(圧縮前は1005文字で規定オーバーだったため、冗長な修飾を削って
     調整)。
+- **最大の反省: 当初の「『祈り、終われば』のような曲を作る」という出発点を見失っていた**
+  (2026-09-15)。ユーザーからの指摘:「最初は『祈り、終われば』みたいな曲って言ってたん
+  だからスタイルも近いものにした方がいいんじゃない?」。中島美嘉のあの曲はピアノ主体の
+  壮大なオーケストラバラードであり、**そもそも最初のFuture Garage版の時点で参照曲と
+  合っていなかった**。「聴いたことある」という指摘への対処(ジャンル名の全廃)に
+  気を取られ、"何に似せたかったのか"という一番上位の軸を確認せずに音作りを進めて
+  しまったのが原因。
+  - 教訓: **参照曲(「◯◯のような曲にしたい」)が最初に提示されている場合、
+    スタイルプロンプトを作り直すたびに「その参照曲の方向に近づいているか」を
+    毎回照合すること。** 個別の指摘(ジャンルが被る/音が古い等)への対処は、
+    参照曲という上位の軸の中で行う。これは清宮栞の「爽秋」で「気持ちのいい歌に
+    したい」という温度の要望をジャンル変更の許可と誤解した事故と、同じ構造の
+    ミス(上位の枠を保ったまま下位を調整すべきところで、枠自体を外してしまう)。
+  - 最終形: グランドピアノを冒頭から主役に据え、サビでフルオーケストラの
+    ストリングスが押し寄せる編成に変更。電子系の要素(Off-Grid Hi-Hats、
+    アナログパッド、テープサチュレーション)と却下されたチェロ&ヴァイオリンの
+    デュオを全て削除。呼吸音のレイヤーと心臓の鼓動のサブベースという、
+    テーマを音に翻訳した2つの技法だけはバラード編成の中でも機能するため継承した。
+  - BPMも124→76に変更。124はFuture Garage前提の速さでバラードには不適切だった。
+    76は安静時心拍(60前後)よりわずかに速い値で、`Sub-Bass Heartbeat Pulse`
+    という指定と数字の意味が繋がる(清宮栞「心音」の60Bpm=安静時心拍そのもの、
+    とは意図的に別の値にしている)。
+- **ユーザー改稿(2026-09-15、最新)**: Verse 1を「強く握る」に簡略化(こちらが提案した
+  「そっと強く」の矛盾語ペアは不採用)、Verse 2の締めを「今は、まだ平気」に変更(強がりの
+  ニュアンスを追加)、`明日(あす)`のルビ技法を追加。Chorusは5行に拡張され、最終行が
+  「貴方を 感じていたい」という**曲中で初めて二人称を明示する行**になった。Chorus Tagは
+  「声に出せなくても……」と言い切らずに途切れる形に変更(既存技法「未解決のまま終わらせる」
+  の実践)。Outroは5段階のリフレインに拡張され、最後が「そして忘れないで…」という、
+  抱擁から記憶へと願いの対象が変わる新しい一行で締められる形になった。
 - **ユーザー改稿でOutroを2行→4行に拡張**(2026-09-15)。「抱きしめて もっと強く、抱きしめて」
   「痛いくらい、抱きしめて」という2行から、「抱きしめて もっと強く」「抱きしめて、痛いくらい」
   「今のうちに...」「抱きしめて…」の4行に変更。動詞(抱きしめて)を先に置き修飾語を
@@ -76,19 +106,20 @@ Powerful Female Vocal, Front And Center Vocal, Strong Vocal Presence,
 Natural Vocal Grain Left In, Audible Breath Between Phrases, Slight Human Pitch Wave,
 Verses Hushed And Close-Mic, Chorus Opens Into Full Aching Belt, Never Buried Beneath Strings,
 
-124 Bpm,
+76 Bpm,
 Song Length Around 3 Minutes 30 Seconds,
 
-Warm Analog Pad Slowly Filtering Open Across The Intro, Tape Saturation,
-Sampled Breath Woven Into The Percussion Bed, Rising In Presence As Tension Builds,
+Grand Piano Carries The Melody From The Opening Bar, Warm Room Reverb,
+Sampled Breath Woven Into The Quiet Sections, Rising In Presence As Tension Builds,
 Sub-Bass Heartbeat Pulse, Tightening Toward The Chorus,
-Swung Off-Grid Hi-Hats, Soft And Distant In The Verses,
 
-Solo Cello And Violin Trade The Same Phrase Like Two Voices In The Instrumental Break,
-Strings Swell Beneath The Chorus Vocal, Tremolo Rising Into The Belt, Never Overpowering,
+Full Orchestral Strings Swell Beneath The Chorus Vocal, Overwhelming But Never Burying The Voice,
+Piano And Strings Rise Together Through The Instrumental Break, Building To The Same Peak As The Chorus,
 
 Close Intimate Vocal Mix In The Verses, Full Wide Emotional Mix In The Chorus,
 Clean Separation Between Vocal And Strings,
+
+Cinematic Emotional Arc, Strong Dynamic Contrast,
 
 Gentle Fade, No Hard Cut, Ends On Breath Not Silence,
 
@@ -99,7 +130,7 @@ Not Ambient, No Crowd Vocals
 
 ```
 [Intro]
-[Warm analog pad slowly filtering open, tape saturation underneath, no vocal, distant]
+[Solo grand piano opening alone in a warm room, no vocal, distant]
 
 [Verse 1]
 [Hushed, intimate, close-mic]
@@ -126,7 +157,7 @@ Not Ambient, No Crowd Vocals
 貴方を 感じていたい
 
 [Instrumental Break]
-[Extended instrumental, solo cello and violin trade the same phrase back and forth like two voices, no vocal for a full extended passage before returning]
+[Extended instrumental, piano leads alone then the full string section rises beneath it, no vocal for a full extended passage before returning]
 
 [Verse 4]
 [Pulled back, quiet, the afterglow]

@@ -104,7 +104,7 @@ Not Ambient, No Crowd Vocals
 [Verse 1]
 [Hushed, intimate, close-mic]
 触れた手のひら 少しだけ汗ばんでる
-離さないように 少し強く握る
+離さないように そっと強く握る
 
 [Verse 2]
 [Still intimate, quiet warmth]
@@ -114,7 +114,7 @@ Not Ambient, No Crowd Vocals
 
 [Verse 3]
 [Breath catching, tension quietly rising]
-その汗が 少しずつ冷えていく
+その汗が しんと冷えていく
 呼吸の音を 数える
 
 [Chorus]

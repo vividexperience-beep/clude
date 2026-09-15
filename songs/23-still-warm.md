@@ -2,7 +2,9 @@
 
 ボーカル: YuRa
 テーマ: 終わりが来ることを知っている夜、それでも今だけは確かに触れ合っている
-ジャンル: Future Garage・Japanese Pop、Cinematic String Accents、124Bpm
+ジャンル: ジャンル名を使わず楽器・奏法のみで指定(124Bpm)。呼吸音をパーカッションの一部として
+  編み込み、心臓の鼓動のようなサブベースの脈動、チェロとヴァイオリンが2つの声のように
+  掛け合うInstrumental Breakという構成
 モチーフ: 手のひら(汗ばむ→冷える→強く握る→指を絡める)、握る力の強さの変化
 
 ## 制作メモ
@@ -40,26 +42,47 @@
 - アウトロの「抱きしめて/もっと強く、抱きしめて/痛いくらい、抱きしめて」は、中島美嘉
   「祈り、終われば」から抽出した「三段階リフレイン」技法(同じ文型を繰り返し修飾語だけ
   変えて感情を積み上げる)の実践。
+- **サウンドが「聴いたことある」と指摘され、ジャンル名を全廃して楽器・奏法だけで再構築**
+  (2026-09-15)。「Future Garage, Japanese Pop, Cinematic String Accents」はCLAUDE.md
+  記載の通りYuRaの最頻出組み合わせ(既存5曲で使用済み)で、6曲目になると量産感が出る
+  という指摘を受けた。「雨」「One Step Behind」の手法(ジャンル名を使わず楽器・奏法
+  だけで組む)を採用し、テーマを直接音に翻訳する技法を実践:
+  - Verse3の歌詞「呼吸の音を数える」というモチーフを、実際に**呼吸音をパーカッションの
+    レイヤーとして編み込む**という音響指示に翻訳(`Sampled Breath Woven Into The
+    Percussion Bed`)。歌詞の内容と音響指示が一致する形。
+  - 握る力が強まっていく歌詞の展開を、**サブベースの心臓の鼓動がサビに向けて
+    引き締まっていく**という指示(`Sub-Bass Heartbeat Pulse, Tightening Toward The
+    Chorus`)に翻訳。
+  - Instrumental Breakの楽器を「ストリングス+パッド」という曖昧な指定から、
+    **チェロとヴァイオリンが同じフレーズを掛け合う=2人の声の比喩**という具体的な
+    奏法指定に変更(`Solo Cello And Violin Trade The Same Phrase Like Two Voices`)。
+    単なる伴奏ではなく、歌詞の「2人」というテーマを音そのもので表現する技法の実践。
+  - 文字数は965文字(圧縮前は1005文字で規定オーバーだったため、冗長な修飾を削って
+    調整)。
 
 ## スタイルプロンプト
 
 ```
+YuRa,
 Powerful Female Vocal, Front And Center Vocal, Strong Vocal Presence,
 Natural Vocal Grain Left In, Audible Breath Between Phrases, Slight Human Pitch Wave,
-Lead Vocal Always Dominant, Never Buried Beneath Strings Or Instruments,
+Verses Hushed And Close-Mic, Chorus Opens Into Full Aching Belt, Never Buried Beneath Strings,
 
-Future Garage, Japanese Pop, Cinematic String Accents,
 124 Bpm,
 Song Length Around 3 Minutes 30 Seconds,
 
-Intimate And Restrained Verses, Tension Gradually Building Into The Chorus, Powerful Emotional Release In The Chorus, Strong Dynamic Contrast,
+Warm Analog Pad Slowly Filtering Open Across The Intro, Tape Saturation,
+Sampled Breath Woven Into The Percussion Bed, Rising In Presence As Tension Builds,
+Sub-Bass Heartbeat Pulse, Tightening Toward The Chorus,
+Swung Off-Grid Hi-Hats, Soft And Distant In The Verses,
 
-Swung Garage Beat, Soft Sub-Bass,
-Warm Analog Synth Pads, Strings Swell Beneath The Vocal In The Chorus, Never Overpowering,
+Solo Cello And Violin Trade The Same Phrase Like Two Voices In The Instrumental Break,
+Strings Swell Beneath The Chorus Vocal, Tremolo Rising Into The Belt, Never Overpowering,
 
-Close Intimate Vocal Mix In The Verses, Full Wide Emotional Mix In The Chorus, Clean Separation Between Vocal And Strings,
+Close Intimate Vocal Mix In The Verses, Full Wide Emotional Mix In The Chorus,
+Clean Separation Between Vocal And Strings,
 
-Gentle Fade, No Hard Cut,
+Gentle Fade, No Hard Cut, Ends On Breath Not Silence,
 
 Not Ambient, No Crowd Vocals
 ```
@@ -68,7 +91,7 @@ Not Ambient, No Crowd Vocals
 
 ```
 [Intro]
-[Soft analog pad gradually swelling over an extended intro, no vocal, distant]
+[Warm analog pad slowly filtering open, tape saturation underneath, no vocal, distant]
 
 [Verse 1]
 [Hushed, intimate, close-mic]
@@ -94,7 +117,7 @@ Not Ambient, No Crowd Vocals
 声に出せなくても 今、確かに触れてる
 
 [Instrumental Break]
-[Extended instrumental, strings trade long phrases over a slowly building pad, no vocal for a full extended passage before returning]
+[Extended instrumental, solo cello and violin trade the same phrase back and forth like two voices, no vocal for a full extended passage before returning]
 
 [Verse 4]
 [Pulled back, quiet, the afterglow]

@@ -134,6 +134,20 @@
   存在した)のに、「音量が平坦」を「編曲が均一」と読み違えたのが根本。
   帯域の棲み分けと"鳴らさないタイミング"を書く方向に全面改訂し、583文字まで圧縮した。
   詳細はCLAUDE.mdの該当章に記録。
+- **次の生成は「まだややボーカルが埋もれてる、ぼんやりしてる」**(2026-09-15)。
+  団子を避けようとして**逆方向に振りすぎていた**のが原因。`Wide Open Mix, Air Around
+  Every Instrument`は残響を呼ぶ語で、全体がリバーブで滲んで輪郭が消える。さらに、
+  バンド編成に振り替えた際に**ボーカルの`Close-Mic`指定を落としたまま復活させていなかった**
+  (`Front And Center`は定位の指示で、乾き・近さとは別)。`Full Ringing Chords`も、
+  ボーカルが最も前に出るべきサビで中域を伸ばした音で埋めていた。
+  → `Dry Close-Mic Vocal, No Reverb On The Voice, Sharp Consonants`を追加し、
+  `Wide Open`/`Air`を`Dry Mix, Minimal Reverb`に差し替え、
+  `Midrange Belongs To The Voice, Guitars Sit Above And Below It`で帯域を明示的に
+  ボーカルへ割り当てた。加えて**`songs/21-furuki-meiyaku-remix.md`の前例
+  (全ブラケットに個別にボーカル優位を書き込む)を踏襲**し、9セクション全てに
+  「dry vocal dominating/loudest in the mix/front and center」系を個別に記入した。
+  既存の引き出し「Dry/Wetを感情的な距離のダイヤルとして使う」も、この局面で
+  使うべき技法だった。
 - **ユーザー改稿(2026-09-15)**: Verse 1を「強く握る」に簡略化(こちらが提案した
   「そっと強く」の矛盾語ペアは不採用)、Verse 2の締めを「今は、まだ平気」に変更(強がりの
   ニュアンスを追加)、`明日(あす)`のルビ技法を追加。Chorusは5行に拡張され、最終行が
@@ -155,18 +169,18 @@
 ```
 YuRa,
 Powerful Female Vocal, Front And Center Vocal, Strong Vocal Presence,
+Dry Close-Mic Vocal, No Reverb On The Voice, Sharp Consonants,
 Sung Full And Open, Aching Not Triumphant,
-Audible Breath Between Phrases, Natural Grain,
 
 106 Bpm, Minor Key,
 
 Dry Punchy Drums, Bass Holding The Low End Alone,
-Palm-Muted Guitars In The Verses, Short Staccato Chops, Space Around The Vocal,
-Guitars Only Open Into Full Ringing Chords In The Chorus,
+Palm-Muted Guitars In The Verses, Short Staccato Chops,
+Guitars Stay Behind The Vocal Even In The Chorus, Never Ringing Over The Vocal Line,
 Lead Guitar Alone In The Instrumental Break, Rhythm Guitars Out,
 
-Wide Open Mix, Air Around Every Instrument, Nothing Doubled,
-Midrange Left Clear For The Voice,
+Dry Mix, Minimal Reverb, Nothing Doubled,
+Midrange Belongs To The Voice, Guitars Sit Above And Below It,
 
 Instruments Drop Away One By One At The End
 ```
@@ -178,23 +192,23 @@ Instruments Drop Away One By One At The End
 [Drums and bass in first, guitars palm-muted, no vocal]
 
 [Verse 1]
-[Vocal out front, muted guitars sparse behind it]
+[Dry vocal right up front, muted guitars sparse and well behind it]
 触れた手のひら 少しだけ汗ばんでる
 離さないように 強く握る
 
 [Verse 2]
-[Bass and drums only under the vocal, guitars barely there]
+[Bass and drums only, guitars out, dry vocal dominating]
 隣で笑う 声が掠れてる
 明日(あす)のことは まだ分からないけど
 今は、まだ平気
 
 [Verse 3]
-[Guitars starting to ring out, drums pushing forward]
+[Drums pushing forward, guitars still muted, vocal loudest in the mix]
 その汗が 徐々に冷えていく
 呼吸の音を、数える
 
 [Chorus]
-[Guitars open into full ringing chords, vocal still on top, midrange clear]
+[Guitars widen but stay under the vocal, dry lead vocal loud and dominating on top]
 世界が全部 消えてしまっても
 この手の 熱だけは覚えていて
 繋いだ手に 爪が食い込むほど
@@ -205,18 +219,18 @@ Instruments Drop Away One By One At The End
 [Extended instrumental, lead guitar alone over bass and drums, rhythm guitars out, no vocal before returning]
 
 [Verse 4]
-[Guitars back to muted, space around the vocal again]
+[Guitars back to muted, dry vocal front and center again]
 指を絡めて もう何も言わずに
 肩に寄りかかる 重さだけが本当
 窓の外が 少しずつ白(しら)んでいく
 朝が来るのが 今だけは怖くない
 
 [Chorus Tag]
-[Brief return, just the hook, guitars ringing]
+[Brief return, just the hook, vocal alone out front]
 声に出せなくても……
 
 [Outro]
-[Instruments dropping away one by one, vocal last]
+[Instruments dropping away one by one, dry vocal left alone at the end]
 抱きしめて、もっと強く
 抱きしめて、痛いくらい
 抱きしめて、私の全てを感じて

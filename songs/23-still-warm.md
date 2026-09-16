@@ -257,7 +257,6 @@ Instruments Drop Away One By One At The End
 呼吸の音を、数える
 
 [Chorus]
-[Vocal through a driven megaphone, saturated and loud]
 世界が全部 消えてしまっても
 この手の 熱だけは覚えていて
 繋いだ手に 爪が食い込むほど
@@ -277,7 +276,6 @@ Instruments Drop Away One By One At The End
 声に出せなくても……
 
 [Outro]
-[Vocal through a driven megaphone, saturated and raw]
 抱きしめて、今のうちに
 抱きしめて、もっと強く
 抱きしめて、痛いくらい

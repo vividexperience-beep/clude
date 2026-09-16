@@ -225,17 +225,14 @@
 
 ```
 Front And Center Vocal, Strong Vocal Presence,
-Dry Close-Mic Vocal,
+Close-Mic Vocal, Dry Mix,
 
 106 Bpm, Minor Key,
 
-Guitar, Bass, Drums. Nothing Else.
-Palm-Muted Guitars In The Verses, Opening Up Only In The Chorus,
-Lead Guitar Alone In The Instrumental Break,
+Guitar, Bass, Drums,
+Palm-Muted Guitars,
 
-Dry Mix, Midrange Belongs To The Voice,
-
-Instruments Drop Away One By One At The End
+Instruments Drop Away One By One Toward The End
 ```
 
 ## 歌詞

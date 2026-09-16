@@ -240,7 +240,7 @@ Instruments Drop Away One By One At The End
 呼吸の音を、数える
 
 [Chorus]
-[Radio-filtered vocal double under the clean lead]
+[Vocal through a lo-fi AM radio speaker]
 世界が全部 消えてしまっても
 この手の 熱だけは覚えていて
 繋いだ手に 爪が食い込むほど
@@ -260,7 +260,7 @@ Instruments Drop Away One By One At The End
 声に出せなくても……
 
 [Outro]
-[Lead vocal slowly degrading into an old radio signal]
+[Vocal through a lo-fi AM radio speaker, fading out]
 抱きしめて、今のうちに
 抱きしめて、もっと強く
 抱きしめて、痛いくらい

@@ -261,7 +261,6 @@ Instruments Drop Away One By One Toward The End
 貴方を 感じていたい
 
 [Instrumental Break]
-[Extended, no vocal]
 
 [Verse 4]
 指を絡めて もう何も言わずに

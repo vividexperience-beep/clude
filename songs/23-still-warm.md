@@ -180,14 +180,29 @@
   ミックス配置・録り方の指示として残した(CLAUDE.md「Voice機能を使う場合のプロンプト条件」
   の2026-09-12訂正に従った運用)。321文字。
   - **エフェクトの置き場所は、埋もれ対策と両立するように振り分けた**: サビは残響系を
-    避けて`[Harmony stacked under the lead vocal]`(ハモリを重ねるだけ)、
-    エコー/ディレイは**楽器が抜けていくアウトロ**に置いて
-    `[Long echo trailing off the last line]`とした。アウトロは
+    避け、エフェクトらしい処理は**楽器が抜けていくアウトロ**に置く。アウトロは
     `Instruments Drop Away One By One At The End`で既に音数が減る設計なので、
-    ディレイが他の楽器と競合しない。**サビにリバーブを足すと、直前に潰した
+    処理が他の楽器と競合しない。**サビにリバーブを足すと、直前に潰した
     「ぼんやり」が再発する**ため意図的に避けている。
-  - 合わせて`No Reverb On The Voice`を削除(アウトロのディレイと矛盾するため)。
+  - 合わせて`No Reverb On The Voice`を削除(アウトロの処理と矛盾するため)。
     乾いた質感は`Dry Close-Mic Vocal`と`Dry Mix`で担保する。
+- **ラジオ系のエフェクトに変更**(2026-09-16、ユーザー要望「ラジオノイズのような物」)。
+  終わりが来る夜の歌として、最後に声が電波の向こうへ遠ざかる画が
+  「いつまでも、忘れないで…」と噛み合うため採用。ただし**サビのリードには
+  かけない**: ラジオ風=中域だけ残すバンドパスなので、一番声を張る場所にかけると
+  声が痩せ、直したばかりの埋もれが別の形で再発する。
+  - サビ: `[Radio-filtered vocal double under the clean lead]`
+    —— **クリーンなリードの下にラジオ処理したダブルを敷く**。リードの芯は太いまま、
+    サビにラジオの質感だけを足せる。
+  - アウトロ: `[Lead vocal slowly degrading into an old radio signal]`
+    —— リード自体が変質していく。楽器が減っていく設計と合う。
+  - **「ノイズそのもの」を注文しない書き方にした**: CLAUDE.mdの「環境音は形容詞で作らず
+    実在の楽器名で表現する」(`songs/16-shinkan.md`)と同じ理屈で、「ザーッというノイズを
+    足せ」と書くとホワイトノイズの雑音になりやすい。**「声がラジオを通った音になる」**
+    という、処理対象と経路を書く形に統一している。
+  - 整合性チェック: ラジオフィルターは乾いた処理なので`Dry Mix`と矛盾しない。
+    唯一`Strong Vocal Presence`(全体指定)とアウトロの減衰が方向として逆を向くが、
+    これは**全体の既定値に対するセクション単位の例外**という意図的な使い分け。
 
 ## スタイルプロンプト
 
@@ -225,7 +240,7 @@ Instruments Drop Away One By One At The End
 呼吸の音を、数える
 
 [Chorus]
-[Harmony stacked under the lead vocal]
+[Radio-filtered vocal double under the clean lead]
 世界が全部 消えてしまっても
 この手の 熱だけは覚えていて
 繋いだ手に 爪が食い込むほど
@@ -245,7 +260,7 @@ Instruments Drop Away One By One At The End
 声に出せなくても……
 
 [Outro]
-[Long echo trailing off the last line]
+[Lead vocal slowly degrading into an old radio signal]
 抱きしめて、今のうちに
 抱きしめて、もっと強く
 抱きしめて、痛いくらい

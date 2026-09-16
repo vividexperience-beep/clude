@@ -268,7 +268,7 @@ Instruments Drop Away One By One Toward The End
 窓の外が 少しずつ白(しら)んでいく
 朝が来るのが 今だけは怖くない
 
-[Chorus Tag]
+[Chorus]
 声に出せなくても……
 
 [Outro]

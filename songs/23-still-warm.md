@@ -169,18 +169,15 @@
 ```
 YuRa,
 Powerful Female Vocal, Front And Center Vocal, Strong Vocal Presence,
-Dry Close-Mic Vocal, No Reverb On The Voice, Sharp Consonants,
-Sung Full And Open, Aching Not Triumphant,
+Dry Close-Mic Vocal, No Reverb On The Voice,
 
 106 Bpm, Minor Key,
 
-Dry Punchy Drums, Bass Holding The Low End Alone,
-Palm-Muted Guitars In The Verses, Short Staccato Chops,
-Guitars Stay Behind The Vocal Even In The Chorus, Never Ringing Over The Vocal Line,
-Lead Guitar Alone In The Instrumental Break, Rhythm Guitars Out,
+Guitar, Bass, Drums. Nothing Else.
+Palm-Muted Guitars In The Verses, Opening Up Only In The Chorus,
+Lead Guitar Alone In The Instrumental Break,
 
-Dry Mix, Minimal Reverb, Nothing Doubled,
-Midrange Belongs To The Voice, Guitars Sit Above And Below It,
+Dry Mix, Midrange Belongs To The Voice,
 
 Instruments Drop Away One By One At The End
 ```
@@ -189,26 +186,21 @@ Instruments Drop Away One By One At The End
 
 ```
 [Intro]
-[Drums and bass in first, guitars palm-muted, no vocal]
 
 [Verse 1]
-[Dry vocal right up front, muted guitars sparse and well behind it]
 触れた手のひら 少しだけ汗ばんでる
 離さないように 強く握る
 
 [Verse 2]
-[Bass and drums only, guitars out, dry vocal dominating]
 隣で笑う 声が掠れてる
 明日(あす)のことは まだ分からないけど
 今は、まだ平気
 
 [Verse 3]
-[Drums pushing forward, guitars still muted, vocal loudest in the mix]
 その汗が 徐々に冷えていく
 呼吸の音を、数える
 
 [Chorus]
-[Guitars widen but stay under the vocal, dry lead vocal loud and dominating on top]
 世界が全部 消えてしまっても
 この手の 熱だけは覚えていて
 繋いだ手に 爪が食い込むほど
@@ -216,21 +208,18 @@ Instruments Drop Away One By One At The End
 貴方を 感じていたい
 
 [Instrumental Break]
-[Extended instrumental, lead guitar alone over bass and drums, rhythm guitars out, no vocal before returning]
+[Extended, no vocal]
 
 [Verse 4]
-[Guitars back to muted, dry vocal front and center again]
 指を絡めて もう何も言わずに
 肩に寄りかかる 重さだけが本当
 窓の外が 少しずつ白(しら)んでいく
 朝が来るのが 今だけは怖くない
 
 [Chorus Tag]
-[Brief return, just the hook, vocal alone out front]
 声に出せなくても……
 
 [Outro]
-[Instruments dropping away one by one, dry vocal left alone at the end]
 抱きしめて、もっと強く
 抱きしめて、痛いくらい
 抱きしめて、私の全てを感じて

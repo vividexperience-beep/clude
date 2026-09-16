@@ -1,6 +1,9 @@
 # Still Warm
 
-ボーカル: YuRa
+ボーカル: YuRa(**SunoのVoice機能でYuRaを選択する前提**。スタイルプロンプトからは
+  `YuRa,`と`Powerful Female Vocal`を削除済み=Voice側と二重指定になるため。
+  `Front And Center Vocal` `Strong Vocal Presence` `Dry Close-Mic Vocal`は
+  ミックス配置・録り方の指示なので残す)
 テーマ: 終わりが来ることを知っている夜、それでも今だけは確かに触れ合っている
 参照曲: **中島美嘉「祈り、終われば」**(作詞・作曲: シノダ(ヒトリエ)、演奏: ヒトリエ /
   TVアニメ「無職転生Ⅲ」EDテーマ / 2026-07-04配信、08-26 CD)。**ピアノバラードではなく
@@ -170,13 +173,27 @@
   永遠の願いで閉じる形になった。「抱きしめて」で始まる行が4回続いた後、最後だけ
   主語を変えて着地するため、リフレインの型を崩さずに終止感も出ている。
   ブラケットは圧縮後の構造タグのみのまま。
+- **Voice機能前提に切り替え、ボーカルエフェクトを2箇所だけ追加**(2026-09-16)。
+  ユーザーから「スタイルにボイス名と特徴は要らない、Voice機能の中に含まれてるから
+  重複する」との指示。`YuRa,`と`Powerful Female Vocal`を削除し、
+  `Front And Center Vocal` `Strong Vocal Presence` `Dry Close-Mic Vocal`は
+  ミックス配置・録り方の指示として残した(CLAUDE.md「Voice機能を使う場合のプロンプト条件」
+  の2026-09-12訂正に従った運用)。321文字。
+  - **エフェクトの置き場所は、埋もれ対策と両立するように振り分けた**: サビは残響系を
+    避けて`[Harmony stacked under the lead vocal]`(ハモリを重ねるだけ)、
+    エコー/ディレイは**楽器が抜けていくアウトロ**に置いて
+    `[Long echo trailing off the last line]`とした。アウトロは
+    `Instruments Drop Away One By One At The End`で既に音数が減る設計なので、
+    ディレイが他の楽器と競合しない。**サビにリバーブを足すと、直前に潰した
+    「ぼんやり」が再発する**ため意図的に避けている。
+  - 合わせて`No Reverb On The Voice`を削除(アウトロのディレイと矛盾するため)。
+    乾いた質感は`Dry Close-Mic Vocal`と`Dry Mix`で担保する。
 
 ## スタイルプロンプト
 
 ```
-YuRa,
-Powerful Female Vocal, Front And Center Vocal, Strong Vocal Presence,
-Dry Close-Mic Vocal, No Reverb On The Voice,
+Front And Center Vocal, Strong Vocal Presence,
+Dry Close-Mic Vocal,
 
 106 Bpm, Minor Key,
 
@@ -208,6 +225,7 @@ Instruments Drop Away One By One At The End
 呼吸の音を、数える
 
 [Chorus]
+[Harmony stacked under the lead vocal]
 世界が全部 消えてしまっても
 この手の 熱だけは覚えていて
 繋いだ手に 爪が食い込むほど
@@ -227,6 +245,7 @@ Instruments Drop Away One By One At The End
 声に出せなくても……
 
 [Outro]
+[Long echo trailing off the last line]
 抱きしめて、今のうちに
 抱きしめて、もっと強く
 抱きしめて、痛いくらい

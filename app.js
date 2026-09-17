@@ -53,62 +53,6 @@
     });
   }
 
-  function buildTemplateText(t) {
-    var lines = [t.name];
-    CATEGORIES.forEach(function (cat) {
-      var items = t.items.filter(function (it) { return it.category === cat; });
-      items.forEach(function (it) {
-        lines.push(it.name + "(" + cat + ")");
-      });
-    });
-    return lines.join("\n");
-  }
-
-  function copyTemplateAsText(t) {
-    var text = buildTemplateText(t);
-    var done = function () { toast("コピーしました。リマインダー/Keepに貼り付けてください"); };
-    var fail = function () { fallbackCopy(text, done); };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done).catch(fail);
-    } else {
-      fallbackCopy(text, done);
-    }
-  }
-
-  function fallbackCopy(text, done) {
-    try {
-      var ta = document.createElement("textarea");
-      ta.value = text;
-      ta.style.position = "fixed";
-      ta.style.opacity = "0";
-      document.body.appendChild(ta);
-      ta.focus();
-      ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-      done();
-    } catch (e) {
-      toast("コピーできませんでした");
-    }
-  }
-
-  var toastTimer = null;
-  function toast(message) {
-    var el = document.getElementById("toast");
-    if (!el) {
-      el = document.createElement("div");
-      el.id = "toast";
-      el.className = "toast";
-      document.body.appendChild(el);
-    }
-    el.textContent = message;
-    el.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () {
-      el.classList.remove("show");
-    }, 2600);
-  }
-
   var templates = loadTemplates();
   var state = { view: "home", currentId: null };
 
@@ -125,40 +69,11 @@
     return { total: total, done: done };
   }
 
-  function go(view, id, opts) {
+  function go(view, id) {
     state.view = view;
     state.currentId = id || null;
-    syncUrl(opts && opts.replace);
     render();
   }
-
-  function syncUrl(replace) {
-    var url = new URL(window.location.href);
-    if (state.view === "template" && state.currentId) {
-      url.searchParams.set("t", state.currentId);
-    } else {
-      url.searchParams.delete("t");
-    }
-    var method = replace ? "replaceState" : "pushState";
-    history[method](null, "", url.pathname + url.search);
-  }
-
-  function stateFromUrl() {
-    var params = new URLSearchParams(window.location.search);
-    var id = params.get("t");
-    if (id && findTemplate(id)) {
-      state.view = "template";
-      state.currentId = id;
-    } else {
-      state.view = "home";
-      state.currentId = null;
-    }
-  }
-
-  window.addEventListener("popstate", function () {
-    stateFromUrl();
-    render();
-  });
 
   // ---------- rendering ----------
 
@@ -310,19 +225,6 @@
       '<button class="btn secondary block" id="duplicate-btn">複製</button>' +
       '<button class="btn danger block" id="delete-btn">削除</button>' +
       "</div>" +
-      '<hr style="border:none;border-top:1px solid var(--border);margin:20px 0">' +
-      "<h3>アプリを開かずに確認したいとき</h3>" +
-      '<p style="font-size:13px;color:var(--text-dim);line-height:1.7;margin-top:-4px">' +
-      "この作業専用のホーム画面アイコンを作ると、タップ1回で一覧を経由せずこの画面に入れます。" +
-      "ブラウザの共有メニュー(Safari)や「⋮」メニュー(Chrome)から「ホーム画面に追加」を選んでください。オフラインでも開けます。" +
-      "</p>" +
-      '<div class="actions-row">' +
-      '<button class="btn secondary block" id="copy-text-btn">テキストで書き出す(コピー)</button>' +
-      "</div>" +
-      '<p style="font-size:13px;color:var(--text-dim);line-height:1.7">' +
-      "コピーした一覧をiPhoneの「リマインダー」やAndroidの「Google Keep」の新規作成画面に貼り付けると、行ごとに項目が分かれます。" +
-      "これらのアプリならホーム画面ウィジェットで、アプリを開かず直接チェックできます。" +
-      "</p>" +
       '<div class="actions-row">' +
       '<button class="btn secondary block" id="menu-close">閉じる</button>' +
       "</div>" +
@@ -457,10 +359,6 @@
       menuDialog.close();
     });
 
-    document.getElementById("copy-text-btn").addEventListener("click", function () {
-      copyTemplateAsText(t);
-    });
-
     document.getElementById("rename-save").addEventListener("click", function () {
       var val = document.getElementById("rename-input").value.trim();
       if (!val) return;
@@ -495,8 +393,6 @@
 
   // ---------- init ----------
 
-  stateFromUrl();
-  syncUrl(true);
   render();
 
   if ("serviceWorker" in navigator) {

@@ -186,7 +186,7 @@
     var listHtml;
     if (visibleTemplates.length === 0) {
       listHtml = editMode
-        ? '<div class="empty">現場で作った新規シートはまだありません。<br>テンプレートは編集で保護されています。</div>'
+        ? '<div class="empty">新規シートはまだありません。<br>テンプレートは編集で保護されています。</div>'
         : '<div class="empty">まだテンプレートがありません。<br>右下の + から、現場の作業ごとにチェックリストを作りましょう。</div>';
     } else {
       listHtml = '<div class="card-list">' + visibleTemplates.map(renderTemplateCard).join("") + "</div>";
@@ -282,7 +282,7 @@
     var groups;
     if (visibleItems.length === 0) {
       groups = editMode
-        ? '<div class="empty">現場で追加した項目はまだありません。<br>テンプレート項目は編集で保護されています。</div>'
+        ? '<div class="empty">追加した項目はまだありません。<br>テンプレート項目は編集で保護されています。</div>'
         : '<div class="empty">まだ持ち物がありません。<br>下のフォームから追加してください。</div>';
     } else {
       groups = '<div class="item-list">' + visibleItems.map(renderItemRow).join("") + "</div>";

@@ -258,7 +258,7 @@
       "<h3>新しいテンプレート</h3>" +
       '<div class="field">' +
       "<label>作業名</label>" +
-      '<input type="text" id="new-template-name" placeholder="例: 本日使う物" maxlength="40">' +
+      '<input type="text" id="new-template-name" placeholder="例: 本日使う物" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
       "</div>" +
       '<div class="field">' +
       "<label>サンプルから始める(任意)</label>" +
@@ -354,7 +354,7 @@
       (editMode
         ? ""
         : '<div class="add-item-row">' +
-          '<input type="text" id="new-item-name" placeholder="持ち物を追加" maxlength="40">' +
+          '<input type="text" id="new-item-name" placeholder="持ち物を追加" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
           '<button class="btn" id="add-item-btn">追加</button>' +
           "</div>") +
       "</main>" +
@@ -369,7 +369,7 @@
       "<h3>テンプレート設定</h3>" +
       '<div class="field">' +
       "<label>作業名</label>" +
-      '<input type="text" id="rename-input" value="' + escapeHtml(t.name) + '" maxlength="40">' +
+      '<input type="text" id="rename-input" value="' + escapeHtml(t.name) + '" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
       "</div>" +
       '<div class="actions-row">' +
       '<button class="btn secondary block" id="rename-save">名前を保存</button>' +

@@ -12,8 +12,8 @@
       "製管機", "ユニット一式", "プロファイル", "架台", "青ボンド", "通線",
       "ウインチ", "コロサポ", "角材(タイコ)", "モルタル", "耐圧ホース",
       "サクションホース", "本管パッカー", "ウレタン、アセトン", "ウレタンスポンジ",
-      "外部削孔機", "グリ、フレキ", "集塵機", "ミニバキューマー", "小型桝用ポンプ",
-      "サニーホース", "ゴムステップ"
+      "外部削孔機", "グリ、フレキ", "集塵機", "ハイウォッシャー", "ミニバキューマー",
+      "小型桝用ポンプ", "サニーホース", "ゴムステップ"
     ],
     "仕上げ": [
       "コロサポ", "外部削孔機", "グリ、フレキ", "ウレタン除去ブラシ",
@@ -26,7 +26,7 @@
     "注入": [
       "モルタル", "青ボンド", "耐圧ホース", "サクションホース", "本管パッカー",
       "ウレタン、アセトン", "ウレタンスポンジ", "外部削孔機", "グリ、フレキ",
-      "集塵機", "ミニバキューマー", "小型桝用ポンプ", "サニーホース", "ゴムステップ"
+      "集塵機", "ハイウォッシャー", "ミニバキューマー", "小型桝用ポンプ", "サニーホース", "ゴムステップ"
     ],
     "調査": ["試走管", "流出防止", "通線", "調査用パッカー", "取付カメラ", "グリ、フレキ"]
   };
@@ -74,6 +74,23 @@
           tmpl.isPreset = true;
           changed = true;
         }
+        var remaining = tmpl.items.slice();
+        var syncedItems = PRESETS[name].map(function (itemName) {
+          var pos = remaining.findIndex(function (it) { return it.name === itemName; });
+          if (pos !== -1) {
+            var found = remaining.splice(pos, 1)[0];
+            if (!found.fromPreset) {
+              found.fromPreset = true;
+              changed = true;
+            }
+            return found;
+          }
+          changed = true;
+          return { id: uid(), name: itemName, checked: false, fromPreset: true };
+        });
+        var customItems = remaining.filter(function (it) { return !it.fromPreset; });
+        if (customItems.length !== remaining.length) changed = true;
+        tmpl.items = syncedItems.concat(customItems);
       } else {
         var items = PRESETS[name].map(function (n) {
           return { id: uid(), name: n, checked: false, fromPreset: true };
@@ -313,22 +330,28 @@
   }
 
   function renderMenuDialog(t) {
+    var nameFieldHtml = t.isPreset
+      ? '<div class="field">' +
+        "<label>作業名</label>" +
+        '<div class="hint-text" style="font-size:20px;color:var(--text)">' + escapeHtml(t.name) + "</div>" +
+        "</div>"
+      : '<div class="field">' +
+        "<label>作業名</label>" +
+        '<input type="text" id="rename-input" value="' + escapeHtml(t.name) + '" maxlength="40">' +
+        "</div>" +
+        '<div class="actions-row">' +
+        '<button class="btn secondary block" id="rename-save">名前を保存</button>' +
+        "</div>";
     return (
       '<dialog id="menu-dialog">' +
       '<div class="dialog-body">' +
       "<h3>テンプレート設定</h3>" +
-      '<div class="field">' +
-      "<label>作業名</label>" +
-      '<input type="text" id="rename-input" value="' + escapeHtml(t.name) + '" maxlength="40">' +
-      "</div>" +
-      '<div class="actions-row">' +
-      '<button class="btn secondary block" id="rename-save">名前を保存</button>' +
-      "</div>" +
+      nameFieldHtml +
       '<div class="actions-row">' +
       '<button class="btn secondary block" id="duplicate-btn">複製</button>' +
       (t.isPreset ? "" : '<button class="btn danger block" id="delete-btn">削除</button>') +
       "</div>" +
-      (t.isPreset ? '<p class="hint-text">テンプレートは削除できません。複製してから編集してください。</p>' : "") +
+      (t.isPreset ? '<p class="hint-text">テンプレートは名前の変更・削除ができません。複製してから編集してください。</p>' : "") +
       '<div class="actions-row">' +
       '<button class="btn secondary block" id="menu-close">閉じる</button>' +
       "</div>" +
@@ -584,15 +607,18 @@
       menuDialog.close();
     });
 
-    document.getElementById("rename-save").addEventListener("click", function () {
-      var val = document.getElementById("rename-input").value.trim();
-      if (!val) return;
-      t.name = val;
-      t.updatedAt = Date.now();
-      saveTemplates();
-      menuDialog.close();
-      render();
-    });
+    var renameSaveBtn = document.getElementById("rename-save");
+    if (renameSaveBtn) {
+      renameSaveBtn.addEventListener("click", function () {
+        var val = document.getElementById("rename-input").value.trim();
+        if (!val) return;
+        t.name = val;
+        t.updatedAt = Date.now();
+        saveTemplates();
+        menuDialog.close();
+        render();
+      });
+    }
 
     document.getElementById("duplicate-btn").addEventListener("click", function () {
       var copy = {

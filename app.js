@@ -19,7 +19,7 @@
       "コロサポ", "外部削孔機", "グリ、フレキ", "ウレタン除去ブラシ",
       "流出防止", "内部削孔機用ブラシ"
     ],
-    "製管、ウエイト、シャックル": [
+    "製管、ウエイト": [
       "製管機", "ユニット一式", "プロファイル", "架台", "青ボンド", "通線",
       "ウエイト、シャックル", "ウインチ", "コロサポ", "角材(タイコ)", "取付桝用網", "新ハイザイ袋"
     ],
@@ -60,10 +60,20 @@
   var templates = loadTemplates();
   var state = { view: "home", currentId: null, editMode: false, selected: {}, homeEditMode: false, homeSelected: {} };
 
+  var RENAMED_PRESETS = { "製管、ウエイト、シャックル": "製管、ウエイト" };
+
   function ensureDefaultTemplates() {
     var order = Object.keys(PRESETS);
     var defaults = [];
     var changed = false;
+
+    templates.forEach(function (t) {
+      if (RENAMED_PRESETS[t.name]) {
+        t.name = RENAMED_PRESETS[t.name];
+        changed = true;
+      }
+    });
+
     order.forEach(function (name) {
       var idx = templates.findIndex(function (t) { return t.name === name; });
       var tmpl;

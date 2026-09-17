@@ -359,3 +359,26 @@ dialog .dialog-body {
 dialog h3 {
   margin-top: 0;
 }
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0) + 24px);
+  transform: translateX(-50%) translateY(12px);
+  background: var(--text);
+  color: var(--bg);
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+  z-index: 50;
+  max-width: 86vw;
+  text-align: center;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

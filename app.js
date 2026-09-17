@@ -161,14 +161,6 @@
 
   function renderItemRow(it) {
     if (state.editMode) {
-      if (it.fromPreset) {
-        return (
-          '<div class="item-row edit locked" data-item="' + it.id + '">' +
-          '<div class="select-box locked">🔒</div>' +
-          '<div class="item-name">' + escapeHtml(it.name) + "</div>" +
-          "</div>"
-        );
-      }
       var selected = !!state.selected[it.id];
       return (
         '<div class="item-row edit ' + (selected ? "selected" : "") + '" data-item="' + it.id + '">' +
@@ -190,9 +182,16 @@
     var pct = p.total ? Math.round((p.done / p.total) * 100) : 0;
     var editMode = state.editMode;
 
-    var groups = t.items.length === 0
-      ? '<div class="empty">まだ持ち物がありません。<br>下のフォームから追加してください。</div>'
-      : '<div class="item-list">' + t.items.map(renderItemRow).join("") + "</div>";
+    var visibleItems = editMode ? t.items.filter(function (it) { return !it.fromPreset; }) : t.items;
+
+    var groups;
+    if (visibleItems.length === 0) {
+      groups = editMode
+        ? '<div class="empty">現場で追加した項目はまだありません。<br>テンプレート項目は編集で保護されています。</div>'
+        : '<div class="empty">まだ持ち物がありません。<br>下のフォームから追加してください。</div>';
+    } else {
+      groups = '<div class="item-list">' + visibleItems.map(renderItemRow).join("") + "</div>";
+    }
 
     var headerRight = editMode
       ? '<button class="back" id="edit-done-btn">完了</button>'
@@ -207,7 +206,7 @@
         '<div class="summary-bar edit-toolbar">' +
         (selectableItems.length > 0
           ? '<button class="btn secondary" id="select-all-btn">' + (allSelected ? "選択解除" : "全て選択") + "</button>"
-          : '<span class="progress-label">テンプレート項目は保護されています</span>') +
+          : "") +
         '<div class="progress-label" style="flex:1;text-align:center">' + selectedIds.length + "件選択中</div>" +
         "</div>" +
         (selectedIds.length === 1

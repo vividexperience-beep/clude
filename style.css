@@ -255,8 +255,8 @@ main {
 }
 
 .item-row .check {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   border: 2px solid var(--border);
   flex-shrink: 0;
@@ -265,7 +265,7 @@ main {
   justify-content: center;
   cursor: pointer;
   color: transparent;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .item-row.checked .check {
@@ -276,7 +276,7 @@ main {
 
 .item-row .item-name {
   flex: 1;
-  font-size: 19px;
+  font-size: 23px;
   font-weight: 700;
   cursor: pointer;
 }
@@ -290,23 +290,14 @@ main {
   cursor: pointer;
 }
 
-.item-row.edit.locked {
-  cursor: default;
-  opacity: 0.65;
-}
-
-.item-row.edit.locked .item-name {
-  cursor: default;
-}
-
 .item-row.selected {
   border-color: var(--accent);
   background: var(--accent-dim);
 }
 
 .select-box {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 6px;
   border: 2px solid var(--border);
   flex-shrink: 0;
@@ -314,19 +305,13 @@ main {
   align-items: center;
   justify-content: center;
   color: transparent;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .item-row.selected .select-box {
   background: var(--accent);
   border-color: var(--accent);
   color: #000;
-}
-
-.select-box.locked {
-  border-style: dashed;
-  color: var(--text-dim);
-  font-size: 16px;
 }
 
 .edit-toolbar {

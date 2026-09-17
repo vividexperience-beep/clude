@@ -1,26 +1,13 @@
 :root {
-  --bg: #f4f6f5;
-  --surface: #ffffff;
-  --border: #dde3e0;
-  --text: #1c2622;
-  --text-dim: #647169;
-  --accent: #1f6f54;
-  --accent-dim: #e5f1ec;
-  --danger: #b3452f;
+  --bg: #000000;
+  --surface: #141414;
+  --border: #4a4a4a;
+  --text: #ffffff;
+  --text-dim: #c7c7c7;
+  --accent: #34d399;
+  --accent-dim: #0d3327;
+  --danger: #ff6b5b;
   --radius: 14px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #121613;
-    --surface: #1b211d;
-    --border: #2c3630;
-    --text: #eef2ef;
-    --text-dim: #96a49c;
-    --accent: #48b98e;
-    --accent-dim: #1d3129;
-    --danger: #e28066;
-  }
 }
 
 * { box-sizing: border-box; }
@@ -31,7 +18,14 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
   -webkit-tap-highlight-color: transparent;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-weight: 700;
 }
 
 #app {
@@ -60,13 +54,15 @@ header.topbar .back {
   border: none;
   background: none;
   color: var(--accent);
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 700;
   padding: 6px 4px;
   cursor: pointer;
 }
 
 header.topbar h1 {
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: 700;
   margin: 8px 0;
   flex: 1;
   line-height: 1.3;
@@ -103,8 +99,8 @@ main {
 }
 
 .template-card .name {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .progress-row {
@@ -128,7 +124,8 @@ main {
 }
 
 .progress-label {
-  font-size: 12px;
+  font-size: 16px;
+  font-weight: 700;
   color: var(--text-dim);
   white-space: nowrap;
 }
@@ -141,12 +138,13 @@ main {
   height: 56px;
   border-radius: 50%;
   background: var(--accent);
-  color: #fff;
+  color: #000;
   border: none;
-  font-size: 28px;
+  font-size: 32px;
+  font-weight: 700;
   line-height: 56px;
   text-align: center;
-  box-shadow: 0 4px 14px rgba(0,0,0,.25);
+  box-shadow: 0 4px 14px rgba(0,0,0,.6);
   cursor: pointer;
   z-index: 10;
 }
@@ -154,11 +152,12 @@ main {
 .btn {
   display: inline-block;
   background: var(--accent);
-  color: #fff;
+  color: #000;
   border: none;
   border-radius: 10px;
-  padding: 12px 18px;
-  font-size: 15px;
+  padding: 14px 20px;
+  font-size: 19px;
+  font-weight: 700;
   cursor: pointer;
   text-align: center;
 }
@@ -184,19 +183,20 @@ main {
 
 .field label {
   display: block;
-  font-size: 13px;
+  font-size: 17px;
+  font-weight: 700;
   color: var(--text-dim);
   margin-bottom: 6px;
 }
 
 .field input[type=text] {
   width: 100%;
-  padding: 12px 14px;
+  padding: 14px 16px;
   border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .chip-row {
@@ -207,19 +207,20 @@ main {
 }
 
 .chip {
-  padding: 7px 14px;
+  padding: 8px 16px;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text-dim);
-  font-size: 13px;
+  font-size: 17px;
+  font-weight: 700;
   cursor: pointer;
 }
 
 .chip.active {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: #000;
 }
 
 .summary-bar {
@@ -234,7 +235,7 @@ main {
 }
 
 .summary-bar .count {
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 700;
 }
 
@@ -249,13 +250,13 @@ main {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 12px 14px;
+  padding: 14px 16px;
   margin-bottom: 8px;
 }
 
 .item-row .check {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: 2px solid var(--border);
   flex-shrink: 0;
@@ -264,18 +265,19 @@ main {
   justify-content: center;
   cursor: pointer;
   color: transparent;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .item-row.checked .check {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: #000;
 }
 
 .item-row .item-name {
   flex: 1;
-  font-size: 15px;
+  font-size: 19px;
+  font-weight: 700;
   cursor: pointer;
 }
 
@@ -303,8 +305,8 @@ main {
 }
 
 .select-box {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 6px;
   border: 2px solid var(--border);
   flex-shrink: 0;
@@ -312,19 +314,19 @@ main {
   align-items: center;
   justify-content: center;
   color: transparent;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .item-row.selected .select-box {
   background: var(--accent);
   border-color: var(--accent);
-  color: #fff;
+  color: #000;
 }
 
 .select-box.locked {
   border-style: dashed;
   color: var(--text-dim);
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .edit-toolbar {
@@ -339,12 +341,12 @@ main {
 
 .add-item-row input {
   flex: 1;
-  padding: 11px 14px;
+  padding: 13px 16px;
   border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
-  font-size: 15px;
+  font-size: 19px;
 }
 
 .actions-row {
@@ -358,7 +360,7 @@ main {
 }
 
 dialog {
-  border: none;
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 0;
   width: min(420px, 90vw);
@@ -367,7 +369,7 @@ dialog {
 }
 
 dialog::backdrop {
-  background: rgba(0,0,0,.4);
+  background: rgba(255,255,255,.15);
 }
 
 dialog .dialog-body {
@@ -376,4 +378,6 @@ dialog .dialog-body {
 
 dialog h3 {
   margin-top: 0;
+  font-size: 22px;
+  font-weight: 700;
 }

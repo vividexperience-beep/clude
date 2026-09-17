@@ -4,10 +4,20 @@
   var STORAGE_KEY = "wasuremono.templates.v1";
 
   var PRESETS = {
-    "調査": ["試走管", "流出防止", "通線", "調査用パッカー", "取付カメラ", "グリ、フレキ"],
     "前処理": [
       "コンプレッサー一式", "土嚢袋", "試走管", "流出防止", "通線",
       "グリ、フレキ", "確認用注入パッカー", "取付カメラ"
+    ],
+    "製管、注入": [
+      "製管機", "ユニット一式", "プロファイル", "架台", "青ボンド", "通線",
+      "ウインチ", "コロサポ", "角材(タイコ)", "モルタル", "耐圧ホース",
+      "サクションホース", "本管パッカー", "ウレタン、アセトン", "ウレタンスポンジ",
+      "外部削孔機", "グリ、フレキ", "集塵機", "ミニバキューマー", "小型桝用ポンプ",
+      "サニーホース", "ゴムステップ"
+    ],
+    "仕上げ": [
+      "コロサポ", "外部削孔機", "グリ、フレキ", "ウレタン除去ブラシ",
+      "流出防止", "内部削孔機用ブラシ"
     ],
     "製管、ウエイト、シャックル": [
       "製管機", "ユニット一式", "プロファイル", "架台", "青ボンド", "通線",
@@ -18,17 +28,7 @@
       "ウレタン、アセトン", "ウレタンスポンジ", "外部削孔機", "グリ、フレキ",
       "集塵機", "ミニバキューマー", "小型桝用ポンプ", "サニーホース", "ゴムステップ"
     ],
-    "仕上げ": [
-      "コロサポ", "外部削孔機", "グリ、フレキ", "ウレタン除去ブラシ",
-      "流出防止", "内部削孔機用ブラシ"
-    ],
-    "製管、注入": [
-      "製管機", "ユニット一式", "プロファイル", "架台", "青ボンド", "通線",
-      "ウインチ", "コロサポ", "角材(タイコ)", "モルタル", "耐圧ホース",
-      "サクションホース", "本管パッカー", "ウレタン、アセトン", "ウレタンスポンジ",
-      "外部削孔機", "グリ、フレキ", "集塵機", "ミニバキューマー", "小型桝用ポンプ",
-      "サニーホース", "ゴムステップ"
-    ]
+    "調査": ["試走管", "流出防止", "通線", "調査用パッカー", "取付カメラ", "グリ、フレキ"]
   };
 
   function uid() {
@@ -58,7 +58,34 @@
   }
 
   var templates = loadTemplates();
-  var state = { view: "home", currentId: null, editMode: false, selected: {} };
+  var state = { view: "home", currentId: null, editMode: false, selected: {}, homeEditMode: false, homeSelected: {} };
+
+  function ensureDefaultTemplates() {
+    var order = Object.keys(PRESETS);
+    var defaults = [];
+    var changed = false;
+    order.forEach(function (name) {
+      var idx = templates.findIndex(function (t) { return t.name === name; });
+      var tmpl;
+      if (idx !== -1) {
+        tmpl = templates[idx];
+        templates.splice(idx, 1);
+        if (!tmpl.isPreset) {
+          tmpl.isPreset = true;
+          changed = true;
+        }
+      } else {
+        var items = PRESETS[name].map(function (n) {
+          return { id: uid(), name: n, checked: false, fromPreset: true };
+        });
+        tmpl = { id: uid(), name: name, items: items, isPreset: true, updatedAt: Date.now() };
+        changed = true;
+      }
+      defaults.push(tmpl);
+    });
+    templates = defaults.concat(templates);
+    if (changed) saveTemplates();
+  }
 
   function findTemplate(id) {
     for (var i = 0; i < templates.length; i++) {
@@ -78,6 +105,8 @@
     state.currentId = id || null;
     state.editMode = false;
     state.selected = {};
+    state.homeEditMode = false;
+    state.homeSelected = {};
     render();
   }
 
@@ -94,37 +123,76 @@
     bindEvents();
   }
 
-  function renderHomeView() {
-    var listHtml;
-    if (templates.length === 0) {
-      listHtml =
-        '<div class="empty">まだテンプレートがありません。<br>右下の + から、現場の作業ごとにチェックリストを作りましょう。</div>';
-    } else {
-      listHtml =
-        '<div class="card-list">' +
-        templates
-          .map(function (t) {
-            var p = progressOf(t);
-            var pct = p.total ? Math.round((p.done / p.total) * 100) : 0;
-            return (
-              '<div class="template-card" data-open="' + t.id + '">' +
-              '<div class="name">' + escapeHtml(t.name) + "</div>" +
-              '<div class="progress-row">' +
-              '<div class="progress-bar"><div style="width:' + pct + '%"></div></div>' +
-              '<div class="progress-label">' + p.done + " / " + p.total + "</div>" +
-              "</div>" +
-              "</div>"
-            );
-          })
-          .join("") +
-        "</div>";
+  function renderTemplateCard(t) {
+    var p = progressOf(t);
+    var pct = p.total ? Math.round((p.done / p.total) * 100) : 0;
+    var progressHtml =
+      '<div class="progress-row">' +
+      '<div class="progress-bar"><div style="width:' + pct + '%"></div></div>' +
+      '<div class="progress-label">' + p.done + " / " + p.total + "</div>" +
+      "</div>";
+
+    if (state.homeEditMode) {
+      var selected = !!state.homeSelected[t.id];
+      return (
+        '<div class="template-card edit ' + (selected ? "selected" : "") + '" data-select="' + t.id + '">' +
+        '<div class="card-select-row">' +
+        '<div class="select-box">' + (selected ? "✓" : "") + "</div>" +
+        '<div class="name">' + escapeHtml(t.name) + "</div>" +
+        "</div>" +
+        progressHtml +
+        "</div>"
+      );
     }
     return (
-      '<header class="topbar"><h1>忘れ物チェック</h1></header>' +
+      '<div class="template-card" data-open="' + t.id + '">' +
+      '<div class="name">' + escapeHtml(t.name) + "</div>" +
+      progressHtml +
+      "</div>"
+    );
+  }
+
+  function renderHomeView() {
+    var editMode = state.homeEditMode;
+    var visibleTemplates = editMode ? templates.filter(function (t) { return !t.isPreset; }) : templates;
+
+    var listHtml;
+    if (visibleTemplates.length === 0) {
+      listHtml = editMode
+        ? '<div class="empty">現場で作った新規シートはまだありません。<br>テンプレートは編集で保護されています。</div>'
+        : '<div class="empty">まだテンプレートがありません。<br>右下の + から、現場の作業ごとにチェックリストを作りましょう。</div>';
+    } else {
+      listHtml = '<div class="card-list">' + visibleTemplates.map(renderTemplateCard).join("") + "</div>";
+    }
+
+    var headerRight = editMode
+      ? '<button class="back" id="home-edit-done-btn">完了</button>'
+      : '<button class="back" id="home-edit-btn">編集</button>';
+
+    var toolbar = "";
+    if (editMode) {
+      var selectedIds = Object.keys(state.homeSelected);
+      var selectableTemplates = templates.filter(function (t) { return !t.isPreset; });
+      var allSelected = selectableTemplates.length > 0 && selectedIds.length === selectableTemplates.length;
+      toolbar =
+        '<div class="summary-bar edit-toolbar">' +
+        (selectableTemplates.length > 0
+          ? '<button class="btn secondary" id="home-select-all-btn">' + (allSelected ? "選択解除" : "全て選択") + "</button>"
+          : "") +
+        '<div class="progress-label" style="flex:1;text-align:center">' + selectedIds.length + "件選択中</div>" +
+        "</div>" +
+        (selectedIds.length >= 1
+          ? '<div class="actions-row"><button class="btn danger block" id="home-delete-selected-btn">選択したシートを削除(' + selectedIds.length + ")</button></div>"
+          : "");
+    }
+
+    return (
+      '<header class="topbar"><h1>忘れ物チェック</h1>' + headerRight + "</header>" +
       "<main>" +
+      toolbar +
       listHtml +
       "</main>" +
-      '<button class="fab" id="new-template-btn" aria-label="新しいテンプレート">＋</button>' +
+      (editMode ? "" : '<button class="fab" id="new-template-btn" aria-label="新しいテンプレート">＋</button>') +
       renderNewTemplateDialog()
     );
   }
@@ -141,7 +209,7 @@
       "<h3>新しいテンプレート</h3>" +
       '<div class="field">' +
       "<label>作業名</label>" +
-      '<input type="text" id="new-template-name" placeholder="例: 2階 電気配線工事" maxlength="40">' +
+      '<input type="text" id="new-template-name" placeholder="例: 本日使う物" maxlength="40">' +
       "</div>" +
       '<div class="field">' +
       "<label>サンプルから始める(任意)</label>" +
@@ -258,8 +326,9 @@
       "</div>" +
       '<div class="actions-row">' +
       '<button class="btn secondary block" id="duplicate-btn">複製</button>' +
-      '<button class="btn danger block" id="delete-btn">削除</button>' +
+      (t.isPreset ? "" : '<button class="btn danger block" id="delete-btn">削除</button>') +
       "</div>" +
+      (t.isPreset ? '<p class="hint-text">テンプレートは削除できません。複製してから編集してください。</p>' : "") +
       '<div class="actions-row">' +
       '<button class="btn secondary block" id="menu-close">閉じる</button>' +
       "</div>" +
@@ -276,10 +345,68 @@
   }
 
   function bindHomeEvents() {
+    if (state.homeEditMode) {
+      bindHomeEditModeEvents();
+    } else {
+      bindHomeViewModeEvents();
+    }
+  }
+
+  function bindHomeEditModeEvents() {
+    document.getElementById("home-edit-done-btn").addEventListener("click", function () {
+      state.homeEditMode = false;
+      state.homeSelected = {};
+      render();
+    });
+
+    document.querySelectorAll("[data-select]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var id = el.getAttribute("data-select");
+        if (state.homeSelected[id]) delete state.homeSelected[id];
+        else state.homeSelected[id] = true;
+        render();
+      });
+    });
+
+    var selectAllBtn = document.getElementById("home-select-all-btn");
+    if (selectAllBtn) {
+      selectAllBtn.addEventListener("click", function () {
+        var selectableTemplates = templates.filter(function (t) { return !t.isPreset; });
+        var allSelected = selectableTemplates.length > 0 && Object.keys(state.homeSelected).length === selectableTemplates.length;
+        if (allSelected) {
+          state.homeSelected = {};
+        } else {
+          state.homeSelected = {};
+          selectableTemplates.forEach(function (t) { state.homeSelected[t.id] = true; });
+        }
+        render();
+      });
+    }
+
+    var deleteSelectedBtn = document.getElementById("home-delete-selected-btn");
+    if (deleteSelectedBtn) {
+      deleteSelectedBtn.addEventListener("click", function () {
+        var ids = Object.keys(state.homeSelected);
+        if (!confirm(ids.length + "件のシートを削除しますか?元に戻せません。")) return;
+        templates = templates.filter(function (t) { return t.isPreset || !state.homeSelected[t.id]; });
+        state.homeSelected = {};
+        saveTemplates();
+        render();
+      });
+    }
+  }
+
+  function bindHomeViewModeEvents() {
     document.querySelectorAll("[data-open]").forEach(function (el) {
       el.addEventListener("click", function () {
         go("template", el.getAttribute("data-open"));
       });
+    });
+
+    document.getElementById("home-edit-btn").addEventListener("click", function () {
+      state.homeEditMode = true;
+      state.homeSelected = {};
+      render();
     });
 
     var dialog = document.getElementById("new-template-dialog");
@@ -322,7 +449,7 @@
       var items = (PRESETS[selectedPreset] || []).map(function (name) {
         return { id: uid(), name: name, checked: false, fromPreset: true };
       });
-      var t = { id: uid(), name: name, items: items, updatedAt: Date.now() };
+      var t = { id: uid(), name: name, items: items, isPreset: !!selectedPreset, updatedAt: Date.now() };
       templates.unshift(t);
       saveTemplates();
       dialog.close();
@@ -472,6 +599,7 @@
         id: uid(),
         name: t.name + " のコピー",
         items: t.items.map(function (it) { return { id: uid(), name: it.name, checked: false, fromPreset: !!it.fromPreset }; }),
+        isPreset: false,
         updatedAt: Date.now()
       };
       templates.unshift(copy);
@@ -480,17 +608,21 @@
       go("template", copy.id);
     });
 
-    document.getElementById("delete-btn").addEventListener("click", function () {
-      if (!confirm("「" + t.name + "」を削除しますか?元に戻せません。")) return;
-      templates = templates.filter(function (x) { return x.id !== t.id; });
-      saveTemplates();
-      menuDialog.close();
-      go("home");
-    });
+    var deleteBtn = document.getElementById("delete-btn");
+    if (deleteBtn) {
+      deleteBtn.addEventListener("click", function () {
+        if (!confirm("「" + t.name + "」を削除しますか?元に戻せません。")) return;
+        templates = templates.filter(function (x) { return x.id !== t.id; });
+        saveTemplates();
+        menuDialog.close();
+        go("home");
+      });
+    }
   }
 
   // ---------- init ----------
 
+  ensureDefaultTemplates();
   render();
 
   if ("serviceWorker" in navigator) {

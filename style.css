@@ -87,6 +87,13 @@ main {
   margin-top: 12px;
 }
 
+.hint-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
 .template-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -101,6 +108,21 @@ main {
 .template-card .name {
   font-size: 20px;
   font-weight: 700;
+}
+
+.template-card.selected {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.card-select-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-select-row .name {
+  flex: 1;
 }
 
 .progress-row {

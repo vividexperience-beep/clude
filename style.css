@@ -304,13 +304,36 @@ main {
   text-decoration: line-through;
 }
 
-.item-row .del {
-  border: none;
-  background: none;
-  color: var(--text-dim);
-  font-size: 18px;
+.item-row.edit {
   cursor: pointer;
-  padding: 4px;
+}
+
+.item-row.selected {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.select-box {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: transparent;
+  font-size: 14px;
+}
+
+.item-row.selected .select-box {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.edit-toolbar {
+  margin-bottom: 10px;
 }
 
 .add-item-row {

@@ -54,7 +54,7 @@
   }
 
   var templates = loadTemplates();
-  var state = { view: "home", currentId: null };
+  var state = { view: "home", currentId: null, editMode: false, selected: {} };
 
   function findTemplate(id) {
     for (var i = 0; i < templates.length; i++) {
@@ -72,6 +72,8 @@
   function go(view, id) {
     state.view = view;
     state.currentId = id || null;
+    state.editMode = false;
+    state.selected = {};
     render();
   }
 
@@ -153,9 +155,28 @@
     );
   }
 
+  function renderItemRow(it) {
+    if (state.editMode) {
+      var selected = !!state.selected[it.id];
+      return (
+        '<div class="item-row edit ' + (selected ? "selected" : "") + '" data-item="' + it.id + '">' +
+        '<div class="select-box" data-select="' + it.id + '">' + (selected ? "✓" : "") + "</div>" +
+        '<div class="item-name" data-select="' + it.id + '">' + escapeHtml(it.name) + "</div>" +
+        "</div>"
+      );
+    }
+    return (
+      '<div class="item-row ' + (it.checked ? "checked" : "") + '" data-item="' + it.id + '">' +
+      '<div class="check" data-toggle="' + it.id + '">✓</div>' +
+      '<div class="item-name" data-toggle="' + it.id + '">' + escapeHtml(it.name) + "</div>" +
+      "</div>"
+    );
+  }
+
   function renderTemplateView(t) {
     var p = progressOf(t);
     var pct = p.total ? Math.round((p.done / p.total) * 100) : 0;
+    var editMode = state.editMode;
 
     var groups = CATEGORIES.map(function (cat) {
       var items = t.items.filter(function (it) { return it.category === cat; });
@@ -163,17 +184,7 @@
       return (
         '<div class="category-group">' +
         '<h2><span class="dot" style="background:var(--cat-' + cat + ')"></span>' + cat + "</h2>" +
-        items
-          .map(function (it) {
-            return (
-              '<div class="item-row ' + (it.checked ? "checked" : "") + '" data-item="' + it.id + '">' +
-              '<div class="check" data-toggle="' + it.id + '">✓</div>' +
-              '<div class="item-name" data-toggle="' + it.id + '">' + escapeHtml(it.name) + "</div>" +
-              '<button class="del" data-del="' + it.id + '" aria-label="削除">×</button>' +
-              "</div>"
-            );
-          })
-          .join("") +
+        items.map(renderItemRow).join("") +
         "</div>"
       );
     }).join("");
@@ -186,24 +197,50 @@
       return '<option value="' + c + '">' + c + "</option>";
     }).join("");
 
+    var headerRight = editMode
+      ? '<button class="back" id="edit-done-btn">完了</button>'
+      : '<button class="back" id="edit-btn">編集</button><button class="back" id="menu-btn">…</button>';
+
+    var topBlock;
+    if (editMode) {
+      var selectedIds = Object.keys(state.selected);
+      var allSelected = t.items.length > 0 && selectedIds.length === t.items.length;
+      topBlock =
+        '<div class="summary-bar edit-toolbar">' +
+        '<button class="btn secondary" id="select-all-btn">' + (allSelected ? "選択解除" : "全て選択") + "</button>" +
+        '<div class="progress-label" style="flex:1;text-align:center">' + selectedIds.length + "件選択中</div>" +
+        "</div>" +
+        (selectedIds.length === 1
+          ? '<div class="actions-row"><button class="btn secondary block" id="rename-item-btn">名前を編集</button></div>'
+          : "") +
+        (selectedIds.length >= 1
+          ? '<div class="actions-row"><button class="btn danger block" id="delete-selected-btn">選択した項目を削除(' + selectedIds.length + ")</button></div>"
+          : "") +
+        '<div class="actions-row"><button class="btn secondary block" id="reset-checks-btn">チェック状態をリセット</button></div>';
+    } else {
+      topBlock =
+        '<div class="summary-bar">' +
+        '<div class="count">' + p.done + " / " + p.total + "</div>" +
+        '<div class="progress-bar"><div style="width:' + pct + '%"></div></div>' +
+        "</div>";
+    }
+
     return (
       '<header class="topbar">' +
       '<button class="back" id="back-btn">‹ 戻る</button>' +
       "<h1>" + escapeHtml(t.name) + "</h1>" +
-      '<button class="back" id="menu-btn">…</button>' +
+      headerRight +
       "</header>" +
       "<main>" +
-      '<div class="summary-bar">' +
-      '<div class="count">' + p.done + " / " + p.total + "</div>" +
-      '<div class="progress-bar"><div style="width:' + pct + '%"></div></div>' +
-      '<button class="btn secondary" id="reset-btn">リセット</button>' +
-      "</div>" +
+      topBlock +
       groups +
-      '<div class="add-item-row">' +
-      '<input type="text" id="new-item-name" placeholder="持ち物を追加" maxlength="40">' +
-      '<select id="new-item-category">' + catOptions + "</select>" +
-      '<button class="btn" id="add-item-btn">追加</button>' +
-      "</div>" +
+      (editMode
+        ? ""
+        : '<div class="add-item-row">' +
+          '<input type="text" id="new-item-name" placeholder="持ち物を追加" maxlength="40">' +
+          '<select id="new-item-category">' + catOptions + "</select>" +
+          '<button class="btn" id="add-item-btn">追加</button>' +
+          "</div>") +
       "</main>" +
       renderMenuDialog(t)
     );
@@ -302,12 +339,79 @@
       go("home");
     });
 
-    document.getElementById("reset-btn").addEventListener("click", function () {
+    if (state.editMode) {
+      bindEditModeEvents(t);
+    } else {
+      bindViewModeEvents(t);
+    }
+  }
+
+  function bindEditModeEvents(t) {
+    document.getElementById("edit-done-btn").addEventListener("click", function () {
+      state.editMode = false;
+      state.selected = {};
+      render();
+    });
+
+    document.querySelectorAll("[data-select]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var id = el.getAttribute("data-select");
+        if (state.selected[id]) delete state.selected[id];
+        else state.selected[id] = true;
+        render();
+      });
+    });
+
+    var selectAllBtn = document.getElementById("select-all-btn");
+    if (selectAllBtn) {
+      selectAllBtn.addEventListener("click", function () {
+        var allSelected = t.items.length > 0 && Object.keys(state.selected).length === t.items.length;
+        if (allSelected) {
+          state.selected = {};
+        } else {
+          state.selected = {};
+          t.items.forEach(function (it) { state.selected[it.id] = true; });
+        }
+        render();
+      });
+    }
+
+    var renameBtn = document.getElementById("rename-item-btn");
+    if (renameBtn) {
+      renameBtn.addEventListener("click", function () {
+        var id = Object.keys(state.selected)[0];
+        var item = t.items.find(function (it) { return it.id === id; });
+        if (!item) return;
+        var val = prompt("項目名を編集", item.name);
+        if (val && val.trim()) {
+          item.name = val.trim();
+          saveTemplates();
+        }
+        delete state.selected[id];
+        render();
+      });
+    }
+
+    var deleteSelectedBtn = document.getElementById("delete-selected-btn");
+    if (deleteSelectedBtn) {
+      deleteSelectedBtn.addEventListener("click", function () {
+        var ids = Object.keys(state.selected);
+        if (!confirm(ids.length + "件の項目を削除しますか?元に戻せません。")) return;
+        t.items = t.items.filter(function (it) { return !state.selected[it.id]; });
+        state.selected = {};
+        saveTemplates();
+        render();
+      });
+    }
+
+    document.getElementById("reset-checks-btn").addEventListener("click", function () {
       t.items.forEach(function (it) { it.checked = false; });
       saveTemplates();
       render();
     });
+  }
 
+  function bindViewModeEvents(t) {
     document.querySelectorAll("[data-toggle]").forEach(function (el) {
       el.addEventListener("click", function () {
         var id = el.getAttribute("data-toggle");
@@ -317,16 +421,6 @@
           saveTemplates();
           render();
         }
-      });
-    });
-
-    document.querySelectorAll("[data-del]").forEach(function (el) {
-      el.addEventListener("click", function (ev) {
-        ev.stopPropagation();
-        var id = el.getAttribute("data-del");
-        t.items = t.items.filter(function (it) { return it.id !== id; });
-        saveTemplates();
-        render();
       });
     });
 
@@ -349,6 +443,12 @@
     document.getElementById("add-item-btn").addEventListener("click", addItem);
     nameInput.addEventListener("keydown", function (ev) {
       if (ev.key === "Enter") addItem();
+    });
+
+    document.getElementById("edit-btn").addEventListener("click", function () {
+      state.editMode = true;
+      state.selected = {};
+      render();
     });
 
     var menuDialog = document.getElementById("menu-dialog");

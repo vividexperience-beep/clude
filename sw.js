@@ -1,4 +1,4 @@
-const CACHE = "wasuremono-cache-v1";
+const CACHE = "wasuremono-cache-v2";
 const ASSETS = [
   "./",
   "./index.html",

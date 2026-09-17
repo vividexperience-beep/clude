@@ -256,9 +256,10 @@
       '<dialog id="new-template-dialog">' +
       '<div class="dialog-body">' +
       "<h3>新しいテンプレート</h3>" +
+      '<form autocomplete="off" onsubmit="return false;">' +
       '<div class="field">' +
       "<label>作業名</label>" +
-      '<input type="text" id="new-template-name" placeholder="例: 本日使う物" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
+      '<input type="text" id="new-template-name" name="q1" placeholder="例: 本日使う物" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
       "</div>" +
       '<div class="field">' +
       "<label>サンプルから始める(任意)</label>" +
@@ -267,6 +268,7 @@
       presetChips +
       "</div>" +
       "</div>" +
+      "</form>" +
       '<div class="actions-row">' +
       '<button class="btn secondary block" id="new-template-cancel">キャンセル</button>' +
       '<button class="btn block" id="new-template-create">作成</button>' +
@@ -353,10 +355,10 @@
       groups +
       (editMode
         ? ""
-        : '<div class="add-item-row">' +
-          '<input type="text" id="new-item-name" placeholder="持ち物を追加" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
+        : '<form class="add-item-row" autocomplete="off" onsubmit="return false;">' +
+          '<input type="text" id="new-item-name" name="q2" placeholder="持ち物を追加" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
           '<button class="btn" id="add-item-btn">追加</button>' +
-          "</div>") +
+          "</form>") +
       "</main>" +
       (t.isPreset ? "" : renderMenuDialog(t))
     );
@@ -367,10 +369,12 @@
       '<dialog id="menu-dialog">' +
       '<div class="dialog-body">' +
       "<h3>テンプレート設定</h3>" +
+      '<form autocomplete="off" onsubmit="return false;">' +
       '<div class="field">' +
       "<label>作業名</label>" +
-      '<input type="text" id="rename-input" value="' + escapeHtml(t.name) + '" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
+      '<input type="text" id="rename-input" name="q3" value="' + escapeHtml(t.name) + '" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
       "</div>" +
+      "</form>" +
       '<div class="actions-row">' +
       '<button class="btn secondary block" id="rename-save">名前を保存</button>' +
       "</div>" +

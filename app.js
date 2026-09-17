@@ -1,6 +1,11 @@
 (function () {
   "use strict";
 
+  // Enables the :active CSS state on tap in iOS Safari, which otherwise
+  // only applies :active to elements with a touch listener somewhere
+  // in their ancestry.
+  document.addEventListener("touchstart", function () {}, true);
+
   var STORAGE_KEY = "wasuremono.templates.v1";
 
   var PRESETS = {

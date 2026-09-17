@@ -58,6 +58,12 @@ header.topbar .back {
   font-weight: 700;
   padding: 6px 4px;
   cursor: pointer;
+  border-radius: 8px;
+  transition: opacity .08s ease;
+}
+
+header.topbar .back:active {
+  opacity: 0.5;
 }
 
 header.topbar h1 {
@@ -96,6 +102,11 @@ main {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition: background-color .08s ease;
+}
+
+.template-card:active {
+  background: var(--border);
 }
 
 .template-card .name {
@@ -162,6 +173,12 @@ main {
   box-shadow: 0 4px 14px rgba(0,0,0,.6);
   cursor: pointer;
   z-index: 10;
+  transition: filter .08s ease, transform .08s ease;
+}
+
+.fab:active {
+  filter: brightness(0.75);
+  transform: scale(0.94);
 }
 
 .btn {
@@ -175,12 +192,22 @@ main {
   font-weight: 700;
   cursor: pointer;
   text-align: center;
+  transition: filter .08s ease, transform .08s ease;
+}
+
+.btn:active {
+  filter: brightness(0.75);
+  transform: scale(0.97);
 }
 
 .btn.secondary {
   background: var(--surface);
   color: var(--text);
   border: 1px solid var(--border);
+}
+
+.btn.secondary:active {
+  background: var(--border);
 }
 
 .btn.danger {
@@ -230,6 +257,11 @@ main {
   font-size: 17px;
   font-weight: 700;
   cursor: pointer;
+  transition: background-color .08s ease;
+}
+
+.chip:active {
+  background: var(--border);
 }
 
 .chip.active {
@@ -281,6 +313,11 @@ main {
   cursor: pointer;
   color: transparent;
   font-size: 20px;
+  transition: transform .08s ease;
+}
+
+.item-row:active .check {
+  transform: scale(0.88);
 }
 
 .item-row.checked .check {

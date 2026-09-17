@@ -662,8 +662,16 @@
   render();
 
   if ("serviceWorker" in navigator) {
+    var refreshedForUpdate = false;
+    navigator.serviceWorker.addEventListener("controllerchange", function () {
+      if (refreshedForUpdate) return;
+      refreshedForUpdate = true;
+      window.location.reload();
+    });
     window.addEventListener("load", function () {
-      navigator.serviceWorker.register("sw.js").catch(function () {});
+      navigator.serviceWorker.register("sw.js").then(function (reg) {
+        reg.update();
+      }).catch(function () {});
     });
   }
 })();

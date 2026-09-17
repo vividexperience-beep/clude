@@ -1,4 +1,4 @@
-const CACHE = "wasuremono-cache-v18";
+const CACHE = "wasuremono-cache-v19";
 const ASSETS = [
   "./",
   "./index.html",
@@ -6,6 +6,8 @@ const ASSETS = [
   "./app.js",
   "./manifest.json",
   "./icons/icon.svg",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
 ];
 
 self.addEventListener("install", (event) => {

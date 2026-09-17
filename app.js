@@ -161,6 +161,14 @@
 
   function renderItemRow(it) {
     if (state.editMode) {
+      if (it.fromPreset) {
+        return (
+          '<div class="item-row edit locked" data-item="' + it.id + '">' +
+          '<div class="select-box locked">🔒</div>' +
+          '<div class="item-name">' + escapeHtml(it.name) + "</div>" +
+          "</div>"
+        );
+      }
       var selected = !!state.selected[it.id];
       return (
         '<div class="item-row edit ' + (selected ? "selected" : "") + '" data-item="' + it.id + '">' +
@@ -193,10 +201,13 @@
     var topBlock;
     if (editMode) {
       var selectedIds = Object.keys(state.selected);
-      var allSelected = t.items.length > 0 && selectedIds.length === t.items.length;
+      var selectableItems = t.items.filter(function (it) { return !it.fromPreset; });
+      var allSelected = selectableItems.length > 0 && selectedIds.length === selectableItems.length;
       topBlock =
         '<div class="summary-bar edit-toolbar">' +
-        '<button class="btn secondary" id="select-all-btn">' + (allSelected ? "選択解除" : "全て選択") + "</button>" +
+        (selectableItems.length > 0
+          ? '<button class="btn secondary" id="select-all-btn">' + (allSelected ? "選択解除" : "全て選択") + "</button>"
+          : '<span class="progress-label">テンプレート項目は保護されています</span>') +
         '<div class="progress-label" style="flex:1;text-align:center">' + selectedIds.length + "件選択中</div>" +
         "</div>" +
         (selectedIds.length === 1
@@ -310,7 +321,7 @@
         return;
       }
       var items = (PRESETS[selectedPreset] || []).map(function (name) {
-        return { id: uid(), name: name, checked: false };
+        return { id: uid(), name: name, checked: false, fromPreset: true };
       });
       var t = { id: uid(), name: name, items: items, updatedAt: Date.now() };
       templates.unshift(t);
@@ -353,12 +364,13 @@
     var selectAllBtn = document.getElementById("select-all-btn");
     if (selectAllBtn) {
       selectAllBtn.addEventListener("click", function () {
-        var allSelected = t.items.length > 0 && Object.keys(state.selected).length === t.items.length;
+        var selectableItems = t.items.filter(function (it) { return !it.fromPreset; });
+        var allSelected = selectableItems.length > 0 && Object.keys(state.selected).length === selectableItems.length;
         if (allSelected) {
           state.selected = {};
         } else {
           state.selected = {};
-          t.items.forEach(function (it) { state.selected[it.id] = true; });
+          selectableItems.forEach(function (it) { state.selected[it.id] = true; });
         }
         render();
       });
@@ -369,7 +381,7 @@
       renameBtn.addEventListener("click", function () {
         var id = Object.keys(state.selected)[0];
         var item = t.items.find(function (it) { return it.id === id; });
-        if (!item) return;
+        if (!item || item.fromPreset) return;
         var val = prompt("項目名を編集", item.name);
         if (val && val.trim()) {
           item.name = val.trim();
@@ -385,7 +397,7 @@
       deleteSelectedBtn.addEventListener("click", function () {
         var ids = Object.keys(state.selected);
         if (!confirm(ids.length + "件の項目を削除しますか?元に戻せません。")) return;
-        t.items = t.items.filter(function (it) { return !state.selected[it.id]; });
+        t.items = t.items.filter(function (it) { return it.fromPreset || !state.selected[it.id]; });
         state.selected = {};
         saveTemplates();
         render();
@@ -460,7 +472,7 @@
       var copy = {
         id: uid(),
         name: t.name + " のコピー",
-        items: t.items.map(function (it) { return { id: uid(), name: it.name, checked: false }; }),
+        items: t.items.map(function (it) { return { id: uid(), name: it.name, checked: false, fromPreset: !!it.fromPreset }; }),
         updatedAt: Date.now()
       };
       templates.unshift(copy);

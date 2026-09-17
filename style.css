@@ -288,6 +288,15 @@ main {
   cursor: pointer;
 }
 
+.item-row.edit.locked {
+  cursor: default;
+  opacity: 0.65;
+}
+
+.item-row.edit.locked .item-name {
+  cursor: default;
+}
+
 .item-row.selected {
   border-color: var(--accent);
   background: var(--accent-dim);
@@ -310,6 +319,12 @@ main {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;
+}
+
+.select-box.locked {
+  border-style: dashed;
+  color: var(--text-dim);
+  font-size: 12px;
 }
 
 .edit-toolbar {

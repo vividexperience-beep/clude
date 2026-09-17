@@ -8,10 +8,6 @@
   --accent-dim: #e5f1ec;
   --danger: #b3452f;
   --radius: 14px;
-  --cat-材料: #2f6fb3;
-  --cat-道具: #a3762f;
-  --cat-機械: #7a3fb0;
-  --cat-その他: #5c6b64;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -193,7 +189,7 @@ main {
   margin-bottom: 6px;
 }
 
-.field input[type=text], .field select {
+.field input[type=text] {
   width: 100%;
   padding: 12px 14px;
   border-radius: 10px;
@@ -242,24 +238,8 @@ main {
   font-weight: 700;
 }
 
-.category-group {
+.item-list {
   margin-bottom: 18px;
-}
-
-.category-group h2 {
-  font-size: 13px;
-  color: var(--text-dim);
-  margin: 0 0 8px 4px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.category-group h2 .dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  display: inline-block;
 }
 
 .item-row {

@@ -2,44 +2,32 @@
   "use strict";
 
   var STORAGE_KEY = "wasuremono.templates.v1";
-  var CATEGORIES = ["材料", "道具", "機械", "その他"];
 
   var PRESETS = {
-    "調査": [
-      ["試走管", "道具"], ["流出防止", "道具"], ["通線", "道具"],
-      ["調査用パッカー", "道具"], ["取付カメラ", "機械"], ["グリ、フレキ", "道具"]
-    ],
+    "調査": ["試走管", "流出防止", "通線", "調査用パッカー", "取付カメラ", "グリ、フレキ"],
     "前処理": [
-      ["コンプレッサー一式", "機械"], ["土嚢袋", "材料"], ["試走管", "道具"],
-      ["流出防止", "道具"], ["通線", "道具"], ["グリ、フレキ", "道具"],
-      ["確認用注入パッカー", "道具"], ["取付カメラ", "機械"]
+      "コンプレッサー一式", "土嚢袋", "試走管", "流出防止", "通線",
+      "グリ、フレキ", "確認用注入パッカー", "取付カメラ"
     ],
     "製管、ウエイト": [
-      ["製管機", "機械"], ["ユニット一式", "材料"], ["プロファイル", "材料"],
-      ["架台", "道具"], ["青ボンド", "材料"], ["通線", "道具"],
-      ["ウインチ", "機械"], ["コロサポ", "道具"], ["角材(タイコ)", "道具"],
-      ["取付桝用網", "材料"], ["新ハイザイ袋", "材料"]
+      "製管機", "ユニット一式", "プロファイル", "架台", "青ボンド", "通線",
+      "ウインチ", "コロサポ", "角材(タイコ)", "取付桝用網", "新ハイザイ袋"
     ],
     "注入": [
-      ["モルタル", "材料"], ["青ボンド", "材料"], ["耐圧ホース", "道具"],
-      ["サクションホース", "道具"], ["本管パッカー", "道具"], ["ウレタン、アセトン", "材料"],
-      ["ウレタンスポンジ", "材料"], ["外部削孔機", "機械"], ["グリ、フレキ", "道具"],
-      ["集塵機", "機械"], ["ミニバキューマー", "機械"], ["小型桝用ポンプ", "機械"],
-      ["サニーホース", "道具"], ["ゴムステップ", "材料"]
+      "モルタル", "青ボンド", "耐圧ホース", "サクションホース", "本管パッカー",
+      "ウレタン、アセトン", "ウレタンスポンジ", "外部削孔機", "グリ、フレキ",
+      "集塵機", "ミニバキューマー", "小型桝用ポンプ", "サニーホース", "ゴムステップ"
     ],
     "仕上げ": [
-      ["コロサポ", "道具"], ["外部削孔機", "機械"], ["グリ、フレキ", "道具"],
-      ["ウレタン除去ブラシ", "道具"], ["流出防止", "道具"], ["内部削孔機用ブラシ", "道具"]
+      "コロサポ", "外部削孔機", "グリ、フレキ", "ウレタン除去ブラシ",
+      "流出防止", "内部削孔機用ブラシ"
     ],
     "製管、注入": [
-      ["製管機", "機械"], ["ユニット一式", "材料"], ["プロファイル", "材料"],
-      ["架台", "道具"], ["青ボンド", "材料"], ["通線", "道具"],
-      ["ウインチ", "機械"], ["コロサポ", "道具"], ["角材(タイコ)", "道具"],
-      ["モルタル", "材料"], ["耐圧ホース", "道具"], ["サクションホース", "道具"],
-      ["本管パッカー", "道具"], ["ウレタン、アセトン", "材料"], ["ウレタンスポンジ", "材料"],
-      ["外部削孔機", "機械"], ["グリ、フレキ", "道具"], ["集塵機", "機械"],
-      ["ミニバキューマー", "機械"], ["小型桝用ポンプ", "機械"], ["サニーホース", "道具"],
-      ["ゴムステップ", "材料"]
+      "製管機", "ユニット一式", "プロファイル", "架台", "青ボンド", "通線",
+      "ウインチ", "コロサポ", "角材(タイコ)", "モルタル", "耐圧ホース",
+      "サクションホース", "本管パッカー", "ウレタン、アセトン", "ウレタンスポンジ",
+      "外部削孔機", "グリ、フレキ", "集塵機", "ミニバキューマー", "小型桝用ポンプ",
+      "サニーホース", "ゴムステップ"
     ]
   };
 
@@ -194,24 +182,9 @@
     var pct = p.total ? Math.round((p.done / p.total) * 100) : 0;
     var editMode = state.editMode;
 
-    var groups = CATEGORIES.map(function (cat) {
-      var items = t.items.filter(function (it) { return it.category === cat; });
-      if (items.length === 0) return "";
-      return (
-        '<div class="category-group">' +
-        '<h2><span class="dot" style="background:var(--cat-' + cat + ')"></span>' + cat + "</h2>" +
-        items.map(renderItemRow).join("") +
-        "</div>"
-      );
-    }).join("");
-
-    if (t.items.length === 0) {
-      groups = '<div class="empty">まだ持ち物がありません。<br>下のフォームから追加してください。</div>';
-    }
-
-    var catOptions = CATEGORIES.map(function (c) {
-      return '<option value="' + c + '">' + c + "</option>";
-    }).join("");
+    var groups = t.items.length === 0
+      ? '<div class="empty">まだ持ち物がありません。<br>下のフォームから追加してください。</div>'
+      : '<div class="item-list">' + t.items.map(renderItemRow).join("") + "</div>";
 
     var headerRight = editMode
       ? '<button class="back" id="edit-done-btn">完了</button>'
@@ -254,7 +227,6 @@
         ? ""
         : '<div class="add-item-row">' +
           '<input type="text" id="new-item-name" placeholder="持ち物を追加" maxlength="40">' +
-          '<select id="new-item-category">' + catOptions + "</select>" +
           '<button class="btn" id="add-item-btn">追加</button>' +
           "</div>") +
       "</main>" +
@@ -337,8 +309,8 @@
         nameInput.focus();
         return;
       }
-      var items = (PRESETS[selectedPreset] || []).map(function (pair) {
-        return { id: uid(), name: pair[0], category: pair[1], checked: false };
+      var items = (PRESETS[selectedPreset] || []).map(function (name) {
+        return { id: uid(), name: name, checked: false };
       });
       var t = { id: uid(), name: name, items: items, updatedAt: Date.now() };
       templates.unshift(t);
@@ -441,7 +413,6 @@
     });
 
     var nameInput = document.getElementById("new-item-name");
-    var catSelect = document.getElementById("new-item-category");
 
     function addItem() {
       var name = nameInput.value.trim();
@@ -449,7 +420,7 @@
         nameInput.focus();
         return;
       }
-      t.items.push({ id: uid(), name: name, category: catSelect.value, checked: false });
+      t.items.push({ id: uid(), name: name, checked: false });
       saveTemplates();
       render();
       var el = document.getElementById("new-item-name");
@@ -489,7 +460,7 @@
       var copy = {
         id: uid(),
         name: t.name + " のコピー",
-        items: t.items.map(function (it) { return { id: uid(), name: it.name, category: it.category, checked: false }; }),
+        items: t.items.map(function (it) { return { id: uid(), name: it.name, checked: false }; }),
         updatedAt: Date.now()
       };
       templates.unshift(copy);

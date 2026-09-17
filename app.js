@@ -290,7 +290,8 @@
 
     var headerRight = editMode
       ? '<button class="back" id="edit-done-btn">完了</button>'
-      : '<button class="back" id="edit-btn">編集</button><button class="back" id="menu-btn">…</button>';
+      : '<button class="back" id="edit-btn">編集</button>' +
+        (t.isPreset ? "" : '<button class="back" id="menu-btn">…</button>');
 
     var topBlock;
     if (editMode) {
@@ -335,33 +336,26 @@
           '<button class="btn" id="add-item-btn">追加</button>' +
           "</div>") +
       "</main>" +
-      renderMenuDialog(t)
+      (t.isPreset ? "" : renderMenuDialog(t))
     );
   }
 
   function renderMenuDialog(t) {
-    var nameFieldHtml = t.isPreset
-      ? '<div class="field">' +
-        "<label>作業名</label>" +
-        '<div class="hint-text" style="font-size:20px;color:var(--text)">' + escapeHtml(t.name) + "</div>" +
-        "</div>"
-      : '<div class="field">' +
-        "<label>作業名</label>" +
-        '<input type="text" id="rename-input" value="' + escapeHtml(t.name) + '" maxlength="40">' +
-        "</div>" +
-        '<div class="actions-row">' +
-        '<button class="btn secondary block" id="rename-save">名前を保存</button>' +
-        "</div>";
     return (
       '<dialog id="menu-dialog">' +
       '<div class="dialog-body">' +
       "<h3>テンプレート設定</h3>" +
-      nameFieldHtml +
+      '<div class="field">' +
+      "<label>作業名</label>" +
+      '<input type="text" id="rename-input" value="' + escapeHtml(t.name) + '" maxlength="40">' +
+      "</div>" +
+      '<div class="actions-row">' +
+      '<button class="btn secondary block" id="rename-save">名前を保存</button>' +
+      "</div>" +
       '<div class="actions-row">' +
       '<button class="btn secondary block" id="duplicate-btn">複製</button>' +
-      (t.isPreset ? "" : '<button class="btn danger block" id="delete-btn">削除</button>') +
+      '<button class="btn danger block" id="delete-btn">削除</button>' +
       "</div>" +
-      (t.isPreset ? '<p class="hint-text">テンプレートは名前の変更・削除ができません。複製してから編集してください。</p>' : "") +
       '<div class="actions-row">' +
       '<button class="btn secondary block" id="menu-close">閉じる</button>' +
       "</div>" +
@@ -609,17 +603,17 @@
       render();
     });
 
-    var menuDialog = document.getElementById("menu-dialog");
-    document.getElementById("menu-btn").addEventListener("click", function () {
-      menuDialog.showModal();
-    });
-    document.getElementById("menu-close").addEventListener("click", function () {
-      menuDialog.close();
-    });
+    var menuBtn = document.getElementById("menu-btn");
+    if (menuBtn) {
+      var menuDialog = document.getElementById("menu-dialog");
+      menuBtn.addEventListener("click", function () {
+        menuDialog.showModal();
+      });
+      document.getElementById("menu-close").addEventListener("click", function () {
+        menuDialog.close();
+      });
 
-    var renameSaveBtn = document.getElementById("rename-save");
-    if (renameSaveBtn) {
-      renameSaveBtn.addEventListener("click", function () {
+      document.getElementById("rename-save").addEventListener("click", function () {
         var val = document.getElementById("rename-input").value.trim();
         if (!val) return;
         t.name = val;
@@ -628,25 +622,22 @@
         menuDialog.close();
         render();
       });
-    }
 
-    document.getElementById("duplicate-btn").addEventListener("click", function () {
-      var copy = {
-        id: uid(),
-        name: t.name + " のコピー",
-        items: t.items.map(function (it) { return { id: uid(), name: it.name, checked: false, fromPreset: !!it.fromPreset }; }),
-        isPreset: false,
-        updatedAt: Date.now()
-      };
-      templates.unshift(copy);
-      saveTemplates();
-      menuDialog.close();
-      go("template", copy.id);
-    });
+      document.getElementById("duplicate-btn").addEventListener("click", function () {
+        var copy = {
+          id: uid(),
+          name: t.name + " のコピー",
+          items: t.items.map(function (it) { return { id: uid(), name: it.name, checked: false, fromPreset: !!it.fromPreset }; }),
+          isPreset: false,
+          updatedAt: Date.now()
+        };
+        templates.unshift(copy);
+        saveTemplates();
+        menuDialog.close();
+        go("template", copy.id);
+      });
 
-    var deleteBtn = document.getElementById("delete-btn");
-    if (deleteBtn) {
-      deleteBtn.addEventListener("click", function () {
+      document.getElementById("delete-btn").addEventListener("click", function () {
         if (!confirm("「" + t.name + "」を削除しますか?元に戻せません。")) return;
         templates = templates.filter(function (x) { return x.id !== t.id; });
         saveTemplates();

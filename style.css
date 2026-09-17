@@ -87,13 +87,6 @@ main {
   margin-top: 12px;
 }
 
-.hint-text {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-dim);
-  line-height: 1.6;
-}
-
 .template-card {
   background: var(--surface);
   border: 1px solid var(--border);

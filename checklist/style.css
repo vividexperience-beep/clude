@@ -376,14 +376,104 @@ main {
   margin-top: 4px;
 }
 
-.add-item-row input {
+.add-item-row input[type=text] {
   flex: 1;
+  min-width: 0;
   padding: 13px 16px;
   border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
   font-size: 19px;
+}
+
+.icon-btn {
+  flex-shrink: 0;
+  padding: 13px 14px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* 項目に添付した写真のサムネイル */
+.thumb-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--border);
+  cursor: pointer;
+}
+
+.item-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumb-days {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .65);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  padding: 1px 0;
+}
+
+/* 追加前に選んだ写真のプレビュー */
+.photo-pending {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.photo-pending img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.photo-pending-note {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* タップで開く拡大表示 */
+#photo-dialog {
+  border: none;
+  background: transparent;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#photo-dialog::backdrop {
+  background: rgba(0, 0, 0, .9);
+}
+
+#photo-dialog img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
 }
 
 .actions-row {

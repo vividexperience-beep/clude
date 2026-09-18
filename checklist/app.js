@@ -55,8 +55,111 @@
     }, 2000);
   }
 
+  // ---------- 写真の保存 ----------
+  // 写真は localStorage(5MB上限・隣の「忘れ物チェック」と共有)には入りきらないので
+  // IndexedDB に置く。項目側には photoId と撮影日時だけを持たせる。
+  var PHOTO_DB = "checklist-photos";
+  var PHOTO_STORE = "photos";
+  var PHOTO_MAX_AGE_DAYS = 60;
+  var PHOTO_MAX_AGE_MS = PHOTO_MAX_AGE_DAYS * 24 * 60 * 60 * 1000;
+
+  function openPhotoDb() {
+    return new Promise(function (resolve, reject) {
+      var req = indexedDB.open(PHOTO_DB, 1);
+      req.onupgradeneeded = function () {
+        if (!req.result.objectStoreNames.contains(PHOTO_STORE)) {
+          req.result.createObjectStore(PHOTO_STORE);
+        }
+      };
+      req.onsuccess = function () { resolve(req.result); };
+      req.onerror = function () { reject(req.error); };
+    });
+  }
+
+  function photoTx(mode, run) {
+    return openPhotoDb().then(function (db) {
+      return new Promise(function (resolve, reject) {
+        var tx = db.transaction(PHOTO_STORE, mode);
+        var req = run(tx.objectStore(PHOTO_STORE));
+        tx.oncomplete = function () { db.close(); resolve(req ? req.result : undefined); };
+        tx.onerror = function () { db.close(); reject(tx.error); };
+      });
+    });
+  }
+
+  function photoPut(id, dataUrl) {
+    return photoTx("readwrite", function (store) { return store.put(dataUrl, id); });
+  }
+
+  function photoGet(id) {
+    return photoTx("readonly", function (store) { return store.get(id); });
+  }
+
+  function photoDelete(id) {
+    return photoTx("readwrite", function (store) { return store.delete(id); });
+  }
+
+  function photoAllKeys() {
+    return photoTx("readonly", function (store) { return store.getAllKeys(); });
+  }
+
+  function photoDaysLeft(photoAt) {
+    return Math.ceil((photoAt + PHOTO_MAX_AGE_MS - Date.now()) / (24 * 60 * 60 * 1000));
+  }
+
+  // 60日を過ぎた写真と、項目から参照されなくなった写真を消す。
+  function cleanupPhotos() {
+    var referenced = {};
+    var expired = [];
+    var changed = false;
+    templates.forEach(function (t) {
+      t.items.forEach(function (it) {
+        if (!it.photoId) return;
+        if (Date.now() - it.photoAt > PHOTO_MAX_AGE_MS) {
+          expired.push(it.photoId);
+          delete it.photoId;
+          delete it.photoAt;
+          changed = true;
+        } else {
+          referenced[it.photoId] = true;
+        }
+      });
+    });
+    if (changed) saveTemplates();
+
+    return photoAllKeys().then(function (keys) {
+      var dead = (keys || []).filter(function (k) { return !referenced[k]; });
+      return Promise.all(dead.concat(expired).map(photoDelete));
+    }).catch(function () {});
+  }
+
+  // カメラ写真はそのままだと数MBあるので、長辺1000px・JPEG品質0.7 に縮小する。
+  function compressImage(file) {
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onerror = function () { reject(reader.error); };
+      reader.onload = function () {
+        var img = new Image();
+        img.onerror = function () { reject(new Error("image decode failed")); };
+        img.onload = function () {
+          var scale = Math.min(1, 1000 / Math.max(img.width, img.height));
+          var w = Math.max(1, Math.round(img.width * scale));
+          var h = Math.max(1, Math.round(img.height * scale));
+          var canvas = document.createElement("canvas");
+          canvas.width = w;
+          canvas.height = h;
+          canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL("image/jpeg", 0.7));
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
   var templates = loadTemplates();
   var state = { view: "home", currentId: null, editMode: false, selected: {}, homeEditMode: false, homeSelected: {} };
+  var pendingPhoto = null;
 
   var RENAMED_PRESETS = {};
 
@@ -132,6 +235,7 @@
     state.selected = {};
     state.homeEditMode = false;
     state.homeSelected = {};
+    pendingPhoto = null;
     render();
   }
 
@@ -146,6 +250,30 @@
       app.innerHTML = renderHomeView();
     }
     bindEvents();
+    hydratePhotos();
+  }
+
+  // サムネイルの中身は IndexedDB から非同期で読むので、描画後に流し込む。
+  function hydratePhotos() {
+    document.querySelectorAll("[data-photo]").forEach(function (img) {
+      var id = img.getAttribute("data-photo");
+      photoGet(id).then(function (dataUrl) {
+        if (dataUrl) img.src = dataUrl;
+      }).catch(function () {});
+      img.addEventListener("click", function (ev) {
+        ev.stopPropagation();
+        if (!img.src) return;
+        var dialog = document.getElementById("photo-dialog");
+        if (!dialog) return;
+        document.getElementById("photo-dialog-img").src = img.src;
+        dialog.showModal();
+      });
+    });
+
+    var dialog = document.getElementById("photo-dialog");
+    if (dialog) {
+      dialog.addEventListener("click", function () { dialog.close(); });
+    }
   }
 
   function renderTemplateCard(t) {
@@ -256,12 +384,24 @@
     );
   }
 
+  function renderThumb(it) {
+    if (!it.photoId) return "";
+    var left = photoDaysLeft(it.photoAt);
+    return (
+      '<div class="thumb-wrap">' +
+      '<img class="item-thumb" data-photo="' + it.photoId + '" alt="">' +
+      '<span class="thumb-days">あと' + left + "日</span>" +
+      "</div>"
+    );
+  }
+
   function renderItemRow(it) {
     if (state.editMode) {
       var selected = !!state.selected[it.id];
       return (
         '<div class="item-row edit ' + (selected ? "selected" : "") + '" data-item="' + it.id + '">' +
         '<div class="select-box" data-select="' + it.id + '">' + (selected ? "✓" : "") + "</div>" +
+        renderThumb(it) +
         '<div class="item-name" data-select="' + it.id + '">' + escapeHtml(it.name) + "</div>" +
         "</div>"
       );
@@ -269,6 +409,7 @@
     return (
       '<div class="item-row ' + (it.checked ? "checked" : "") + '" data-item="' + it.id + '">' +
       '<div class="check" data-toggle="' + it.id + '">✓</div>' +
+      renderThumb(it) +
       '<div class="item-name" data-toggle="' + it.id + '">' + escapeHtml(it.name) + "</div>" +
       "</div>"
     );
@@ -333,11 +474,21 @@
       groups +
       (editMode
         ? ""
-        : '<form class="add-item-row" autocomplete="off" onsubmit="return false;">' +
+        : (pendingPhoto
+            ? '<div class="photo-pending">' +
+              '<img src="' + pendingPhoto + '" alt="">' +
+              '<div class="photo-pending-note">写真は' + PHOTO_MAX_AGE_DAYS + "日後に自動で消えます</div>" +
+              '<button type="button" class="btn secondary" id="photo-clear-btn">取消</button>' +
+              "</div>"
+            : "") +
+          '<form class="add-item-row" autocomplete="off" onsubmit="return false;">' +
+          '<button type="button" class="btn secondary icon-btn" id="photo-btn" aria-label="写真を追加">📷</button>' +
           '<input type="text" id="item-add-input" name="q2" placeholder="持ち物を追加" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
-          '<button class="btn" id="add-item-btn">追加</button>' +
+          '<button type="button" class="btn" id="add-item-btn">追加</button>' +
+          '<input type="file" id="photo-file" accept="image/*" hidden>' +
           "</form>") +
       "</main>" +
+      '<dialog id="photo-dialog"><img id="photo-dialog-img" alt=""></dialog>' +
       (t.isPreset ? "" : renderMenuDialog(t))
     );
   }
@@ -422,6 +573,7 @@
         templates = templates.filter(function (t) { return t.isPreset || !state.homeSelected[t.id]; });
         state.homeSelected = {};
         saveTemplates();
+        cleanupPhotos();
         render();
       });
     }
@@ -557,6 +709,7 @@
         t.items = t.items.filter(function (it) { return it.fromPreset || !state.selected[it.id]; });
         state.selected = {};
         saveTemplates();
+        cleanupPhotos();
         render();
       });
     }
@@ -590,11 +743,50 @@
         nameInput.focus();
         return;
       }
-      t.items.push({ id: uid(), name: name, checked: false });
-      saveTemplates();
-      render();
-      var el = document.getElementById("item-add-input");
-      if (el) el.focus();
+      var item = { id: uid(), name: name, checked: false };
+      var staged = pendingPhoto;
+      var saved = Promise.resolve();
+      if (staged) {
+        item.photoId = uid();
+        item.photoAt = Date.now();
+        saved = photoPut(item.photoId, staged).catch(function () {
+          delete item.photoId;
+          delete item.photoAt;
+          toast("写真を保存できませんでした");
+        });
+      }
+      saved.then(function () {
+        t.items.push(item);
+        pendingPhoto = null;
+        saveTemplates();
+        render();
+        var el = document.getElementById("item-add-input");
+        if (el) el.focus();
+      });
+    }
+
+    var photoBtn = document.getElementById("photo-btn");
+    var photoFile = document.getElementById("photo-file");
+    if (photoBtn && photoFile) {
+      photoBtn.addEventListener("click", function () { photoFile.click(); });
+      photoFile.addEventListener("change", function () {
+        var file = photoFile.files && photoFile.files[0];
+        if (!file) return;
+        compressImage(file).then(function (dataUrl) {
+          pendingPhoto = dataUrl;
+          render();
+        }).catch(function () {
+          toast("この写真は読み込めませんでした");
+        });
+      });
+    }
+
+    var photoClearBtn = document.getElementById("photo-clear-btn");
+    if (photoClearBtn) {
+      photoClearBtn.addEventListener("click", function () {
+        pendingPhoto = null;
+        render();
+      });
     }
 
     document.getElementById("add-item-btn").addEventListener("click", addItem);
@@ -646,6 +838,7 @@
         if (!confirm("「" + t.name + "」を削除しますか?元に戻せません。")) return;
         templates = templates.filter(function (x) { return x.id !== t.id; });
         saveTemplates();
+        cleanupPhotos();
         menuDialog.close();
         go("home");
       });
@@ -656,6 +849,7 @@
 
   ensureDefaultTemplates();
   render();
+  cleanupPhotos().then(function () { render(); });
 
   if ("serviceWorker" in navigator) {
     var refreshedForUpdate = false;

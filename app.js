@@ -258,7 +258,7 @@
       "<h3>新しいテンプレート</h3>" +
       '<form autocomplete="off" onsubmit="return false;">' +
       '<div class="field">' +
-      "<label>作業名</label>" +
+      "<label>タイトル</label>" +
       '<input type="text" id="tpl-title-input" name="q1" placeholder="例: 本日使う物" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
       "</div>" +
       '<div class="field">' +
@@ -371,12 +371,12 @@
       "<h3>テンプレート設定</h3>" +
       '<form autocomplete="off" onsubmit="return false;">' +
       '<div class="field">' +
-      "<label>作業名</label>" +
+      "<label>タイトル</label>" +
       '<input type="text" id="tpl-title-edit" name="q3" value="' + escapeHtml(t.name) + '" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
       "</div>" +
       "</form>" +
       '<div class="actions-row">' +
-      '<button class="btn secondary block" id="rename-save">名前を保存</button>' +
+      '<button class="btn secondary block" id="rename-save">保存</button>' +
       "</div>" +
       '<div class="actions-row">' +
       '<button class="btn secondary block" id="duplicate-btn">複製</button>' +

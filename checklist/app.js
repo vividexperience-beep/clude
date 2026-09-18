@@ -426,7 +426,7 @@
     if (visibleItems.length === 0) {
       groups = editMode
         ? '<div class="empty">まだ項目がありません。</div>'
-        : '<div class="empty">まだ持ち物がありません。<br>下のフォームから追加してください。</div>';
+        : '<div class="empty">まだ項目がありません。<br>下のフォームから追加してください。</div>';
     } else {
       groups = '<div class="item-list">' + visibleItems.map(renderItemRow).join("") + "</div>";
     }
@@ -483,7 +483,7 @@
             : "") +
           '<form class="add-item-row" autocomplete="off" onsubmit="return false;">' +
           '<button type="button" class="btn secondary icon-btn" id="photo-btn" aria-label="写真を追加">📷</button>' +
-          '<input type="text" id="item-add-input" name="q2" placeholder="持ち物を追加" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
+          '<input type="text" id="item-add-input" name="q2" placeholder="項目を追加" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
           '<button type="button" class="btn" id="add-item-btn">追加</button>' +
           '<input type="file" id="photo-file" accept="image/*" hidden>' +
           "</form>") +

@@ -376,14 +376,14 @@
       "</div>" +
       "</form>" +
       '<div class="actions-row">' +
-      '<button class="btn secondary block" id="rename-save">保存</button>' +
+      '<button type="button" class="btn secondary block" id="rename-save">保存</button>' +
       "</div>" +
       '<div class="actions-row">' +
-      '<button class="btn secondary block" id="duplicate-btn">複製</button>' +
-      '<button class="btn danger block" id="delete-btn">削除</button>' +
+      '<button type="button" class="btn secondary block" id="duplicate-btn">複製</button>' +
+      '<button type="button" class="btn danger block" id="delete-btn">削除</button>' +
       "</div>" +
       '<div class="actions-row">' +
-      '<button class="btn secondary block" id="menu-close">閉じる</button>' +
+      '<button type="button" class="btn secondary block" id="menu-close">閉じる</button>' +
       "</div>" +
       "</div>" +
       "</dialog>"
@@ -635,19 +635,34 @@
       var menuDialog = document.getElementById("menu-dialog");
       menuBtn.addEventListener("click", function () {
         menuDialog.showModal();
+        // iOS Safari では showModal() の直後に focus() しておかないと、
+        // ダイアログ内の入力欄をタップしてもキーボードが出ないことがある。
+        // (新規作成のダイアログは最初から focus() しているので、そちらは出る)
+        var titleInput = document.getElementById("tpl-title-edit");
+        if (titleInput) {
+          titleInput.focus();
+          titleInput.select();
+        }
       });
       document.getElementById("menu-close").addEventListener("click", function () {
         menuDialog.close();
       });
 
       document.getElementById("rename-save").addEventListener("click", function () {
-        var val = document.getElementById("tpl-title-edit").value.trim();
-        if (!val) return;
+        var titleInput = document.getElementById("tpl-title-edit");
+        var val = titleInput.value.trim();
+        // 空のまま押されたときに黙って何もしないと、壊れているように見える。
+        if (!val) {
+          toast("タイトルを入力してください");
+          titleInput.focus();
+          return;
+        }
         t.name = val;
         t.updatedAt = Date.now();
         saveTemplates();
         menuDialog.close();
         render();
+        toast("タイトルを変更しました");
       });
 
       document.getElementById("duplicate-btn").addEventListener("click", function () {

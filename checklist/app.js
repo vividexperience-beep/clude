@@ -235,7 +235,7 @@
       '<form autocomplete="off" onsubmit="return false;">' +
       '<div class="field">' +
       "<label>タイトル</label>" +
-      '<input type="text" id="tpl-title-input" name="q1" placeholder="例: 本日使う物" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
+      '<input type="text" id="tpl-title-input" name="q1" placeholder="例: 買い物" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
       "</div>" +
       (presetChips
         ? '<div class="field">' +

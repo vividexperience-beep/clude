@@ -307,7 +307,7 @@
     if (visibleItems.length === 0) {
       groups = editMode
         ? '<div class="empty">追加した項目はまだありません。<br>テンプレート項目は編集で保護されています。</div>'
-        : '<div class="empty">まだ持ち物がありません。<br>下のフォームから追加してください。</div>';
+        : '<div class="empty">まだ項目がありません。<br>下のフォームから追加してください。</div>';
     } else {
       groups = '<div class="item-list">' + visibleItems.map(renderItemRow).join("") + "</div>";
     }
@@ -356,7 +356,7 @@
       (editMode
         ? ""
         : '<form class="add-item-row" autocomplete="off" onsubmit="return false;">' +
-          '<input type="text" id="item-add-input" name="q2" placeholder="持ち物を追加" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
+          '<input type="text" id="item-add-input" name="q2" placeholder="項目を追加" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
           '<button class="btn" id="add-item-btn">追加</button>' +
           "</form>") +
       "</main>" +

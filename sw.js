@@ -1,7 +1,7 @@
 // 同じドメインに別アプリ(checklist/)が同居するため、削除対象は自分の
 // プレフィックスのものだけに限定する。限定しないと相手のキャッシュまで消す。
 const CACHE_PREFIX = "wasuremono-cache-";
-const CACHE = CACHE_PREFIX + "v23";
+const CACHE = CACHE_PREFIX + "v24";
 const ASSETS = [
   "./",
   "./index.html",

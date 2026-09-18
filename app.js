@@ -16,20 +16,20 @@
     "製管、注入": [
       "製管機", "ユニット一式", "プロファイル", "架台", "青ボンド", "通線",
       "ウエイト、シャックル", "ウインチ", "コロサポ", "角材(タイコ)", "モルタル", "耐圧ホース",
-      "サクションホース", "本管パッカー", "ウレタン、アセトン", "ウレタンスポンジ",
+      "サクションホース", "本管パッカー", "取付カメラ", "ウレタン、アセトン", "ウレタンスポンジ",
       "外部削孔機", "グリ、フレキ", "集塵機", "フレコン", "ハイウォッシャー", "ミニバキューマー",
       "小型桝用ポンプ", "サニーホース", "ゴムステップ"
     ],
     "仕上げ": [
-      "コロサポ", "外部削孔機", "グリ、フレキ", "ウレタン除去ブラシ",
+      "コロサポ", "外部削孔機", "取付カメラ", "グリ、フレキ", "ウレタン除去ブラシ",
       "流出防止", "内部削孔機用ブラシ"
     ],
     "製管、ウエイト": [
-      "製管機", "ユニット一式", "プロファイル", "架台", "青ボンド", "通線",
+      "製管機", "ユニット一式", "プロファイル", "架台", "青ボンド", "取付カメラ", "通線",
       "ウエイト、シャックル", "ウインチ", "コロサポ", "角材(タイコ)", "取付桝用網", "新ハイザイ袋"
     ],
     "注入": [
-      "モルタル", "青ボンド", "耐圧ホース", "サクションホース", "本管パッカー",
+      "モルタル", "青ボンド", "耐圧ホース", "サクションホース", "本管パッカー", "取付カメラ",
       "ウレタン、アセトン", "ウレタンスポンジ", "外部削孔機", "グリ、フレキ",
       "集塵機", "フレコン", "ハイウォッシャー", "ミニバキューマー", "小型桝用ポンプ", "サニーホース", "ゴムステップ"
     ],
@@ -259,7 +259,7 @@
       '<form autocomplete="off" onsubmit="return false;">' +
       '<div class="field">' +
       "<label>作業名</label>" +
-      '<input type="text" id="new-template-name" name="q1" placeholder="例: 本日使う物" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
+      '<input type="text" id="tpl-title-input" name="q1" placeholder="例: 本日使う物" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
       "</div>" +
       '<div class="field">' +
       "<label>サンプルから始める(任意)</label>" +
@@ -356,7 +356,7 @@
       (editMode
         ? ""
         : '<form class="add-item-row" autocomplete="off" onsubmit="return false;">' +
-          '<input type="text" id="new-item-name" name="q2" placeholder="持ち物を追加" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
+          '<input type="text" id="item-add-input" name="q2" placeholder="持ち物を追加" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
           '<button class="btn" id="add-item-btn">追加</button>' +
           "</form>") +
       "</main>" +
@@ -372,7 +372,7 @@
       '<form autocomplete="off" onsubmit="return false;">' +
       '<div class="field">' +
       "<label>作業名</label>" +
-      '<input type="text" id="rename-input" name="q3" value="' + escapeHtml(t.name) + '" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
+      '<input type="text" id="tpl-title-edit" name="q3" value="' + escapeHtml(t.name) + '" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
       "</div>" +
       "</form>" +
       '<div class="actions-row">' +
@@ -464,7 +464,7 @@
 
     var dialog = document.getElementById("new-template-dialog");
     var fab = document.getElementById("new-template-btn");
-    var nameInput = document.getElementById("new-template-name");
+    var nameInput = document.getElementById("tpl-title-input");
     var selectedPreset = "";
 
     fab.addEventListener("click", function () {
@@ -604,7 +604,7 @@
       });
     });
 
-    var nameInput = document.getElementById("new-item-name");
+    var nameInput = document.getElementById("item-add-input");
 
     function addItem() {
       var name = nameInput.value.trim();
@@ -615,7 +615,7 @@
       t.items.push({ id: uid(), name: name, checked: false });
       saveTemplates();
       render();
-      var el = document.getElementById("new-item-name");
+      var el = document.getElementById("item-add-input");
       if (el) el.focus();
     }
 
@@ -641,7 +641,7 @@
       });
 
       document.getElementById("rename-save").addEventListener("click", function () {
-        var val = document.getElementById("rename-input").value.trim();
+        var val = document.getElementById("tpl-title-edit").value.trim();
         if (!val) return;
         t.name = val;
         t.updatedAt = Date.now();

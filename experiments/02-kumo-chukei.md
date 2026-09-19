@@ -85,6 +85,9 @@ Overheated Female Announcer, Machine-Gun Delivery,
 Slow Low Male Reporter, Unbothered, Almost Bored,
 Natural Pauses, Audible Breaths, Quiet Chuckles,
 
+Studio Voice Clean And Close,
+Reporter Heard Down A Phone Line, Thin And Slightly Distant,
+
 Mostly Spoken, Only Rare Melodic Phrases,
 Minimal News Underscore, Low Sustained Strings,
 Ticking Clock Percussion, Very Low In The Mix,
@@ -161,24 +164,33 @@ No Sung Chorus, No Crowd Vocals, No Applause
 ## 台本
 
 ```
-[Spoken Word]
-[Female Voice]
+[Opening — spoken]
+
+[Female Voice, Studio]
 おーっと 繋がりました 現場であります
 釈迦(しゃか)さん 聞こえますか 釈迦さん
 
-[Male Voice]
+[Male Voice, On Site]
 …………
 あ
 これは しゃべれば よろしいので
 
-[Female Voice]
+[Female Voice, Studio]
 聞こえております 結構です
+スタジオの声 届いておりますか
+
+[Male Voice, On Site]
+ええ 届いております
+
+[Female Voice, Studio]
 さあ 天上界からの生中継
 極楽と地獄を 一本の視線で射抜く
 前代未聞のこの中継
 釈迦さん そちらの状況は いかがでありますか
 
-[Male Voice]
+[Situation — spoken]
+
+[Male Voice, On Site]
 はい
 えー わたくし今
 蓮池(はすいけ)のほとりに おりましてな
@@ -186,169 +198,215 @@ No Sung Chorus, No Crowd Vocals, No Applause
 ずうっと 下まで
 ……地獄が 見えますな
 
-[Female Voice]
+[Female Voice, Studio]
+地獄が 見える
 出ました 底なしの蓮池(はすいけ)
 天国の足元に ぽっかりと空いた 地獄の覗き窓であります
 
-[Male Voice]
+[Male Voice, On Site]
 まあ そうとも 言えますが
 
-[Female Voice]
-その底に 何が見えますか
+[Female Voice, Studio]
+釈迦さん その底に 何が見えますか
 
-[Male Voice]
+[Male Voice, On Site]
 血(ち)の池に 罪人(ざいにん)が 浮いたり沈んだり
 そのうちの一人
 犍陀多(かんだた)と申す男
+生前は 大泥棒(おおどろぼう)でしてな
 
-[Female Voice]
+[Female Voice, Studio]
 犍陀多(かんだた)
-生前の罪 数知れず
 盗んで盗んで盗み抜いた 泥棒界の大御所であります
 
-[Male Voice]
+[Male Voice, On Site]
 はあ
 
-[Female Voice]
-しかし この男 ただ者ではない
-たった一度
-たった一度だけ 善を積んでおります
+[Female Voice, Studio]
+その男が なぜ今 注目されているのでしょう
 
-[Male Voice]
-ええ
+[Male Voice, On Site]
+ただ 一度だけ
 蜘蛛を 踏まずに よけたことがある
 
-[Female Voice]
-蜘蛛一匹
+[Female Voice, Studio]
+たった一匹
 その一匹が 今 運命を動かす
 
-[Male Voice]
+[The Thread — spoken]
+
+[Male Voice, On Site]
 ……おや
 
-[Female Voice]
-どうしました
+[Female Voice, Studio]
+どうしました 釈迦さん
 
-[Male Voice]
+[Male Voice, On Site]
 上から 糸が
 細いのが 一本
 すう、と
 
-[Female Voice]
+[Female Voice, Studio]
 降りてきたァ
 天から垂れた 一本の生命線
 髪の毛より細い 救いの綱であります
 
-[Male Voice]
+[Male Voice, On Site]
 蜘蛛の糸で ございますな これは
 
-[Female Voice]
+[Female Voice, Studio]
 釈迦さん これは誰が垂らしたものですか
 
-[Male Voice]
+[Male Voice, On Site]
 …………
 さて
 どうで ございましょうなあ
 
 ふふ
 
-[Female Voice]
-謎は謎のまま 現場は動きます
-犍陀多 気づいた
+[Female Voice, Studio]
+謎は 謎のまま
+現場 動きはありますか
 
-[Male Voice]
-掴みましたな
+[Male Voice, On Site]
+気づきましたな
+掴んだ
 のぼる のぼります
 
-[Female Voice]
-のぼるのぼる 地獄の底からの大脱出
+[Female Voice, Studio]
+のぼるのぼる
+地獄の底からの 大脱出
 奈落を蹴って 天を目指す
 男の一本勝負であります
 
-[Male Voice]
+[Male Voice, On Site]
 速い
 これは 速いですな
 血の池は もう 遥か下で ございます
 
-[Female Voice]
+[Female Voice, Studio]
 このまま 極楽まで 届いてしまうのか
 
-[Male Voice]
+[Turn — spoken]
+
+[Male Voice, On Site]
 届くかも しれませんなあ
 
 あ
 
-[Female Voice]
+[Female Voice, Studio]
 どうしました
 
-[Male Voice]
+[Male Voice, On Site]
 下を 見ましたな 今
 ……来ておりますな
 
-[Female Voice]
-来たァ
-後続です 後続が来た
-一匹 二匹ではありません
-百 千 数えきれない
-地獄そのものが 押し寄せてくる
+[Female Voice, Studio]
+来た
+何が来ましたか 釈迦さん
 
-[Male Voice]
+[Male Voice, On Site]
+後続です
+数えきれん
+百 千
 同じ糸に ぶら下がっておる
 
-[Female Voice]
+[Female Voice, Studio]
+地獄そのものが 押し寄せてくる
 一本の糸に 地獄が丸ごと
 これは 持つのか 持たないのか
 
-[Male Voice]
+[Male Voice, On Site]
 ……どうでしょうなあ
 細いですからなあ
 
 おや 何か 叫んでおりますな
 
-[Female Voice]
-何と言っているんでしょう
+[Female Voice, Studio]
+何と 言っているんでしょう
 
-[Male Voice]
+[Male Voice, On Site]
 「この糸は己(おれ)のものだ」
 「下(お)りろ 下りろ」
 
+[The Snap — spoken]
+
+[Male Voice, On Site]
 …………あ
 
-[Female Voice]
-切れたァ
+[Female Voice, Studio]
+釈迦さん どうしました
 
-[Male Voice]
+[Male Voice, On Site]
 切れましたな
 掴んでおった その 真上から
 
-[Female Voice]
+[Female Voice, Studio]
+切れたァ
 万事休す
 自分の握った その手の上で
 糸は 無情にも
 
-[Male Voice]
+[Male Voice, On Site]
 落ちて参ります
 くるくる 回りながら
 まっさかさまに
 
 ……血の池に 戻りましたな
 
-[Female Voice]
+[Closing — spoken]
+
+[Female Voice, Studio]
 釈迦さん 今のは
 
-[Male Voice]
+[Male Voice, On Site]
 …………
 
-[Female Voice]
+[Female Voice, Studio]
 釈迦さん？
 
-[Male Voice]
+[Male Voice, On Site]
 …………現場からは 以上で ございます
 スタジオに お返しします
 
-[Female Voice]
+[Female Voice, Studio]
 ……はい
 続いてのニュースです
 ```
+
+### ブラケットと役割の整理(2026-09-19、ユーザー指摘)
+
+**ユーザー評価: 「コレ何でブラケットないの？ あと現場とスタジオが入り乱れてて
+どっちに誰が居るのかわからん」**
+
+**これは表示の問題ではなく、台本の論理が壊れていた。**
+
+**スタジオのアナウンサーには地獄が見えない。見えるのは現場の釈迦だけ。**
+にもかかわらず、初稿ではアナに`犍陀多 気づいた` `来たァ 後続が来た` `切れたァ` と
+**見えないはずのものを実況させていた。** ラベルを足すだけでは直らない種類の誤り。
+
+**直し方: アナの台詞を全て「反応」か「質問」にした。**
+
+> **釈迦が見て言う → アナが受けて名付ける**
+
+アナが先に動くことは一度も無い。`切れたァ`も、釈迦が`切れましたな`と言った**後**に移した。
+これで**役割が音だけで判別できる**ようになる(見た人が喋り、見ていない人が問う)。
+
+**ブラケットは2種類入れた。**
+- **セクション区切り**: `[Opening — spoken]` `[Situation — spoken]` `[The Thread — spoken]`
+  `[Turn — spoken]` `[The Snap — spoken]` `[Closing — spoken]`。
+  ユーザーが持ち込んだラジオDJ作品が`[Opening — spoken]`形式を使っていた技法の応用
+  (構成だけ借り、中身の語は流用していない)。
+  **`Verse``Chorus`等の構造語を避けている**のは`songs/22-ibuki.md`の語り対策と同じ理由。
+- **話者＋場所**: `[Female Voice, Studio]` / `[Male Voice, On Site]`。
+  **`Female Voice`/`Male Voice`という性別語は残した** — 性別は「確実に従う階層」で、
+  二人を分ける最も確実なレバーだから。そこに場所を2語足した形。
+  **長いブラケットは効きにくいという記録があるので、増やしたのは2語だけに留めた。**
+
+**スタイル側にも場所差を音として書いた。**
+`Studio Voice Clean And Close` / `Reporter Heard Down A Phone Line, Thin And Slightly Distant`。
+**実際の中継では現場の音は回線を通って痩せる。** これは現実に即していて、かつ
+**二人を音質(チャンネル)で分離する**ので、ピッチや性別だけに頼らない分離軸が1本増える。
 
 ## 表記の方針(検証01で得た知見を適用)
 

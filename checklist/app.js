@@ -778,6 +778,20 @@
       '<input type="file" id="item-photo-file" accept="image/*" hidden>' +
       "</div>" +
 
+      '<div id="menu-pane-photo-edit" hidden>' +
+      '<h3 id="menu-photo-title"></h3>' +
+      '<img id="menu-photo-preview" class="menu-photo-preview" alt="">' +
+      '<div class="menu-list">' +
+      '<button type="button" class="btn secondary block menu-item" id="menu-photo-replace">' +
+      "写真を選び直す<span>別の写真に差し替えます</span></button>" +
+      '<button type="button" class="btn danger block menu-item" id="menu-photo-remove">' +
+      "写真を消す<span>項目は残り、写真だけ端末から消えます</span></button>" +
+      "</div>" +
+      '<div class="actions-row">' +
+      '<button type="button" class="btn secondary block" id="menu-photo-edit-back">戻る</button>' +
+      "</div>" +
+      "</div>" +
+
       "</div>" +
       "</dialog>"
     );
@@ -1177,9 +1191,18 @@
       var itemPhotoFile = document.getElementById("item-photo-file");
       var photoTargetId = null;
 
+      var menuPhotoEdit = document.getElementById("menu-pane-photo-edit");
+
       var showMenuPane = function (pane) {
         menuMain.hidden = pane !== "main";
         menuPhoto.hidden = pane !== "photo";
+        menuPhotoEdit.hidden = pane !== "photoEdit";
+      };
+
+      var findItem = function (id) {
+        var found = null;
+        t.items.forEach(function (it) { if (it.id === id) found = it; });
+        return found;
       };
 
       settingsBtn.addEventListener("click", function () {
@@ -1206,13 +1229,54 @@
         showMenuPane("main");
       });
 
+      var pickPhoto = function () {
+        // 同じ写真を選び直しても change が起きるように毎回空にする
+        itemPhotoFile.value = "";
+        itemPhotoFile.click();
+      };
+
       document.querySelectorAll("[data-photo-item]").forEach(function (el) {
         el.addEventListener("click", function () {
           photoTargetId = el.getAttribute("data-photo-item");
-          // 同じ写真を選び直しても change が起きるように毎回空にする
-          itemPhotoFile.value = "";
-          itemPhotoFile.click();
+          var target = findItem(photoTargetId);
+          if (!target) return;
+
+          // まだ写真が無い項目は、そのままカメラ/写真選択へ進む。
+          // 既にある場合は、差し替えるのか消すのかを選んでもらう。
+          if (!target.photoId) {
+            pickPhoto();
+            return;
+          }
+          document.getElementById("menu-photo-title").textContent = target.name + " の写真";
+          var preview = document.getElementById("menu-photo-preview");
+          preview.removeAttribute("src");
+          photoGet(target.photoId).then(function (dataUrl) {
+            if (dataUrl) preview.src = dataUrl;
+          });
+          showMenuPane("photoEdit");
         });
+      });
+
+      document.getElementById("menu-photo-replace").addEventListener("click", pickPhoto);
+
+      document.getElementById("menu-photo-edit-back").addEventListener("click", function () {
+        showMenuPane("photo");
+      });
+
+      document.getElementById("menu-photo-remove").addEventListener("click", function () {
+        var target = findItem(photoTargetId);
+        if (!target || !target.photoId) return;
+        if (!confirm("「" + target.name + "」の写真を消しますか?元に戻せません。")) return;
+
+        var oldId = target.photoId;
+        delete target.photoId;
+        delete target.photoAt;
+        t.updatedAt = Date.now();
+        saveTemplates();
+        photoDelete(oldId);
+        menuDialog.close();
+        render();
+        toast("写真を消しました");
       });
 
       itemPhotoFile.addEventListener("change", function () {

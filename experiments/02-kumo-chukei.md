@@ -76,26 +76,85 @@
 ## スタイル
 
 ```
-Spoken Word, News Broadcast, Live Field Report,
-Two Speakers Alternating, Studio And On-Site,
-Female Studio Anchor, Fast Clear Delivery,
-Male Field Reporter, Calm Low Measured Delivery,
+Spoken Word, Conversational Delivery, Voice Forward,
+Live Broadcast, Studio Announcer And A Reporter On Site,
+
+Overheated Female Announcer, Machine-Gun Delivery,
+1980s Ringside Commentary Style, Grand Overblown Metaphors,
+
+Slow Low Male Reporter, Unbothered, Almost Bored,
+Natural Pauses, Audible Breaths, Quiet Chuckles,
+
+Mostly Spoken, Only Rare Melodic Phrases,
+Minimal News Underscore, Low Sustained Strings,
+Ticking Clock Percussion, Very Low In The Mix,
+
 Dry Close Microphone, Broadcast Compression,
-No Music, No Melody, No Beat, No Singing,
-No Crowd Vocals, No Audience Laughter, No Applause,
-Spoken Only From Start To Finish
+No Sung Chorus, No Crowd Vocals, No Applause
 ```
 
-**実証済み**: `Spoken Word`(確実に効くデリバリー区分) / `No Crowd Vocals`(15回) /
-`No Beat`(清宮栞の章) / `Close`系 / 性別指定(確実に従う階層)
+### 第1ラウンドからの変更(2026-09-19)
 
-**未検証**: `News Broadcast` `Live Field Report` `Two Speakers Alternating` /
-`Studio Anchor` `Field Reporter` / `Broadcast Compression` /
-`No Music` `No Melody` `No Singing` `No Audience Laughter` `No Applause`
+**ユーザー評価: 「セリフや、アナウンサーと中継とのやりとりがぎこちなく、
+とても会話や実況って感じじゃない」**
 
-**音楽をゼロにしている。** 検証01で`Taiko`のみでも語りが成立したので、
-**音楽を完全に抜いて二人の声の分離だけを見る**。
-うまくいかない場合、ニュース番組のスティング(短いジングル)を足すのが次の手。
+**原因は主に台本側だった。** 書いたものが「原稿」であって「喋り言葉」になっていなかった。
+調べた通り、話し言葉は**文法にこだわらず省略しくだけた表現になり、
+フィラー(「あのー」「えーと」)と相槌が入る**。相槌は「**交話的機能**」と呼ばれ、
+**言葉を交わすこと自体が一体感を作る**とされている
+(出典: [かくたまブログ](https://cakutama.com/blog/writingtechnique/spoken-and-written-language.html) /
+[データグリーン](https://www.data-green.jp/filler_word/))。初版にはそれが一つも無かった。
+
+**スタイル側の最大の変更: `No Music` をやめてBGMを敷いた。**
+
+独立した2つのソースが同じことを言っていた。
+1. **ユーザーが持ち込んだ他ユーザーのラジオDJ作品**が、
+   **バンドを丸ごと敷いた上で「ほぼ喋り、稀に歌」と明示**していた
+2. 外部の語り系ガイドの推奨が
+   **`spoken-word narration, voice-forward, minimal documentary underscore, no sung chorus`**
+   — **`No Singing`ではなく`No Sung Chorus`**。歌を禁じるのではなくサビを禁じる
+
+**仮説(未検証): 音楽モデルから音楽を全部取り上げると、余った生成能力が行き場を失って
+歌に向かうのではないか。** BGMという逃がし先を与えた方が、残りが喋りで安定する。
+初版の`No Music, No Melody, No Beat, No Singing`+`Absolutely No Singing`は
+**モデルの本能と全面対決していた**可能性がある。
+**しかもニュース番組にはBGMがあるのが自然で、リアリティの面でも間違っていた。**
+
+**楽器は他ユーザーの編成(アコギ・ピアノ・ブラシドラム)を流用せず、報道番組に合うものを
+自分で選んだ。** `Ticking Clock Percussion`は`songs/01-one-step-behind.md`で使用実績があり、
+報道の緊迫感と「時間が迫る」という意味の両方に効く。
+
+**`Quiet Chuckles`を入れた。** 他ユーザー作品からの技法抽出で、
+**笑いを"客席"ではなく"話者本人"に置いている**のが要点。
+検証01で客席の笑い声がノイズ化して詰まった問題の回避策になる。
+
+### アナウンサーを古舘伊知郎調にした(2026-09-19、ユーザー要望)
+
+古舘本人が技法の核を言語化している。
+
+> **「名づける」ことに価値がある** — 当たり前の内容が合っているだけでなく、
+> それそのものじゃないけれど、**なにかを呼び出す"あだ名"をつける**ことが重要
+> (出典: [ログミーBusiness](https://logmi.jp/main/career/331001))
+
+特徴として確認できたのは **①異名・造語の創作 ②過剰な比喩 ③「おーっと」の感嘆で入る
+④「であります」調のクラシカルな昭和のアナウンス・スタイル ⑤情報より形容が勝る「過剰の極み」**
+(出典: [middle-edge](https://middle-edge-neo.jp/articles/5885/) /
+[ほぼ日](https://www.1101.com/n/s/furutachi/2022-12-12.html) /
+[SPAIA](https://spaia.jp/column/professional_wrestling/2883))。
+
+**実際のフレーズ(「戦いのワンダーランド」「人間山脈」等)は一切使っていない。**
+あれは古舘氏の創作物であり、`CLAUDE.md`の「他人のプロンプトを参考にする際の注意」と
+同じ原則を適用する。**「名づける」という技法だけを取り、異名は蜘蛛の糸用に新しく作った。**
+
+**これで構造が決まった。**
+
+> **釈迦が素朴な事実を言う → アナが大げさに命名し直す → 釈迦が受け流す**
+
+アナが過熱するほど釈迦の淡々が効く。**声の音響差も大きく開くので、二人の分離にも有利になるはず**(推測)。
+
+**リスク**: 古舘調は畳みかけ・反復が多い。検証01で確認した通り**反復は歌を誘発する**。
+同一フレーズの連呼は避け、**形容のエスカレーション**で作っている
+(descriptive escalation は repeated hook とは別物、という判断。ただし未検証)。
 
 ---
 
@@ -104,97 +163,191 @@ Spoken Only From Start To Finish
 ```
 [Spoken Word]
 [Female Voice]
-続いてのニュースです
-ただいま現場と中継が繋がっております
-現場の釈迦(しゃか)さん
+おーっと 繋がりました 現場であります
+釈迦(しゃか)さん 聞こえますか 釈迦さん
 
 [Male Voice]
-はい 現場の釈迦です
-わたくし今 極楽の蓮池(はすいけ)のほとりに来ております
-足元の水が澄みきっておりまして
-底が そのまま地獄まで見通せる状態です
+…………
+あ
+これは しゃべれば よろしいので
 
 [Female Voice]
-釈迦さん 下の様子はいかがでしょうか
+聞こえております 結構です
+さあ 天上界からの生中継
+極楽と地獄を 一本の視線で射抜く
+前代未聞のこの中継
+釈迦さん そちらの状況は いかがでありますか
 
 [Male Voice]
 はい
-血(ち)の池に 罪人(ざいにん)が沈んでおります
-その中の一人 犍陀多(かんだた)という男
-生前は大泥棒(おおどろぼう)でしたが
-一度だけ 蜘蛛を踏み殺さずに助けております
-
-おっと ここで動きがありました
-上から 細い糸が一本 垂れてまいりました
-蜘蛛の糸です
+えー わたくし今
+蓮池(はすいけ)のほとりに おりましてな
+この池が どうも 底が抜けておるようで
+ずうっと 下まで
+……地獄が 見えますな
 
 [Female Voice]
-誰が垂らしたものでしょうか
+出ました 底なしの蓮池(はすいけ)
+天国の足元に ぽっかりと空いた 地獄の覗き窓であります
 
 [Male Voice]
-さあ
-それはわたくしにも なんとも申し上げられません
-
-犍陀多(かんだた) 気づきました
-掴みました 登り始めます
+まあ そうとも 言えますが
 
 [Female Voice]
-おおっと 登り始めた
+その底に 何が見えますか
 
 [Male Voice]
-順調です
-すでに血の池は 遥か下
-このまま行けば 極楽まで届くかもしれません
+血(ち)の池に 罪人(ざいにん)が 浮いたり沈んだり
+そのうちの一人
+犍陀多(かんだた)と申す男
 
 [Female Voice]
-釈迦さん 後ろはどうなっていますか
+犍陀多(かんだた)
+生前の罪 数知れず
+盗んで盗んで盗み抜いた 泥棒界の大御所であります
 
 [Male Voice]
-はい ここで下を見ました
-後続が来ております
-数えきれません 百 千
-同じ糸に 取りついております
+はあ
 
 [Female Voice]
-これは 持ちますか
+しかし この男 ただ者ではない
+たった一度
+たった一度だけ 善を積んでおります
 
 [Male Voice]
-細い糸ですからね
-一本しかありません
+ええ
+蜘蛛を 踏まずに よけたことがある
 
-犍陀多 何か叫んでおります
+[Female Voice]
+蜘蛛一匹
+その一匹が 今 運命を動かす
+
+[Male Voice]
+……おや
+
+[Female Voice]
+どうしました
+
+[Male Voice]
+上から 糸が
+細いのが 一本
+すう、と
+
+[Female Voice]
+降りてきたァ
+天から垂れた 一本の生命線
+髪の毛より細い 救いの綱であります
+
+[Male Voice]
+蜘蛛の糸で ございますな これは
+
+[Female Voice]
+釈迦さん これは誰が垂らしたものですか
+
+[Male Voice]
+…………
+さて
+どうで ございましょうなあ
+
+ふふ
+
+[Female Voice]
+謎は謎のまま 現場は動きます
+犍陀多 気づいた
+
+[Male Voice]
+掴みましたな
+のぼる のぼります
+
+[Female Voice]
+のぼるのぼる 地獄の底からの大脱出
+奈落を蹴って 天を目指す
+男の一本勝負であります
+
+[Male Voice]
+速い
+これは 速いですな
+血の池は もう 遥か下で ございます
+
+[Female Voice]
+このまま 極楽まで 届いてしまうのか
+
+[Male Voice]
+届くかも しれませんなあ
+
+あ
+
+[Female Voice]
+どうしました
+
+[Male Voice]
+下を 見ましたな 今
+……来ておりますな
+
+[Female Voice]
+来たァ
+後続です 後続が来た
+一匹 二匹ではありません
+百 千 数えきれない
+地獄そのものが 押し寄せてくる
+
+[Male Voice]
+同じ糸に ぶら下がっておる
+
+[Female Voice]
+一本の糸に 地獄が丸ごと
+これは 持つのか 持たないのか
+
+[Male Voice]
+……どうでしょうなあ
+細いですからなあ
+
+おや 何か 叫んでおりますな
 
 [Female Voice]
 何と言っているんでしょう
 
 [Male Voice]
 「この糸は己(おれ)のものだ」
-「下(お)りろ 下(お)りろ」
+「下(お)りろ 下りろ」
 
-……あっ
+…………あ
 
 [Female Voice]
-切れた
+切れたァ
 
 [Male Voice]
-切れました
-掴んでいた その真上からです
+切れましたな
+掴んでおった その 真上から
 
-犍陀多 落ちていきます
-回りながら まっさかさまに
-血の池に 戻りました
+[Female Voice]
+万事休す
+自分の握った その手の上で
+糸は 無情にも
+
+[Male Voice]
+落ちて参ります
+くるくる 回りながら
+まっさかさまに
+
+……血の池に 戻りましたな
 
 [Female Voice]
 釈迦さん 今のは
 
 [Male Voice]
-……
-現場からは以上です
-スタジオにお返しします
+…………
+
+[Female Voice]
+釈迦さん？
+
+[Male Voice]
+…………現場からは 以上で ございます
+スタジオに お返しします
 
 [Female Voice]
 ……はい
-次のニュースです
+続いてのニュースです
 ```
 
 ## 表記の方針(検証01で得た知見を適用)

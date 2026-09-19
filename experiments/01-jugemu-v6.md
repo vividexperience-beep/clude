@@ -67,15 +67,60 @@
 - **サゲは書いていない。** 寿限無のサゲは複数系統あるので、捏造せず
   `……と こういう寸法で` という落語の定型的な締めで終える。
 
+### 第1ラウンドの生成結果を受けた修正(2026-09-19)
+
+ユーザーからのフィードバック3点に対応した。
+
+**1. 読みが間違う → 言い立ては全部かな、マクラは漢字＋ルビ**
+
+読みは[みんなの知識](https://www.benricho.org/kotoba_lesson/yoko_jyugemu-hurigana.html) /
+[ふじみ野市立小のPDF](https://www.fujimino.ed.jp/koma/aboutus/doc/zyugemu.pdf)で確認:
+`じゅげむじゅげむ/ごこうのすりきれ/かいじゃりすいぎょのすいぎょうまつ/うんらいまつ/
+ふうらいまつ/くうねるところにすむところ/やぶらこうじのぶらこうじ/ちょうきゅうめいのちょうすけ`
+
+**言い立てだけルビを使わず全部かなにしたのは意図的。** 理由が3つある。
+- CLAUDE.md記録:「**意味の正確さより、音として読みやすい日本語を優先した方が発音が安定する**」
+  (日本語発音の記事より)。言い立ては**音しか要らない**ので、この原則が最も強く当てはまる。
+- **ルビの括弧`( )`自体が区切りとして読まれる可能性がある。**
+  「一息で言わせたい」という要求と真っ向から衝突するので、括弧を1つも置かない形にした。
+- 難読語が連続するため、ルビだらけになって可読性も落ちる。
+
+**マクラ側は漢字＋ルビ**(`毎度(まいど)` `一席(いっせき)` `和尚(おしょう)` `寸法(すんぽう)`)。
+こちらは**意味が要る**ので漢字を残す。
+
+**2. 観客の笑い声が無関係な箇所に入る → 全版に除外タグを追加、版2から要求を削除**
+
+**予告していたリスクがそのまま出た。** `songs/16-shinkan.md`の
+「環境音を形容詞で作るとノイズ化する」教訓の通りで、
+**笑い声は実在の楽器名に置き換えられない**ので回避策が無い。
+
+- 版2から`Scattered Audience Laughter Between Lines`を**削除**
+- **全版に`No Audience Laughter, No Applause`を追加**
+  (`No 〜`の書式はリポジトリで確立、ただしこの語の組み合わせは新規)
+- 版2から外していた`No Crowd Vocals`を**復活**(笑いを求めなくなったので矛盾が消えた)
+- **注意**: 笑い声が版1・版3でも出ていたなら、原因は`Audience`系の語ではなく
+  **`Rakugo` `Comic` `Stand-Up`といったコメディ系のジャンル語**の可能性がある。
+  除外タグで消えなければ、そちらを疑う。
+- **実務的な結論**: v4.5世代の漫才制作報告でも
+  **「笑い声と拍手だけ効果音で後から追加」**という運用だった。
+  Sunoに客席を求めず、**後乗せする方が確実**という可能性が高い。
+
+**3. 言い立てが区切られる → 改行もスペースも一切入れず1行にした**
+
+Sunoの歌詞では**改行＝フレーズの切れ目＝息継ぎ**になる。
+第1版は11行に割っていたので、切れて当然だった。
+**1行・スペースなし・括弧なしの連続文字列**にして、一息で言い切らせる形に変更。
+落語家が実際にやっているのもこれ(言い立ては見せ場で一息)。
+
 ```
 [Spoken Word]
-え〜 毎度ばかばかしいお笑いを 一席 申し上げます
+え〜 毎度(まいど)ばかばかしいお笑いを 一席(いっせき)申し上げます
 
 ある男に 子供が生まれまして
 名前をどうしたものかと
-お寺の和尚さんのところへ 駆け込みます
+お寺の和尚(おしょう)さんのところへ 駆け込みます
 
-「和尚さん 名前をつけてやってください」
+「和尚(おしょう)さん 名前をつけてやってください」
 「うむ めでたい名を いくつか挙げてみよう」
 
 ところがこの父親
@@ -84,19 +129,9 @@
 
 この子の名前が こうでございます
 
-寿限無 寿限無
-五劫のすり切れ
-海砂利水魚の
-水行末 雲来末 風来末
-食う寝るところに住むところ
-やぶら小路のぶら小路
-パイポパイポ パイポのシューリンガン
-シューリンガンのグーリンダイ
-グーリンダイのポンポコピーの
-ポンポコナの
-長久命の長助
+じゅげむじゅげむごこうのすりきれかいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつくうねるところにすむところやぶらこうじのぶらこうじパイポパイポパイポのシューリンガンシューリンガンのグーリンダイグーリンダイのポンポコピーのポンポコナのちょうきゅうめいのちょうすけ
 
-……と こういう寸法で
+……と こういう寸法(すんぽう)で
 ```
 
 ---
@@ -111,7 +146,8 @@ One Performer Voicing Every Character, Voice Shifts Between Characters,
 Unhurried Delivery With Deliberate Pauses,
 Close Dry Voice, Small Wooden Theatre,
 Taiko Opening Only, Silence While He Speaks,
-No Melody, No Beat, No Crowd Vocals, No Singing
+No Melody, No Beat, No Singing,
+No Crowd Vocals, No Audience Laughter, No Applause
 ```
 
 **実証済み**: `Spoken Word`(確実に効くデリバリー区分) / `Taiko`(4回) /
@@ -133,9 +169,9 @@ Live Recording From A Small Yose Theatre,
 Rakugo Performance, Japanese Comic Storytelling,
 Solo Male Storyteller, Spoken Word, Natural Speech Rhythm,
 Shamisen And Taiko Debayashi Intro, Fading Out As He Begins,
-Room Tone, Scattered Audience Laughter Between Lines,
-Close Mono Microphone, Warm Old Tape,
-No Melody, No Beat, No Singing
+Empty Room Tone, Close Mono Microphone, Warm Old Tape,
+No Melody, No Beat, No Singing,
+No Crowd Vocals, No Audience Laughter, No Applause
 ```
 
 **版1との違い**: 演者の指定ではなく**場の指定**で攻める。
@@ -144,13 +180,10 @@ No Melody, No Beat, No Singing
 **未検証**: `Yose Theatre` `Debayashi` `Shamisen`(リポジトリに前例ゼロ) /
 `Room Tone` `Scattered Audience Laughter` / `Close Mono Microphone` `Warm Old Tape`
 
-**リスクを明示**: **`Audience Laughter` はノイズ化する恐れがある。**
-`songs/16-shinkan.md`で「環境音を形容詞で作るとホワイトノイズになる」教訓を得ており、
-**笑い声は実在の楽器名に置き換えられない**ので、この教訓の回避策が使えない。
-なお`Audience`という語自体は`[Audience Chant Response]`で3回使用実績がある。
-
-**`No Crowd Vocals`をこの版だけ外している。** 客席の笑いを求めているので矛盾するため。
-**その結果として大合唱が戻るなら、それは`No Crowd Vocals`が効いていた証拠**になる。
+**第1ラウンドで客席の笑いを要求したところ、無関係な箇所にも入って邪魔になった**ため、
+`Scattered Audience Laughter Between Lines`を削除し、除外タグ側に回した。
+**予告していたノイズ化リスクがそのまま出た形。**
+客席は**後から効果音で足す**方が確実(v4.5世代の漫才制作報告も同じ運用だった)。
 
 ---
 
@@ -161,7 +194,8 @@ Spoken Word Performance, Audiobook Narration, Stand-Up Storytelling,
 Solo Male Voice, Natural Conversational Intonation,
 Character Voices, Shifting Between Speakers,
 Deliberate Pacing, Long Pauses, Dry Close Microphone,
-Absolutely No Singing, No Melody, No Pitch, No Beat, No Crowd Vocals,
+Absolutely No Singing, No Melody, No Pitch, No Beat,
+No Crowd Vocals, No Audience Laughter, No Applause,
 Spoken Only From Start To Finish
 ```
 
@@ -179,12 +213,15 @@ Spoken Only From Start To Finish
 
 1. **「寿限無 寿限無」で歌/合唱になるか** — 本題
 2. **どこで壊れるか** — 口上・マクラ・会話・言い立て のどこまで喋れているか
-3. **「パイポパイポ」「ポンポコピー」はどうか** —
-   **反復かつ意味を持たない音**なので、寿限無の反復とは**別の壊れ方**をする可能性がある
-4. **「」の1往復で声が変わるか** — 演じ分けができれば漫才の芽も出る
-5. **間(ポーズ)が入るか** — 落語は間が命。音楽モデルはグリッドに詰めたがるはず
-6. **版2の笑い声がノイズになっていないか**
-7. **長いプロンプトが効いたか** — 「短い方が良い」がv6でも生きているかの観測
+3. **言い立てが一息で通るか** — 1行・スペースなしにしたので、
+   どこで勝手に切られるかが分かる。**「パイポパイポ」「ポンポコピー」は反復かつ意味を持たない音**なので、
+   寿限無の反復とは**別の壊れ方**をする可能性がある
+4. **かな表記で読みが正しくなったか** — マクラのルビ`( )`が悪さをしていないかも同時に見る
+5. **「」の1往復で声が変わるか** — 演じ分けができれば漫才の芽も出る
+6. **間(ポーズ)が入るか** — 落語は間が命。音楽モデルはグリッドに詰めたがるはず
+7. **除外タグで笑い声が消えたか** — 消えなければ原因は`Audience`系の語ではなく
+   **`Rakugo` `Comic` `Stand-Up`等のコメディ系ジャンル語**の側にある
+8. **長いプロンプトが効いたか** — 「短い方が良い」がv6でも生きているかの観測
 
 ---
 

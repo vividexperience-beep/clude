@@ -438,8 +438,7 @@
     var headerRight = editMode
       ? '<button class="back" id="edit-done-btn">完了</button>'
       : '<button class="back" id="alarm-btn" aria-label="通知">🔔</button>' +
-        '<button class="back" id="edit-btn">編集</button>' +
-        (t.isPreset ? "" : '<button class="back" id="menu-btn">…</button>');
+        '<button class="back" id="settings-btn" aria-label="リスト設定">⚙️</button>';
 
     var topBlock;
     if (editMode) {
@@ -495,7 +494,7 @@
       "</main>" +
       '<dialog id="photo-dialog"><img id="photo-dialog-img" alt=""></dialog>' +
       (editMode ? "" : renderAlarmDialog(t)) +
-      (t.isPreset ? "" : renderMenuDialog(t))
+      (editMode ? "" : renderMenuDialog(t))
     );
   }
 
@@ -664,11 +663,39 @@
     setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
   }
 
+  // 画面上の名前と実際にできることが一致するよう、設定は⚙️に一本化し、
+  // それぞれのボタンに「何ができるか」を併記する。
   function renderMenuDialog(t) {
+    var item = function (id, cls, label, note) {
+      return (
+        '<button type="button" class="btn ' + cls + ' block menu-item" id="' + id + '">' +
+        label +
+        "<span>" + note + "</span>" +
+        "</button>"
+      );
+    };
+
     return (
       '<dialog id="menu-dialog">' +
       '<div class="dialog-body">' +
+
+      '<div id="menu-pane-main">' +
       "<h3>リスト設定</h3>" +
+      '<div class="menu-list">' +
+      (t.isPreset ? "" : item("menu-rename-open", "secondary", "タイトルを変更", "このリストの名前を付け直します")) +
+      item("menu-edit-items", "secondary", "項目を編集・削除", "項目の名前を直す/消す、チェックを全部外す") +
+      (t.isPreset
+        ? ""
+        : item("duplicate-btn", "secondary", "リストを複製", "同じ項目でもう1つ作ります") +
+          item("delete-btn", "danger", "このリストを削除", "項目と写真ごと消えます。元に戻せません")) +
+      "</div>" +
+      '<div class="actions-row">' +
+      '<button type="button" class="btn secondary block" id="menu-close">閉じる</button>' +
+      "</div>" +
+      "</div>" +
+
+      '<div id="menu-pane-title" hidden>' +
+      "<h3>タイトルを変更</h3>" +
       '<form autocomplete="off" onsubmit="return false;">' +
       '<div class="field">' +
       "<label>タイトル</label>" +
@@ -676,15 +703,13 @@
       "</div>" +
       "</form>" +
       '<div class="actions-row">' +
-      '<button type="button" class="btn secondary block" id="rename-save">保存</button>' +
+      '<button type="button" class="btn block" id="rename-save">保存</button>' +
       "</div>" +
       '<div class="actions-row">' +
-      '<button type="button" class="btn secondary block" id="duplicate-btn">複製</button>' +
-      '<button type="button" class="btn danger block" id="delete-btn">削除</button>' +
+      '<button type="button" class="btn secondary block" id="menu-back">戻る</button>' +
       "</div>" +
-      '<div class="actions-row">' +
-      '<button type="button" class="btn secondary block" id="menu-close">閉じる</button>' +
       "</div>" +
+
       "</div>" +
       "</dialog>"
     );
@@ -965,12 +990,6 @@
       if (ev.key === "Enter") addItem();
     });
 
-    document.getElementById("edit-btn").addEventListener("click", function () {
-      state.editMode = true;
-      state.selected = {};
-      render();
-    });
-
     var alarmBtn = document.getElementById("alarm-btn");
     if (alarmBtn) {
       var alarmDialog = document.getElementById("alarm-dialog");
@@ -1014,63 +1033,93 @@
       });
     }
 
-    var menuBtn = document.getElementById("menu-btn");
-    if (menuBtn) {
+    var settingsBtn = document.getElementById("settings-btn");
+    if (settingsBtn) {
       var menuDialog = document.getElementById("menu-dialog");
-      menuBtn.addEventListener("click", function () {
+      var mainPane = document.getElementById("menu-pane-main");
+      var titlePane = document.getElementById("menu-pane-title");
+
+      var showMainPane = function () {
+        mainPane.hidden = false;
+        titlePane.hidden = true;
+      };
+
+      settingsBtn.addEventListener("click", function () {
+        showMainPane();
         menuDialog.showModal();
-        // iOS Safari では showModal() の直後に focus() しておかないと、
-        // ダイアログ内の入力欄をタップしてもキーボードが出ないことがある。
-        // (新規作成のダイアログは最初から focus() しているので、そちらは出る)
-        var titleInput = document.getElementById("tpl-title-edit");
-        if (titleInput) {
-          titleInput.focus();
-          titleInput.select();
-        }
       });
+
       document.getElementById("menu-close").addEventListener("click", function () {
         menuDialog.close();
       });
 
-      document.getElementById("rename-save").addEventListener("click", function () {
-        var titleInput = document.getElementById("tpl-title-edit");
-        var val = titleInput.value.trim();
-        // 空のまま押されたときに黙って何もしないと、壊れているように見える。
-        if (!val) {
-          toast("タイトルを入力してください");
-          titleInput.focus();
-          return;
-        }
-        t.name = val;
-        t.updatedAt = Date.now();
-        saveTemplates();
+      document.getElementById("menu-edit-items").addEventListener("click", function () {
         menuDialog.close();
+        state.editMode = true;
+        state.selected = {};
         render();
-        toast("タイトルを変更しました");
       });
 
-      document.getElementById("duplicate-btn").addEventListener("click", function () {
-        var copy = {
-          id: uid(),
-          name: t.name + " のコピー",
-          items: t.items.map(function (it) { return { id: uid(), name: it.name, checked: false, fromPreset: !!it.fromPreset }; }),
-          isPreset: false,
-          updatedAt: Date.now()
-        };
-        templates.unshift(copy);
-        saveTemplates();
-        menuDialog.close();
-        go("template", copy.id);
-      });
+      var renameOpen = document.getElementById("menu-rename-open");
+      if (renameOpen) {
+        renameOpen.addEventListener("click", function () {
+          mainPane.hidden = true;
+          titlePane.hidden = false;
+          // iOS Safari はここで focus() しておかないと、
+          // 入力欄をタップしてもキーボードが出ないことがある
+          var titleInput = document.getElementById("tpl-title-edit");
+          titleInput.focus();
+          titleInput.select();
+        });
 
-      document.getElementById("delete-btn").addEventListener("click", function () {
-        if (!confirm("「" + t.name + "」を削除しますか?元に戻せません。")) return;
-        templates = templates.filter(function (x) { return x.id !== t.id; });
-        saveTemplates();
-        cleanupPhotos();
-        menuDialog.close();
-        go("home");
-      });
+        document.getElementById("menu-back").addEventListener("click", showMainPane);
+
+        document.getElementById("rename-save").addEventListener("click", function () {
+          var titleInput = document.getElementById("tpl-title-edit");
+          var val = titleInput.value.trim();
+          // 空のまま押されたときに黙って何もしないと、壊れているように見える。
+          if (!val) {
+            toast("タイトルを入力してください");
+            titleInput.focus();
+            return;
+          }
+          t.name = val;
+          t.updatedAt = Date.now();
+          saveTemplates();
+          menuDialog.close();
+          render();
+          toast("タイトルを変更しました");
+        });
+      }
+
+      var dupBtn = document.getElementById("duplicate-btn");
+      if (dupBtn) {
+        dupBtn.addEventListener("click", function () {
+          var copy = {
+            id: uid(),
+            name: t.name + " のコピー",
+            items: t.items.map(function (it) { return { id: uid(), name: it.name, checked: false, fromPreset: !!it.fromPreset }; }),
+            isPreset: false,
+            updatedAt: Date.now()
+          };
+          templates.unshift(copy);
+          saveTemplates();
+          menuDialog.close();
+          go("template", copy.id);
+        });
+      }
+
+      var delBtn = document.getElementById("delete-btn");
+      if (delBtn) {
+        delBtn.addEventListener("click", function () {
+          if (!confirm("「" + t.name + "」を削除しますか?元に戻せません。")) return;
+          templates = templates.filter(function (x) { return x.id !== t.id; });
+          saveTemplates();
+          cleanupPhotos();
+          menuDialog.close();
+          go("home");
+        });
+      }
     }
   }
 

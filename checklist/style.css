@@ -253,6 +253,26 @@ main {
   font-size: 20px;
 }
 
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.menu-item {
+  text-align: left;
+  line-height: 1.35;
+}
+
+.menu-item span {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: 400;
+  opacity: .72;
+}
+
 .dialog-note {
   font-size: 15px;
   line-height: 1.7;

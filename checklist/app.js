@@ -324,7 +324,7 @@
 
     var headerRight = editMode
       ? '<button class="back" id="home-edit-done-btn">完了</button>'
-      : '<button class="back" id="home-edit-btn">編集</button>';
+      : '<button class="back" id="home-settings-btn" aria-label="設定">⚙️</button>';
 
     var toolbar = "";
     if (editMode) {
@@ -350,7 +350,71 @@
       listHtml +
       "</main>" +
       (editMode ? "" : '<button class="fab" id="new-template-btn" aria-label="新しいリスト">＋</button>') +
-      renderNewTemplateDialog()
+      renderNewTemplateDialog() +
+      (editMode ? "" : renderHomeMenuDialog())
+    );
+  }
+
+  // リストそのものの管理(名前を変える/消す)はホームの⚙️に集約する。
+  // リストの中身(項目)の管理は、リストを開いた先の⚙️が受け持つ。
+  function renderHomeMenuDialog() {
+    var renameable = templates.filter(function (t) { return !t.isPreset; });
+
+    var pickList = renameable.length
+      ? '<div class="menu-list">' +
+        renameable.map(function (t) {
+          return (
+            '<button type="button" class="btn secondary block menu-item" data-rename="' + t.id + '">' +
+            escapeHtml(t.name) +
+            "</button>"
+          );
+        }).join("") +
+        "</div>"
+      : '<div class="dialog-note">名前を変えられるリストがありません。</div>';
+
+    return (
+      '<dialog id="home-menu-dialog">' +
+      '<div class="dialog-body">' +
+
+      '<div id="home-pane-main">' +
+      "<h3>設定</h3>" +
+      '<div class="menu-list">' +
+      '<button type="button" class="btn secondary block menu-item" id="home-rename-open">' +
+      "タイトルを変更<span>リストの名前を付け直します</span></button>" +
+      '<button type="button" class="btn secondary block menu-item" id="home-delete-open">' +
+      "リストを削除<span>選んだリストを、項目と写真ごと消します</span></button>" +
+      "</div>" +
+      '<div class="actions-row">' +
+      '<button type="button" class="btn secondary block" id="home-menu-close">閉じる</button>' +
+      "</div>" +
+      "</div>" +
+
+      '<div id="home-pane-pick" hidden>' +
+      "<h3>どのリストの名前を変えますか?</h3>" +
+      pickList +
+      '<div class="actions-row">' +
+      '<button type="button" class="btn secondary block" id="home-pick-back">戻る</button>' +
+      "</div>" +
+      "</div>" +
+
+      '<div id="home-pane-title" hidden>' +
+      "<h3>タイトルを変更</h3>" +
+      '<form autocomplete="off" onsubmit="return false;">' +
+      '<div class="field">' +
+      "<label>タイトル</label>" +
+      '<input type="text" id="home-title-edit" name="q6" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
+      "</div>" +
+      "</form>" +
+      '<div class="actions-row">' +
+      '<button type="button" class="btn block" id="home-rename-save">保存</button>' +
+      "</div>" +
+      '<div class="actions-row">' +
+      '<button type="button" class="btn secondary block" id="home-title-back">戻る</button>' +
+      "</div>" +
+      "</div>" +
+
+      "</div>" +
+      "</dialog>"
     );
   }
 
@@ -679,10 +743,8 @@
       '<dialog id="menu-dialog">' +
       '<div class="dialog-body">' +
 
-      '<div id="menu-pane-main">' +
       "<h3>リスト設定</h3>" +
       '<div class="menu-list">' +
-      (t.isPreset ? "" : item("menu-rename-open", "secondary", "タイトルを変更", "このリストの名前を付け直します")) +
       item("menu-edit-items", "secondary", "項目を編集・削除", "項目の名前を直す/消す、チェックを全部外す") +
       (t.isPreset
         ? ""
@@ -691,22 +753,6 @@
       "</div>" +
       '<div class="actions-row">' +
       '<button type="button" class="btn secondary block" id="menu-close">閉じる</button>' +
-      "</div>" +
-      "</div>" +
-
-      '<div id="menu-pane-title" hidden>' +
-      "<h3>タイトルを変更</h3>" +
-      '<form autocomplete="off" onsubmit="return false;">' +
-      '<div class="field">' +
-      "<label>タイトル</label>" +
-      '<input type="text" id="tpl-title-edit" name="q3" value="' + escapeHtml(t.name) + '" maxlength="40" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">' +
-      "</div>" +
-      "</form>" +
-      '<div class="actions-row">' +
-      '<button type="button" class="btn block" id="rename-save">保存</button>' +
-      "</div>" +
-      '<div class="actions-row">' +
-      '<button type="button" class="btn secondary block" id="menu-back">戻る</button>' +
       "</div>" +
       "</div>" +
 
@@ -782,10 +828,78 @@
       });
     });
 
-    document.getElementById("home-edit-btn").addEventListener("click", function () {
+    var homeMenuDialog = document.getElementById("home-menu-dialog");
+    var homeMain = document.getElementById("home-pane-main");
+    var homePick = document.getElementById("home-pane-pick");
+    var homeTitle = document.getElementById("home-pane-title");
+    var renameTargetId = null;
+
+    var showHomePane = function (pane) {
+      homeMain.hidden = pane !== "main";
+      homePick.hidden = pane !== "pick";
+      homeTitle.hidden = pane !== "title";
+    };
+
+    document.getElementById("home-settings-btn").addEventListener("click", function () {
+      showHomePane("main");
+      homeMenuDialog.showModal();
+    });
+
+    document.getElementById("home-menu-close").addEventListener("click", function () {
+      homeMenuDialog.close();
+    });
+
+    document.getElementById("home-rename-open").addEventListener("click", function () {
+      showHomePane("pick");
+    });
+
+    document.getElementById("home-pick-back").addEventListener("click", function () {
+      showHomePane("main");
+    });
+
+    document.getElementById("home-title-back").addEventListener("click", function () {
+      showHomePane("pick");
+    });
+
+    document.getElementById("home-delete-open").addEventListener("click", function () {
+      homeMenuDialog.close();
       state.homeEditMode = true;
       state.homeSelected = {};
       render();
+    });
+
+    document.querySelectorAll("[data-rename]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        renameTargetId = el.getAttribute("data-rename");
+        var target = findTemplate(renameTargetId);
+        if (!target) return;
+        var titleInput = document.getElementById("home-title-edit");
+        titleInput.value = target.name;
+        showHomePane("title");
+        // iOS Safari はここで focus() しておかないと、
+        // 入力欄をタップしてもキーボードが出ないことがある
+        titleInput.focus();
+        titleInput.select();
+      });
+    });
+
+    document.getElementById("home-rename-save").addEventListener("click", function () {
+      var titleInput = document.getElementById("home-title-edit");
+      var val = titleInput.value.trim();
+      // 空のまま押されたときに黙って何もしないと、壊れているように見える。
+      if (!val) {
+        toast("タイトルを入力してください");
+        titleInput.focus();
+        return;
+      }
+      var target = findTemplate(renameTargetId);
+      if (!target) return;
+      target.name = val;
+      target.updatedAt = Date.now();
+      saveTemplates();
+      homeMenuDialog.close();
+      render();
+      toast("タイトルを変更しました");
     });
 
     var dialog = document.getElementById("new-template-dialog");
@@ -1036,16 +1150,8 @@
     var settingsBtn = document.getElementById("settings-btn");
     if (settingsBtn) {
       var menuDialog = document.getElementById("menu-dialog");
-      var mainPane = document.getElementById("menu-pane-main");
-      var titlePane = document.getElementById("menu-pane-title");
-
-      var showMainPane = function () {
-        mainPane.hidden = false;
-        titlePane.hidden = true;
-      };
 
       settingsBtn.addEventListener("click", function () {
-        showMainPane();
         menuDialog.showModal();
       });
 
@@ -1059,38 +1165,6 @@
         state.selected = {};
         render();
       });
-
-      var renameOpen = document.getElementById("menu-rename-open");
-      if (renameOpen) {
-        renameOpen.addEventListener("click", function () {
-          mainPane.hidden = true;
-          titlePane.hidden = false;
-          // iOS Safari はここで focus() しておかないと、
-          // 入力欄をタップしてもキーボードが出ないことがある
-          var titleInput = document.getElementById("tpl-title-edit");
-          titleInput.focus();
-          titleInput.select();
-        });
-
-        document.getElementById("menu-back").addEventListener("click", showMainPane);
-
-        document.getElementById("rename-save").addEventListener("click", function () {
-          var titleInput = document.getElementById("tpl-title-edit");
-          var val = titleInput.value.trim();
-          // 空のまま押されたときに黙って何もしないと、壊れているように見える。
-          if (!val) {
-            toast("タイトルを入力してください");
-            titleInput.focus();
-            return;
-          }
-          t.name = val;
-          t.updatedAt = Date.now();
-          saveTemplates();
-          menuDialog.close();
-          render();
-          toast("タイトルを変更しました");
-        });
-      }
 
       var dupBtn = document.getElementById("duplicate-btn");
       if (dupBtn) {

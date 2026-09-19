@@ -1,7 +1,7 @@
 // 親ディレクトリの「忘れ物チェック」と同じドメインに同居するため、削除対象は
 // 自分のプレフィックスのものだけに限定する。限定しないと相手のキャッシュまで消す。
 const CACHE_PREFIX = "checklist-cache-";
-const CACHE = CACHE_PREFIX + "v8";
+const CACHE = CACHE_PREFIX + "v9";
 const ASSETS = [
   "./",
   "./index.html",

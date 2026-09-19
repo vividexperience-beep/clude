@@ -95,7 +95,7 @@ V3 L4は`{}`の除去も兼ねている。
 
 ```
 [Instrumental Intro] → [Verse 1] → [Verse 2] → [Pre-Chorus] → [Chorus]
- → [Verse 3] → [Bridge] → [Breakdown] → [Final Chorus] → [Outro]
+ → [Verse 3] → [Maximum Energy] → [Breakdown] → [Final Chorus] → [Outro]
 ```
 `songs/`全曲と照合済み。**`songs/11-000000-bug.md`が近い**
 (`[Intro][V1][V2][Pre-Chorus][Chorus][V3][V4][Bridge][Chorus 2][Outro]`)が、
@@ -107,7 +107,6 @@ Verse 4の有無と`[Breakdown]`の有無で一致しない。
 
 ```
 Close Male Vocal With Subtle Rasp,
-Relaxed Breathy Line Endings,
 Delayed Double-Tracked Vocal Layers Slightly Behind The Lead,
 
 Cinematic Dark Melodic Rap, Japanese Rhythmic Flow,
@@ -116,7 +115,7 @@ Spacious Minimal Koto, Dark Cello, Deep Sub-Bass Drone,
 Tense Sparse Trap Percussion,
 Shakuhachi Solo In The Pre-Chorus,
 
-Instruments Drop Out For The Bridge,
+Instruments Cut Out Just Before The Shout,
 Snapped Koto String, Then Dead Silence,
 Distorted Sub-Bass And Low Cello In The Final Chorus,
 
@@ -236,8 +235,7 @@ CLAUDE.md記載:「**処理・エフェクト系は、ブラケットよりス�
 細糸が揺れる 切れる恐怖
 喉の奥から 濁った声
 
-[Bridge]
-[Sudden Silence]
+[Maximum Energy]
 [Dry Harsh Shouting Voice, Desperate]
 「この糸は己(おれ)のものだ」
 「下(お)りろ、下(お)りろ、下(お)りろ」
@@ -307,7 +305,7 @@ CLAUDE.md記載:「**処理・エフェクト系は、ブラケットよりス�
 | Pre-Chorus | `Shakuhachi Solo` | `Shakuhachi Solo In The Pre-Chorus` |
 | Chorus | `Deep Sub-Bass, Minimal Percussive Beat` | `Deep Sub-Bass Drone` `Tense Sparse Trap Percussion` |
 | Verse 3 | `Tense Trap Beat` | `Tense Sparse Trap Percussion` |
-| Bridge | `Sudden Silence` | `Instruments Drop Out For The Bridge` |
+| 叫びの箇所 | `Maximum Energy` / `Dry Harsh Shouting Voice, Desperate` | `Instruments Cut Out Just Before The Shout` |
 | Breakdown | `Single Heavy Struck String, Snapping Tone, Instant Cut Off` | `Snapped Koto String, Then Dead Silence` |
 | Final Chorus | `Heavy Low Cello, Distorted Sub-Bass` | `Distorted Sub-Bass And Low Cello In The Final Chorus` |
 | Outro | `Solo Koto Melody` / `Slow Ethereal Delivery` | `Slow Fading Koto Outro` |
@@ -320,7 +318,7 @@ CLAUDE.md記載:「**処理・エフェクト系は、ブラケットよりス�
 
 - **冒頭と末尾が対になっている。** `極楽の池 白蓮の香` → `極楽の風 白蓮の香`。
   同じ香りが漂う同じ場所で、何も起きなかったかのように終わる。原案の設計。
-- **Bridgeで全楽器が消え、叫びだけが残り、Breakdownで弦が切れて無音になる。**
+- **叫びの直前で全楽器が消え、叫びだけが残り、Breakdownで弦が切れて無音になる。**
   静→叫び→断線→死んだ間、という4段階。原案の設計。
 - **Breakdownに歌詞が無い。** 糸が切れる瞬間に言葉が無いのは正しい。原案の設計。
 
@@ -355,6 +353,64 @@ Verse 3の末尾を `込み上げるのは 己(おれ)の叫び` と書いたと
 **教訓: 決め台詞・落とし所に使う語は、それより前のどこにも置かない。**
 キーワードを前倒しで使うと、本番で初めて鳴るはずの音が鳴らなくなる。
 行を書き換える際は、**そこに入れた語が後のセクションと衝突していないか**を必ず確認する。
+
+## 生成結果: 叫びの箇所が叫ばなかった(2026-09-19)
+
+ユーザーから**「ここ全然叫ばないぞ？」**と報告を受けた。原因は5つ重なっていた。
+
+**1. `Relaxed Breathy Line Endings` が曲全体にかかっていた(最有力)**
+スタイル欄の指定は曲全体にかかる(CLAUDE.md記録)。
+**「語尾は力まず息を混ぜて」という指示が、叫ぶ箇所にも常時かかっていた。**
+これは`songs/21`で記録した「**絶対的なエネルギー語をかけると緩急と競合する**」の
+**逆パターン**で、抑制語が1箇所の爆発を殺していた。
+→ **削除**(ユーザー判断)。Verseの脆さ・近さは同時に失うが、叫びを優先した。
+
+**2. 「静か」の合図が二重だった**
+`[Sudden Silence]`(ブラケット)と`Instruments Drop Out For The Bridge`(スタイル)で
+無音の指示が2箇所、叫びの指示は1箇所。silence系の方が短く定型的で勝ちやすい。
+
+**3. ブラケットが長すぎた**
+`[Dry Harsh Shouting Voice, Desperate]`は5語の説明文。CLAUDE.md記録:
+「タグは確率的なヒント。無視された場合の対処は**より単純な言い回しに書き換える**」。
+リポジトリ全体を数えると、この形式は**この1箇所だけ**だった:
+
+| 既存の叫び系ブラケット | 使用回数 |
+|---|---|
+| `[Maximum Energy]` | **11回** |
+| `[Final Shout]` | 3回 |
+| `[Energy Lift]` | 3回 |
+| `[Dry Harsh Shouting Voice, Desperate]` | 1回(この曲) |
+
+**4. 「！」が無かった**
+CLAUDE.md記録(日本語発音の記事より):「記号でイントネーションを誘導できる —
+長音`ー`で伸ばす、`……`で戸惑い、**`！`で高揚**」。
+`「下(お)りろ、下(お)りろ、下(お)りろ」`は読点区切りで、記号上はむしろ落ち着いて読める。
+
+**5. (推測)「」が引用・語り扱いを誘発している可能性**
+**未検証の推測。** 裏付けは取れていない。
+
+### 施した対処(ユーザー判断)
+
+- **`Relaxed Breathy Line Endings` を削除**(原因1)
+- **`[Bridge]`というセクション名自体を`[Maximum Energy]`に変更**(リポジトリ最多の11回使用)。
+  ポップスの`Bridge`は「静かに落とす場所」という学習済みバイアスを持つ、という判断。
+  これはCLAUDE.mdが`[Chorus]`(=盛り上げる場所)・`[Verse]`(=歌メロ構造)で記録しているのと
+  同じ原理で、**構造語を外して演出描写だけにする**(`songs/22-ibuki.md`の語り対策)の応用。
+  **ただしBridgeでの検証例はこちらには無い。**
+- **renameが強制した変更**: スタイルの`Instruments Drop Out For The Bridge`が
+  存在しないセクションを指すことになるため`Instruments Cut Out Just Before The Shout`に変更。
+  併せて`[Maximum Energy]`と`[Sudden Silence]`が隣接すると正面から矛盾するため、
+  **無音はスタイル側に集約し、ブラケットからは削除**(演出自体は残っている)。
+
+### まだ手を付けていない原因
+
+**原因3と4は残したまま**(ユーザーが選んだ対処に含まれていないため)。
+まだ叫ばない場合の次の手は、影響の小さい順に:
+
+1. 歌詞の読点を「！」に変える → `「下(お)りろ！下(お)りろ！下(お)りろ！」`
+2. `[Dry Harsh Shouting Voice, Desperate]`を`[Final Shout]`(リポジトリ3回使用)に短縮
+3. `[Belting]`を足す(CLAUDE.mdに「確実に効くデリバリー区分」として記録済み)
+4. 「」を外す(推測ベースなので最後)
 
 ## 判断が分かれうる点(正直に記録)
 

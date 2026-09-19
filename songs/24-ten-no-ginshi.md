@@ -1,7 +1,7 @@
 # 天の銀糸(てんのぎんし)
 
 ボーカル: **キャラクター未設定**(この曲ではキャラに紐づけない、2026-09-19ユーザー判断)
-ジャンル: Cinematic Dark Melodic Rap / Japanese Rhythmic Flow(84Bpm)
+ジャンル: Cinematic Dark Melodic Rap / Japanese Rhythmic Flow(**BPM指定なし**)
 題材: 芥川龍之介「蜘蛛の糸」(1918)
 
 **ユーザーが持ち込んだ原案をブラッシュアップしたもの。** 原案の骨格・語彙・演出は極力残し、
@@ -111,7 +111,6 @@ Relaxed Breathy Line Endings,
 Delayed Double-Tracked Vocal Layers Slightly Behind The Lead,
 
 Cinematic Dark Melodic Rap, Japanese Rhythmic Flow,
-84 Bpm,
 
 Spacious Minimal Koto, Dark Cello, Deep Sub-Bass Drone,
 Tense Sparse Trap Percussion,
@@ -138,11 +137,22 @@ CLAUDE.md記載の実証済み知見「**ボーカルの記述はスタイル欄
 `Clean Modern Production`(「消えない名前」「自壊」`songs/05`で使用実績あり)にした。
 **原案の意図した冷たく広い空気感を優先するなら戻せる。**
 
-**3. `84 Bpm` を追加**
-原案にBPMが無かった。全曲で単体タグとして明記しているので追加した。
-**84は根拠のある数値ではなく、こちらの判断**。ブラケットが「Fast Flow」「Fast Anxious」と
-指定しているので、16分で刻めばラップとして十分速く、かつ箏・尺八・チェロが
-鳴る隙間が残る速さとして選んだ。`songs/05`(Melodic Rap)は106、`songs/11`は160。
+**3. BPMは最終的に「書かない」(2026-09-19にユーザー判断)**
+原案にBPMが無かったので一度`84 Bpm`を補ったが、**84は根拠のある数値ではなく
+こちらの勝手な判断**だったため、ユーザーから「あえてBPM外そうか」と指示が出て削除した。
+
+- **トレードオフは自覚した上での選択**: CLAUDE.mdの調査記録では
+  **BPMは「モデルが確実に従う階層」(性別・デリバリー・BPM)** に入っている。
+  外すことで、確実に効くコントロールを1つ手放している。
+- 一方でこれは、記録済みの
+  **「あえて指定しすぎず、Sunoの生成結果に余白を残す」**(2026-08-27記録)戦略に該当する。
+  根拠のない数値で縛るより、Sunoに決めさせる方が良い結果が出る可能性がある。
+- **テンポの手掛かりはブラケット側に残っている**:
+  `[Tension Building, Fast Flow]` `[Fast Rhythmic Flow]` `[Fast Anxious Delivery]`。
+  ただし**これらは全てPre-Chorus以降にしか無い**ので、
+  Intro・Verse 1・Verse 2の速度はSuno任せになる。
+  生成が遅すぎる/速すぎる場合は、ここにBPMを戻すのが最初の対処になる。
+- 参考値(戻す場合): `songs/05`(Melodic Rap)は106、`songs/11`は160。
 
 **4. `Subtle Edge-Voice Rasp` → `Subtle Rasp`**
 `Edge-Voice`(エッジボイス)は実在の発声用語だが、**Sunoのタグとしての実績が確認できなかった**。
@@ -348,7 +358,6 @@ Verse 3の末尾を `込み上げるのは 己(おれ)の叫び` と書いたと
 
 ## 判断が分かれうる点(正直に記録)
 
-- **`84 Bpm` はこちらが決めた数値で、根拠は無い。** 原案に無かったので補った。
 - **`Cold Clean Modern Production` は原案の `Cold Spacious Mix` を安全側に倒したもの。**
   Still Warmの失敗(空間語でボーカルがぼやけた)を根拠にしているが、
   **この曲は主役がラップで、箏とチェロが遠くに鳴る設計なので、

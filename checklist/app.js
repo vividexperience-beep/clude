@@ -433,7 +433,8 @@
 
     var headerRight = editMode
       ? '<button class="back" id="edit-done-btn">完了</button>'
-      : '<button class="back" id="edit-btn">編集</button>' +
+      : '<button class="back" id="alarm-btn" aria-label="通知">🔔</button>' +
+        '<button class="back" id="edit-btn">編集</button>' +
         (t.isPreset ? "" : '<button class="back" id="menu-btn">…</button>');
 
     var topBlock;
@@ -489,8 +490,174 @@
           "</form>") +
       "</main>" +
       '<dialog id="photo-dialog"><img id="photo-dialog-img" alt=""></dialog>' +
+      (editMode ? "" : renderAlarmDialog(t)) +
       (t.isPreset ? "" : renderMenuDialog(t))
     );
+  }
+
+  // ---------- 通知(カレンダー登録) ----------
+  //
+  // Webアプリは、閉じている間に時刻で通知を出すことができない。
+  // (iOSで通知を出すには外部サーバーからのプッシュが必要で、この
+  //  アプリの「外部通信なし・オフライン前提」と両立しない)
+  // そこで端末内でICS(カレンダー)ファイルを組み立てて渡し、
+  // OS側のカレンダーに予定とアラームとして持たせる。
+  // 通知音はiOSのカレンダーの設定に従うため、アプリからは指定できない。
+
+  var ALARM_REPEATS = [
+    { value: "none", label: "なし", rrule: "" },
+    { value: "daily", label: "毎日", rrule: "FREQ=DAILY" },
+    { value: "weekday", label: "平日", rrule: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR" },
+    { value: "weekly", label: "毎週", rrule: "FREQ=WEEKLY" }
+  ];
+
+  function pad2(n) {
+    return (n < 10 ? "0" : "") + n;
+  }
+
+  function todayValue() {
+    var d = new Date();
+    return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate());
+  }
+
+  function renderAlarmDialog(t) {
+    var a = t.alarm || {};
+    var repeat = a.repeat || "none";
+    var chips = ALARM_REPEATS.map(function (r) {
+      return (
+        '<div class="chip' + (repeat === r.value ? " active" : "") + '" data-repeat="' + r.value + '">' +
+        r.label +
+        "</div>"
+      );
+    }).join("");
+
+    return (
+      '<dialog id="alarm-dialog">' +
+      '<div class="dialog-body">' +
+      "<h3>通知を登録</h3>" +
+      '<form autocomplete="off" onsubmit="return false;">' +
+      '<div class="field">' +
+      "<label>日付</label>" +
+      '<input type="date" id="alarm-date" name="q4" value="' + escapeHtml(a.date || todayValue()) + '">' +
+      "</div>" +
+      '<div class="field">' +
+      "<label>時刻</label>" +
+      '<input type="time" id="alarm-time" name="q5" value="' + escapeHtml(a.time || "07:00") + '">' +
+      "</div>" +
+      '<div class="field">' +
+      "<label>繰り返し</label>" +
+      '<div class="chip-row" id="alarm-repeat-row">' + chips + "</div>" +
+      "</div>" +
+      "</form>" +
+      '<div class="dialog-note">' +
+      "端末のカレンダーに予定として登録します。アプリを閉じていても通知されます。<br>" +
+      "通知音はiOSのカレンダーの設定に従います(アプリからは選べません)。<br>" +
+      "登録後の変更・取り消しはカレンダー側で行ってください。" +
+      "</div>" +
+      '<div class="actions-row">' +
+      '<button type="button" class="btn block" id="alarm-add">カレンダーに登録</button>' +
+      "</div>" +
+      '<div class="actions-row">' +
+      '<button type="button" class="btn secondary block" id="alarm-close">閉じる</button>' +
+      "</div>" +
+      "</div>" +
+      "</dialog>"
+    );
+  }
+
+  function icsEscape(text) {
+    return String(text)
+      .replace(/\\/g, "\\\\")
+      .replace(/;/g, "\\;")
+      .replace(/,/g, "\\,")
+      .replace(/\r?\n/g, "\\n");
+  }
+
+  function byteLen(str) {
+    var n = 0;
+    for (var i = 0; i < str.length; i++) {
+      var c = str.charCodeAt(i);
+      if (c < 0x80) n += 1;
+      else if (c < 0x800) n += 2;
+      else if (c >= 0xd800 && c <= 0xdbff) { n += 4; i++; }
+      else n += 3;
+    }
+    return n;
+  }
+
+  // ICSは1行75オクテットまで。日本語は1文字3バイトあるので、
+  // バイト数で数えて折り返す(文字の途中では切らない)。
+  function icsFold(line) {
+    var parts = [];
+    var cur = "";
+    var curBytes = 0;
+    var i = 0;
+    while (i < line.length) {
+      var ch = line[i];
+      if (ch >= "\uD800" && ch <= "\uDBFF" && i + 1 < line.length) {
+        ch += line[i + 1];
+        i += 2;
+      } else {
+        i += 1;
+      }
+      var b = byteLen(ch);
+      var limit = parts.length === 0 ? 74 : 73;
+      if (curBytes + b > limit) {
+        parts.push(cur);
+        cur = "";
+        curBytes = 0;
+      }
+      cur += ch;
+      curBytes += b;
+    }
+    parts.push(cur);
+    return parts.join("\r\n ");
+  }
+
+  function buildIcs(t, date, time, repeat) {
+    // タイムゾーンを付けない「浮動時刻」にして、端末の時計どおりに鳴らす
+    var start = date.replace(/-/g, "") + "T" + time.replace(":", "") + "00";
+    var stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+    var title = t.name + " の確認";
+    var found = ALARM_REPEATS.filter(function (r) { return r.value === repeat; })[0];
+    var rrule = found ? found.rrule : "";
+
+    var lines = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//checklist//JP",
+      "CALSCALE:GREGORIAN",
+      "BEGIN:VEVENT",
+      "UID:" + uid() + "@checklist",
+      "DTSTAMP:" + stamp,
+      "DTSTART:" + start,
+      "DURATION:PT15M",
+      "SUMMARY:" + icsEscape(title),
+      "DESCRIPTION:" + icsEscape("チェックリストの確認(" + t.items.length + "項目)")
+    ];
+    if (rrule) lines.push("RRULE:" + rrule);
+    lines.push(
+      "BEGIN:VALARM",
+      "ACTION:DISPLAY",
+      "DESCRIPTION:" + icsEscape(title),
+      "TRIGGER:-PT0M",
+      "END:VALARM",
+      "END:VEVENT",
+      "END:VCALENDAR"
+    );
+    return lines.map(icsFold).join("\r\n") + "\r\n";
+  }
+
+  function downloadIcs(fileTitle, text) {
+    var blob = new Blob([text], { type: "text/calendar;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = String(fileTitle).replace(/[\\/:*?"<>|]/g, "_").slice(0, 30) + ".ics";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
   }
 
   function renderMenuDialog(t) {
@@ -799,6 +966,49 @@
       state.selected = {};
       render();
     });
+
+    var alarmBtn = document.getElementById("alarm-btn");
+    if (alarmBtn) {
+      var alarmDialog = document.getElementById("alarm-dialog");
+      var alarmRepeat = (t.alarm && t.alarm.repeat) || "none";
+
+      alarmBtn.addEventListener("click", function () {
+        alarmDialog.showModal();
+        // iOS Safari は showModal() 直後に focus() しないと、
+        // ダイアログ内の入力欄を触っても反応しないことがある
+        var dateInput = document.getElementById("alarm-date");
+        if (dateInput) dateInput.focus();
+      });
+
+      document.getElementById("alarm-close").addEventListener("click", function () {
+        alarmDialog.close();
+      });
+
+      document.querySelectorAll("#alarm-repeat-row .chip").forEach(function (chip) {
+        chip.addEventListener("click", function () {
+          alarmRepeat = chip.getAttribute("data-repeat");
+          document.querySelectorAll("#alarm-repeat-row .chip").forEach(function (c) {
+            c.classList.toggle("active", c === chip);
+          });
+        });
+      });
+
+      document.getElementById("alarm-add").addEventListener("click", function () {
+        var date = document.getElementById("alarm-date").value;
+        var time = document.getElementById("alarm-time").value;
+        if (!date || !time) {
+          toast("日付と時刻を入れてください");
+          return;
+        }
+        // 次に開いたときに同じ設定から始められるよう覚えておく
+        t.alarm = { date: date, time: time, repeat: alarmRepeat };
+        t.updatedAt = Date.now();
+        saveTemplates();
+        downloadIcs(t.name, buildIcs(t, date, time, alarmRepeat));
+        alarmDialog.close();
+        toast("カレンダーに追加してください");
+      });
+    }
 
     var menuBtn = document.getElementById("menu-btn");
     if (menuBtn) {

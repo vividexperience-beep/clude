@@ -241,6 +241,25 @@ main {
   font-size: 20px;
 }
 
+.field input[type=date],
+.field input[type=time] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 20px;
+}
+
+.dialog-note {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-dim);
+  margin: -4px 0 16px;
+}
+
 .chip-row {
   display: flex;
   gap: 8px;

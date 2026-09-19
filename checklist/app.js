@@ -727,33 +727,55 @@
     setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
   }
 
-  // 画面上の名前と実際にできることが一致するよう、設定は⚙️に一本化し、
-  // それぞれのボタンに「何ができるか」を併記する。
+  // 画面上の名前と実際にできることが一致するよう、それぞれのボタンに
+  // 何ができるかを併記する。リストそのものの管理(名前・削除)はホームの⚙️。
+  // ここはリストの中身に対してできることだけを置く。
   function renderMenuDialog(t) {
-    var item = function (id, cls, label, note) {
+    var item = function (id, label, note) {
       return (
-        '<button type="button" class="btn ' + cls + ' block menu-item" id="' + id + '">' +
+        '<button type="button" class="btn secondary block menu-item" id="' + id + '">' +
         label +
         "<span>" + note + "</span>" +
         "</button>"
       );
     };
 
+    var photoPick = t.items.length
+      ? '<div class="menu-list">' +
+        t.items.map(function (it) {
+          return (
+            '<button type="button" class="btn secondary block menu-item" data-photo-item="' + it.id + '">' +
+            escapeHtml(it.name) +
+            "<span>" + (it.photoId ? "写真あり(選ぶと差し替え)" : "写真なし") + "</span>" +
+            "</button>"
+          );
+        }).join("") +
+        "</div>"
+      : '<div class="dialog-note">まだ項目がありません。</div>';
+
     return (
       '<dialog id="menu-dialog">' +
       '<div class="dialog-body">' +
 
+      '<div id="menu-pane-main">' +
       "<h3>リスト設定</h3>" +
       '<div class="menu-list">' +
-      item("menu-edit-items", "secondary", "項目を編集・削除", "項目の名前を直す/消す、チェックを全部外す") +
-      (t.isPreset
-        ? ""
-        : item("duplicate-btn", "secondary", "リストを複製", "同じ項目でもう1つ作ります") +
-          item("delete-btn", "danger", "このリストを削除", "項目と写真ごと消えます。元に戻せません")) +
+      item("menu-edit-items", "項目を編集・削除", "項目の名前を直す/消す、チェックを全部外す") +
+      item("menu-photo-open", "写真を追加・変更", "すでにある項目に、後から写真を付けます") +
       "</div>" +
       '<div class="actions-row">' +
       '<button type="button" class="btn secondary block" id="menu-close">閉じる</button>' +
       "</div>" +
+      "</div>" +
+
+      '<div id="menu-pane-photo" hidden>' +
+      "<h3>どの項目に写真を付けますか?</h3>" +
+      photoPick +
+      '<div class="dialog-note">写真は' + PHOTO_MAX_AGE_DAYS + "日後に自動で消えます。</div>" +
+      '<div class="actions-row">' +
+      '<button type="button" class="btn secondary block" id="menu-photo-back">戻る</button>' +
+      "</div>" +
+      '<input type="file" id="item-photo-file" accept="image/*" hidden>' +
       "</div>" +
 
       "</div>" +
@@ -1150,8 +1172,18 @@
     var settingsBtn = document.getElementById("settings-btn");
     if (settingsBtn) {
       var menuDialog = document.getElementById("menu-dialog");
+      var menuMain = document.getElementById("menu-pane-main");
+      var menuPhoto = document.getElementById("menu-pane-photo");
+      var itemPhotoFile = document.getElementById("item-photo-file");
+      var photoTargetId = null;
+
+      var showMenuPane = function (pane) {
+        menuMain.hidden = pane !== "main";
+        menuPhoto.hidden = pane !== "photo";
+      };
 
       settingsBtn.addEventListener("click", function () {
+        showMenuPane("main");
         menuDialog.showModal();
       });
 
@@ -1166,34 +1198,48 @@
         render();
       });
 
-      var dupBtn = document.getElementById("duplicate-btn");
-      if (dupBtn) {
-        dupBtn.addEventListener("click", function () {
-          var copy = {
-            id: uid(),
-            name: t.name + " のコピー",
-            items: t.items.map(function (it) { return { id: uid(), name: it.name, checked: false, fromPreset: !!it.fromPreset }; }),
-            isPreset: false,
-            updatedAt: Date.now()
-          };
-          templates.unshift(copy);
-          saveTemplates();
-          menuDialog.close();
-          go("template", copy.id);
-        });
-      }
+      document.getElementById("menu-photo-open").addEventListener("click", function () {
+        showMenuPane("photo");
+      });
 
-      var delBtn = document.getElementById("delete-btn");
-      if (delBtn) {
-        delBtn.addEventListener("click", function () {
-          if (!confirm("「" + t.name + "」を削除しますか?元に戻せません。")) return;
-          templates = templates.filter(function (x) { return x.id !== t.id; });
-          saveTemplates();
-          cleanupPhotos();
-          menuDialog.close();
-          go("home");
+      document.getElementById("menu-photo-back").addEventListener("click", function () {
+        showMenuPane("main");
+      });
+
+      document.querySelectorAll("[data-photo-item]").forEach(function (el) {
+        el.addEventListener("click", function () {
+          photoTargetId = el.getAttribute("data-photo-item");
+          // 同じ写真を選び直しても change が起きるように毎回空にする
+          itemPhotoFile.value = "";
+          itemPhotoFile.click();
         });
-      }
+      });
+
+      itemPhotoFile.addEventListener("change", function () {
+        var file = itemPhotoFile.files && itemPhotoFile.files[0];
+        if (!file) return;
+        var target = null;
+        t.items.forEach(function (it) { if (it.id === photoTargetId) target = it; });
+        if (!target) return;
+
+        compressImage(file).then(function (dataUrl) {
+          var newId = uid();
+          return photoPut(newId, dataUrl).then(function () {
+            var oldId = target.photoId;
+            target.photoId = newId;
+            target.photoAt = Date.now();
+            t.updatedAt = Date.now();
+            saveTemplates();
+            // 差し替えた場合、前の写真は参照されなくなるので消す
+            if (oldId) photoDelete(oldId);
+            menuDialog.close();
+            render();
+            toast("写真を登録しました");
+          });
+        }).catch(function () {
+          toast("この写真は読み込めませんでした");
+        });
+      });
     }
   }
 

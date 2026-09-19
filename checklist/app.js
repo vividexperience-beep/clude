@@ -130,7 +130,11 @@
     return photoAllKeys().then(function (keys) {
       var dead = (keys || []).filter(function (k) { return !referenced[k]; });
       return Promise.all(dead.concat(expired).map(photoDelete));
-    }).catch(function () {});
+    }).then(function () {
+      return changed;
+    }).catch(function () {
+      return changed;
+    });
   }
 
   // カメラ写真はそのままだと数MBあるので、長辺1000px・JPEG品質0.7 に縮小する。
@@ -1075,6 +1079,18 @@
   ensureDefaultTemplates();
   render();
   cleanupPhotos().then(function () { render(); });
+
+  // 写真の期限切れはタイマーではなく「開いたときの点検」で消している。
+  // ホーム画面に置いたまま何日も放置されると起動時の点検が走らないので、
+  // 画面に戻ってきたときにも点検する。
+  // (画面を作り直すのは実際に消したときだけ。開いているダイアログを
+  //  勝手に閉じてしまわないようにするため)
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState !== "visible") return;
+    cleanupPhotos().then(function (changed) {
+      if (changed) render();
+    });
+  });
 
   if ("serviceWorker" in navigator) {
     var refreshedForUpdate = false;

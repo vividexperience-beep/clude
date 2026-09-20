@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>カレンダーに登録</title>
+<style>
+  :root { --bg:#000; --surface:#1c1c1e; --border:#3a3a3c; --text:#fff; --text-dim:#9b9b9f; --accent:#facc15; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 24px 16px calc(env(safe-area-inset-bottom,0) + 40px);
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", system-ui, sans-serif;
+  }
+  .wrap { max-width: 520px; margin: 0 auto; }
+  h1 { font-size: 24px; font-weight: 800; margin: 8px 0 20px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; margin-bottom: 22px; }
+  .row { display: flex; gap: 12px; font-size: 18px; line-height: 1.9; }
+  .row .k { color: var(--text-dim); white-space: nowrap; font-weight: 700; }
+  .row .v { font-weight: 700; word-break: break-word; }
+  .btn {
+    display: block; width: 100%; padding: 18px; font-size: 20px; font-weight: 800;
+    border: none; border-radius: 14px; background: var(--accent); color: #000;
+    -webkit-appearance: none; cursor: pointer;
+  }
+  .btn:active { filter: brightness(.82); }
+  .note { font-size: 15px; line-height: 1.8; color: var(--text-dim); margin-top: 22px; }
+  .err { color: #ff7b7b; font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>カレンダーに登録</h1>
+  <div class="card" id="detail"></div>
+  <button type="button" class="btn" id="go">カレンダーに登録</button>
+  <p class="note" id="hint"></p>
+</div>
+
+<script>
+// チェックリストアプリから、予定の中身(ICS)を「#」より後ろに載せて渡される中継ページ。
+// 「#」より後ろはサーバーに送られないため、予定の内容が外に出ることはない。
+//
+// ホーム画面から起動したアプリの中ではiOSがファイルのダウンロードを行わず、
+// カレンダーは共有シートからも受け取れない。Safariで開き直せば
+// ICSファイルをそのままカレンダーに渡せるので、この1枚を挟んでいる。
+(function () {
+  var detail = document.getElementById("detail");
+  var go = document.getElementById("go");
+  var hint = document.getElementById("hint");
+
+  function base64ToUtf8(b64) {
+    var bin = atob(b64);
+    var bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+  }
+
+  function isStandalone() {
+    if (navigator.standalone === true) return true;
+    return !!(window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+  }
+
+  // ICSは長い行が折り返されているので、先に1行に戻してから読む
+  function unfold(text) {
+    return text.replace(/\r\n[ \t]/g, "").replace(/\n[ \t]/g, "");
+  }
+
+  function valueOf(text, key) {
+    var m = new RegExp("^" + key + ":(.*)$", "m").exec(text);
+    return m ? m[1].replace(/\\,/g, ",").replace(/\;/g, ";").replace(/\\n/g, " ").trim() : "";
+  }
+
+  function formatStart(v) {
+    var m = /^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})/.exec(v || "");
+    if (!m) return "";
+    return Number(m[1]) + "年" + Number(m[2]) + "月" + Number(m[3]) + "日 " + m[4] + ":" + m[5];
+  }
+
+  function formatRepeat(v) {
+    if (!v) return "なし";
+    if (v.indexOf("BYDAY=MO,TU,WE,TH,FR") !== -1) return "平日";
+    if (v.indexOf("FREQ=DAILY") !== -1) return "毎日";
+    if (v.indexOf("FREQ=WEEKLY") !== -1) return "毎週";
+    return v;
+  }
+
+  function row(k, v) {
+    return '<div class="row"><div class="k">' + k + "</div><div class=\"v\">" + v + "</div></div>";
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  var ics = "";
+  try {
+    var raw = decodeURIComponent(location.hash.replace(/^#/, ""));
+    if (raw) ics = base64ToUtf8(raw);
+  } catch (e) {
+    ics = "";
+  }
+
+  if (!ics || ics.indexOf("BEGIN:VCALENDAR") === -1) {
+    detail.innerHTML = '<div class="err">予定の内容を受け取れませんでした。</div>';
+    go.style.display = "none";
+    hint.textContent = "チェックリストの🔔から、もう一度やり直してください。";
+    return;
+  }
+
+  var flat = unfold(ics);
+  var title = valueOf(flat, "SUMMARY");
+  detail.innerHTML =
+    row("予定", escapeHtml(title || "(なし)")) +
+    row("日時", escapeHtml(formatStart(valueOf(flat, "DTSTART")) || "(なし)")) +
+    row("繰り返し", escapeHtml(formatRepeat(valueOf(flat, "RRULE"))));
+
+  var fileName = (title || "checklist").replace(/[\\/:*?"<>|]/g, "_").slice(0, 30) + ".ics";
+
+  if (isStandalone()) {
+    hint.textContent =
+      "この画面はアプリの中で開かれています。ボタンを押すと共有メニューが出るので、" +
+      "「\"ファイル\"に保存」で保存し、ファイルアプリでタップするとカレンダーに追加できます。" +
+      "Safariで開き直せば、1回で追加できます。";
+  } else {
+    hint.textContent =
+      "ボタンを押すとファイルが1つダウンロードされます。" +
+      "画面上部の↓(ダウンロード)からそれをタップすると、カレンダーの追加画面が開きます。";
+  }
+
+  go.addEventListener("click", function () {
+    var blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+
+    if (isStandalone()) {
+      try {
+        var file = new File([blob], fileName, { type: "text/calendar" });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          navigator.share({ files: [file] }).catch(function () {});
+          return;
+        }
+      } catch (e) {
+        // 共有が使えなければ下のダウンロードを試す
+      }
+    }
+
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
+  });
+})();
+</script>
+</body>
+</html>

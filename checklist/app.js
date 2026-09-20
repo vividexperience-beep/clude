@@ -724,11 +724,38 @@
     return !!(window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
   }
 
+  function utf8ToBase64(text) {
+    var bytes = new TextEncoder().encode(text);
+    var bin = "";
+    for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+    return btoa(bin);
+  }
+
+  // iOSのカレンダーは共有シートからICSを受け取れない。Safariで開けば
+  // ICSファイルをそのままカレンダーに渡せるので、アプリの外(scope外)にある
+  // 中継ページをSafariで開いてもらう。予定の内容は「#」より後ろに載せる
+  // ため、サーバーには送られない。
+  function openIcsInSafari(text) {
+    var url = "../ics.html#" + encodeURIComponent(utf8ToBase64(text));
+    var a = document.createElement("a");
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+
   function deliverIcs(fileTitle, text) {
     var fileName = String(fileTitle).replace(/[\\/:*?"<>|]/g, "_").slice(0, 30) + ".ics";
     var blob = new Blob([text], { type: "text/calendar;charset=utf-8" });
 
     if (isStandalone()) {
+      // 中継ページの読み込みに通信が要るので、圏外のときは共有シートに回す
+      if (navigator.onLine !== false) {
+        openIcsInSafari(text);
+        return "safari";
+      }
       try {
         var file = new File([blob], fileName, { type: "text/calendar" });
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -1207,6 +1234,8 @@
         alarmDialog.close();
         if (result === "blocked") {
           toast("この画面からは登録できません。Safariで開いて試してください");
+        } else if (result === "safari") {
+          toast("Safariが開きます。そこで登録してください");
         } else {
           toast("カレンダーに追加してください");
         }

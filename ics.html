@@ -26,6 +26,8 @@
   }
   .btn:active { filter: brightness(.82); }
   .note { font-size: 15px; line-height: 1.8; color: var(--text-dim); margin-top: 22px; }
+  .btn.sub { background: var(--surface); color: var(--text); border: 1px solid var(--border); font-size: 17px; padding: 15px; }
+  #fallback { margin-top: 30px; border-top: 1px solid var(--border); padding-top: 6px; }
   .err { color: #ff7b7b; font-weight: 700; }
 </style>
 </head>
@@ -35,6 +37,11 @@
   <div class="card" id="detail"></div>
   <button type="button" class="btn" id="go">カレンダーに登録</button>
   <p class="note" id="hint"></p>
+  <div id="fallback" hidden>
+    <p class="note">上のボタンで何も起きないときは、こちら。</p>
+    <button type="button" class="btn sub" id="share">共有メニューから保存する</button>
+    <p class="note">「"ファイル"に保存」で保存し、ファイルアプリでそのファイルをタップすると、カレンダーの追加画面が開きます。</p>
+  </div>
 </div>
 
 <script>
@@ -54,11 +61,6 @@
     var bytes = new Uint8Array(bin.length);
     for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
     return new TextDecoder().decode(bytes);
-  }
-
-  function isStandalone() {
-    if (navigator.standalone === true) return true;
-    return !!(window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
   }
 
   // ICSは長い行が折り返されているので、先に1行に戻してから読む
@@ -119,33 +121,18 @@
 
   var fileName = (title || "checklist").replace(/[\\/:*?"<>|]/g, "_").slice(0, 30) + ".ics";
 
-  if (isStandalone()) {
-    hint.textContent =
-      "この画面はアプリの中で開かれています。ボタンを押すと共有メニューが出るので、" +
-      "「\"ファイル\"に保存」で保存し、ファイルアプリでタップするとカレンダーに追加できます。" +
-      "Safariで開き直せば、1回で追加できます。";
-  } else {
-    hint.textContent =
-      "ボタンを押すとファイルが1つダウンロードされます。" +
-      "画面上部の↓(ダウンロード)からそれをタップすると、カレンダーの追加画面が開きます。";
+  hint.textContent =
+    "ボタンを押すとファイルが1つダウンロードされます。" +
+    "画面上部の↓(ダウンロード)からそれをタップすると、カレンダーの追加画面が開きます。";
+
+  function makeBlob() {
+    return new Blob([ics], { type: "text/calendar;charset=utf-8" });
   }
 
+  // この画面はアプリ内のブラウザで開かれることがあるが、そこでも
+  // ダウンロードは扱える。判定で分岐せず、まずダウンロードを試す。
   go.addEventListener("click", function () {
-    var blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
-
-    if (isStandalone()) {
-      try {
-        var file = new File([blob], fileName, { type: "text/calendar" });
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          navigator.share({ files: [file] }).catch(function () {});
-          return;
-        }
-      } catch (e) {
-        // 共有が使えなければ下のダウンロードを試す
-      }
-    }
-
-    var url = URL.createObjectURL(blob);
+    var url = URL.createObjectURL(makeBlob());
     var a = document.createElement("a");
     a.href = url;
     a.download = fileName;
@@ -154,6 +141,21 @@
     document.body.removeChild(a);
     setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
   });
+
+  // ダウンロードが効かない場合の逃げ道として、共有も残しておく
+  var shareBtn = document.getElementById("share");
+  try {
+    var probe = new File([makeBlob()], fileName, { type: "text/calendar" });
+    if (navigator.canShare && navigator.canShare({ files: [probe] })) {
+      document.getElementById("fallback").hidden = false;
+      shareBtn.addEventListener("click", function () {
+        var file = new File([makeBlob()], fileName, { type: "text/calendar" });
+        navigator.share({ files: [file] }).catch(function () {});
+      });
+    }
+  } catch (e) {
+    // File が作れない環境では共有の逃げ道は出さない
+  }
 })();
 </script>
 </body>

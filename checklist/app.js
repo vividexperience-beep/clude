@@ -715,16 +715,42 @@
     return lines.map(icsFold).join("\r\n") + "\r\n";
   }
 
-  function downloadIcs(fileTitle, text) {
+  // ホーム画面から起動した状態(standalone)のiOSでは、リンクによる
+  // ファイルのダウンロードが働かず、押しても何も起きない。
+  // その場合は共有シート経由でICSを渡す。Safariで開いているときは
+  // 今までどおりダウンロードさせる(そちらは実機で動作確認済み)。
+  function isStandalone() {
+    if (navigator.standalone === true) return true;
+    return !!(window.matchMedia && window.matchMedia("(display-mode: standalone)").matches);
+  }
+
+  function deliverIcs(fileTitle, text) {
+    var fileName = String(fileTitle).replace(/[\\/:*?"<>|]/g, "_").slice(0, 30) + ".ics";
     var blob = new Blob([text], { type: "text/calendar;charset=utf-8" });
+
+    if (isStandalone()) {
+      try {
+        var file = new File([blob], fileName, { type: "text/calendar" });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          // 共有シートは利用者の操作の流れで呼ぶ必要があるため、ここで同期的に呼ぶ
+          navigator.share({ files: [file] }).catch(function () {});
+          return "share";
+        }
+      } catch (e) {
+        // File が作れない環境では下のダウンロードに落とす
+      }
+      return "blocked";
+    }
+
     var url = URL.createObjectURL(blob);
     var a = document.createElement("a");
     a.href = url;
-    a.download = String(fileTitle).replace(/[\\/:*?"<>|]/g, "_").slice(0, 30) + ".ics";
+    a.download = fileName;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
+    return "download";
   }
 
   // 画面上の名前と実際にできることが一致するよう、それぞれのボタンに
@@ -1177,9 +1203,13 @@
         t.alarm = { date: date, time: time, repeat: alarmRepeat };
         t.updatedAt = Date.now();
         saveTemplates();
-        downloadIcs(t.name, buildIcs(t, date, time, alarmRepeat));
+        var result = deliverIcs(t.name, buildIcs(t, date, time, alarmRepeat));
         alarmDialog.close();
-        toast("カレンダーに追加してください");
+        if (result === "blocked") {
+          toast("この画面からは登録できません。Safariで開いて試してください");
+        } else {
+          toast("カレンダーに追加してください");
+        }
       });
     }
 

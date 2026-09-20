@@ -41,31 +41,78 @@
 |---|---|---|---|---|
 | Verse 1 | 13 | 14 | 14 | 13 |
 | Verse 2 | 13 | 14 | 14 | 13 |
-
-Pre-Chorusも2回とも **13 / 14** で揃えた。
+| Verse 3 | 13 | 14 | 14 | 13 |
 
 ### ルール3(同種セクションで同じ言葉を使わない)— 一致
 
-- **Verse 1 ∩ Verse 2 の共通語: ゼロ**
-- **Pre-Chorus 1 ∩ Pre-Chorus 2 の共通語: ゼロ**
+- **Verse 1 / 2 / 3 の総当たりで共通語ゼロ。** 漢字1文字単位まで落として検査した。
+  検査中に`並ぶ`↔`並んでる`、`月`、`書く`の重複が出たので、
+  `揃う`/`ページ`/`入れず`へ差し替えている
+  (**文字列が違っても同じ語なら重複**という基準で見る)。
 - サビは**1回しか登場しない**ので、繰り返しの書き換え問題自体が発生しない。
 
-### ルール4(スケルトン)— 一致なし
+### ルール4(スケルトン)— 組み直した(2026-09-20)
 
 ```
-[Verse 1] → [Pre-Chorus] → [Verse 2] → [Pre-Chorus] → [Bridge] → [Chorus] → [Outro]
+[Verse 1]
+[Close Vocal]
+カレンダーの隅 赤い丸
+外に出た日だけ 付ける印
+ひと月ぶん揃う 小さな輪
+今日も忘れずに 丸を足す
+
+[Verse 2]
+引き出しの奥 ペンが乾く
+いつから書いてない 分からない
+次の週の欄は 白いまま
+空欄が三つ 並んでる
+
+[Chorus]
+[Building Intensity]
+[Powerful Belted Delivery]
+丸のつかない朝
+比べるものを もう置いてきた
+何日目かなんて
+もう思い出せない
+それで ちゃんと朝だ
+
+[Verse 3]
+[Close Vocal]
+ページめくって 画鋲を刺す
+何も入れず 壁に掛けておく
+インクの匂いは とうに消えた
+ただの紙に 戻っていった
+
+[Outro]
+[Intimate]
+引き出しは 閉めたまま
 ```
 
-**サビが曲の最後に1回だけ来る。** `songs/`全24曲+`asteria-voice-remix.md`と照合したが、
-**この並びを使った曲は無い**。近いのは`songs/02-seen-not-heard.md`
-(Intro→V1→PC→Chorus→V2→PC→Chorus→Bridge→Final Chorus→Outro)だが、あちらはサビが3回。
+**初稿は`[Verse]→[Pre-Chorus]→[Verse]→[Pre-Chorus]→[Bridge]→[Chorus]→[Outro]`だった。**
+「サビが最後に1回だけ来る」ことを根拠に「一致なし」と判定したが、
+ユーザーから**「歌詞構成がいつか見た感じだな」**と指摘され、実測したら**その通りだった。**
 
-- **Introを置かない**(`songs/06`は構造タグ自体が無いので、そもそも別物)
-- **サビの出現回数を1回にした**のは、CLAUDE.mdが
-  「**Chorusを2回登場させず1回だけにする**」を、スケルトンを変える具体策として
-  明示的に挙げているため。
-- **この構成はテーマと直結している**: Pre-Chorusが2回来るのにサビへ行かず引き返す
-  =「進もうとして届かない日が続く」。最後に一度だけ開く=「気づいた瞬間」。
+**背骨(セクション種類だけに正規化)で比較した結果**
+
+| | 背骨 |
+|---|---|
+| `songs/10-ame.md` | `C `**`V P C V P C`**` C B C O` |
+| 初稿 | **`V P C V P C B C O`** |
+
+**両者からサビ(C)を抜くと、どちらも`VPVPBO`で完全一致。** `02` `07`とも包含関係だった。
+**やっていたのは「標準型からサビを間引いただけ」で、
+`Verse→Pre-Chorus→…→Bridge→サビ→Outro`というJ-POPの背骨は温存していた。**
+
+**組み直した構成は、定型の家具を全部外した。**
+
+- **Introなし・Pre-Chorusなし・Bridgeなし。** Pre-ChorusとBridgeは
+  「いつか見た感じ」を作っている当の部品なので、間引くのではなく**撤去**した。
+- **背骨は`V C V O`**(生の並びは`V V C V O`)。`songs/`全曲+`asteria-voice-remix.md`に
+  この背骨は無い。
+- **サビが曲の中心に1回だけ来て、その後にもう一度Verseが来る。**
+  これは構成の都合ではなく**内容から出てきた形**: 気づきは終着点ではなく、
+  **その後も普通の日が続く**というのがこの曲の主張なので、サビの後に日常が戻る必要がある。
+  サビで終わると「気づいて終わり」になってしまう。
 
 ### AI構文チェック
 
@@ -87,7 +134,8 @@ Future Garage, Japanese Pop, Uk Garage Groove,
 Shuffling Two-Step Garage Drums, Skippy Hi-Hats,
 Deep Sub Bass, Warm Analog Pads,
 Muted Rhodes Chords In The Verses,
-Pads Only Open Wide In The Final Chorus,
+Pads Only Open Wide In The Chorus,
+Groove Thins Out Again After The Chorus,
 
 Clean Modern Production, Gentle Outro
 ```
@@ -114,9 +162,11 @@ CLAUDE.mdのルール(ミックス配置は残す)は守りつつ、**それ以�
 結果としてスタイル欄はジャンル・楽器・ムードだけになり、
 **これは上記の外部ソースの推奨(スタイル欄はジャンル・ムード・楽器に集中させる)とも一致した。**
 
-**5. `Pads Only Open Wide In The Final Chorus`**
+**5. `Pads Only Open Wide In The Chorus` と `Groove Thins Out Again After The Chorus`**
 `No Strings Until The Chorus`(`songs/23-still-warm.md`)と同型の「**いつ鳴らないか**」指示。
 サビが1回しか来ない構成なので、**そこまで開かないことが構成上いちばん重要**になる。
+**さらにサビの後にVerse 3が来る構成なので、一度開いた編成を戻す指示も要る。**
+`Groove Thins Out Gradually Toward The End`(`songs/06`)に実使用があり、その形を借りた。
 
 **6. `130 Bpm`の根拠**
 UK Garage / 2-stepの標準的なテンポ帯。`songs/04-static.md`のSpeed Garageが132。

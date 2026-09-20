@@ -116,6 +116,7 @@ Tense Sparse Trap Percussion,
 Shakuhachi Solo In The Pre-Chorus,
 
 Instruments Cut Out Just Before The Shout,
+Gritty Belted Delivery At The Shout,
 Snapped Koto String, Then Dead Silence,
 Distorted Sub-Bass And Low Cello In The Final Chorus,
 
@@ -181,7 +182,7 @@ CLAUDE.md記載:「**処理・エフェクト系は、ブラケットよりス�
 
 ### そのまま残した原案のタグ
 
-`Cinematic Dark Melodic Rap` / `Japanese Rhythmic Flow` / `Relaxed Breathy Line Endings` /
+`Cinematic Dark Melodic Rap` / `Japanese Rhythmic Flow` /
 `Delayed Double-Tracked Vocal Layers Slightly Behind The Lead` / `Spacious Minimal Koto` /
 `Dark Cello` / `Deep Sub-Bass Drone` / `Tense Sparse Trap Percussion` / `Slow Fading Koto Outro`
 
@@ -189,6 +190,9 @@ CLAUDE.md記載:「**処理・エフェクト系は、ブラケットよりス�
 `Trap`(`songs/12` `songs/19`)、`Heavy Distorted Sub Bass`(`songs/11`)、
 ボーカルのダブリング(「自壊」の`Chorus Vocal Layered With Subtle Doubling`)、
 半拍遅れる重ね声(`songs/01-one-step-behind.md`の`Echo Vocal Always Half A Beat Late`)。
+
+**なお`Relaxed Breathy Line Endings`は当初この一覧にあったが、2026-09-19に削除済み**
+(曲全体にかかって叫びを殺していたため)。この一覧から外した。
 
 ---
 
@@ -236,9 +240,8 @@ CLAUDE.md記載:「**処理・エフェクト系は、ブラケットよりス�
 喉の奥から 濁った声
 
 [Maximum Energy]
-[Dry Harsh Shouting Voice, Desperate]
-「この糸は己(おれ)のものだ」
-「下(お)りろ、下(お)りろ、下(お)りろ」
+「この糸は己(おれ)のものだ！」
+「下(お)りろ！下(お)りろ！下(お)りろ！」
 
 [Breakdown]
 [Single Heavy Struck String, Snapping Tone, Instant Cut Off]
@@ -305,7 +308,7 @@ CLAUDE.md記載:「**処理・エフェクト系は、ブラケットよりス�
 | Pre-Chorus | `Shakuhachi Solo` | `Shakuhachi Solo In The Pre-Chorus` |
 | Chorus | `Deep Sub-Bass, Minimal Percussive Beat` | `Deep Sub-Bass Drone` `Tense Sparse Trap Percussion` |
 | Verse 3 | `Tense Trap Beat` | `Tense Sparse Trap Percussion` |
-| 叫びの箇所 | `Maximum Energy` / `Dry Harsh Shouting Voice, Desperate` | `Instruments Cut Out Just Before The Shout` |
+| 叫びの箇所 | `Maximum Energy` のみ | `Instruments Cut Out Just Before The Shout` `Gritty Belted Delivery At The Shout` |
 | Breakdown | `Single Heavy Struck String, Snapping Tone, Instant Cut Off` | `Snapped Koto String, Then Dead Silence` |
 | Final Chorus | `Heavy Low Cello, Distorted Sub-Bass` | `Distorted Sub-Bass And Low Cello In The Final Chorus` |
 | Outro | `Solo Koto Melody` / `Slow Ethereal Delivery` | `Slow Fading Koto Outro` |
@@ -402,15 +405,53 @@ CLAUDE.md記録(日本語発音の記事より):「記号でイントネーシ�
   併せて`[Maximum Energy]`と`[Sudden Silence]`が隣接すると正面から矛盾するため、
   **無音はスタイル側に集約し、ブラケットからは削除**(演出自体は残っている)。
 
-### まだ手を付けていない原因
+### 原因3・4への対処(2026-09-20、`reference/vocal-delivery.md`を作った成果として実施)
 
-**原因3と4は残したまま**(ユーザーが選んだ対処に含まれていないため)。
-まだ叫ばない場合の次の手は、影響の小さい順に:
+**辞典を作る過程で、実使用回数を正しく数え直した結果、対処の中身が変わった。**
 
-1. 歌詞の読点を「！」に変える → `「下(お)りろ！下(お)りろ！下(お)りろ！」`
-2. `[Dry Harsh Shouting Voice, Desperate]`を`[Final Shout]`(リポジトリ3回使用)に短縮
-3. `[Belting]`を足す(CLAUDE.mdに「確実に効くデリバリー区分」として記録済み)
-4. 「」を外す(推測ベースなので最後)
+**実使用回数(`songs/`のコードブロック内+`reference/suno-samples.md`で実測)**
+
+| 語 | 実使用 | 判定 |
+|---|---|---|
+| `Maximum Energy` | **14回 / 5曲** | リポジトリ最強の叫び系。**据え置き** |
+| `Belt` | 7回 / 5曲 | 実績あり |
+| `Belted` | 3回 / 3曲 | `Gritty Belted Delivery`(`songs/20-gacha-oni.md`)`Powerful Belted Delivery`(`songs/21`) |
+| `Final Shout` | 2回 / 2曲 | 実績あり(ただし「最後」の意味がこの箇所と合わない) |
+| `Desperate` | 1回 / **他曲ゼロ** | **この曲だけ。実績と呼べない** |
+| `Shouted` / `Shouting` | **0回**(除外側`Avoid High-Pitched Shouting`のみ) | **使えない** |
+| `Belting` | **0回** | **使えない**(CLAUDE.mdの「確実に効く」は外部ソース由来で、うちの実績ではない) |
+
+**この数え直しで、当初の「次の手」2案が両方とも崩れた。**
+`[Final Shout]`は意味がズレる(この後にFinal Chorusがある)。`[Belting]`は実使用ゼロ。
+**残ったのは`Belted Delivery`で、しかも実績のある形は単体ではなく`形容詞+Belted Delivery`だった。**
+
+**施した3点**
+
+1. **スタイル欄に`Gritty Belted Delivery At The Shout`を追加。**
+   `songs/20-gacha-oni.md`(四道壮琉・がなり男性ロック)のスタイル欄で実使用されている形そのまま。
+   この曲の`Close Male Vocal With Subtle Rasp`と声質の方向が一致する。
+   **「どこで+何が+どう」の形**になっており、場所が`At The Shout`に限定されているので
+   Verseの温度を殺さない(`Relaxed Breathy Line Endings`が曲全体にかかって失敗したのの逆)。
+2. **`[Dry Harsh Shouting Voice, Desperate]`を削除。**
+   5語の説明文であり(「無視された場合はより単純な言い回しに」に反する)、
+   中身も`Shouting`=実使用ゼロ、`Desperate`=他曲ゼロで根拠が無かった。
+   デリバリーの指示はスタイル欄に集約した(**1つの指示は1回だけ書く**)。
+   残るのはセクション名`[Maximum Energy]`(実使用14回)のみ。
+3. **読点を`！`に変更**(原因4)。`「下(お)りろ！下(お)りろ！下(お)りろ！」`。
+   決め台詞側も`「この糸は己(おれ)のものだ！」`に。
+   根拠: CLAUDE.md記録「記号でイントネーションを誘導できる — **`！`で高揚**」。
+   **なお`！`の後に半角スペースは入れていない。** 語り検証で得た
+   「スペース=息継ぎ」の知見から、畳みかけたい箇所では区切りを作らない方がよいと判断した。
+
+### 意図的に触らなかった箇所(2026-09-20)
+
+- **`「」`(原因5)** — 推測ベースで裏付けがゼロ。残す。
+- **`[Gritty Edge]`** — `Gritty`は実使用3回(2曲)だが、**声の質感としての`Edge`は実使用ゼロ**
+  (`Sinister Blues-Rock Edge`はジャンル語の一部)。ただし**変える先の`[Gritty]`単体ブラケットも
+  実使用ゼロ**なので、どちらも根拠が無い。変える理由が無いので残した。
+- **`[Tension Building, Fast Flow]`** — `Tension Building`は実使用がこの曲だけ、
+  `Building Intensity`は2曲。**2曲>1曲なので統一する根拠は一応ある**が、
+  Pre-Chorusは壊れていない箇所なので触らなかった。次に直すならここ。
 
 ## 判断が分かれうる点(正直に記録)
 

@@ -1,5 +1,68 @@
 # ボーカル・デリバリー辞典(9系統・表の見出し語 実測136)
 
+## ★B列の根拠が確定した — 2026-09-21(他AI2人が独立に一次情報を確認)
+
+**【実測・二重確認】Suno公式の用語集は実在する。**
+
+> **Music Glossary for Suno**
+> https://help.suno.com/en/articles/9010177
+> "Stuck on a prompt and want to try some musical terms? …
+> We've got you covered with our **glossary of music terms to try out in Suno**."
+
+**このリポジトリからは`help.suno.com`がegressポリシーでブロックされていて開けない。**
+**ChatGPTとGeminiに別々に当たってもらい、2人とも実際にページを開いて、
+同じURL・同じページ名・12語すべてで逐語一致の引用を返してきた。**
+既存基準「測り方が違うのに形が一致すればほぼ確定」(`songs/23-still-warm.md`)を満たす。
+
+**B評価11行(12語)は全部記載を確認。原文は以下。**
+
+| 語 | 公式の原文 |
+|---|---|
+| Legato | "Smooth, connected notes" |
+| Staccato | "Short, detached notes" |
+| Rapping | "Rhythmic spoken or chanted lyrics" |
+| Scat | "Improvised vocal improvisation using nonsense syllables (common in jazz)" |
+| Forte | "Forte (f) - Loud" |
+| Piano(強弱記号) | "Piano (p) - Soft" |
+| Fortissimo | "Fortissimo (ff) - Very loud" |
+| Tremolo | "Rapid repetition of a note or alternation between notes" |
+| Crescendo | "Gradually getting louder" |
+| Diminuendo / Decrescendo | "Gradually getting softer" |
+| Accent | "Emphasis on a particular note or beat" |
+| Harmonization | "Multiple voices singing different notes simultaneously" |
+
+**ページの章立て**(2人の報告が一致した範囲):
+Tempo & Rhythm / Dynamics & Expression / Song Structure / Melody & Harmony /
+Genres & Styles / Instrumentation & Texture / **Vocal Techniques** /
+Production & Effects / Advanced Concepts / Tips for Using Musical Terms in Prompts
+
+**公式のTips欄にこう書かれている**(ChatGPTの引用):
+> "Use dynamics to shape emotional intensity (**"crescendo into powerful chorus"**)"
+> "The more specific your musical vocabulary, the more control you have over your Suno creations!"
+
+### ★★ただし「載っている」と「効く」は別 — 外部から独立に同じ指摘が来た
+
+ChatGPTが自分から付け加えてきた:
+> **「公式用語集に載っている」＝「その語をプロンプトに入れると、Sunoが狙った効果を確実に出す」ではありません。**
+> 公式ページが保証しているのは、あくまで「Sunoで試す音楽用語」として紹介していること。
+> 例えば Crescendo について公式は "Gradually getting louder" と説明しているが、
+> 「プロンプトにCrescendoと書けば必ず曲中で音量が漸増する」とまでは書いていない。
+
+**これはうちが既に書いていたこと**
+(「**Bは『Sunoが理解する語彙』であって『効くと実証された』ではない。AとBを同列に扱わない。**」)
+**と完全に同じ。別経路から同じ結論に達したので、この区別は動かさない。**
+
+### 分かっていないこと(勝手に広げないため)
+
+**確認できたのは、ページの実在・タイトル・章立て・上の12語の定義・Tips2行だけ。**
+**章立てに`Vocal Techniques`があるので他にも語があるはずだが、その中身は見ていない。**
+**「公式に載っているはず」で語を増やさないこと。** 増やすなら、また開いてもらう。
+
+**こちらのミス**: 裏取りのプロンプトに「下の11語」と書いて**12語**並べていた。
+辞典では`Forte / Piano`が1行なので**行数11・語数12**。ChatGPTに指摘された。
+
+---
+
 ## ★A列(実使用回数)を全件数え直した — 2026-09-21
 
 **他AI2人の監査で「数え方が示されていない」と指摘され、A評価37件を1件ずつ目で見た。**
@@ -183,8 +246,8 @@
 
 | 語 | 根拠区分 | 正確な意味 | 聴こえ方 | 近い語との違い | 併用しやすい | 衝突(同時最大化時) | 書き方 | 実証 |
 |---|---|---|---|---|---|---|---|---|
-| Legato | 【歌唱指導】 | 音と音の間を切らずに連続的につなぐ演奏実践 | 途切れない、流れる | Sustainedは1音を伸ばす、Legatoは音同士のつなぎ | Crooning, Vibrato, Sustained | Staccato, Rhythmic Delivery | スタイル欄。場所を限定 | B |
-| Staccato | 【歌唱指導】 | 音を短く切って処理する演奏実践 | 歯切れ、粒が立つ | Detachedより「切る」動作そのものを指す | Sharp Consonant, Rhythmic | Legato, Sustained | ブラケット | B |
+| Legato | 【歌唱指導】 | 音と音の間を切らずに連続的につなぐ演奏実践 | 途切れない、流れる | Sustainedは1音を伸ばす、Legatoは音同士のつなぎ | Crooning, Vibrato, Sustained | Staccato, Rhythmic Delivery | スタイル欄。場所を限定 | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
+| Staccato | 【歌唱指導】 | 音を短く切って処理する演奏実践 | 歯切れ、粒が立つ | Detachedより「切る」動作そのものを指す | Sharp Consonant, Rhythmic | Legato, Sustained | ブラケット | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
 | Portamento | 【歌唱指導】 | 音と音の間の音程を連続的に滑らせる | ぬるっと移る | Glissandoより滑らかで速度が遅い傾向 | Legato, Vibrato | Staccato | スタイル欄 | C |
 | Glissando | 【歌唱指導】 | 音程を素早く連続的に滑らせる(半音階的) | 大きく滑り落ちる/上がる | Portamentoより速く機械的な印象 | Falsetto, Vocal Run | Straight Tone | ブラケット | C |
 | Detached | 【音楽制作表現】 | 音を一つずつ独立させ、粘りを持たせない | 平板、事務的 | Staccatoより「短く切る」ではなく「繋げない」 | Monotone, Spoken | Legato, Melisma | `Detached Monotone Verses` | **A(1回/1曲)** |
@@ -252,9 +315,9 @@
 | Spoken | 【Suno表現のみ】 | 旋律を伴わず話すように発する(Sunoプロンプト上の実用語) | 旋律が消える | **確実に効く階層** | Conversational, Natural Pauses | Melisma, Belt | **確実に効く階層** | **A(18回/9曲)** |
 | Spoken Word | 【Suno表現のみ】 | 語り全体を通した表現形式 | 完全に喋り | Spokenより形式・ジャンル寄りの語 | Natural Pauses, Clear Articulation | Chorus系ラベル | **確実に効く階層** | **A(1回/1曲)** |
 | Rap | 【音楽制作表現】 | 韻とフローを持つ語りの様式 | 旋律より輪郭 | Rappingより名詞・ジャンル寄り | Sharp Consonant, Flow | Melisma, Belt | ジャンル語として実使用 | **A(6)** |
-| Rapping | 【歌唱指導】 | 韻律的な語り・詠唱の動作 | 同上 | 公式定義は動作としてのこちら | 同上 | 同上 | 公式用語 | B |
+| Rapping | 【歌唱指導】 | 韻律的な語り・詠唱の動作 | 同上 | 公式定義は動作としてのこちら | 同上 | 同上 | 公式用語 | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
 | Chanted | 【歌唱指導】 | 定型句を詠唱するように繰り返す | 反復的で儀式的 | Rappingより律動が単純・反復的 | Ritual系, Unison | Conversational | ブラケット | C |
-| Scat | 【歌唱指導】 | 意味を持たない音節での即興 | ジャズ的 | Ad-libより体系化された技法 | Jazz, Vocal Run | Clear Articulation | **うちの3件は`Scattered`の誤検出。実使用ゼロ** | B |
+| Scat | 【歌唱指導】 | 意味を持たない音節での即興 | ジャズ的 | Ad-libより体系化された技法 | Jazz, Vocal Run | Clear Articulation | **うちの3件は`Scattered`の誤検出。実使用ゼロ** | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
 | A Cappella | 【歌唱指導】 | 楽器伴奏を伴わない歌唱 | 声だけが空間を占める | Minimal Instrumentationとは目的が異なる(完全な無伴奏) | Harmonization, Choir | Wall Of Sound | **公式グロッサリー掲載は今回未確認(検索で裏取り不十分)** | C |
 
 ## ⑧ 感情・表現(何を感じさせるか)
@@ -293,16 +356,16 @@ Forte・Piano・Fortissimo・Tremoloの記載を確認済み(検索で直接引�
 | Gentle | 【音楽制作表現】 | 穏やか | 角が立たない | Softより「扱い方」全体のニュアンス | Unhurried, Warm | Forceful, Gritty | 場所を限定 | **A(17)** |
 | Explosive | 【音楽制作表現】 | 爆発的に開く | 一気に開く | Powerfulより「変化の急さ」を含む | Maximum Energy, Belt | Restrained, Breathy | サビ/Final限定 | **C**(セクション/編曲の語。ボーカル用途の実使用0) |
 | Forceful | 【音楽制作表現】 | 力任せに押す | 力任せ寄り | Powerfulより粗さを含む | Marcato, Shouted | Crooning, Intimate | ブラケット | C |
-| Forte / Piano | 【歌唱指導】 | 力学記号。強く/弱く(記譜法上の正式な用語) | 楽譜上の強弱 | Powerful/Softの音楽理論版 | — | — | **公式グロッサリー記載を確認済み** | B |
-| Fortissimo | 【歌唱指導】 | 非常に強く(記譜法) | 最大級の強さ | Fortissimoの一段上 | Explosive, Maximum Energy | Piano, Pianissimo | **公式グロッサリー記載を確認済み** | B |
-| Tremolo | 【歌唱指導】 | 音量・音程の急速な反復・振動(記譜法) | 震える、揺れる | Vibratoが音程中心、Tremoloは音量変動も含む広い概念 | Vibrato | Straight Tone | **公式グロッサリー記載を確認済み** | B |
-| Crescendo | 【歌唱指導】 | 徐々に強くする過程(記譜法) | 盛り上がる | Building Intensityより演奏記号としての正式語 | Building Intensity | Flat Dynamics | ブラケット | B |
-| Diminuendo / Decrescendo | 【歌唱指導】 | 徐々に弱くする過程(記譜法) | 引いていく | Fall-offは1音、これは区間全体 | Fall-off, Outro | Crescendo | ブラケット | B |
+| Forte / Piano | 【歌唱指導】 | 力学記号。強く/弱く(記譜法上の正式な用語) | 楽譜上の強弱 | Powerful/Softの音楽理論版 | — | — | **公式グロッサリー記載を確認済み** | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
+| Fortissimo | 【歌唱指導】 | 非常に強く(記譜法) | 最大級の強さ | Fortissimoの一段上 | Explosive, Maximum Energy | Piano, Pianissimo | **公式グロッサリー記載を確認済み** | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
+| Tremolo | 【歌唱指導】 | 音量・音程の急速な反復・振動(記譜法) | 震える、揺れる | Vibratoが音程中心、Tremoloは音量変動も含む広い概念 | Vibrato | Straight Tone | **公式グロッサリー記載を確認済み** | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
+| Crescendo | 【歌唱指導】 | 徐々に強くする過程(記譜法) | 盛り上がる | Building Intensityより演奏記号としての正式語 | Building Intensity | Flat Dynamics | ブラケット | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
+| Diminuendo / Decrescendo | 【歌唱指導】 | 徐々に弱くする過程(記譜法) | 引いていく | Fall-offは1音、これは区間全体 | Fall-off, Outro | Crescendo | ブラケット | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
 | Building Intensity | 【音楽制作表現】 | 段階的に強度を上げる | Pre-Chorus的 | Crescendoの口語的言い換え | Energy Lift, Crescendo | Flat Dynamics | ブラケット実績あり | **A(3)**・セクション語 |
 | Energy Lift | 【Suno表現のみ】 | 一段階持ち上げる | 持ち上がる | Building Intensityより単発の変化 | Building Intensity | Restrained | ブラケット実績あり | **A(3回/1曲)** |
 | Maximum Energy | 【Suno表現のみ】 | 全力・全開 | 曲の頂点 | リポジトリ最多の叫び系タグ | Explosive, Final Shout | Intimate, Hushed | **リポジトリ最多の叫び系タグ** | **A(13)**・セクション語 |
 | Final Shout | 【Suno表現のみ】 | 最後の一声で叫ぶ | 締めの叫び | Maximum Energyより「最後」の位置を含意 | Maximum Energy | Gentle Outro | ブラケット実績あり | **A(2回/2曲)** |
-| Accent | 【歌唱指導】 | 特定の音・語を強調(記譜法) | 一点が立つ | Marcatoより単発 | Sharp Consonant, Marcato | Legato | ブラケット | B |
+| Accent | 【歌唱指導】 | 特定の音・語を強調(記譜法) | 一点が立つ | Marcatoより単発 | Sharp Consonant, Marcato | Legato | ブラケット | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
 | Sforzando | 【歌唱指導】 | 一瞬だけ強く突く(記譜法) | 突き刺す | Accentより急激・唐突 | Accent, Staccato | Legato, Sustained | ブラケット | C |
 | Dynamic Contrast | 【Suno表現のみ】 | 緩急そのものを設計に明記 | 起伏が付く | Building Intensityが一方向、これは緩急全体 | セクション別演出全般 | Flat Dynamics | スタイル欄の設計図として | **C**(セクション/編曲の語。ボーカル用途の実使用0) |
 
@@ -346,7 +409,7 @@ Forte・Piano・Fortissimo・Tremoloの記載を確認済み(検索で直接引�
 
 | 語 | 根拠区分 | 正確な意味 | 実証 |
 |---|---|---|---|
-| Harmonization | 【歌唱指導】 | 複数声部が別の音程を同時に歌う | B |
+| Harmonization | 【歌唱指導】 | 複数声部が別の音程を同時に歌う | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
 | Layered Harmonies | 【音楽制作表現】 | 重ねたハーモニー(厚みを作る目的) | **A(1回/1曲)** |
 | Unison | 【歌唱指導】 | 全員が同じ音程を歌う | **A(1)** |
 | Call And Response | 【歌唱指導】 | 掛け合い(呼びかけと応答) | **A(5)** |

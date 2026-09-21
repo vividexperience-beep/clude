@@ -1,5 +1,64 @@
 # ボーカル・デリバリー辞典(9系統・表の見出し語 実測136)
 
+## ★公式グロッサリーの2章を書き出してもらった — 2026-09-21(2人に依頼、**報告が食い違った**)
+
+**依頼**: `Vocal Techniques`と`Dynamics & Expression`の章を、漏れなく原文のまま書き出す。
+**2人とも実ページを開いたが、返ってきた語のリストが一致しなかった。**
+
+| | Vocal Techniques | Dynamics & Expression |
+|---|---|---|
+| Gemini | 9語 | 10語 |
+| ChatGPT | 10語(「行159〜178」と位置指定) | 12語(「行36〜59」・最終更新 2025-11-17) |
+
+**両方が報告した17語 = 二重確認とみなす**
+`Falsetto` `Melisma` `Belt`(Geminiは`Belting`) `Scat` `Rapping` `A Cappella` `Harmonization` `Vibrato`
+`Forte` `Piano` `Fortissimo` `Pianissimo` `Crescendo` `Diminuendo` `Staccato` `Legato` `Accent`
+
+**片方だけが報告した語 = 単独ソース。Bにしない**
+
+| 語 | 報告者 |
+|---|---|
+| `Growling / Screaming` `Rubato` | Geminiのみ |
+| `Vocal Run` `Call And Response` `Crooning` `Dynamics` | ChatGPTのみ |
+
+**⚠️ `Vibrato`は2人とも報告しているが、章が違う**(Gemini=Vocal Techniques / ChatGPT=Dynamics & Expression)。
+**語の存在は二重確認できているので、章の食い違いはグレードに影響させない。**
+
+**なぜ食い違ったかは分からない。** ページが更新された/どちらかが取りこぼした/
+表示が違った、のどれもあり得る。**分からないものを埋めないので、そのまま記録する。**
+既存基準「一致しなかった項目は断定を避ける」(`songs/23-still-warm.md`)の適用。
+
+### 辞典に無かった語(公式記載なので今後使える)
+
+| 語 | 公式の原文 | 扱い |
+|---|---|---|
+| **Falsetto** | "High-pitched vocal register"(G) / 通常より高い息の多い声域(C) | **B**。辞典に項目が無かった |
+| **Melisma** | "Singing multiple notes on a single syllable" | **B**。辞典に項目が無かった |
+| **Belt / Belting** | "Powerful, chest-voice singing in a high register" | **B**。★下記参照 |
+| **Pianissimo** | "Pianissimo (pp) - Very soft" | **B**。`Forte / Piano`の行はあるが無かった |
+| Growling / Screaming | "Aggressive, distorted vocal techniques (common in rock/metal)" | **単独ソース**。四道壮琉の`Growl`に関わるので要再確認 |
+| Rubato | "Flexible tempo for expressive effect" | **単独ソース** |
+| Crooning | 柔らかく親密な歌唱スタイル | **単独ソース** |
+
+### ★★`Belt`の「公式定義」を今朝外したが、その撤回が誤りだった
+
+**今朝、`Belt`の説明から「(公式定義)」を外した。**
+理由は「`help.suno.com`はegressブロックで読めていないので、公式と書けない」。
+**今日2人が実際にページを開いたら、公式の定義は
+"Powerful, chest-voice singing in a high register"
+=うちの辞典の「胸声で高音域を力強く持続する発声技法」とほぼ同じだった。**
+
+**つまり元の記述は正しく、撤回の方が誤りだった。**
+
+**これは今日2度目の同じ失敗。** 1度目は松本隆
+(1人が「出典不明」と言ったので即撤回 → 2人目が頁番号付きで出してきた)。
+**どちらも「読めていない/見つからない」を「間違っている」と読み替えている。**
+
+**ルール(再掲・今度は2例目として): 読めないことは、間違っていることではない。**
+**読めない時に書くべきは「確認できていない」であって、記述を消すことではない。**
+
+---
+
 ## ★B列の根拠が確定した — 2026-09-21(他AI2人が独立に一次情報を確認)
 
 **【実測・二重確認】Suno公式の用語集は実在する。**
@@ -271,7 +330,7 @@ ChatGPTが自分から付け加えてきた:
 | Straight Tone | 【音楽制作表現】 | ビブラートをほぼゼロまで抑えた声 | 硬質、少年的 | Minimal Vibratoとの違いは揺れの有無そのもの | Detached, Clean | Vibrato, Melisma | スタイル欄 | C |
 | Wide Vibrato | 【音楽制作表現】 | 揺れの幅(extent)が大きい | 演歌/オペラ寄り | Fast/Slowは速さ(rate)の話で幅とは別変数 | Belt, Powerful | Intimate, Whispered | スタイル欄 | C(実使用ゼロ) |
 | Light Vibrato | 【音楽制作表現】 | 揺れの幅が浅い | 上品、控えめ | Minimal Vibratoとほぼ同義。うちはMinimalを採用 | Crooning, Gentle | Wide Vibrato | スタイル欄 | C |
-| Vibrato Rate(速さ) | 【科学研究】 | 揺れの周期の速さ(振幅とは独立したパラメータ) | 速いと緊張、遅いと落ち着き | 幅(extent)とは独立 | — | — | **うちは速さを単独指定した実績なし** | C |
+| Vibrato Rate(速さ) | 【科学研究】 | 揺れの周期の速さ(振幅とは独立したパラメータ) | 速いと緊張、遅いと落ち着き | 幅(extent)とは独立 | — | — | **うちは速さを単独指定した実績なし** | **B**(公式グロッサリー記載を2026-09-21に二重確認。Cから昇格) |
 | Scooping | 【歌唱指導】 | 目標音より低い音から滑り上がって入る | 甘え、粘り | Portamentoは音と音の間、Scoopは音の入り方 | Crooning, Husky | Clear Articulation | ブラケット | C |
 | Fall-off | 【歌唱指導】 | 音の終わりを下方向に落とす | 投げやり、余韻 | Doitの対極(下に落ちる) | Conversational, Breathy | Crescendo | `breath catching...then falling into silence`に近い描写あり | C(実使用ゼロ) |
 | Doit | 【歌唱指導】 | 音の終わりを上方向に跳ね上げる | 軽い煽り | Fall-offの対極 | Playful, Teasing | Mournful | ブラケット | C |
@@ -318,7 +377,7 @@ ChatGPTが自分から付け加えてきた:
 | Rapping | 【歌唱指導】 | 韻律的な語り・詠唱の動作 | 同上 | 公式定義は動作としてのこちら | 同上 | 同上 | 公式用語 | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
 | Chanted | 【歌唱指導】 | 定型句を詠唱するように繰り返す | 反復的で儀式的 | Rappingより律動が単純・反復的 | Ritual系, Unison | Conversational | ブラケット | C |
 | Scat | 【歌唱指導】 | 意味を持たない音節での即興 | ジャズ的 | Ad-libより体系化された技法 | Jazz, Vocal Run | Clear Articulation | **うちの3件は`Scattered`の誤検出。実使用ゼロ** | **B**(公式グロッサリー記載を2026-09-21に二重確認) |
-| A Cappella | 【歌唱指導】 | 楽器伴奏を伴わない歌唱 | 声だけが空間を占める | Minimal Instrumentationとは目的が異なる(完全な無伴奏) | Harmonization, Choir | Wall Of Sound | **公式グロッサリー掲載は今回未確認(検索で裏取り不十分)** | C |
+| A Cappella | 【歌唱指導】 | 楽器伴奏を伴わない歌唱 | 声だけが空間を占める | Minimal Instrumentationとは目的が異なる(完全な無伴奏) | Harmonization, Choir | Wall Of Sound | **公式グロッサリー掲載は今回未確認(検索で裏取り不十分)** | **B**(公式グロッサリー記載を2026-09-21に二重確認。Cから昇格) |
 
 ## ⑧ 感情・表現(何を感じさせるか)
 

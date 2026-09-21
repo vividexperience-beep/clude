@@ -1,4 +1,51 @@
-# ボーカル・デリバリー辞典(9系統・約115語)
+# ボーカル・デリバリー辞典(9系統・表の見出し語 実測136)
+
+## ★A列(実使用回数)を全件数え直した — 2026-09-21
+
+**他AI2人の監査で「数え方が示されていない」と指摘され、A評価37件を1件ずつ目で見た。**
+**一致したのは18件。19件が誤りだった。**
+
+**誤りの型は2つ。**
+
+**1. 楽器・編曲・ジャンルの用途を混ぜていた(9/20に記録した型2の再発)**
+
+| 語 | 記載 | 確定 | 中身 |
+|---|---|---|---|
+| **`Driving`** | **26** | **2** | ボーカルは`[Driving Vocal]`の2件だけ。残りはドラム・ベース・シンバル・グルーヴ・Bpm・ブレイクビート |
+| **`Sustained`** | **10** | **1** | ボーカルは`[A single sustained note, breath catching]`の1件だけ。残りは和音・サブベース・ハープ・ボウル・チェロ・パッド |
+| **`Soft`** | **35** | **17** | ピアノ・カリンバ・マリンバ・ゴング・レインスティック・ギター等が11件 |
+| **`Gentle`** | **32** | **17** | `Gentle Fade`/`Gentle Outro`(エンディング指定)・弦パッド・リバーブが13件 |
+| **`Powerful`** | **43** | **39** | `Powerful Taiko-Style Toms` `Powerful Rock Drums` `Clear And Powerful Mix` |
+| **`Playful`** | **13** | **7** | アーケードシンセ・スパイシンセ・ピチカート弦・器楽のみの箇所が5件 |
+| **`Rap`** | **8** | **6** | `Melodic Rap` `Denpa-Influenced Rap`等の**ジャンル名**が4件 |
+| **`Held Note`** | **1** | **0→C** | 実体は`Reed Noise, Pitch Bends, Wavering Held Notes`=**サックス**。9/20に「サックスだから外す」と書いたのに、外れていなかった |
+
+**2. ★「ボーカルの歌い方」と「セクションのエネルギー」を同じ列で数えていた(新しい発見)**
+
+`Explosive`の12件は**全部が`Explosive Chorus`/`Explosive Final Chorus`/
+`Explosive Full Band Entrance`**で、**声の出し方を指示した箇所はゼロ**。
+`Dynamic Contrast`も`Stereo Mix, Dynamic Contrast`で**ミックスの語**。
+**ボーカル・デリバリー辞典なのに、セクション全体の音量設計の語が混ざっていた。**
+
+- `Explosive` `Dynamic Contrast` → **Cへ降格**(ボーカル用途の実使用ゼロ)
+- `Maximum Energy`(13) `Building Intensity`(3) `Energy Lift`(3) → **A のまま。ただし「セクション語」と明記。**
+  これらは歌詞のブラケットに置かれ、**バンドと声の両方**を動かす指示なので残す。
+  **`[Whispered]`のような純粋なデリバリー語と同列に扱わないこと。**
+
+### 数え方(次回もこの通りにやる)
+
+1. **`songs/*.md`は```コードブロックのうち、見出しが「歌詞」「スタイルプロンプト」「ブラケット」のものだけ。**
+   **`## ジャケ写(PixAI)プロンプト`・`### ルール4(スケルトン)`(構成の説明)・
+   「不採用にした」案のブロックは除外する**(今回これらが混入していた)。
+2. `reference/suno-samples.md`はコードブロックを使っていないので、`#`で始まる行以外の全体。
+3. 複数形・活用(`s` `ed` `ing`)を許容し、**部分一致は除外**する。
+4. **1件ずつ行を見て、楽器・ミックス・編曲・エンディング・ジャンルの用途を落とす。**
+   **`Not Triumphant`のような否定形も落とす。**
+5. **スクリプトの自動判定を信用しない。** 今回`Driving`を自動判定は13と出したが、
+   実際は2だった(samplesの長い行に別の場所で`Vocal`が出ると、ボーカル用途と誤判定する)。
+   **最後は必ず全ヒットを目で見る。**
+
+---
 
 作成: 2026-09-20 / 改訂: 2026-09-20(9系統に再構成)/ 再改訂: 2026-09-20(根拠の階層を分離)
 対象: Suno v6
@@ -125,8 +172,8 @@
 | Pressed (Phonation) | 【科学研究】 | 声帯の閉鎖・接触を強く保つ発声(息漏れが少なく、
   より急峻な声門閉鎖)。EGG研究の対象 | 硬く詰まった圧、締まった芯 | Breathyの対極。音量ではなく声門の締まり方 | Powerful, Belt, Aggressive | Breathy, Airy, Falsetto | **未使用。科学的には実在する概念だが、Sunoでの反映は未検証** | C |
 | Airy | 【音楽制作表現】 | 息の成分が多く軽い | 薄く広い | Breathyより「近さ」の要素が薄く、単に軽い | Falsetto, Head Voice | Gritty, Growl | **うちの実績はミックス用途のみ。声では未使用** | C |
-| Relaxed (Vocal) | 【音楽制作表現】 | 声帯・喉の緊張を抜いた状態 | ゆるい、力が入っていない | Pressedの対極。Breathyとは緊張の話 | Unhurried, Soft | Maximum Energy, Pressed | **場所を限定しないと事故る**(`songs/24`の前例) | **A(6回/6曲)** |
-| Natural Vocal Grain | 【Suno表現のみ】 | 補正しない粒立ち(声楽の正式な用語ではない) | 生々しさ | 圧力ではなく質感の均され方の話 | Audible Breath, Pitch Wave | Autotune系 | **YuRa/栞/壮琉の共通語** | **A(11回/10曲)** |
+| Relaxed (Vocal) | 【音楽制作表現】 | 声帯・喉の緊張を抜いた状態 | ゆるい、力が入っていない | Pressedの対極。Breathyとは緊張の話 | Unhurried, Soft | Maximum Energy, Pressed | **場所を限定しないと事故る**(`songs/24`の前例) | **A(5)** |
+| Natural Vocal Grain | 【Suno表現のみ】 | 補正しない粒立ち(声楽の正式な用語ではない) | 生々しさ | 圧力ではなく質感の均され方の話 | Audible Breath, Pitch Wave | Autotune系 | **YuRa/栞/壮琉の共通語** | **A(9)** |
 
 ## ③ 音のつなぎ方(articulation・音符の処理)
 
@@ -143,8 +190,8 @@
 | Detached | 【音楽制作表現】 | 音を一つずつ独立させ、粘りを持たせない | 平板、事務的 | Staccatoより「短く切る」ではなく「繋げない」 | Monotone, Spoken | Legato, Melisma | `Detached Monotone Verses` | **A(1回/1曲)** |
 | Marcato | 【歌唱指導】 | 一音ずつはっきり際立たせて歌う | 押し出しが強い | Accentが1点なのに対し全体に適用される強調 | Accent, Powerful | Breathy, Gentle | ブラケット | C |
 | Slurred | 【音楽制作表現】 | 語や音をつなげて崩す | 酔ったような曖昧さ | Legatoより「不明瞭さ」を含む | Conversational, Husky | Clear Articulation | ブラケット | C |
-| Sustained | 【音楽制作表現】 | 一音・一語を長く保つ | 伸びる、空間が出る | Held Noteより曲全体の傾向を指すことが多い | Legato, Vibrato, Head Voice | Staccato, Rhythmic | `Long Sustained Tones` | **A(10回/7曲)** |
-| Held Note | 【音楽制作表現】 | 特定の一音を持続させる | 一点で止まる | Sustainedより単発の指示 | Sustained, Crescendo | Vocal Run | `Wavering Held Notes` | **A(1回/1曲)** |
+| Sustained | 【音楽制作表現】 | 一音・一語を長く保つ | 伸びる、空間が出る | Held Noteより曲全体の傾向を指すことが多い | Legato, Vibrato, Head Voice | Staccato, Rhythmic | `Long Sustained Tones` | **A(1)** |
+| Held Note | 【音楽制作表現】 | 特定の一音を持続させる | 一点で止まる | Sustainedより単発の指示 | Sustained, Crescendo | Vocal Run | `Wavering Held Notes` | **C**(楽器用途のみ。ボーカル用途0) |
 | Clipped | 【音楽制作表現】 | 語尾を切り落とす | そっけない、冷たい | Staccatoより「終わり方」だけの話 | Detached, Spoken | Drawn-out Vowel | ブラケット | C |
 
 ## ④ 音程の動かし方(ピッチの操作)
@@ -157,7 +204,7 @@
 |---|---|---|---|---|---|---|---|---|
 | Vibrato | 【科学研究】 | 音程(基本周波数F0)を周期的・規則的に揺らす現象。
   速度・振幅とも音響測定の対象 | 温かみ、伸びの表情 | 揺れの幅(extent)・速さ(rate)は別途指定が必要 | Sustained, Belt, Legato | Straight Tone | 量の語とセット推奨 | **A(7)** |
-| Minimal Vibrato | 【音楽制作表現】 | 揺れの幅(extent)を強く抑える | 素朴、澄んだ直線 | Straight Toneより「わずかに揺れは残る」 | Breathy, Intimate, Close-Mic | Melisma, Vocal Run | 清宮栞の固定に採用済み | **A(7回/7曲)** |
+| Minimal Vibrato | 【音楽制作表現】 | 揺れの幅(extent)を強く抑える | 素朴、澄んだ直線 | Straight Toneより「わずかに揺れは残る」 | Breathy, Intimate, Close-Mic | Melisma, Vocal Run | 清宮栞の固定に採用済み | **A(6)** |
 | Straight Tone | 【音楽制作表現】 | ビブラートをほぼゼロまで抑えた声 | 硬質、少年的 | Minimal Vibratoとの違いは揺れの有無そのもの | Detached, Clean | Vibrato, Melisma | スタイル欄 | C |
 | Wide Vibrato | 【音楽制作表現】 | 揺れの幅(extent)が大きい | 演歌/オペラ寄り | Fast/Slowは速さ(rate)の話で幅とは別変数 | Belt, Powerful | Intimate, Whispered | スタイル欄 | C(実使用ゼロ) |
 | Light Vibrato | 【音楽制作表現】 | 揺れの幅が浅い | 上品、控えめ | Minimal Vibratoとほぼ同義。うちはMinimalを採用 | Crooning, Gentle | Wide Vibrato | スタイル欄 | C |
@@ -189,7 +236,7 @@
 | Behind The Beat | 【音楽制作表現】 | 拍よりわずかに後ろに言葉を置く | 余裕、粘り、ソウルフル | Laid-backより明確に「遅れ」を指す技術語 | Husky, Smoky, Soul | Ahead Of The Beat | スタイル欄 | C |
 | Ahead Of The Beat | 【音楽制作表現】 | 拍よりわずかに前に言葉を置く | 焦り、疾走感 | Drivingより「配置」の話 | Desperate, Fast Flow | Behind The Beat, Laid-back | スタイル欄 | C |
 | Laid-Back | 【音楽制作表現】 | 全体の乗り方がゆったり後ろに引いている | くつろいだ、余裕がある印象 | Behind The Beatより感覚的・全体的な表現 | Unhurried, Relaxed, Smoky | Driving, Urgent | スタイル欄 | C |
-| Driving | 【音楽制作表現】 | 拍を前へ押し出すように歌う | 前進感、勢い | Ahead Of The Beatより「押す力」の質感の話 | Powerful, Fast Flow | Laid-back, Unhurried | `[Driving Vocal]` | **A(26回/9曲)** |
+| Driving | 【音楽制作表現】 | 拍を前へ押し出すように歌う | 前進感、勢い | Ahead Of The Beatより「押す力」の質感の話 | Powerful, Fast Flow | Laid-back, Unhurried | `[Driving Vocal]` | **A(2)** |
 | Rhythmic Delivery | 【音楽制作表現】 | リズムそのものを強く意識した発声 | 拍に乗る | Rapより広い(歌でも成立) | Rap, Syncopated | Legato, Rubato | `[Confident, rhythmic delivery]` | **A(1回/1曲)** |
 
 ## ⑦ 発音・言葉の処理
@@ -204,7 +251,7 @@
 | Speech-like | 【音楽制作表現】 | 話し声に近い発声そのもの | 歌と喋りの中間 | Conversationalより発声そのものの話 | Spoken, Murmured | Chorus系ラベル | スタイル欄 | C |
 | Spoken | 【Suno表現のみ】 | 旋律を伴わず話すように発する(Sunoプロンプト上の実用語) | 旋律が消える | **確実に効く階層** | Conversational, Natural Pauses | Melisma, Belt | **確実に効く階層** | **A(18回/9曲)** |
 | Spoken Word | 【Suno表現のみ】 | 語り全体を通した表現形式 | 完全に喋り | Spokenより形式・ジャンル寄りの語 | Natural Pauses, Clear Articulation | Chorus系ラベル | **確実に効く階層** | **A(1回/1曲)** |
-| Rap | 【音楽制作表現】 | 韻とフローを持つ語りの様式 | 旋律より輪郭 | Rappingより名詞・ジャンル寄り | Sharp Consonant, Flow | Melisma, Belt | ジャンル語として実使用 | **A(8回/6曲)** |
+| Rap | 【音楽制作表現】 | 韻とフローを持つ語りの様式 | 旋律より輪郭 | Rappingより名詞・ジャンル寄り | Sharp Consonant, Flow | Melisma, Belt | ジャンル語として実使用 | **A(6)** |
 | Rapping | 【歌唱指導】 | 韻律的な語り・詠唱の動作 | 同上 | 公式定義は動作としてのこちら | 同上 | 同上 | 公式用語 | B |
 | Chanted | 【歌唱指導】 | 定型句を詠唱するように繰り返す | 反復的で儀式的 | Rappingより律動が単純・反復的 | Ritual系, Unison | Conversational | ブラケット | C |
 | Scat | 【歌唱指導】 | 意味を持たない音節での即興 | ジャズ的 | Ad-libより体系化された技法 | Jazz, Vocal Run | Clear Articulation | **うちの3件は`Scattered`の誤検出。実使用ゼロ** | B |
@@ -219,11 +266,11 @@
 |---|---|---|---|---|---|
 | Desperate | 切羽詰まった、余裕のない | Urgentより個人的な危機感 | Cracking, Shouted, Fast | Controlled, Unhurried | **この曲のみ(1回)** |
 | Defiant | 反抗的、屈しない | Angryより意志的・能動的 | Powerful, Belt | Gentle, Tender | **A(1回/1曲)** |
-| Vulnerable | 弱さ・傷つきやすさをさらけ出す | Tenderは他者への感情、Vulnerableは自分の状態 | Breathy, Intimate, Bridge | Powerful, Defiant | **A(4)**(`[Intimate, vulnerable, close to a whisper]`) |
+| Vulnerable | 弱さ・傷つきやすさをさらけ出す | Tenderは他者への感情、Vulnerableは自分の状態 | Breathy, Intimate, Bridge | Powerful, Defiant | **A(5)** |
 | Triumphant | 勝ち誇る、勝利の実感 | Defiantより「勝った後」の感情 | Powerful, Explosive | Aching, Vulnerable | **A(1)**(`Aching Not Triumphant`と否定形で使用実績あり) |
 | Restrained | 感情を抑制する | Controlledより「出したいが出さない」含意 | Controlled, Verses | Explosive, Maximum Energy | **A(7回/2曲)** |
-| Controlled | 制御が行き届いている | Restrainedより単に「崩れない」の意 | Restrained, Clean | Desperate, Cracking | **A(7回/3曲)** |
-| Playful | 遊び心、軽さ | Teasingより無邪気寄り | Teasing, Bright | Mournful, Dark | **A(13回/5曲)** |
+| Controlled | 制御が行き届いている | Restrainedより単に「崩れない」の意 | Restrained, Clean | Desperate, Cracking | **A(6)** |
+| Playful | 遊び心、軽さ | Teasingより無邪気寄り | Teasing, Bright | Mournful, Dark | **A(7)** |
 | Teasing | 煽る、からかう | Playfulより対象への挑発を含む | Playful, Azato-Cute | Solemn | **A(5回/5曲)** |
 | Urgent | 時間的な切迫感 | Desperateより外的な急かされ感 | Fast Flow, Ahead Of The Beat | Unhurried, Laid-back | C(未使用) |
 | Angry | 怒り | Defiantより制御を失っている含意 | Growl, Shouted | Gentle, Crooning | C(未使用) |
@@ -241,23 +288,23 @@ Forte・Piano・Fortissimo・Tremoloの記載を確認済み(検索で直接引�
 
 | 語 | 根拠区分 | 正確な意味 | 聴こえ方 | 近い語との違い | 併用しやすい | 衝突(同時最大化時) | 書き方 | 実証 |
 |---|---|---|---|---|---|---|---|---|
-| Powerful | 【音楽制作表現】 | 聴感上の強さ | 押し出しが強い | **Beltは発声技法、Powerfulは聴感。別軸で併用可** | Belt, Front And Center | Whispered, Breathy | **YuRa固定トリオの語** | **A(43回/12曲)** |
-| Soft | 【音楽制作表現】 | 音量・力を弱くする | 近い、優しい | Breathyは声質、Softは音量そのもの | Intimate, Breathy, Close-Mic | Explosive, Belt | 場所を限定 | **A(35回/10曲)** |
-| Gentle | 【音楽制作表現】 | 穏やか | 角が立たない | Softより「扱い方」全体のニュアンス | Unhurried, Warm | Forceful, Gritty | 場所を限定 | **A(32回/10曲)** |
-| Explosive | 【音楽制作表現】 | 爆発的に開く | 一気に開く | Powerfulより「変化の急さ」を含む | Maximum Energy, Belt | Restrained, Breathy | サビ/Final限定 | **A(12回/4曲)** |
+| Powerful | 【音楽制作表現】 | 聴感上の強さ | 押し出しが強い | **Beltは発声技法、Powerfulは聴感。別軸で併用可** | Belt, Front And Center | Whispered, Breathy | **YuRa固定トリオの語** | **A(39)** |
+| Soft | 【音楽制作表現】 | 音量・力を弱くする | 近い、優しい | Breathyは声質、Softは音量そのもの | Intimate, Breathy, Close-Mic | Explosive, Belt | 場所を限定 | **A(17)** |
+| Gentle | 【音楽制作表現】 | 穏やか | 角が立たない | Softより「扱い方」全体のニュアンス | Unhurried, Warm | Forceful, Gritty | 場所を限定 | **A(17)** |
+| Explosive | 【音楽制作表現】 | 爆発的に開く | 一気に開く | Powerfulより「変化の急さ」を含む | Maximum Energy, Belt | Restrained, Breathy | サビ/Final限定 | **C**(セクション/編曲の語。ボーカル用途の実使用0) |
 | Forceful | 【音楽制作表現】 | 力任せに押す | 力任せ寄り | Powerfulより粗さを含む | Marcato, Shouted | Crooning, Intimate | ブラケット | C |
 | Forte / Piano | 【歌唱指導】 | 力学記号。強く/弱く(記譜法上の正式な用語) | 楽譜上の強弱 | Powerful/Softの音楽理論版 | — | — | **公式グロッサリー記載を確認済み** | B |
 | Fortissimo | 【歌唱指導】 | 非常に強く(記譜法) | 最大級の強さ | Fortissimoの一段上 | Explosive, Maximum Energy | Piano, Pianissimo | **公式グロッサリー記載を確認済み** | B |
 | Tremolo | 【歌唱指導】 | 音量・音程の急速な反復・振動(記譜法) | 震える、揺れる | Vibratoが音程中心、Tremoloは音量変動も含む広い概念 | Vibrato | Straight Tone | **公式グロッサリー記載を確認済み** | B |
 | Crescendo | 【歌唱指導】 | 徐々に強くする過程(記譜法) | 盛り上がる | Building Intensityより演奏記号としての正式語 | Building Intensity | Flat Dynamics | ブラケット | B |
 | Diminuendo / Decrescendo | 【歌唱指導】 | 徐々に弱くする過程(記譜法) | 引いていく | Fall-offは1音、これは区間全体 | Fall-off, Outro | Crescendo | ブラケット | B |
-| Building Intensity | 【音楽制作表現】 | 段階的に強度を上げる | Pre-Chorus的 | Crescendoの口語的言い換え | Energy Lift, Crescendo | Flat Dynamics | ブラケット実績あり | **A(2回/2曲)** |
+| Building Intensity | 【音楽制作表現】 | 段階的に強度を上げる | Pre-Chorus的 | Crescendoの口語的言い換え | Energy Lift, Crescendo | Flat Dynamics | ブラケット実績あり | **A(3)**・セクション語 |
 | Energy Lift | 【Suno表現のみ】 | 一段階持ち上げる | 持ち上がる | Building Intensityより単発の変化 | Building Intensity | Restrained | ブラケット実績あり | **A(3回/1曲)** |
-| Maximum Energy | 【Suno表現のみ】 | 全力・全開 | 曲の頂点 | リポジトリ最多の叫び系タグ | Explosive, Final Shout | Intimate, Hushed | **リポジトリ最多の叫び系タグ** | **A(12回/5曲)** |
+| Maximum Energy | 【Suno表現のみ】 | 全力・全開 | 曲の頂点 | リポジトリ最多の叫び系タグ | Explosive, Final Shout | Intimate, Hushed | **リポジトリ最多の叫び系タグ** | **A(13)**・セクション語 |
 | Final Shout | 【Suno表現のみ】 | 最後の一声で叫ぶ | 締めの叫び | Maximum Energyより「最後」の位置を含意 | Maximum Energy | Gentle Outro | ブラケット実績あり | **A(2回/2曲)** |
 | Accent | 【歌唱指導】 | 特定の音・語を強調(記譜法) | 一点が立つ | Marcatoより単発 | Sharp Consonant, Marcato | Legato | ブラケット | B |
 | Sforzando | 【歌唱指導】 | 一瞬だけ強く突く(記譜法) | 突き刺す | Accentより急激・唐突 | Accent, Staccato | Legato, Sustained | ブラケット | C |
-| Dynamic Contrast | 【Suno表現のみ】 | 緩急そのものを設計に明記 | 起伏が付く | Building Intensityが一方向、これは緩急全体 | セクション別演出全般 | Flat Dynamics | スタイル欄の設計図として | **A(4回/2曲)** |
+| Dynamic Contrast | 【Suno表現のみ】 | 緩急そのものを設計に明記 | 起伏が付く | Building Intensityが一方向、これは緩急全体 | セクション別演出全般 | Flat Dynamics | スタイル欄の設計図として | **C**(セクション/編曲の語。ボーカル用途の実使用0) |
 
 ---
 
@@ -301,8 +348,8 @@ Forte・Piano・Fortissimo・Tremoloの記載を確認済み(検索で直接引�
 |---|---|---|---|
 | Harmonization | 【歌唱指導】 | 複数声部が別の音程を同時に歌う | B |
 | Layered Harmonies | 【音楽制作表現】 | 重ねたハーモニー(厚みを作る目的) | **A(1回/1曲)** |
-| Unison | 【歌唱指導】 | 全員が同じ音程を歌う | **A(2)**(`songs/09-goji-no-haietsu.md`) |
-| Call And Response | 【歌唱指導】 | 掛け合い(呼びかけと応答) | **A(2)**。**声部は標準語彙(Audience/Crowd)で書く** |
+| Unison | 【歌唱指導】 | 全員が同じ音程を歌う | **A(1)** |
+| Call And Response | 【歌唱指導】 | 掛け合い(呼びかけと応答) | **A(5)** |
 
 ---
 
